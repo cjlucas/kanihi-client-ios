@@ -11,7 +11,7 @@
 
 #import "KANDataStore.h"
 
-NSUInteger kFetchLimit = 5;
+NSUInteger kFetchLimit = 10;
 
 @interface KANDataStore ()
 - (NSURLRequest *)requestWithSQLLimit:(NSUInteger)limit
@@ -71,7 +71,7 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
     [req addValue:offsetString forHTTPHeaderField:@"SQL-Offset"];
     [req addValue:lastUpdatedAtString forHTTPHeaderField:@"Last-Updated-At"];
     
-    req.URL = [NSURL URLWithString:@"http://localhost:8080/tracks.json"];
+    req.URL = [NSURL URLWithString:@"http://192.168.1.19:8080/tracks.json"];
     
     return [req copy];
 }
@@ -90,13 +90,17 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
     NSArray *trackDatas = [NSJSONSerialization JSONObjectWithData:data
                                                          options:0
                                                            error:nil];
+    
+    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
+    
     for (NSDictionary *trackData in trackDatas) {
         //NSLog(@"%@", trackData[@"track"]);
         KANTrack *track = [KANTrack uniqueEntityForJSONData:trackData[@"track"] withCache:nil context:self.mainManagedObjectContext];
         
         //NSLog(@"%@", track);
     }
-    
+    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
+    NSLog(@"Execution Time: %f", end-start);
     [self.mainManagedObjectContext save:&error];
     NSLog(@"%@", error);
 }

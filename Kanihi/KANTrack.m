@@ -39,14 +39,13 @@ NSString * const kEntityName = @"Track";
     return [NSPredicate predicateWithFormat:@"uuid = %@", data[@"uuid"]];
 }
 
-// roll this out to a category
+// move this somewhere else
 + (NSDateFormatter *)dateFormatter
 {
     static NSDateFormatter *_dateFormatter = nil;
     if (_dateFormatter == nil) {
         _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
-        _dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+        _dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"; // 1998-09-29T00:00:00Z
     }
     return _dateFormatter;
 }
@@ -65,18 +64,14 @@ NSString * const kEntityName = @"Track";
     track.mood = NIL_NOT_NULL(data[@"mood"]);
     track.num = NIL_NOT_NULL(data[@"track_num"]);
     track.subtitle = NIL_NOT_NULL(data[@"subtitle"]);
+    
     if (data[@"date"] != [NSNull null]) {
         track.date = [[self dateFormatter] dateFromString:data[@"date"]];
+        //NSLog(@"%@", track.date);
     }
     if (data[@"original_date"] != [NSNull null]) {
         track.originalDate = [[self dateFormatter] dateFromString:data[@"original_date"]];
     }
-    //track.date
-    //track.originalDate
-    //track.artist
-    //track.disc
-    //track.genre
-    //
     
     return track;
 }
@@ -93,10 +88,10 @@ NSString * const kEntityName = @"Track";
     NSArray *results = [context executeFetchRequest:req error:&error];
     
     if ([results count] == 1) {
-        NSLog(@"found existing entity");
+        //NSLog(@"found existing entity");
         return [results objectAtIndex:0];
     } else {
-        NSLog(@"new entity");
+        //NSLog(@"new entity");
         return [self initWithJSONData:data context:context];
     }
 }

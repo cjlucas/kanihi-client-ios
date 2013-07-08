@@ -26,6 +26,7 @@
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
+		83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D99178A623400CB37C1 /* KANTrackArtist.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		83E44D8C178A177700CB37C1 /* KANTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrack.h; sourceTree = "<group>"; };
 		83E44D8D178A177700CB37C1 /* KANTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrack.m; sourceTree = "<group>"; };
 		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
+		83E44D98178A623400CB37C1 /* KANTrackArtist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrackArtist.h; sourceTree = "<group>"; };
+		83E44D99178A623400CB37C1 /* KANTrackArtist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrackArtist.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 		834303261789F900006EC1A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				83E44D98178A623400CB37C1 /* KANTrackArtist.h */,
+				83E44D99178A623400CB37C1 /* KANTrackArtist.m */,
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
 				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
 				83E44D8C178A177700CB37C1 /* KANTrack.h */,
@@ -282,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,

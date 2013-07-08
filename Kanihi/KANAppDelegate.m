@@ -16,6 +16,10 @@
     KANDataStore *store = [KANDataStore sharedDataStore];
 
     [store doStuff];
+    
+    KANTrackArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:@"TrackArtist" inManagedObjectContext:store.mainManagedObjectContext];
+    artist.name = @"çinglön";
+    NSLog(@"%@", artist);
 
     // Override point for customization after application launch.
     return YES;

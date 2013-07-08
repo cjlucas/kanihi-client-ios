@@ -35,16 +35,17 @@
         <relationship name="disc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disc" inverseName="tracks" inverseEntity="Disc" syncable="YES"/>
         <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Genre" inverseName="tracks" inverseEntity="Genre" syncable="YES"/>
     </entity>
-    <entity name="TrackArtist" syncable="YES">
+    <entity name="TrackArtist" representedClassName="KANTrackArtist" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameNormalized" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="artist" inverseEntity="Track" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="-45" positionY="192" width="128" height="88"/>
-        <element name="AlbumArtist" positionX="88" positionY="99" width="128" height="88"/>
-        <element name="Disc" positionX="54" positionY="171" width="128" height="103"/>
-        <element name="Genre" positionX="-29" positionY="-54" width="128" height="73"/>
-        <element name="Track" positionX="160" positionY="192" width="128" height="238"/>
-        <element name="TrackArtist" positionX="-29" positionY="354" width="128" height="73"/>
+        <element name="Album" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AlbumArtist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Disc" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Track" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TrackArtist" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

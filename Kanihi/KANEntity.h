@@ -12,6 +12,6 @@
 
 @interface KANEntity : NSManagedObject
 
-- (BOOL)works;
++ (NSString *)normalizedStringForString:(NSString *)text;
 
 @end
