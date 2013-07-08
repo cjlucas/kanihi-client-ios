@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "KANTrack.h"
+
 @interface KANDataStore : NSObject
+
++ (KANDataStore *)sharedDataStore;
+- (void)doStuff;
+
+@property (readonly) NSManagedObjectContext *mainManagedObjectContext;
 
 @end

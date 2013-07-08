@@ -17,10 +17,10 @@
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="disc" inverseEntity="Track" syncable="YES"/>
     </entity>
     <entity name="Genre" syncable="YES">
-        <attribute name="name" optional="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="genre" inverseEntity="Track" syncable="YES"/>
     </entity>
-    <entity name="Track" syncable="YES">
+    <entity name="Track" representedClassName="KANTrack" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,8 +29,8 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
         <attribute name="originalDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="subtitle" optional="YES" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackArtist" inverseName="tracks" inverseEntity="TrackArtist" syncable="YES"/>
         <relationship name="disc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disc" inverseName="tracks" inverseEntity="Disc" syncable="YES"/>
         <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Genre" inverseName="tracks" inverseEntity="Genre" syncable="YES"/>
@@ -40,11 +40,11 @@
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="artist" inverseEntity="Track" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Track" positionX="160" positionY="192" width="128" height="238"/>
-        <element name="TrackArtist" positionX="-29" positionY="354" width="128" height="73"/>
         <element name="Album" positionX="-45" positionY="192" width="128" height="88"/>
         <element name="AlbumArtist" positionX="88" positionY="99" width="128" height="88"/>
-        <element name="Genre" positionX="-29" positionY="-54" width="128" height="73"/>
         <element name="Disc" positionX="54" positionY="171" width="128" height="103"/>
+        <element name="Genre" positionX="-29" positionY="-54" width="128" height="73"/>
+        <element name="Track" positionX="160" positionY="192" width="128" height="238"/>
+        <element name="TrackArtist" positionX="-29" positionY="354" width="128" height="73"/>
     </elements>
 </model>

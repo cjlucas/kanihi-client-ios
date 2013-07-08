@@ -23,6 +23,9 @@
 		8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303191789F13F006EC1A6 /* KanihiTests.m */; };
 		834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 834303231789F183006EC1A6 /* Model.xcdatamodeld */; };
 		834303291789F953006EC1A6 /* KANDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303281789F953006EC1A6 /* KANDataStore.m */; };
+		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
+		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
+		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,12 @@
 		834303241789F183006EC1A6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		834303271789F953006EC1A6 /* KANDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANDataStore.h; sourceTree = "<group>"; };
 		834303281789F953006EC1A6 /* KANDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANDataStore.m; sourceTree = "<group>"; };
+		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
+		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
+		83E44D8C178A177700CB37C1 /* KANTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrack.h; sourceTree = "<group>"; };
+		83E44D8D178A177700CB37C1 /* KANTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrack.m; sourceTree = "<group>"; };
+		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */,
 				834302F11789F13F006EC1A6 /* CoreGraphics.framework in Frameworks */,
 				834302F31789F13F006EC1A6 /* UIKit.framework in Frameworks */,
 				834302EF1789F13F006EC1A6 /* Foundation.framework in Frameworks */,
@@ -106,6 +116,7 @@
 		834302ED1789F13F006EC1A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83E44D88178A0D7A00CB37C1 /* CoreData.framework */,
 				834302EE1789F13F006EC1A6 /* Foundation.framework */,
 				834302F01789F13F006EC1A6 /* CoreGraphics.framework */,
 				834302F21789F13F006EC1A6 /* UIKit.framework */,
@@ -162,8 +173,13 @@
 			isa = PBXGroup;
 			children = (
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
+				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
+				83E44D8C178A177700CB37C1 /* KANTrack.h */,
+				83E44D8D178A177700CB37C1 /* KANTrack.m */,
 				834303271789F953006EC1A6 /* KANDataStore.h */,
 				834303281789F953006EC1A6 /* KANDataStore.m */,
+				83E44D8A178A15A000CB37C1 /* KANEntity.h */,
+				83E44D8B178A15A000CB37C1 /* KANEntity.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -266,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
+				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
@@ -473,6 +491,7 @@
 				8343031F1789F13F006EC1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		834303201789F13F006EC1A6 /* Build configuration list for PBXNativeTarget "KanihiTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +500,7 @@
 				834303221789F13F006EC1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

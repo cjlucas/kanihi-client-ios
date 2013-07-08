@@ -7,11 +7,16 @@
 //
 
 #import "KANAppDelegate.h"
+#import "KANDataStore.h"
 
 @implementation KANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    KANDataStore *store = [KANDataStore sharedDataStore];
+
+    [store doStuff];
+
     // Override point for customization after application launch.
     return YES;
 }
