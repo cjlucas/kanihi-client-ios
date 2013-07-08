@@ -13,5 +13,6 @@
 @interface KANEntity : NSManagedObject
 
 + (NSString *)normalizedStringForString:(NSString *)text;
++ (NSString *)entityName;
 
 @end

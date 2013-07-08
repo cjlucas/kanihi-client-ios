@@ -14,7 +14,7 @@
 
 @class KANTrack;
 
-@interface KANTrackArtist : KANEntity <KANUniqueEntity>
+@interface KANTrackArtist : KANUniqueEntity
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * nameNormalized;

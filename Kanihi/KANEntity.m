@@ -11,6 +11,11 @@
 
 @implementation KANEntity
 
++ (NSString *)entityName
+{
+    return nil;
+}
+
 + (NSCharacterSet *)punctuationAndWhitespaceCharacterSet
 {
     static NSMutableCharacterSet *_punctuationAndWhitespaceCharacterSet = nil;

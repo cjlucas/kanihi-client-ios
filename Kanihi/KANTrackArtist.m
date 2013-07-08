@@ -18,7 +18,10 @@ NSString * const kTrackArtistEntityName = @"TrackArtist";
 @dynamic nameNormalized;
 @dynamic tracks;
 
-
++ (NSString *)entityName
+{
+    return kTrackArtistEntityName;
+}
 
 - (void)setName:(NSString *)newName
 {
@@ -44,26 +47,5 @@ NSString * const kTrackArtistEntityName = @"TrackArtist";
     NSString *normalizedString = [self normalizedStringForString:data[@"track_artist"]];
     return [NSPredicate predicateWithFormat:@"nameNormalized = %@", normalizedString];
 }
-
-+ (id <KANUniqueEntity>)uniqueEntityForJSONData:(NSDictionary *)data
-                                      withCache:(NSSet *)cache
-                                        context:(NSManagedObjectContext *)context
-{
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:kTrackArtistEntityName];
-    req.predicate = [self uniquePredicateForJSONData:data];
-    req.fetchLimit = 1;
-
-    NSError *error;
-    NSArray *results = [context executeFetchRequest:req error:&error];
-    
-    if ([results count] == 1) {
-        NSLog(@"exists already");
-        return [results objectAtIndex:0];
-    } else {
-        NSLog(@"new track artist");
-        return [self initWithJSONData:data context:context];
-    }
-}
-
 
 @end

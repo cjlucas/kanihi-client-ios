@@ -13,7 +13,7 @@
 #import "KANUniqueEntity.h"
 
 
-@interface KANTrack : KANEntity <KANUniqueEntity>
+@interface KANTrack : KANUniqueEntity <KANUniqueEntityProtocol>
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * duration;

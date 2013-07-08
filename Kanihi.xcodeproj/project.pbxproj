@@ -27,6 +27,8 @@
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
 		83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D99178A623400CB37C1 /* KANTrackArtist.m */; };
+		83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
+		83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
 		83E44D98178A623400CB37C1 /* KANTrackArtist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrackArtist.h; sourceTree = "<group>"; };
 		83E44D99178A623400CB37C1 /* KANTrackArtist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrackArtist.m; sourceTree = "<group>"; };
+		83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUniqueEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,7 @@
 				83E44D99178A623400CB37C1 /* KANTrackArtist.m */,
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
 				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
+				83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */,
 				83E44D8C178A177700CB37C1 /* KANTrack.h */,
 				83E44D8D178A177700CB37C1 /* KANTrack.m */,
 				834303271789F953006EC1A6 /* KANDataStore.h */,
@@ -290,6 +294,7 @@
 				83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
+				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

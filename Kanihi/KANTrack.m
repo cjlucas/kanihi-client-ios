@@ -17,7 +17,7 @@
 
 @implementation KANTrack
 
-NSString * const kEntityName = @"Track";
+NSString * const kTrackEntityName = @"Track";
 
 @dynamic date;
 @dynamic duration;
@@ -32,6 +32,11 @@ NSString * const kEntityName = @"Track";
 @dynamic artist;
 @dynamic disc;
 @dynamic genre;
+
++ (NSString *)entityName
+{
+    return kTrackEntityName;
+}
 
 + (NSPredicate *)uniquePredicateForJSONData:(NSDictionary *)data
 {
@@ -53,7 +58,7 @@ NSString * const kEntityName = @"Track";
 + (KANTrack *)initWithJSONData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context
 {
-    KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:kEntityName
+    KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                                     inManagedObjectContext:context];
     
     track.uuid = NIL_NOT_NULL(data[@"uuid"]);
@@ -76,24 +81,6 @@ NSString * const kEntityName = @"Track";
     return track;
 }
 
-+ (id <KANUniqueEntity>)uniqueEntityForJSONData:(NSDictionary *)data
-                                        withCache:(NSSet *)cache
-                                          context:(NSManagedObjectContext *)context
-{
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Track"];
-    req.predicate = [self uniquePredicateForJSONData:data];
-    req.fetchLimit = 1;
-    
-    NSError *error;
-    NSArray *results = [context executeFetchRequest:req error:&error];
-    
-    if ([results count] == 1) {
-        //NSLog(@"found existing entity");
-        return [results objectAtIndex:0];
-    } else {
-        //NSLog(@"new entity");
-        return [self initWithJSONData:data context:context];
-    }
-}
+
 
 @end
