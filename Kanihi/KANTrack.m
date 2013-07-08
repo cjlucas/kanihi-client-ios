@@ -35,7 +35,7 @@ NSString * const kEntityName = @"Track";
 
 + (NSPredicate *)uniquePredicateForJSONData:(NSDictionary *)data
 {
-    // check if key exists
+    // TODO: check if key exists
     return [NSPredicate predicateWithFormat:@"uuid = %@", data[@"uuid"]];
 }
 
