@@ -35,7 +35,7 @@
     
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
     req.predicate = [self uniquePredicateForData:data];
-    NSLog(@"%@", req.predicate);
+    //NSLog(@"%@", req.predicate);
     req.fetchLimit = 1;
     
     NSError *error;

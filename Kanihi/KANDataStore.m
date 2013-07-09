@@ -14,8 +14,9 @@
 #import "KANTrack.h"
 #import "KANTrackArtist.h"
 #import "KANDisc.h"
+#import "KANGenre.h"
 
-NSUInteger kFetchLimit = 10;
+NSUInteger kFetchLimit = 1000;
 
 @interface KANDataStore ()
 - (NSURLRequest *)requestWithSQLLimit:(NSUInteger)limit
@@ -110,11 +111,11 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
                                           withCache:nil
                                             context:self.mainManagedObjectContext];
         
-        
-        NSLog(@"track artist: %@", track.artist);
-        
-        //NSLog(@"%@", track);
+        track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
+                                          withCache:nil
+                                            context:self.mainManagedObjectContext];
     }
+    
     NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
     NSLog(@"Execution Time: %f", end-start);
     [self.mainManagedObjectContext save:&error];

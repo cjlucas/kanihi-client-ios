@@ -17,7 +17,7 @@
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="discs" inverseEntity="Album" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="disc" inverseEntity="Track" syncable="YES"/>
     </entity>
-    <entity name="Genre" syncable="YES">
+    <entity name="Genre" representedClassName="KANGenre" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="genre" inverseEntity="Track" syncable="YES"/>
     </entity>
