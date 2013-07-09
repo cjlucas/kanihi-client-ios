@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "KANTrack.h"
-#import "KANTrackArtist.h"
-
 @interface KANDataStore : NSObject
 
 + (KANDataStore *)sharedDataStore;

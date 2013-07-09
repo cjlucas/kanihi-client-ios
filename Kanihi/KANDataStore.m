@@ -11,6 +11,10 @@
 
 #import "KANDataStore.h"
 
+#import "KANTrack.h"
+#import "KANTrackArtist.h"
+#import "KANDisc.h"
+
 NSUInteger kFetchLimit = 10;
 
 @interface KANDataStore ()
@@ -101,6 +105,12 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
         track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
                                                  withCache:nil
                                                    context:self.mainManagedObjectContext];
+        
+        track.disc = [KANDisc uniqueEntityForData:trackData[@"track"]
+                                          withCache:nil
+                                            context:self.mainManagedObjectContext];
+        
+        
         NSLog(@"track artist: %@", track.artist);
         
         //NSLog(@"%@", track);

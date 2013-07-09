@@ -29,6 +29,12 @@
 		8343336D178BC09100CC985D /* CJUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433369178BC09100CC985D /* CJUtils.m */; };
 		8343336E178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */; };
 		8343336F178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */; };
+		83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433375178BC91400CC985D /* KANAlbumArtist.m */; };
+		83433377178BC91400CC985D /* KANAlbumArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433375178BC91400CC985D /* KANAlbumArtist.m */; };
+		8343337A178BCAB400CC985D /* KANAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433379178BCAB400CC985D /* KANAlbum.m */; };
+		8343337B178BCAB400CC985D /* KANAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433379178BCAB400CC985D /* KANAlbum.m */; };
+		8343337E178BCD0600CC985D /* KANDisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343337D178BCD0600CC985D /* KANDisc.m */; };
+		8343337F178BCD0600CC985D /* KANDisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343337D178BCD0600CC985D /* KANDisc.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
@@ -76,6 +82,12 @@
 		83433369178BC09100CC985D /* CJUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUtils.m; sourceTree = "<group>"; };
 		8343336A178BC09100CC985D /* NSDictionary+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CJExtensions.h"; sourceTree = "<group>"; };
 		8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CJExtensions.m"; sourceTree = "<group>"; };
+		83433374178BC91400CC985D /* KANAlbumArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumArtist.h; sourceTree = "<group>"; };
+		83433375178BC91400CC985D /* KANAlbumArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumArtist.m; sourceTree = "<group>"; };
+		83433378178BCAB400CC985D /* KANAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbum.h; sourceTree = "<group>"; };
+		83433379178BCAB400CC985D /* KANAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbum.m; sourceTree = "<group>"; };
+		8343337C178BCD0600CC985D /* KANDisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANDisc.h; sourceTree = "<group>"; };
+		8343337D178BCD0600CC985D /* KANDisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANDisc.m; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
 		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
@@ -189,7 +201,13 @@
 		834303261789F900006EC1A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				83433374178BC91400CC985D /* KANAlbumArtist.h */,
+				83433375178BC91400CC985D /* KANAlbumArtist.m */,
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
+				8343337C178BCD0600CC985D /* KANDisc.h */,
+				8343337D178BCD0600CC985D /* KANDisc.m */,
+				83433378178BCAB400CC985D /* KANAlbum.h */,
+				83433379178BCAB400CC985D /* KANAlbum.m */,
 				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
 				83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */,
 				8343331F178BAF8900CC985D /* KANTrackArtist.h */,
@@ -328,8 +346,11 @@
 				8343336E178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
+				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
+				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
+				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
 				8343336C178BC09100CC985D /* CJUtils.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
@@ -342,10 +363,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				8343337F178BCD0600CC985D /* KANDisc.m in Sources */,
 				8343336F178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */,
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
 				8343336D178BC09100CC985D /* CJUtils.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
+				83433377178BC91400CC985D /* KANAlbumArtist.m in Sources */,
+				8343337B178BCAB400CC985D /* KANAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
