@@ -8,13 +8,12 @@
 
 #import "KANTrackArtist.h"
 #import "KANTrack.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 
 @implementation KANTrackArtist
-
-NSString * const kTrackArtistEntityName = @"TrackArtist";
 
 @dynamic name;
 @dynamic nameSortOrder;
@@ -22,19 +21,19 @@ NSString * const kTrackArtistEntityName = @"TrackArtist";
 
 + (NSString *)entityName
 {
-    return kTrackArtistEntityName;
+    return KANTrackArtistEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:@"track_artist"]];
+    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANTrackArtistNameKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.name = [data nonNullObjectForKey:@"track_artist"];
-    self.nameSortOrder = [data nonNullObjectForKey:@"track_artist_sort_order"];
+    self.name = [data nonNullObjectForKey:KANTrackArtistNameKey];
+    self.nameSortOrder = [data nonNullObjectForKey:KANTrackArtistNameSortOrderKey];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data

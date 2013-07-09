@@ -9,12 +9,11 @@
 #import "KANDisc.h"
 #import "KANAlbum.h"
 #import "KANTrack.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 @implementation KANDisc
-
-NSString * const kKANDiscEntityName = @"Disc";
 
 @dynamic name;
 @dynamic num;
@@ -24,22 +23,22 @@ NSString * const kKANDiscEntityName = @"Disc";
 
 + (NSString *)entityName
 {
-    return kKANDiscEntityName;
+    return KANDiscEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
     return [NSPredicate predicateWithFormat:@"num = %@ && album.name = %@",
-            [data nonNullObjectForKey:@"disc_num"],
-            [data nonNullObjectForKey:@"album_name"]];
+            [data nonNullObjectForKey:KANDiscNameKey],
+            [data nonNullObjectForKey:KANAlbumNameKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.name = [data nonNullObjectForKey:@"disc_subtitle"];
-    self.num = [data nonNullObjectForKey:@"disc_num"];
-    self.trackTotal = [data nonNullObjectForKey:@"track_total"];
+    self.name = [data nonNullObjectForKey:KANDiscNameKey];
+    self.num = [data nonNullObjectForKey:KANDiscNumKey];
+    self.trackTotal = [data nonNullObjectForKey:KANDiscTrackTotalKey];
     self.album = [KANAlbum uniqueEntityForData:data withCache:nil context:context];
 }
 

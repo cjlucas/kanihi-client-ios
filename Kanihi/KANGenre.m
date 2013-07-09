@@ -8,30 +8,29 @@
 
 #import "KANGenre.h"
 #import "KANTrack.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 @implementation KANGenre
-
-NSString * const kKANGenreEntityName = @"Genre";
 
 @dynamic name;
 @dynamic tracks;
 
 + (NSString *)entityName
 {
-    return kKANGenreEntityName;
+    return KANGenreEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:@"genre"]];
+    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANGenreNameKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.name = [data nonNullObjectForKey:@"genre"];
+    self.name = [data nonNullObjectForKey:KANGenreNameKey];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data

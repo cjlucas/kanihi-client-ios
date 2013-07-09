@@ -7,17 +7,11 @@
 //
 
 #import "KANTrack.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
-@interface KANTrack ()
-+ (KANTrack *)initWithData:(NSDictionary *)data
-                       context:(NSManagedObjectContext *)context;
-@end
-
 @implementation KANTrack
-
-NSString * const kTrackEntityName = @"Track";
 
 @dynamic date;
 @dynamic duration;
@@ -35,13 +29,13 @@ NSString * const kTrackEntityName = @"Track";
 
 + (NSString *)entityName
 {
-    return kTrackEntityName;
+    return KANTrackEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:@"uuid"]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:KANTrackUUIDKey]];
 }
 
 // move this somewhere else
@@ -68,21 +62,21 @@ NSString * const kTrackEntityName = @"Track";
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.uuid = [data nonNullObjectForKey:@"uuid"];
-    self.name = [data nonNullObjectForKey:@"track_name"];
-    self.duration = [data nonNullObjectForKey:@"duration"];
-    self.group = [data nonNullObjectForKey:@"group"];
-    self.lyrics = [data nonNullObjectForKey:@"lyrics"];
-    self.mood = [data nonNullObjectForKey:@"mood"];
-    self.num = [data nonNullObjectForKey:@"track_num"];
-    self.subtitle = [data nonNullObjectForKey:@"subtitle"];
+    self.uuid = [data nonNullObjectForKey:KANTrackUUIDKey];
+    self.name = [data nonNullObjectForKey:KANTrackNameKey];
+    self.duration = [data nonNullObjectForKey:KANTrackDurationKey];
+    self.group = [data nonNullObjectForKey:KANTrackGroupKey];
+    self.lyrics = [data nonNullObjectForKey:KANTrackLyricsKey];
+    self.mood = [data nonNullObjectForKey:KANTrackMoodKey];
+    self.num = [data nonNullObjectForKey:KANTrackNumKey];
+    self.subtitle = [data nonNullObjectForKey:KANTrackSubtitleKey];
     
-    if ([data nonNullObjectForKey:@"date"] != nil) {
-        self.date = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:@"date"]];
+    if ([data nonNullObjectForKey:KANTrackDateKey] != nil) {
+        self.date = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:KANTrackDateKey]];
         //NSLog(@"%@", track.date);
     }
-    if ([data nonNullObjectForKey:@"original_date"] != nil) {
-        self.originalDate = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:@"original_date"]];
+    if ([data nonNullObjectForKey:KANTrackOriginalDateKey] != nil) {
+        self.originalDate = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:KANTrackOriginalDateKey]];
     }
 }
 

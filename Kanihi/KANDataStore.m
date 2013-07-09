@@ -10,13 +10,12 @@
 #import <CoreData/CoreData.h>
 
 #import "KANDataStore.h"
+#import "KANConstants.h"
 
 #import "KANTrack.h"
 #import "KANTrackArtist.h"
 #import "KANDisc.h"
 #import "KANGenre.h"
-
-NSUInteger kFetchLimit = 1000;
 
 @interface KANDataStore ()
 - (NSURLRequest *)requestWithSQLLimit:(NSUInteger)limit
@@ -84,7 +83,7 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
 - (void)doStuff
 {
     NSUInteger offset = 0;
-    NSURLRequest *req = [self requestWithSQLLimit:kFetchLimit
+    NSURLRequest *req = [self requestWithSQLLimit:KANDataStoreFetchLimit
                                         SQLOffset:offset
                                     LastUpdatedAt:[NSDate dateWithTimeIntervalSince1970:0]];
     

@@ -8,13 +8,12 @@
 
 #import "KANAlbum.h"
 #import "KANAlbumArtist.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 
 @implementation KANAlbum
-
-NSString * const kAlbumEntityName = @"Album";
 
 @dynamic name;
 @dynamic artist;
@@ -22,20 +21,20 @@ NSString * const kAlbumEntityName = @"Album";
 
 + (NSString *)entityName
 {
-    return kAlbumEntityName;
+    return KANAlbumEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
     return [NSPredicate predicateWithFormat:@"name = %@ && artist.name = %@",
-            [data nonNullObjectForKey:@"album_name"],
-            [data nonNullObjectForKey:@"album_artist"]];
+            [data nonNullObjectForKey:KANAlbumNameKey],
+            [data nonNullObjectForKey:KANAlbumArtistNameKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.name = [data nonNullObjectForKey:@"album_name"];
+    self.name = [data nonNullObjectForKey:KANAlbumNameKey];
     self.artist = [KANAlbumArtist uniqueEntityForData:data withCache:nil context:context];
 }
 

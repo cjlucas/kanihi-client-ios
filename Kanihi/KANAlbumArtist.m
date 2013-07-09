@@ -7,12 +7,11 @@
 //
 
 #import "KANAlbumArtist.h"
+#import "KANConstants.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 @implementation KANAlbumArtist
-
-NSString * const kAlbumArtistEntityName = @"AlbumArtist";
 
 @dynamic name;
 @dynamic nameSortOrder;
@@ -20,13 +19,13 @@ NSString * const kAlbumArtistEntityName = @"AlbumArtist";
 
 + (NSString *)entityName
 {
-    return kAlbumArtistEntityName;
+    return KANAlbumArtistEntityName;
 }
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:@"album_artist"]];
+    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANAlbumArtistNameKey]];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
@@ -42,8 +41,8 @@ NSString * const kAlbumArtistEntityName = @"AlbumArtist";
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
-    self.name = [data nonNullObjectForKey:@"album_artist"];
-    self.nameSortOrder = [data nonNullObjectForKey:@"album_artist_sort_order"];
+    self.name = [data nonNullObjectForKey:KANAlbumArtistNameKey];
+    self.nameSortOrder = [data nonNullObjectForKey:KANAlbumArtistNameSortOrderKey];
 }
 
 @end
