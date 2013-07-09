@@ -55,7 +55,7 @@ NSString * const kTrackEntityName = @"Track";
     return _dateFormatter;
 }
 
-+ (KANTrack *)initWithData:(NSDictionary *)data
++ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context
 {
     KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]

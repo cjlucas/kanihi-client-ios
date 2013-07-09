@@ -31,4 +31,21 @@ NSString * const kTrackArtistEntityName = @"TrackArtist";
     return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:@"track_artist"]];
 }
 
+- (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
+{
+    self.name = [data nonNullObjectForKey:@"track_artist"];
+    self.nameSortOrder = [data nonNullObjectForKey:@"track_artist_sort_order"];
+}
+
++ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
+                                     context:(NSManagedObjectContext *)context
+{
+    KANTrackArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
+                                                           inManagedObjectContext:context];
+    
+    [artist updateWithData:data context:context];
+    
+    return artist;
+}
+
 @end
