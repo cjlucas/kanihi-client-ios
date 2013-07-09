@@ -94,11 +94,13 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
     NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
     
     for (NSDictionary *trackData in trackDatas) {
-        KANTrack *track = [KANTrack uniqueEntityForJSONData:trackData[@"track"] withCache:nil context:self.mainManagedObjectContext];
+        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"]
+                                              withCache:nil
+                                                context:self.mainManagedObjectContext];
         
-        track.artist = [KANTrackArtist uniqueEntityForJSONData:trackData[@"track"]
-                                                     withCache:nil
-                                                       context:self.mainManagedObjectContext];
+        track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
+                                                 withCache:nil
+                                                   context:self.mainManagedObjectContext];
         NSLog(@"track artist: %@", track.artist);
         
         //NSLog(@"%@", track);

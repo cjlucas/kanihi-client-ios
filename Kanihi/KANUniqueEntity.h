@@ -17,14 +17,19 @@
 @protocol KANUniqueEntityProtocol <NSObject>
 
 @required
-+ (id <KANUniqueEntityProtocol>)uniqueEntityForJSONData:(NSDictionary *)data
++ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data
                                               withCache:(NSSet *)cache
                                                 context:(NSManagedObjectContext *)context;
 
-+ (id <KANUniqueEntityProtocol>)initWithJSONData:(NSDictionary *)data
+
+- (void)updateWithData:(NSDictionary *)data
+               context:(NSManagedObjectContext *)context;
+
++ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                                          context:(NSManagedObjectContext *)context;
 
-+ (NSPredicate *)uniquePredicateForJSONData:(NSDictionary *)data;
+
++ (NSPredicate *)uniquePredicateForData:(NSDictionary *)data;
 
 @end
 

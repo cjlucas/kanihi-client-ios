@@ -23,10 +23,15 @@
 		8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303191789F13F006EC1A6 /* KanihiTests.m */; };
 		834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 834303231789F183006EC1A6 /* Model.xcdatamodeld */; };
 		834303291789F953006EC1A6 /* KANDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303281789F953006EC1A6 /* KANDataStore.m */; };
+		83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433320178BAF8900CC985D /* KANTrackArtist.m */; };
+		83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433320178BAF8900CC985D /* KANTrackArtist.m */; };
+		8343336C178BC09100CC985D /* CJUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433369178BC09100CC985D /* CJUtils.m */; };
+		8343336D178BC09100CC985D /* CJUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433369178BC09100CC985D /* CJUtils.m */; };
+		8343336E178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */; };
+		8343336F178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
-		83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D99178A623400CB37C1 /* KANTrackArtist.m */; };
 		83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
 		83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
 /* End PBXBuildFile section */
@@ -64,14 +69,19 @@
 		834303241789F183006EC1A6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		834303271789F953006EC1A6 /* KANDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANDataStore.h; sourceTree = "<group>"; };
 		834303281789F953006EC1A6 /* KANDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANDataStore.m; sourceTree = "<group>"; };
+		8343331F178BAF8900CC985D /* KANTrackArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANTrackArtist.h; sourceTree = "<group>"; };
+		83433320178BAF8900CC985D /* KANTrackArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTrackArtist.m; sourceTree = "<group>"; };
+		83433367178BC09100CC985D /* CJUtils-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJUtils-Prefix.pch"; sourceTree = "<group>"; };
+		83433368178BC09100CC985D /* CJUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUtils.h; sourceTree = "<group>"; };
+		83433369178BC09100CC985D /* CJUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUtils.m; sourceTree = "<group>"; };
+		8343336A178BC09100CC985D /* NSDictionary+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CJExtensions.h"; sourceTree = "<group>"; };
+		8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CJExtensions.m"; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
 		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
 		83E44D8C178A177700CB37C1 /* KANTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrack.h; sourceTree = "<group>"; };
 		83E44D8D178A177700CB37C1 /* KANTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrack.m; sourceTree = "<group>"; };
 		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
-		83E44D98178A623400CB37C1 /* KANTrackArtist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANTrackArtist.h; sourceTree = "<group>"; };
-		83E44D99178A623400CB37C1 /* KANTrackArtist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrackArtist.m; sourceTree = "<group>"; };
 		83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUniqueEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +117,7 @@
 				834303131789F13F006EC1A6 /* KanihiTests */,
 				834302ED1789F13F006EC1A6 /* Frameworks */,
 				834302EC1789F13F006EC1A6 /* Products */,
+				83433362178BC04700CC985D /* Vendor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,11 +189,11 @@
 		834303261789F900006EC1A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				83E44D98178A623400CB37C1 /* KANTrackArtist.h */,
-				83E44D99178A623400CB37C1 /* KANTrackArtist.m */,
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
 				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
 				83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */,
+				8343331F178BAF8900CC985D /* KANTrackArtist.h */,
+				83433320178BAF8900CC985D /* KANTrackArtist.m */,
 				83E44D8C178A177700CB37C1 /* KANTrack.h */,
 				83E44D8D178A177700CB37C1 /* KANTrack.m */,
 				834303271789F953006EC1A6 /* KANDataStore.h */,
@@ -191,6 +202,27 @@
 				83E44D8B178A15A000CB37C1 /* KANEntity.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		83433362178BC04700CC985D /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				83433366178BC09100CC985D /* CJUtils */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		83433366178BC09100CC985D /* CJUtils */ = {
+			isa = PBXGroup;
+			children = (
+				83433367178BC09100CC985D /* CJUtils-Prefix.pch */,
+				83433368178BC09100CC985D /* CJUtils.h */,
+				83433369178BC09100CC985D /* CJUtils.m */,
+				8343336A178BC09100CC985D /* NSDictionary+CJExtensions.h */,
+				8343336B178BC09100CC985D /* NSDictionary+CJExtensions.m */,
+			);
+			name = CJUtils;
+			path = ../CJUtils/CJUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,12 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83E44D9A178A643A00CB37C1 /* KANTrackArtist.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
+				8343336E178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
+				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
+				8343336C178BC09100CC985D /* CJUtils.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
 				834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */,
@@ -308,7 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				8343336F178BC09100CC985D /* NSDictionary+CJExtensions.m in Sources */,
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
+				8343336D178BC09100CC985D /* CJUtils.m in Sources */,
+				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

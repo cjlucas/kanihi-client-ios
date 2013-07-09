@@ -10,35 +10,49 @@
 
 @implementation KANUniqueEntity
 
-+ (NSPredicate *)uniquePredicateForJSONData:(NSDictionary *)data
++ (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     return nil;
 }
 
-+(id <KANUniqueEntityProtocol>)initWithJSONData:(NSDictionary *)data
+- (void)updateWithData:(NSDictionary *)data
+               context:(NSManagedObjectContext *)context
+{
+}
+
++(id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                                         context:(NSManagedObjectContext *)context
 {
     return nil;
 }
 
-+ (id <KANUniqueEntityProtocol>)uniqueEntityForJSONData:(NSDictionary *)data
+
++ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data
                                       withCache:(NSSet *)cache
                                         context:(NSManagedObjectContext *)context
 {
+    assert([self entityName] != nil);
+    
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-    req.predicate = [self uniquePredicateForJSONData:data];
+    req.predicate = [self uniquePredicateForData:data];
+    NSLog(@"%@", req.predicate);
     req.fetchLimit = 1;
     
     NSError *error;
     NSArray *results = [context executeFetchRequest:req error:&error];
     
+    id <KANUniqueEntityProtocol> entity = nil;
+    
     if ([results count] == 1) {
         //NSLog(@"found existing entity");
-        return [results objectAtIndex:0];
+        entity = [results objectAtIndex:0];
+        [entity updateWithData:data context:context];
     } else {
         //NSLog(@"new entity");
-        return [self initWithJSONData:data context:context];
+        entity = [self initWithData:data context:context];
     }
+    
+    return entity;
 }
 
 @end

@@ -8,10 +8,10 @@
 
 #import "KANTrack.h"
 
-#define NIL_NOT_NULL(whatever) (whatever == [NSNull null]) ? nil : whatever
+#import "NSDictionary+CJExtensions.h"
 
 @interface KANTrack ()
-+ (KANTrack *)initWithJSONData:(NSDictionary *)data
++ (KANTrack *)initWithData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context;
 @end
 
@@ -38,10 +38,10 @@ NSString * const kTrackEntityName = @"Track";
     return kTrackEntityName;
 }
 
-+ (NSPredicate *)uniquePredicateForJSONData:(NSDictionary *)data
++ (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"uuid = %@", data[@"uuid"]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:@"uuid"]];
 }
 
 // move this somewhere else
@@ -55,30 +55,35 @@ NSString * const kTrackEntityName = @"Track";
     return _dateFormatter;
 }
 
-+ (KANTrack *)initWithJSONData:(NSDictionary *)data
++ (KANTrack *)initWithData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context
 {
     KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                                     inManagedObjectContext:context];
     
-    track.uuid = NIL_NOT_NULL(data[@"uuid"]);
-    track.name = NIL_NOT_NULL(data[@"track_name"]);
-    track.duration = NIL_NOT_NULL(data[@"duration"]);
-    track.group = NIL_NOT_NULL(data[@"group"]);
-    track.lyrics = NIL_NOT_NULL(data[@"lyrics"]);
-    track.mood = NIL_NOT_NULL(data[@"mood"]);
-    track.num = NIL_NOT_NULL(data[@"track_num"]);
-    track.subtitle = NIL_NOT_NULL(data[@"subtitle"]);
-    
-    if (data[@"date"] != [NSNull null]) {
-        track.date = [[self dateFormatter] dateFromString:data[@"date"]];
-        //NSLog(@"%@", track.date);
-    }
-    if (data[@"original_date"] != [NSNull null]) {
-        track.originalDate = [[self dateFormatter] dateFromString:data[@"original_date"]];
-    }
+    [track updateWithData:data context:context];
     
     return track;
+}
+
+- (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
+{
+    self.uuid = [data nonNullObjectForKey:@"uuid"];
+    self.name = [data nonNullObjectForKey:@"track_name"];
+    self.duration = [data nonNullObjectForKey:@"duration"];
+    self.group = [data nonNullObjectForKey:@"group"];
+    self.lyrics = [data nonNullObjectForKey:@"lyrics"];
+    self.mood = [data nonNullObjectForKey:@"mood"];
+    self.num = [data nonNullObjectForKey:@"track_num"];
+    self.subtitle = [data nonNullObjectForKey:@"subtitle"];
+    
+    if ([data nonNullObjectForKey:@"date"] != nil) {
+        self.date = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:@"date"]];
+        //NSLog(@"%@", track.date);
+    }
+    if ([data nonNullObjectForKey:@"original_date"] != nil) {
+        self.originalDate = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:@"original_date"]];
+    }
 }
 
 
