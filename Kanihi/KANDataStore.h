@@ -12,7 +12,6 @@
 @interface KANDataStore : NSObject
 
 + (KANDataStore *)sharedDataStore;
-- (void)doStuff;
 - (void)updateTracksWithFullUpdate:(BOOL)fullUpdate;
 
 @property (readonly) NSManagedObjectContext *mainManagedObjectContext;

@@ -37,6 +37,14 @@
 		83433383178BD27800CC985D /* KANGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433381178BD27800CC985D /* KANGenre.m */; };
 		83433386178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		83433387178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
+		83A4C2CA178DFF330078725B /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C2BA178DFF330078725B /* Base64.m */; };
+		83A4C2CB178DFF330078725B /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C2BA178DFF330078725B /* Base64.m */; };
+		83A4C2CC178DFF330078725B /* LICENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BB178DFF330078725B /* LICENCE.md */; };
+		83A4C2CD178DFF330078725B /* LICENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BB178DFF330078725B /* LICENCE.md */; };
+		83A4C2CE178DFF330078725B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BC178DFF330078725B /* README.md */; };
+		83A4C2CF178DFF330078725B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BC178DFF330078725B /* README.md */; };
+		83A4C2D0178DFF330078725B /* RELEASE NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BD178DFF330078725B /* RELEASE NOTES.md */; };
+		83A4C2D1178DFF330078725B /* RELEASE NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BD178DFF330078725B /* RELEASE NOTES.md */; };
 		83BA165D178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83BA165E178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
@@ -95,6 +103,11 @@
 		83433381178BD27800CC985D /* KANGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenre.m; sourceTree = "<group>"; };
 		83433384178BE1D400CC985D /* KANConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANConstants.h; sourceTree = "<group>"; };
 		83433385178BE1D400CC985D /* KANConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANConstants.m; sourceTree = "<group>"; };
+		83A4C2B9178DFF330078725B /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		83A4C2BA178DFF330078725B /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		83A4C2BB178DFF330078725B /* LICENCE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.md; sourceTree = "<group>"; };
+		83A4C2BC178DFF330078725B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		83A4C2BD178DFF330078725B /* RELEASE NOTES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE NOTES.md"; sourceTree = "<group>"; };
 		83BA165B178DE99200BFF856 /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
 		83BA165C178DE99200BFF856 /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -252,9 +265,30 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83A4C2B7178DFF330078725B /* Base64 */,
 				833FF15D178CB6420071195F /* CJUtils */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		83A4C2B7178DFF330078725B /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				83A4C2B8178DFF330078725B /* Base64 */,
+				83A4C2BB178DFF330078725B /* LICENCE.md */,
+				83A4C2BC178DFF330078725B /* README.md */,
+				83A4C2BD178DFF330078725B /* RELEASE NOTES.md */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		83A4C2B8178DFF330078725B /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				83A4C2B9178DFF330078725B /* Base64.h */,
+				83A4C2BA178DFF330078725B /* Base64.m */,
+			);
+			path = Base64;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,9 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A4C2CC178DFF330078725B /* LICENCE.md in Resources */,
 				834303071789F13F006EC1A6 /* Images.xcassets in Resources */,
+				83A4C2CE178DFF330078725B /* README.md in Resources */,
 				834302F91789F13F006EC1A6 /* InfoPlist.strings in Resources */,
 				834303021789F13F006EC1A6 /* Main.storyboard in Resources */,
+				83A4C2D0178DFF330078725B /* RELEASE NOTES.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +381,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A4C2CF178DFF330078725B /* README.md in Resources */,
+				83A4C2D1178DFF330078725B /* RELEASE NOTES.md in Resources */,
+				83A4C2CD178DFF330078725B /* LICENCE.md in Resources */,
 				834303181789F13F006EC1A6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +399,7 @@
 				833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
+				83A4C2CA178DFF330078725B /* Base64.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
@@ -388,6 +429,7 @@
 				83433383178BD27800CC985D /* KANGenre.m in Sources */,
 				83433377178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				8343337B178BCAB400CC985D /* KANAlbum.m in Sources */,
+				83A4C2CB178DFF330078725B /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

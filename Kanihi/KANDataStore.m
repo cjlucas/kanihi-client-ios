@@ -70,6 +70,10 @@
 
 - (void)updateTracksWithFullUpdate:(BOOL)fullUpdate
 {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:KANDataStoreWillBeginUpdatingNotification object:self];
+    [nc postNotificationName:KANDataStoreDidBeginUpdatingNotification object:self];
+    
     NSUInteger offset = 0;
     NSError *error;
     
@@ -116,6 +120,9 @@
     
     [sud setObject:[NSDate date] forKey:KANUserDefaultsLastUpdatedKey];
     [sud synchronize];
+    
+    [nc postNotificationName:KANDataStoreWillFinishUpdatingNotification object:self];
+    [nc postNotificationName:KANDataStoreDidFinishUpdatingNotification object:self];
 }
 
 
