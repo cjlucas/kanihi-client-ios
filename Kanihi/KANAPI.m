@@ -8,6 +8,7 @@
 
 #import "KANAPI.h"
 #import "KANConstants.h"
+#import "Base64.h"
 
 @interface KANAPI ()
 
@@ -33,7 +34,14 @@
 + (NSMutableURLRequest *)authenticatedRequest
 {
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] init];
-    // TODO: add authentication headers
+    NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
+    NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
+    
+    if (authUser != nil && authPass != nil) {
+        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
+        
+        [req addValue:@"Authorization" forHTTPHeaderField:[NSString stringWithFormat:@"Basic %@", authBase64]];
+    }
     
     return req;
 }

@@ -10,13 +10,17 @@
 #import "KANConstants.h"
 #import "KANDataStore.h"
 #import "CJLog.h"
+#import "KANAPI.h"
 
 @implementation KANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
-    [[NSUserDefaults standardUserDefaults] setInteger:8080 forKey:KANUserDefaultsPortKey];
+    NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
+    [sud setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
+    [sud setInteger:8080 forKey:KANUserDefaultsPortKey];
+    [sud setObject:@"chris" forKey:KANUserDefaultsAuthUserKey];
+    [sud setObject:@"test" forKey:KANUserDefaultsAuthPassKey];
     
     KANDataStore *store = [KANDataStore sharedDataStore];
         
