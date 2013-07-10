@@ -20,6 +20,8 @@ NSString * const KANAPITracksPath   = @"/tracks.json";
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;
+NSString * const KANBackgroundThreadName = @"KANBackgroundThread";
+
 NSString * const KANDataStoreWillBeginUpdatingNotification  = @"KANDataStoreWillBeginUpdatingNotification";
 NSString * const KANDataStoreDidBeginUpdatingNotification   = @"KANDataStoreDidBeginUpdatingNotification";
 NSString * const KANDataStoreWillFinishUpdatingNotification = @"KANDataStoreWillFinishUpdatingNotification";

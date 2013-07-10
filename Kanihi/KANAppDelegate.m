@@ -17,6 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
+
     [sud setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
     [sud setInteger:8080 forKey:KANUserDefaultsPortKey];
     [sud setObject:@"chris" forKey:KANUserDefaultsAuthUserKey];
@@ -24,7 +25,7 @@
     
     KANDataStore *store = [KANDataStore sharedDataStore];
         
-    [store updateTracksWithFullUpdate:NO];
+    [store updateTracksWithFullUpdate:YES];
     
     // Override point for customization after application launch.
     return YES;

@@ -32,6 +32,7 @@
                                         context:(NSManagedObjectContext *)context
 {
     assert([self entityName] != nil);
+    assert(context != nil);
     
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
     req.predicate = [self uniquePredicateForData:data];

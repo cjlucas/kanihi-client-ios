@@ -19,12 +19,14 @@ NSString * const KANUserDefaultsAuthPassKey;
 NSString * const KANAPITracksPath;
 
 // KANDataStore
-// TODO: Notifications
 NSUInteger const KANDataStoreFetchLimit;
+NSString * const KANBackgroundThreadName;
+
 NSString * const KANDataStoreWillBeginUpdatingNotification;
 NSString * const KANDataStoreDidBeginUpdatingNotification;
 NSString * const KANDataStoreWillFinishUpdatingNotification;
 NSString * const KANDataStoreDidFinishUpdatingNotification;
+
 
 // Model Entity Names
 NSString * const KANTrackEntityName;

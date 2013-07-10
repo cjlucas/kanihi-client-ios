@@ -24,12 +24,13 @@
 - (void)handleTrackDatas:(NSArray *)trackDatas;
 - (void)postNotification:(NSString *)notification;
 - (void)postNotificationHelper:(NSString *)notification;
+- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
 
 
 @property (readonly) NSManagedObjectContext *backgroundManagedObjectContext;
 @property (readonly) NSManagedObjectModel *managedObjectModel;
 @property (readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (readonly) NSThread *backgroundThread;
+@property NSThread *backgroundThread;
 
 @end
 
@@ -65,24 +66,40 @@
     for (NSDictionary *trackData in trackDatas) {
         KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"]
                                               withCache:nil
-                                                context:self.mainManagedObjectContext];
+                                                context:self.backgroundManagedObjectContext];
         
         track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
                                                  withCache:nil
-                                                   context:self.mainManagedObjectContext];
+                                                   context:self.backgroundManagedObjectContext];
         
         track.disc = [KANDisc uniqueEntityForData:trackData[@"track"]
                                         withCache:nil
-                                          context:self.mainManagedObjectContext];
+                                          context:self.backgroundManagedObjectContext];
         
         track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
                                           withCache:nil
-                                            context:self.mainManagedObjectContext];
+                                            context:self.backgroundManagedObjectContext];
     }
 }
 
 - (void)updateTracksWithFullUpdate:(BOOL)fullUpdate
 {
+    if (![self.backgroundThread isExecuting]) {
+        self.backgroundThread = [[NSThread alloc] initWithTarget:self
+                                                        selector:@selector(performUpdateWithFullUpdate:)
+                                                          object:[NSNumber numberWithBool:fullUpdate]]; // an object is required
+        self.backgroundThread.name = KANBackgroundThreadName;
+        [self.backgroundThread start];
+    } else {
+        // ignore message if background thread is already running
+        NSLog(@"thread is already running");
+    }
+}
+
+- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate
+{
+    BOOL fullUpdateFlag = [fullUpdate boolValue];
+    
     [self postNotification:KANDataStoreWillBeginUpdatingNotification];
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
     
@@ -92,7 +109,7 @@
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
     NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
     
-    if (fullUpdate || lastUpdated == nil) {
+    if (fullUpdateFlag || lastUpdated == nil) {
         lastUpdated = [NSDate dateWithTimeIntervalSince1970:0];
     }
     
@@ -117,7 +134,7 @@
                                                                     error:nil];
             
             [self handleTrackDatas:trackDatas];
-            [self.mainManagedObjectContext save:nil];
+            [self.backgroundManagedObjectContext save:nil];
             
             if ([trackDatas count] < KANDataStoreFetchLimit) {
                 NSLog(@"fetch limit is %d but trackDatas count is %d", KANDataStoreFetchLimit, [trackDatas count]);
@@ -154,12 +171,14 @@
 
 - (NSManagedObjectContext *)backgroundManagedObjectContext
 {
+    assert([self.backgroundThread.name isEqualToString:KANBackgroundThreadName]);
+    
     if (_backgroundManagedObjectContext == nil) {
         _backgroundManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         _backgroundManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     }
     
-    return _mainManagedObjectContext;
+    return _backgroundManagedObjectContext;
 }
 
 - (NSManagedObjectModel *)managedObjectModel
