@@ -40,7 +40,7 @@
     if (authUser != nil && authPass != nil) {
         NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
         
-        [req addValue:@"Authorization" forHTTPHeaderField:[NSString stringWithFormat:@"Basic %@", authBase64]];
+        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
     }
     
     return req;
