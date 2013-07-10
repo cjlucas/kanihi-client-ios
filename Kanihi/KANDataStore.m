@@ -11,7 +11,9 @@
 #import "CJLog.h"
 
 #import "KANDataStore.h"
+
 #import "KANConstants.h"
+#import "KANAPI.h"
 
 #import "KANTrack.h"
 #import "KANTrackArtist.h"
@@ -19,10 +21,6 @@
 #import "KANGenre.h"
 
 @interface KANDataStore ()
-- (NSURLRequest *)requestWithSQLLimit:(NSUInteger)limit
-                            SQLOffset:(NSUInteger)offset
-                        LastUpdatedAt:(NSDate *)lastUpdatedAt;
-
 - (void)handleTrackDatas:(NSArray *)trackDatas;
 
 
@@ -33,20 +31,6 @@
 @end
 
 @implementation KANDataStore
-
-// willstart update process
-// didstart ...
-
-// didstart adding and updating tracks
-// did finish ...
-
-// didstart purging old tracks
-// didfinish ...
-
-// willfinish update process
-// didfinish ...
-static NSString * KANDataStoreWillUpdate = @"KANDataStoreWillUpdate";
-static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
 
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
 @synthesize backgroundManagedObjectContext = _backgroundManagedObjectContext;
@@ -61,66 +45,6 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
     }
     
     return _sharedDataStore;
-}
-
-- (NSURLRequest *)requestWithSQLLimit:(NSUInteger)limit
-                            SQLOffset:(NSUInteger)offset
-                        LastUpdatedAt:(NSDate *)lastUpdatedAt
-{
-    NSMutableURLRequest * req = [[NSMutableURLRequest alloc] init];
-    
-    NSString *limitString = [NSString stringWithFormat:@"%d", limit];
-    NSString *offsetString = [NSString stringWithFormat:@"%d", offset];
-    NSString *lastUpdatedAtString = lastUpdatedAt.description;
-    
-    [req addValue:limitString forHTTPHeaderField:@"SQL-Limit"];
-    [req addValue:offsetString forHTTPHeaderField:@"SQL-Offset"];
-    [req addValue:lastUpdatedAtString forHTTPHeaderField:@"Last-Updated-At"];
-    
-    req.URL = [NSURL URLWithString:@"http://192.168.1.19:8080/tracks.json"];
-    
-    return [req copy];
-}
-
-- (void)doStuff
-{
-    NSUInteger offset = 0;
-    NSURLRequest *req = [self requestWithSQLLimit:KANDataStoreFetchLimit
-                                        SQLOffset:offset
-                                    LastUpdatedAt:[NSDate dateWithTimeIntervalSince1970:0]];
-    
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-    NSLog(@"%@", error);
-    
-    NSArray *trackDatas = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:0
-                                                           error:nil];
-    
-    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
-    
-    for (NSDictionary *trackData in trackDatas) {
-        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"]
-                                              withCache:nil
-                                                context:self.mainManagedObjectContext];
-        
-        track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
-                                                 withCache:nil
-                                                   context:self.mainManagedObjectContext];
-        
-        track.disc = [KANDisc uniqueEntityForData:trackData[@"track"]
-                                          withCache:nil
-                                            context:self.mainManagedObjectContext];
-        
-        track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
-                                          withCache:nil
-                                            context:self.mainManagedObjectContext];
-    }
-    
-    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
-    NSLog(@"Execution Time: %f", end-start);
-    [self.mainManagedObjectContext save:&error];
-    NSLog(@"%@", error);
 }
 
 - (void)handleTrackDatas:(NSArray *)trackDatas
@@ -148,12 +72,23 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
 {
     NSUInteger offset = 0;
     NSError *error;
+    
+    NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
+    NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
+    
+    if (fullUpdate || lastUpdated == nil) {
+        lastUpdated = [NSDate dateWithTimeIntervalSince1970:0];
+    }
+    
+    NSLog(@"using lastUpdated: %@", lastUpdated);
+    
     while (YES) {
         @autoreleasepool {
+            NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
             NSLog(@"offset: %d", offset);
-            NSURLRequest *req = [self requestWithSQLLimit:KANDataStoreFetchLimit
-                                                SQLOffset:offset
-                                            LastUpdatedAt:[NSDate dateWithTimeIntervalSince1970:0]];
+            NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit
+                                                        SQLOffset:offset
+                                                    LastUpdatedAt:lastUpdated];
             
             NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
             
@@ -166,14 +101,21 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
                                                                     error:nil];
             
             [self handleTrackDatas:trackDatas];
+            [self.mainManagedObjectContext save:nil];
             
             if ([trackDatas count] < KANDataStoreFetchLimit) {
+                NSLog(@"fetch limit is %d but trackDatas count is %d", KANDataStoreFetchLimit, [trackDatas count]);
                 break;
             } else {
                 offset += [trackDatas count];
             }
+            
+            NSLog(@"Loop execution time: %f", [[NSDate date] timeIntervalSince1970] - start);
         }
     }
+    
+    [sud setObject:[NSDate date] forKey:KANUserDefaultsLastUpdatedKey];
+    [sud synchronize];
 }
 
 

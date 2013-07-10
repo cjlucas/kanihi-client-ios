@@ -8,6 +8,16 @@
 
 #import "KANConstants.h"
 
+// User Defaults
+NSString * const KANUserDefaultsLastUpdatedKey  = @"lastUpdated";
+NSString * const KANUserDefaultsHostKey         = @"host";
+NSString * const KANUserDefaultsPortKey         = @"port";
+NSString * const KANUserDefaultsAuthUserKey     = @"authUser";
+NSString * const KANUserDefaultsAuthPassKey     = @"authPass";
+
+// API
+NSString * const KANAPITracksPath   = @"/tracks.json";
+
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;
 

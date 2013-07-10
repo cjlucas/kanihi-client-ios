@@ -7,6 +7,7 @@
 //
 
 #import "KANAppDelegate.h"
+#import "KANConstants.h"
 #import "KANDataStore.h"
 #import "CJLog.h"
 
@@ -14,6 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:8080 forKey:KANUserDefaultsPortKey];
+    
     KANDataStore *store = [KANDataStore sharedDataStore];
         
     [store updateTracksWithFullUpdate:NO];

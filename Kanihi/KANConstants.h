@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+// User Defaults
+NSString * const KANUserDefaultsLastUpdatedKey;
+NSString * const KANUserDefaultsHostKey;
+NSString * const KANUserDefaultsPortKey;
+NSString * const KANUserDefaultsAuthUserKey;
+NSString * const KANUserDefaultsAuthPassKey;
+
+// API
+NSString * const KANAPITracksPath;
+
 // KANDataStore
 // TODO: Notifications
 NSUInteger const KANDataStoreFetchLimit;

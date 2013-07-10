@@ -37,6 +37,8 @@
 		83433383178BD27800CC985D /* KANGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433381178BD27800CC985D /* KANGenre.m */; };
 		83433386178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		83433387178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
+		83BA165D178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
+		83BA165E178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
@@ -93,6 +95,8 @@
 		83433381178BD27800CC985D /* KANGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenre.m; sourceTree = "<group>"; };
 		83433384178BE1D400CC985D /* KANConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANConstants.h; sourceTree = "<group>"; };
 		83433385178BE1D400CC985D /* KANConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANConstants.m; sourceTree = "<group>"; };
+		83BA165B178DE99200BFF856 /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
+		83BA165C178DE99200BFF856 /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
 		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		834302F41789F13F006EC1A6 /* Kanihi */ = {
 			isa = PBXGroup;
 			children = (
+				83BA165B178DE99200BFF856 /* KANAPI.h */,
+				83BA165C178DE99200BFF856 /* KANAPI.m */,
 				834303261789F900006EC1A6 /* Models */,
 				834302FD1789F13F006EC1A6 /* KANAppDelegate.h */,
 				834302FE1789F13F006EC1A6 /* KANAppDelegate.m */,
@@ -356,6 +362,7 @@
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				834303051789F13F006EC1A6 /* KANViewController.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
+				83BA165D178DE99200BFF856 /* KANAPI.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
@@ -376,6 +383,7 @@
 				8343337F178BCD0600CC985D /* KANDisc.m in Sources */,
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
+				83BA165E178DE99200BFF856 /* KANAPI.m in Sources */,
 				83433387178BE1D400CC985D /* KANConstants.m in Sources */,
 				83433383178BD27800CC985D /* KANGenre.m in Sources */,
 				83433377178BC91400CC985D /* KANAlbumArtist.m in Sources */,
