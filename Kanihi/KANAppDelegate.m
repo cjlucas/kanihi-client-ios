@@ -8,14 +8,15 @@
 
 #import "KANAppDelegate.h"
 #import "KANDataStore.h"
+#import "CJLog.h"
 
 @implementation KANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     KANDataStore *store = [KANDataStore sharedDataStore];
-
-    [store doStuff];
+        
+    [store updateTracksWithFullUpdate:NO];
     
     // Override point for customization after application launch.
     return YES;

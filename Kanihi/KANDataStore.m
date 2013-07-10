@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "CJLog.h"
 
 #import "KANDataStore.h"
 #import "KANConstants.h"
@@ -22,9 +23,10 @@
                             SQLOffset:(NSUInteger)offset
                         LastUpdatedAt:(NSDate *)lastUpdatedAt;
 
+- (void)handleTrackDatas:(NSArray *)trackDatas;
+
 
 @property (readonly) NSManagedObjectContext *backgroundManagedObjectContext;
-
 @property (readonly) NSManagedObjectModel *managedObjectModel;
 @property (readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
@@ -120,6 +122,60 @@ static NSString * KANDataStoreDidUpdate = @"KANDataStoreDidUpdate";
     [self.mainManagedObjectContext save:&error];
     NSLog(@"%@", error);
 }
+
+- (void)handleTrackDatas:(NSArray *)trackDatas
+{
+    for (NSDictionary *trackData in trackDatas) {
+        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"]
+                                              withCache:nil
+                                                context:self.mainManagedObjectContext];
+        
+        track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
+                                                 withCache:nil
+                                                   context:self.mainManagedObjectContext];
+        
+        track.disc = [KANDisc uniqueEntityForData:trackData[@"track"]
+                                        withCache:nil
+                                          context:self.mainManagedObjectContext];
+        
+        track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
+                                          withCache:nil
+                                            context:self.mainManagedObjectContext];
+    }
+}
+
+- (void)updateTracksWithFullUpdate:(BOOL)fullUpdate
+{
+    NSUInteger offset = 0;
+    NSError *error;
+    while (YES) {
+        @autoreleasepool {
+            NSLog(@"offset: %d", offset);
+            NSURLRequest *req = [self requestWithSQLLimit:KANDataStoreFetchLimit
+                                                SQLOffset:offset
+                                            LastUpdatedAt:[NSDate dateWithTimeIntervalSince1970:0]];
+            
+            NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+            
+            //        if (error != nil) {
+            //            CJLog(@"NSURLConnection Error: %s", @"");
+            //        }
+            
+            NSArray *trackDatas = [NSJSONSerialization JSONObjectWithData:data
+                                                                  options:0
+                                                                    error:nil];
+            
+            [self handleTrackDatas:trackDatas];
+            
+            if ([trackDatas count] < KANDataStoreFetchLimit) {
+                break;
+            } else {
+                offset += [trackDatas count];
+            }
+        }
+    }
+}
+
 
 #pragma mark - Core Data Stack
 
