@@ -12,6 +12,7 @@
 #import "KANEntity.h"
 #import "KANUniqueEntity.h"
 
+@class KANTrackArtist, KANDisc, KANGenre;
 
 @interface KANTrack : KANUniqueEntity <KANUniqueEntityProtocol>
 
@@ -25,8 +26,8 @@
 @property (nonatomic, retain) NSDate * originalDate;
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSManagedObject *artist;
-@property (nonatomic, retain) NSManagedObject *disc;
-@property (nonatomic, retain) NSManagedObject *genre;
+@property (nonatomic, retain) KANTrackArtist *artist;
+@property (nonatomic, retain) KANDisc *disc;
+@property (nonatomic, retain) KANGenre *genre;
 
 @end

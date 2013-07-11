@@ -52,7 +52,7 @@ NSString * const KANDiscNumKey              = @"disc_num";
 NSString * const KANDiscTrackTotalKey       = @"track_total";
 
 NSString * const KANAlbumNameKey            = @"album_name";
-NSString * const KANAlbumTotalDiscsKey      = @"disc_total";
+NSString * const KANAlbumDiscTotalKey       = @"disc_total";
 
 NSString * const KANAlbumArtistNameKey          = @"album_artist";
 NSString * const KANAlbumArtistNameSortOrderKey = @"album_artist_sort_order";

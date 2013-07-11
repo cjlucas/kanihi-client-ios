@@ -11,19 +11,20 @@
 
 #import "KANUniqueEntity.h"
 
-@class KANAlbumArtist;
+@class KANAlbumArtist, KANDisc;
 
 @interface KANAlbum : KANUniqueEntity
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * discTotal;
 @property (nonatomic, retain) KANAlbumArtist *artist;
 @property (nonatomic, retain) NSSet *discs;
 @end
 
 @interface KANAlbum (CoreDataGeneratedAccessors)
 
-- (void)addDiscsObject:(NSManagedObject *)value;
-- (void)removeDiscsObject:(NSManagedObject *)value;
+- (void)addDiscsObject:(KANDisc *)value;
+- (void)removeDiscsObject:(KANDisc *)value;
 - (void)addDiscs:(NSSet *)values;
 - (void)removeDiscs:(NSSet *)values;
 

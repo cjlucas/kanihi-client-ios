@@ -16,6 +16,7 @@
 @implementation KANAlbum
 
 @dynamic name;
+@dynamic discTotal;
 @dynamic artist;
 @dynamic discs;
 
@@ -35,6 +36,7 @@
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
     self.name = [data nonNullObjectForKey:KANAlbumNameKey];
+    self.discTotal = [data nonNullObjectForKey:KANAlbumDiscTotalKey];
     self.artist = [KANAlbumArtist uniqueEntityForData:data withCache:nil context:context];
 }
 

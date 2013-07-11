@@ -11,6 +11,7 @@
 
 #import "KANUniqueEntity.h"
 
+@class KANAlbum;
 
 @interface KANAlbumArtist : KANUniqueEntity
 
@@ -21,8 +22,8 @@
 
 @interface KANAlbumArtist (CoreDataGeneratedAccessors)
 
-- (void)addAlbumsObject:(NSManagedObject *)value;
-- (void)removeAlbumsObject:(NSManagedObject *)value;
+- (void)addAlbumsObject:(KANAlbum *)value;
+- (void)removeAlbumsObject:(KANAlbum *)value;
 - (void)addAlbums:(NSSet *)values;
 - (void)removeAlbums:(NSSet *)values;
 

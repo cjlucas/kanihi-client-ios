@@ -53,7 +53,7 @@ NSString * const KANDiscNumKey;
 NSString * const KANDiscTrackTotalKey;
 
 NSString * const KANAlbumNameKey;
-NSString * const KANAlbumTotalDiscsKey;
+NSString * const KANAlbumDiscTotalKey;
 
 NSString * const KANAlbumArtistNameKey;
 NSString * const KANAlbumArtistNameSortOrderKey;
