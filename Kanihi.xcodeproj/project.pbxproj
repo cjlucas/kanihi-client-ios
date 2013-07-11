@@ -193,6 +193,8 @@
 			children = (
 				83BA165B178DE99200BFF856 /* KANAPI.h */,
 				83BA165C178DE99200BFF856 /* KANAPI.m */,
+				83433384178BE1D400CC985D /* KANConstants.h */,
+				83433385178BE1D400CC985D /* KANConstants.m */,
 				834303261789F900006EC1A6 /* Models */,
 				834302FD1789F13F006EC1A6 /* KANAppDelegate.h */,
 				834302FE1789F13F006EC1A6 /* KANAppDelegate.m */,
@@ -201,8 +203,6 @@
 				834303041789F13F006EC1A6 /* KANViewController.m */,
 				834303061789F13F006EC1A6 /* Images.xcassets */,
 				834302F51789F13F006EC1A6 /* Supporting Files */,
-				83433384178BE1D400CC985D /* KANConstants.h */,
-				83433385178BE1D400CC985D /* KANConstants.m */,
 			);
 			path = Kanihi;
 			sourceTree = "<group>";
