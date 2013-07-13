@@ -9,6 +9,7 @@
 #import "KANAlbum.h"
 #import "KANAlbumArtist.h"
 #import "KANConstants.h"
+#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
 
@@ -16,6 +17,7 @@
 @implementation KANAlbum
 
 @dynamic name;
+@dynamic normalizedName;
 @dynamic discTotal;
 @dynamic artist;
 @dynamic discs;
@@ -49,6 +51,16 @@
     [album updateWithData:data context:context];
     
     return album;
+}
+
+- (void)setName:(NSString *)name
+{
+    [self willChangeValueForKey:@"name"];
+    
+    [self setPrimitiveValue:name forKey:@"name"];
+    self.normalizedName = [KANUtils normalizedStringForString:name];
+    
+    [self didChangeValueForKey:@"name"];
 }
 
 @end

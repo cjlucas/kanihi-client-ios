@@ -9,12 +9,14 @@
 #import "KANGenre.h"
 #import "KANTrack.h"
 #import "KANConstants.h"
+#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 @implementation KANGenre
 
 @dynamic name;
+@dynamic normalizedName;
 @dynamic tracks;
 
 + (NSString *)entityName
@@ -42,6 +44,16 @@
     [genre updateWithData:data context:context];
     
     return genre;
+}
+
+- (void)setName:(NSString *)name
+{
+    [self willChangeValueForKey:@"name"];
+    
+    [self setPrimitiveValue:name forKey:@"name"];
+    self.normalizedName = [KANUtils normalizedStringForString:name];
+    
+    [self didChangeValueForKey:@"name"];
 }
 
 @end

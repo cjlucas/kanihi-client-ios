@@ -8,8 +8,10 @@
 
 #import "KANTrack.h"
 #import "KANConstants.h"
+#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
+#import "CJStringNormalization.h"
 
 @implementation KANTrack
 
@@ -19,6 +21,7 @@
 @dynamic lyrics;
 @dynamic mood;
 @dynamic name;
+@dynamic normalizedName;
 @dynamic num;
 @dynamic originalDate;
 @dynamic subtitle;
@@ -80,6 +83,14 @@
     }
 }
 
-
+- (void)setName:(NSString *)name
+{
+    [self willChangeValueForKey:@"name"];
+    
+    [self setPrimitiveValue:name forKey:@"name"];
+    self.normalizedName = [KANUtils normalizedStringForString:name];
+    
+    [self didChangeValueForKey:@"name"];
+}
 
 @end

@@ -10,12 +10,14 @@
 #import "KANAlbum.h"
 #import "KANTrack.h"
 #import "KANConstants.h"
+#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
 
 @implementation KANDisc
 
 @dynamic name;
+@dynamic normalizedName;
 @dynamic num;
 @dynamic trackTotal;
 @dynamic album;
@@ -51,6 +53,16 @@
     [disc updateWithData:data context:context];
     
     return disc;
+}
+
+- (void)setName:(NSString *)name
+{
+    [self willChangeValueForKey:@"name"];
+    
+    [self setPrimitiveValue:name forKey:@"name"];
+    self.normalizedName = [KANUtils normalizedStringForString:name];
+    
+    [self didChangeValueForKey:@"name"];
 }
 
 @end

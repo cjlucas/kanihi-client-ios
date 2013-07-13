@@ -16,6 +16,7 @@
 @interface KANDisc : KANUniqueEntity
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * normalizedName;
 @property (nonatomic) NSNumber *num;
 @property (nonatomic) NSNumber *trackTotal;
 @property (nonatomic, retain) KANAlbum *album;

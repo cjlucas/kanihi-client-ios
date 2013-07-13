@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString * lyrics;
 @property (nonatomic, retain) NSString * mood;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * normalizedName;
 @property (nonatomic, retain) NSNumber * num;
 @property (nonatomic, retain) NSDate * originalDate;
 @property (nonatomic, retain) NSString * subtitle;
