@@ -11,5 +11,6 @@
 @interface KANUtils : NSObject
 
 +(NSString *)normalizedStringForString:(NSString *)string;
++(NSDate *)dateFromRailsDateString:(NSString *)dateStr;
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "KANUtils.h"
+
 #import "CJStringNormalization.h"
+#import "NSDateFormatter+CJExtensions.h"
 
 @implementation KANUtils
 
@@ -15,6 +17,11 @@
 {
     // TODO: replace characters used for stylizing like $ with s before normalizing
     return [CJStringNormalization normalizeString:string];
+}
+
++(NSDate *)dateFromRailsDateString:(NSString *)dateStr
+{
+    return [[NSDateFormatter rfc3339] dateFromString:dateStr];
 }
 
 @end

@@ -41,17 +41,6 @@
     return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:KANTrackUUIDKey]];
 }
 
-// move this somewhere else
-+ (NSDateFormatter *)dateFormatter
-{
-    static NSDateFormatter *_dateFormatter = nil;
-    if (_dateFormatter == nil) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"; // 1998-09-29T00:00:00Z
-    }
-    return _dateFormatter;
-}
-
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context
 {
@@ -75,11 +64,11 @@
     self.subtitle = [data nonNullObjectForKey:KANTrackSubtitleKey];
     
     if ([data nonNullObjectForKey:KANTrackDateKey] != nil) {
-        self.date = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:KANTrackDateKey]];
+        self.date = [KANUtils dateFromRailsDateString:[data nonNullObjectForKey:KANTrackDateKey]];
         //NSLog(@"%@", track.date);
     }
     if ([data nonNullObjectForKey:KANTrackOriginalDateKey] != nil) {
-        self.originalDate = [[[self class] dateFormatter] dateFromString:[data nonNullObjectForKey:KANTrackOriginalDateKey]];
+        self.originalDate = [KANUtils dateFromRailsDateString:[data nonNullObjectForKey:KANTrackOriginalDateKey]];
     }
 }
 
