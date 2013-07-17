@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E6BE8FEB-8D12-42CD-AA6D-E068DD39215B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Kanihi</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>987FDC27-25C4-454E-BD87-81B4FF592AD5</key>
+		<string>ssh://github.com/cjlucas/kanihi-client-ios.git</string>
+		<key>D69F017E-746C-4CF3-9ACA-B44C5FAC25B0</key>
+		<string>ssh://github.com/cjlucas/cjutils-objc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Kanihi.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>987FDC27-25C4-454E-BD87-81B4FF592AD5</key>
+		<string>../..</string>
+		<key>D69F017E-746C-4CF3-9ACA-B44C5FAC25B0</key>
+		<string>../../../cjutils-objc</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/cjlucas/kanihi-client-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>987FDC27-25C4-454E-BD87-81B4FF592AD5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>987FDC27-25C4-454E-BD87-81B4FF592AD5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>kanihi-client-ios</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D69F017E-746C-4CF3-9ACA-B44C5FAC25B0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cjutils-objc</string>
+		</dict>
+	</array>
+</dict>
+</plist>
