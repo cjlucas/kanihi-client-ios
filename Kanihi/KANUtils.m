@@ -15,8 +15,8 @@
 
 + (NSString *)normalizedStringForString:(NSString *)string
 {
-    // TODO: replace characters used for stylizing like $ with s before normalizing
-    return [CJStringNormalization normalizeString:string];
+    NSString *normalized = [string stringByReplacingOccurrencesOfString:@"$" withString:@"s"];
+    return [CJStringNormalization normalizeString:normalized];
 }
 
 +(NSDate *)dateFromRailsDateString:(NSString *)dateStr
