@@ -19,6 +19,7 @@
 @dynamic name;
 @dynamic normalizedName;
 @dynamic discTotal;
+@dynamic sectionTitle;
 @dynamic artist;
 @dynamic discs;
 
@@ -59,6 +60,7 @@
     
     [self setPrimitiveValue:name forKey:@"name"];
     self.normalizedName = [KANUtils normalizedStringForString:name];
+    self.sectionTitle = [name substringToIndex:1];
     
     [self didChangeValueForKey:@"name"];
 }

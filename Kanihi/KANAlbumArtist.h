@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * normalizedName;
 @property (nonatomic, retain) NSString * nameSortOrder;
+@property (nonatomic, retain) NSString * sectionTitle;
 @property (nonatomic, retain) NSSet *albums;
 @end
 

@@ -17,6 +17,7 @@
 @dynamic name;
 @dynamic normalizedName;
 @dynamic nameSortOrder;
+@dynamic sectionTitle;
 @dynamic albums;
 
 + (NSString *)entityName
@@ -53,8 +54,18 @@
     
     [self setPrimitiveValue:name forKey:@"name"];
     self.normalizedName = [KANUtils normalizedStringForString:name];
+    self.sectionTitle = [name substringToIndex:1];
     
     [self didChangeValueForKey:@"name"];
+}
+
+- (NSString *)sectionTitle
+{
+    [self willAccessValueForKey:@"name"];
+    NSString *name = [self primitiveValueForKey:@"name"];
+    [self didAccessValueForKey:@"name"];
+    
+    return [[name uppercaseString] substringToIndex:1];
 }
 
 @end

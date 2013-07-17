@@ -21,6 +21,7 @@
 @dynamic lyrics;
 @dynamic mood;
 @dynamic name;
+@dynamic sectionTitle;
 @dynamic normalizedName;
 @dynamic num;
 @dynamic originalDate;
@@ -78,6 +79,7 @@
     
     [self setPrimitiveValue:name forKey:@"name"];
     self.normalizedName = [KANUtils normalizedStringForString:name];
+    self.sectionTitle = [name substringToIndex:1];
     
     [self didChangeValueForKey:@"name"];
 }

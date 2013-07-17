@@ -4,6 +4,7 @@
         <attribute name="discTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumArtist" inverseName="albums" inverseEntity="AlbumArtist" syncable="YES"/>
         <relationship name="discs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disc" inverseName="album" inverseEntity="Disc" syncable="YES"/>
     </entity>
@@ -11,12 +12,14 @@
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="nameSortOrder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="albums" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Album" inverseName="artist" inverseEntity="Album" syncable="YES"/>
     </entity>
     <entity name="Disc" representedClassName="KANDisc" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="num" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trackTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="discs" inverseEntity="Album" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="disc" inverseEntity="Track" syncable="YES"/>
@@ -24,6 +27,7 @@
     <entity name="Genre" representedClassName="KANGenre" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="genre" inverseEntity="Track" syncable="YES"/>
     </entity>
     <entity name="Track" representedClassName="KANTrack" syncable="YES">
@@ -36,6 +40,7 @@
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
         <attribute name="originalDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackArtist" inverseName="tracks" inverseEntity="TrackArtist" syncable="YES"/>
@@ -46,6 +51,7 @@
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="nameSortOrder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Track" inverseName="artist" inverseEntity="Track" syncable="YES"/>
     </entity>
     <elements>
