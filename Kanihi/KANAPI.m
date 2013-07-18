@@ -71,7 +71,7 @@
 +(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks
 {
     NSError *error;
-    NSLog(@"hereeeee");
+
     // build array of track uuids for api
     NSMutableArray *trackUUIDs = [[NSMutableArray alloc] initWithCapacity:[currentTracks count]];
     
@@ -81,8 +81,6 @@
 
     NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{@"current_tracks" : trackUUIDs} options:0 error:&error];
     
-    if (error != nil)
-        NSLog(@"ERROR: %@", error);
     
     NSMutableURLRequest *req = [self authenticatedRequest];
     req.HTTPMethod = @"POST";
@@ -91,14 +89,13 @@
     
     // process returned data
     NSData *returnedData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-    if (error != nil)
-        NSLog(@"ERROR3: %@", error);
+
+    
     
     NSDictionary *deletedTracks = [NSJSONSerialization JSONObjectWithData:returnedData options:0 error:&error];
-    if (error != nil)
-        NSLog(@"ERROR4: %@", error);
-    return deletedTracks != nil ? deletedTracks[@"deleted_tracks"] : nil;
-}
 
+    
+    return deletedTracks[@"deleted_tracks"];
+}
 
 @end
