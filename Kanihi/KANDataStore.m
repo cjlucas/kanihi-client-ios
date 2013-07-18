@@ -25,6 +25,7 @@
 - (void)postNotification:(NSString *)notification;
 - (void)postNotificationHelper:(NSString *)notification;
 - (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
+- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
 
 
 @property (readonly) NSManagedObjectContext *backgroundManagedObjectContext;
@@ -59,6 +60,11 @@
     }
     
     return _sharedDataStore;
+}
+
+- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread
+{
+    return [thread isMainThread] ? self.mainManagedObjectContext : self.backgroundManagedObjectContext;
 }
 
 - (void)handleTrackDatas:(NSArray *)trackDatas
@@ -152,6 +158,34 @@
     
     [self postNotification:KANDataStoreWillFinishUpdatingNotification];
     [self postNotification:KANDataStoreDidFinishUpdatingNotification];
+}
+
+- (void)deleteOldTracks
+{
+    NSManagedObjectContext *moc = [self managedObjectContextForThread:[NSThread currentThread]];
+    
+    // get all tracks
+    NSFetchRequest *allTracksReq = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
+    allTracksReq.fetchBatchSize = 100;
+    
+    NSError *error;
+    NSArray *tracks = [moc executeFetchRequest:allTracksReq error:&error];
+    
+    // get old tracks
+    NSArray *oldTracks = [KANAPI deletedTracksFromCurrentTracks:tracks];
+    
+    NSFetchRequest *deletedTracksReq = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid in %@", oldTracks];
+    deletedTracksReq.predicate = predicate;
+    
+    NSArray *deletedTracks = [moc executeFetchRequest:deletedTracksReq error:&error];
+    NSLog(@"deletedTracks count: %d", [deletedTracks count]);
+    // delete old tracks
+    for (NSManagedObject *deletedTrack in deletedTracks) {
+        [moc deleteObject:deletedTrack];
+    }
+    
+    [moc save:&error];
 }
 
 

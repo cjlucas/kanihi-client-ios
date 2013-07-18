@@ -8,7 +8,9 @@
 
 #import "KANAPI.h"
 #import "KANConstants.h"
-#import "Base64.h"
+#import "KANTrack.h"
+
+//#import "Base64.h"
 
 @interface KANAPI ()
 
@@ -37,11 +39,11 @@
     NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
     NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
     
-    if (authUser != nil && authPass != nil) {
-        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
-        
-        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
-    }
+//    if (authUser != nil && authPass != nil) {
+//        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
+//        
+//        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
+//    }
     
     return req;
 }
@@ -65,4 +67,38 @@
     NSLog(@"%@", req);
     return [req copy];
 }
+
++(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks
+{
+    NSError *error;
+    NSLog(@"hereeeee");
+    // build array of track uuids for api
+    NSMutableArray *trackUUIDs = [[NSMutableArray alloc] initWithCapacity:[currentTracks count]];
+    
+    for (KANTrack *track in currentTracks) {
+        [trackUUIDs addObject:track.uuid];
+    }
+
+    NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{@"current_tracks" : trackUUIDs} options:0 error:&error];
+    
+    if (error != nil)
+        NSLog(@"ERROR: %@", error);
+    
+    NSMutableURLRequest *req = [self authenticatedRequest];
+    req.HTTPMethod = @"POST";
+    req.HTTPBody = trackData;
+    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:KANAPIDeletedTracksPath];
+    
+    // process returned data
+    NSData *returnedData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+    if (error != nil)
+        NSLog(@"ERROR3: %@", error);
+    
+    NSDictionary *deletedTracks = [NSJSONSerialization JSONObjectWithData:returnedData options:0 error:&error];
+    if (error != nil)
+        NSLog(@"ERROR4: %@", error);
+    return deletedTracks != nil ? deletedTracks[@"deleted_tracks"] : nil;
+}
+
+
 @end
