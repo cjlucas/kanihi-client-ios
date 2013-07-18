@@ -14,6 +14,9 @@
                                   SQLOffset:(NSUInteger)offset
                               LastUpdatedAt:(NSDate *)lastUpdatedAt;
 
++ (NSDictionary *)serverInfo;
++ (NSDate *)serverTime;
+
 /*
  * input: an array of KANTrack objects
  * returns: an array of track uuids to be deleted

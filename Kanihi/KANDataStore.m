@@ -114,6 +114,7 @@
     
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
     NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
+    NSDate *newLastUpdated = [KANAPI serverTime];
     
     if (fullUpdateFlag || lastUpdated == nil) {
         lastUpdated = [NSDate dateWithTimeIntervalSince1970:0];
@@ -153,7 +154,7 @@
         }
     }
     
-    [sud setObject:[NSDate date] forKey:KANUserDefaultsLastUpdatedKey];
+    [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
     [sud synchronize];
     
     [self postNotification:KANDataStoreWillFinishUpdatingNotification];

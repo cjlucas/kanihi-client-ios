@@ -18,6 +18,7 @@ NSString * const KANUserDefaultsAuthPassKey;
 // API
 NSString * const KANAPITracksPath;
 NSString * const KANAPIDeletedTracksPath;
+NSString * const KANAPIServerInfoPath;
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit;

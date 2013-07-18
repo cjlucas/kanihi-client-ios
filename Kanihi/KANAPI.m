@@ -11,6 +11,7 @@
 #import "KANTrack.h"
 
 //#import "Base64.h"
+#import "NSDateFormatter+CJExtensions.h"
 
 @interface KANAPI ()
 
@@ -89,13 +90,35 @@
     
     // process returned data
     NSData *returnedData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-
-    
     
     NSDictionary *deletedTracks = [NSJSONSerialization JSONObjectWithData:returnedData options:0 error:&error];
 
-    
     return deletedTracks[@"deleted_tracks"];
+}
+
++ (NSDictionary *)serverInfo
+{
+    NSError *error;
+    NSMutableURLRequest *req = [self authenticatedRequest];
+    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:KANAPIServerInfoPath];
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+    
+    NSDictionary *serverInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+    
+    return serverInfo[@"server_info"];
+}
+
++ (NSDate *)serverTime
+{
+    NSDate *serverTime = nil;
+    NSDictionary *serverInfo = [self serverInfo];
+    
+    if (serverInfo != nil) {
+        serverTime = [[NSDateFormatter rfc3339] dateFromString:serverInfo[@"server_time"]];
+    }
+    
+    return serverTime;
 }
 
 @end
