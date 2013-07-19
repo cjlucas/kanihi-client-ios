@@ -17,6 +17,8 @@
 - (NSString *)sectionNameKeyPath;
 - (NSString *)cacheName;
 
+- (void)refreshTableData;
+
 - (BOOL)shouldShowSections;
 @end
 
@@ -30,6 +32,22 @@
     
     NSError *error;
     [self.resultsController performFetch:&error];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData) name:KANDataStoreDidFinishUpdatingNotification object:nil];
+}
+
+- (void)viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:KANDataStoreDidFinishUpdatingNotification object:nil];
+    
+    [super viewDidUnload];
+}
+
+- (void)refreshTableData
+{
+    if ([self.resultsController performFetch:nil]) {
+        [self.tableView reloadData];
+    }
 }
 
 - (NSFetchedResultsController *)resultsController
