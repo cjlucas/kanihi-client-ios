@@ -154,6 +154,8 @@
         }
     }
     
+    [self deleteOldTracks];
+    
     [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
     [sud synchronize];
     
