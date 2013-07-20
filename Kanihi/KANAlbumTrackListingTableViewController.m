@@ -7,9 +7,12 @@
 //
 
 #import "KANAlbumTrackListingTableViewController.h"
+#import "KANAlbumTrackListingTableView.h"
+#import "KANAlbumTrackListingCell.h"
 
 #import "KANDisc.h"
 #import "KANTrack.h"
+#import "KANAlbumArtist.h"
 
 @interface KANAlbumTrackListingTableViewController ()
 
@@ -24,19 +27,35 @@
 @synthesize tracks = _tracks;
 @synthesize album = _album;
 
-- (id)initWithAlbum:(KANAlbum *)album
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if (self = [super init]) {
-        UIView *tableHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        tableHeader.backgroundColor = [UIColor purpleColor];
-        self.tableView.tableHeaderView = tableHeader;
-        
+    if (self = [super initWithCoder:aDecoder]) {
         _discs = nil;
         _tracks = nil;
-        _album = album;
     }
     
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    KANAlbumTrackListingTableView *tableView = (KANAlbumTrackListingTableView *)self.tableView;
+    
+    NSString *albumName = self.album.name;
+    NSString *albumArtist = self.album.artist.name;
+    NSString *albumYear = [NSString stringWithFormat:@"(1900)"]; // TODO: write a method for KANAlbum
+    
+    NSString *albumInfoRaw = [@[albumName, albumArtist, albumYear] componentsJoinedByString:@"\n"];
+    
+    NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] initWithString:albumInfoRaw];
+    
+    [albumInfoString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14]
+                            range:NSMakeRange(0, self.album.name.length)];
+    
+    tableView.albumInfoLabel.attributedText = [albumInfoString copy];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -100,15 +119,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    KANAlbumTrackListingCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[KANAlbumTrackListingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     KANTrack *track = [self trackForIndexPath:indexPath];
-    NSString *text = [NSString stringWithFormat:@"%5.0d. %@", track.num.intValue, track.name];
     
-    cell.textLabel.text = text;
+    cell.trackNumLabel.text = [NSString stringWithFormat:@"%@.", track.num];
+    cell.trackNameLabel.text = track.name;
     
     return cell;
 }

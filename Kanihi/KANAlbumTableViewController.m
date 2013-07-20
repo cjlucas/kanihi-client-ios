@@ -46,9 +46,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KANAlbum *album = [self.resultsController objectAtIndexPath:indexPath];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];    
+    KANAlbumTrackListingTableViewController *tvc = [sb instantiateViewControllerWithIdentifier:@"blahid"];
     
-    KANAlbumTrackListingTableViewController *tvc = [[KANAlbumTrackListingTableViewController alloc] initWithAlbum:album];
+    tvc.album = [self.resultsController objectAtIndexPath:indexPath];
     
     [(UINavigationController *)self.parentViewController pushViewController:tvc animated:YES];
 }
