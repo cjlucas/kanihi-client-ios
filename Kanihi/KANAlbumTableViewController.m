@@ -8,6 +8,7 @@
 
 #import "KANAlbumTableViewController.h"
 
+#import "KANAlbumTrackListingTableViewController.h"
 #import "KANAlbum.h"
 #import "KANConstants.h"
 
@@ -41,6 +42,15 @@
     cell.textLabel.text = mo.name;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KANAlbum *album = [self.resultsController objectAtIndexPath:indexPath];
+    
+    KANAlbumTrackListingTableViewController *tvc = [[KANAlbumTrackListingTableViewController alloc] initWithAlbum:album];
+    
+    [(UINavigationController *)self.parentViewController pushViewController:tvc animated:YES];
 }
 
 @end
