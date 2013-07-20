@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSNumber * discTotal;
 @property (nonatomic, retain) KANAlbumArtist *artist;
 @property (nonatomic, retain) NSSet *discs;
+@property (nonatomic, retain) NSArray *tracks;
 @end
 
 @interface KANAlbum (CoreDataGeneratedAccessors)

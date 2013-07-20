@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString * nameSortOrder;
 @property (nonatomic, retain) NSString * sectionTitle;
 @property (nonatomic, retain) NSSet *albums;
+@property (nonatomic, retain) NSArray *tracks;
 @end
 
 @interface KANAlbumArtist (CoreDataGeneratedAccessors)

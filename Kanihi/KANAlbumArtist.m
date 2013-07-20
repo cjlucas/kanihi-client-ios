@@ -19,6 +19,7 @@
 @dynamic nameSortOrder;
 @dynamic sectionTitle;
 @dynamic albums;
+@dynamic tracks;
 
 + (NSString *)entityName
 {

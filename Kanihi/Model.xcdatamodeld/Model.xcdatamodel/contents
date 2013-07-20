@@ -7,6 +7,9 @@
         <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumArtist" inverseName="albums" inverseEntity="AlbumArtist" syncable="YES"/>
         <relationship name="discs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disc" inverseName="album" inverseEntity="Disc" syncable="YES"/>
+        <fetchedProperty name="tracks" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album == $FETCH_SOURCE"/>
+        </fetchedProperty>
     </entity>
     <entity name="AlbumArtist" representedClassName="KANAlbumArtist" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -14,6 +17,9 @@
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="sectionTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="albums" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Album" inverseName="artist" inverseEntity="Album" syncable="YES"/>
+        <fetchedProperty name="tracks" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album.artist == $FETCH_SOURCE"/>
+        </fetchedProperty>
     </entity>
     <entity name="Disc" representedClassName="KANDisc" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>

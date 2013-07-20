@@ -22,6 +22,7 @@
 @dynamic sectionTitle;
 @dynamic artist;
 @dynamic discs;
+@dynamic tracks;
 
 + (NSString *)entityName
 {
