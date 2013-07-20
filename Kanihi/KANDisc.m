@@ -32,7 +32,7 @@
 {
     // TODO: check if key exists
     return [NSPredicate predicateWithFormat:@"num = %@ && album.name = %@",
-            [data nonNullObjectForKey:KANDiscNameKey],
+            [data nonNullObjectForKey:KANDiscNumKey],
             [data nonNullObjectForKey:KANAlbumNameKey]];
 }
 
