@@ -79,7 +79,7 @@
     
     [self setPrimitiveValue:name forKey:@"name"];
     self.normalizedName = [KANUtils normalizedStringForString:name];
-    self.sectionTitle = [name substringToIndex:1];
+    self.sectionTitle = [KANUtils sectionTitleForString:name];
     
     [self didChangeValueForKey:@"name"];
 }

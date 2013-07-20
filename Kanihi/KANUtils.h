@@ -10,7 +10,8 @@
 
 @interface KANUtils : NSObject
 
-+(NSString *)normalizedStringForString:(NSString *)string;
-+(NSDate *)dateFromRailsDateString:(NSString *)dateStr;
++ (NSString *)normalizedStringForString:(NSString *)string;
++ (NSDate *)dateFromRailsDateString:(NSString *)dateStr;
++ (NSString *)sectionTitleForString:(NSString *)string;
 
 @end

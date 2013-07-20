@@ -10,6 +10,7 @@
 
 #import "CJStringNormalization.h"
 #import "NSDateFormatter+CJExtensions.h"
+#import "NSString+CJExtensions.h"
 
 @implementation KANUtils
 
@@ -19,9 +20,20 @@
     return [CJStringNormalization normalizeString:normalized];
 }
 
-+(NSDate *)dateFromRailsDateString:(NSString *)dateStr
++ (NSDate *)dateFromRailsDateString:(NSString *)dateStr
 {
     return [[NSDateFormatter rfc3339] dateFromString:dateStr];
+}
+
++ (NSString *)sectionTitleForString:(NSString *)string
+{
+    NSString *firstChar = [string substringToIndex:1];
+    
+    if (firstChar.number) {
+        return @"#";
+    } else {
+        return firstChar;
+    }
 }
 
 @end
