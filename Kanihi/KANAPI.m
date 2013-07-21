@@ -10,7 +10,7 @@
 #import "KANConstants.h"
 #import "KANTrack.h"
 
-//#import "Base64.h"
+#import "Base64.h"
 #import "NSDateFormatter+CJExtensions.h"
 
 @interface KANAPI ()
@@ -40,11 +40,11 @@
     NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
     NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
     
-//    if (authUser != nil && authPass != nil) {
-//        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
-//        
-//        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
-//    }
+    if (authUser != nil && authPass != nil) {
+        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
+        
+        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
+    }
     
     return req;
 }
