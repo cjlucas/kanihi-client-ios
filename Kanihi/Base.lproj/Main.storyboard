@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
-        <!--Album Track Listing Table View Controller - fdas-->
+        <!--Album Track Listing Table View Controller-->
         <scene sceneID="QFT-lD-Djc">
             <objects>
-                <tableViewController storyboardIdentifier="blahid" title="fdas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o7U-JI-ToJ" customClass="KANAlbumTrackListingTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="blahid" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o7U-JI-ToJ" customClass="KANAlbumTrackListingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N3e-t1-6Qj" customClass="KANAlbumTrackListingTableView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1565" y="-770"/>
         </scene>
-        <!--Album Artists Table View Controller - Artists-->
+        <!--Base Table View Controller - Artists-->
         <scene sceneID="o1k-8A-pFV">
             <objects>
-                <tableViewController storyboardIdentifier="blah" id="SfE-nt-6Eb" customClass="KANAlbumArtistsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BaseTVC" id="SfE-nt-6Eb" customClass="KANBaseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Gj-y3-oyS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgE-hM-iYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="-4"/>
+            <point key="canvasLocation" x="1355" y="-4"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
