@@ -31,9 +31,10 @@
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
     // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"num = %@ && album.name = %@",
+    return [NSPredicate predicateWithFormat:@"num = %@ && album.name = %@ && album.artist.name = %@",
             [data nonNullObjectForKey:KANDiscNumKey],
-            [data nonNullObjectForKey:KANAlbumNameKey]];
+            [data nonNullObjectForKey:KANAlbumNameKey],
+            [data nonNullObjectForKey:KANAlbumArtistNameKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
