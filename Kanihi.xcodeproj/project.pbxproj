@@ -40,6 +40,48 @@
 		835B00341791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
 		835B00391791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
+		836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
+		836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
+		836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AA1799E0D500348B6B /* KANNavigationController.m */; };
+		836782AC1799E0D500348B6B /* KANNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AA1799E0D500348B6B /* KANNavigationController.m */; };
+		836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AE1799F89300348B6B /* KANMainMenuViewController.m */; };
+		836782B01799F89300348B6B /* KANMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AE1799F89300348B6B /* KANMainMenuViewController.m */; };
+		836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782B21799FAF100348B6B /* KANMainMenuViewCell.m */; };
+		836782B41799FAF100348B6B /* KANMainMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782B21799FAF100348B6B /* KANMainMenuViewCell.m */; };
+		836782C4179A213900348B6B /* NSString+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C3179A213900348B6B /* NSString+CJExtensions.m */; };
+		836782C5179A213900348B6B /* NSString+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C3179A213900348B6B /* NSString+CJExtensions.m */; };
+		836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */; };
+		836782C9179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */; };
+		836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
+		836782CD179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
+		836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
+		836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
+		83A28124179C6046008D0686 /* UIFont+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28123179C6046008D0686 /* UIFont+CJExtensions.m */; };
+		83A28125179C6046008D0686 /* UIFont+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28123179C6046008D0686 /* UIFont+CJExtensions.m */; };
+		83A4D848179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
+		83A4D849179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
+		83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
+		83A4D84D179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
+		83A4D862179B2B73008597E0 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D850179B2B73008597E0 /* AFHTTPClient.m */; };
+		83A4D863179B2B73008597E0 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D850179B2B73008597E0 /* AFHTTPClient.m */; };
+		83A4D864179B2B73008597E0 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D852179B2B73008597E0 /* AFHTTPRequestOperation.m */; };
+		83A4D865179B2B73008597E0 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D852179B2B73008597E0 /* AFHTTPRequestOperation.m */; };
+		83A4D866179B2B73008597E0 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D854179B2B73008597E0 /* AFImageRequestOperation.m */; };
+		83A4D867179B2B73008597E0 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D854179B2B73008597E0 /* AFImageRequestOperation.m */; };
+		83A4D868179B2B73008597E0 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D856179B2B73008597E0 /* AFJSONRequestOperation.m */; };
+		83A4D869179B2B73008597E0 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D856179B2B73008597E0 /* AFJSONRequestOperation.m */; };
+		83A4D86A179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D858179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m */; };
+		83A4D86B179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D858179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m */; };
+		83A4D86C179B2B73008597E0 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85B179B2B73008597E0 /* AFPropertyListRequestOperation.m */; };
+		83A4D86D179B2B73008597E0 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85B179B2B73008597E0 /* AFPropertyListRequestOperation.m */; };
+		83A4D86E179B2B73008597E0 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85D179B2B73008597E0 /* AFURLConnectionOperation.m */; };
+		83A4D86F179B2B73008597E0 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85D179B2B73008597E0 /* AFURLConnectionOperation.m */; };
+		83A4D870179B2B73008597E0 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85F179B2B73008597E0 /* AFXMLRequestOperation.m */; };
+		83A4D871179B2B73008597E0 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D85F179B2B73008597E0 /* AFXMLRequestOperation.m */; };
+		83A4D872179B2B73008597E0 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D861179B2B73008597E0 /* UIImageView+AFNetworking.m */; };
+		83A4D873179B2B73008597E0 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D861179B2B73008597E0 /* UIImageView+AFNetworking.m */; };
+		83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
+		83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
 		83BA165D178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83BA165E178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
@@ -112,6 +154,48 @@
 		835B00321791C22700E07A71 /* KANUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUtils.m; sourceTree = "<group>"; };
 		835B00361791C7E900E07A71 /* KANBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANBaseTableViewController.h; sourceTree = "<group>"; };
 		835B00371791C7E900E07A71 /* KANBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANBaseTableViewController.m; sourceTree = "<group>"; };
+		836782A51799DC7E00348B6B /* KANGenreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANGenreTableViewController.h; sourceTree = "<group>"; };
+		836782A61799DC7E00348B6B /* KANGenreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenreTableViewController.m; sourceTree = "<group>"; };
+		836782A91799E0D500348B6B /* KANNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANNavigationController.h; sourceTree = "<group>"; };
+		836782AA1799E0D500348B6B /* KANNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANNavigationController.m; sourceTree = "<group>"; };
+		836782AD1799F89300348B6B /* KANMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANMainMenuViewController.h; sourceTree = "<group>"; };
+		836782AE1799F89300348B6B /* KANMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANMainMenuViewController.m; sourceTree = "<group>"; };
+		836782B11799FAF100348B6B /* KANMainMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANMainMenuViewCell.h; sourceTree = "<group>"; };
+		836782B21799FAF100348B6B /* KANMainMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANMainMenuViewCell.m; sourceTree = "<group>"; };
+		836782C2179A213900348B6B /* NSString+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSString+CJExtensions.h"; sourceTree = "<group>"; };
+		836782C3179A213900348B6B /* NSString+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/NSString+CJExtensions.m"; sourceTree = "<group>"; };
+		836782C6179A268F00348B6B /* KANAlbumTrackListingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingTableViewController.h; sourceTree = "<group>"; };
+		836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingTableViewController.m; sourceTree = "<group>"; };
+		836782CA179A477600348B6B /* KANAlbumTrackListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingCell.h; sourceTree = "<group>"; };
+		836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingCell.m; sourceTree = "<group>"; };
+		836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingTableView.h; sourceTree = "<group>"; };
+		836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingTableView.m; sourceTree = "<group>"; };
+		83A28122179C6046008D0686 /* UIFont+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/UIFont+CJExtensions.h"; sourceTree = "<group>"; };
+		83A28123179C6046008D0686 /* UIFont+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/UIFont+CJExtensions.m"; sourceTree = "<group>"; };
+		83A4D847179B167E008597E0 /* KANTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KANTableViewCell.xib; sourceTree = "<group>"; };
+		83A4D84A179B17A8008597E0 /* KANTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANTableViewCell.h; sourceTree = "<group>"; };
+		83A4D84B179B17A8008597E0 /* KANTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTableViewCell.m; sourceTree = "<group>"; };
+		83A4D84F179B2B73008597E0 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		83A4D850179B2B73008597E0 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		83A4D851179B2B73008597E0 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		83A4D852179B2B73008597E0 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		83A4D853179B2B73008597E0 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		83A4D854179B2B73008597E0 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		83A4D855179B2B73008597E0 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		83A4D856179B2B73008597E0 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		83A4D857179B2B73008597E0 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		83A4D858179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		83A4D859179B2B73008597E0 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		83A4D85A179B2B73008597E0 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		83A4D85B179B2B73008597E0 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		83A4D85C179B2B73008597E0 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		83A4D85D179B2B73008597E0 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		83A4D85E179B2B73008597E0 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		83A4D85F179B2B73008597E0 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		83A4D860179B2B73008597E0 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		83A4D861179B2B73008597E0 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANLabelContainerView.h; sourceTree = "<group>"; };
+		83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANLabelContainerView.m; sourceTree = "<group>"; };
 		83BA165B178DE99200BFF856 /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
 		83BA165C178DE99200BFF856 /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
 		83E31CFC179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumArtistsTableViewController.h; sourceTree = "<group>"; };
@@ -163,6 +247,10 @@
 		833FF15D178CB6420071195F /* CJUtils */ = {
 			isa = PBXGroup;
 			children = (
+				83A28122179C6046008D0686 /* UIFont+CJExtensions.h */,
+				83A28123179C6046008D0686 /* UIFont+CJExtensions.m */,
+				836782C2179A213900348B6B /* NSString+CJExtensions.h */,
+				836782C3179A213900348B6B /* NSString+CJExtensions.m */,
 				833FF15E178CB6420071195F /* CJLog.h */,
 				833FF15F178CB6420071195F /* CJUtils-Prefix.pch */,
 				833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */,
@@ -290,6 +378,7 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83A4D84E179B2B73008597E0 /* AFNetworking */,
 				833FF15D178CB6420071195F /* CJUtils */,
 			);
 			name = Vendor;
@@ -298,6 +387,25 @@
 		835B00351791C78900E07A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */,
+				83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */,
+				836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */,
+				836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */,
+				836782CA179A477600348B6B /* KANAlbumTrackListingCell.h */,
+				836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */,
+				836782C6179A268F00348B6B /* KANAlbumTrackListingTableViewController.h */,
+				836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */,
+				83A4D847179B167E008597E0 /* KANTableViewCell.xib */,
+				83A4D84A179B17A8008597E0 /* KANTableViewCell.h */,
+				83A4D84B179B17A8008597E0 /* KANTableViewCell.m */,
+				836782AD1799F89300348B6B /* KANMainMenuViewController.h */,
+				836782AE1799F89300348B6B /* KANMainMenuViewController.m */,
+				836782B11799FAF100348B6B /* KANMainMenuViewCell.h */,
+				836782B21799FAF100348B6B /* KANMainMenuViewCell.m */,
+				836782A51799DC7E00348B6B /* KANGenreTableViewController.h */,
+				836782A61799DC7E00348B6B /* KANGenreTableViewController.m */,
+				836782A91799E0D500348B6B /* KANNavigationController.h */,
+				836782AA1799E0D500348B6B /* KANNavigationController.m */,
 				83E31D00179640E200A6EAF7 /* KANAlbumTableViewController.h */,
 				83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */,
 				835B00361791C7E900E07A71 /* KANBaseTableViewController.h */,
@@ -306,6 +414,32 @@
 				83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		83A4D84E179B2B73008597E0 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				83A4D84F179B2B73008597E0 /* AFHTTPClient.h */,
+				83A4D850179B2B73008597E0 /* AFHTTPClient.m */,
+				83A4D851179B2B73008597E0 /* AFHTTPRequestOperation.h */,
+				83A4D852179B2B73008597E0 /* AFHTTPRequestOperation.m */,
+				83A4D853179B2B73008597E0 /* AFImageRequestOperation.h */,
+				83A4D854179B2B73008597E0 /* AFImageRequestOperation.m */,
+				83A4D855179B2B73008597E0 /* AFJSONRequestOperation.h */,
+				83A4D856179B2B73008597E0 /* AFJSONRequestOperation.m */,
+				83A4D857179B2B73008597E0 /* AFNetworkActivityIndicatorManager.h */,
+				83A4D858179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m */,
+				83A4D859179B2B73008597E0 /* AFNetworking.h */,
+				83A4D85A179B2B73008597E0 /* AFPropertyListRequestOperation.h */,
+				83A4D85B179B2B73008597E0 /* AFPropertyListRequestOperation.m */,
+				83A4D85C179B2B73008597E0 /* AFURLConnectionOperation.h */,
+				83A4D85D179B2B73008597E0 /* AFURLConnectionOperation.m */,
+				83A4D85E179B2B73008597E0 /* AFXMLRequestOperation.h */,
+				83A4D85F179B2B73008597E0 /* AFXMLRequestOperation.m */,
+				83A4D860179B2B73008597E0 /* UIImageView+AFNetworking.h */,
+				83A4D861179B2B73008597E0 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A4D848179B167E008597E0 /* KANTableViewCell.xib in Resources */,
 				834303071789F13F006EC1A6 /* Images.xcassets in Resources */,
 				834302F91789F13F006EC1A6 /* InfoPlist.strings in Resources */,
 				834303021789F13F006EC1A6 /* Main.storyboard in Resources */,
@@ -398,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A4D849179B167E008597E0 /* KANTableViewCell.xib in Resources */,
 				834303181789F13F006EC1A6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,22 +551,42 @@
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				83A4D86C179B2B73008597E0 /* AFPropertyListRequestOperation.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
+				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83BA165D178DE99200BFF856 /* KANAPI.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
+				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
+				83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */,
 				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
+				83A4D86E179B2B73008597E0 /* AFURLConnectionOperation.m in Sources */,
+				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
+				83A28124179C6046008D0686 /* UIFont+CJExtensions.m in Sources */,
+				83A4D868179B2B73008597E0 /* AFJSONRequestOperation.m in Sources */,
+				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
+				836782C4179A213900348B6B /* NSString+CJExtensions.m in Sources */,
+				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
+				83A4D862179B2B73008597E0 /* AFHTTPClient.m in Sources */,
+				83A4D866179B2B73008597E0 /* AFImageRequestOperation.m in Sources */,
 				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
+				83A4D872179B2B73008597E0 /* UIImageView+AFNetworking.m in Sources */,
 				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
+				836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
 				834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */,
 				83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
 				83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
+				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
+				83A4D86A179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				83A4D870179B2B73008597E0 /* AFXMLRequestOperation.m in Sources */,
+				836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */,
+				83A4D864179B2B73008597E0 /* AFHTTPRequestOperation.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,19 +598,39 @@
 				83E31D03179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				83FB7B7B17911081003E56F8 /* CJStringNormalization.m in Sources */,
+				83A28125179C6046008D0686 /* UIFont+CJExtensions.m in Sources */,
 				83FB7B7F17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				833FF163178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
 				835B00391791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
+				83A4D871179B2B73008597E0 /* AFXMLRequestOperation.m in Sources */,
+				83A4D873179B2B73008597E0 /* UIImageView+AFNetworking.m in Sources */,
+				83A4D867179B2B73008597E0 /* AFImageRequestOperation.m in Sources */,
 				8343337F178BCD0600CC985D /* KANDisc.m in Sources */,
+				83A4D86D179B2B73008597E0 /* AFPropertyListRequestOperation.m in Sources */,
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
+				83A4D865179B2B73008597E0 /* AFHTTPRequestOperation.m in Sources */,
 				835B00341791C22700E07A71 /* KANUtils.m in Sources */,
+				836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83BA165E178DE99200BFF856 /* KANAPI.m in Sources */,
+				836782C5179A213900348B6B /* NSString+CJExtensions.m in Sources */,
+				83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
+				836782CD179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
+				836782AC1799E0D500348B6B /* KANNavigationController.m in Sources */,
 				83433387178BE1D400CC985D /* KANConstants.m in Sources */,
+				83A4D869179B2B73008597E0 /* AFJSONRequestOperation.m in Sources */,
+				836782B41799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
+				83A4D86B179B2B73008597E0 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				836782B01799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				83FB7B7D17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
+				83A4D863179B2B73008597E0 /* AFHTTPClient.m in Sources */,
+				83A4D84D179B17A8008597E0 /* KANTableViewCell.m in Sources */,
+				83A4D86F179B2B73008597E0 /* AFURLConnectionOperation.m in Sources */,
+				836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
 				83433383178BD27800CC985D /* KANGenre.m in Sources */,
 				83E31CFF179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
 				83433377178BC91400CC985D /* KANAlbumArtist.m in Sources */,
+				836782C9179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */,
 				8343337B178BCAB400CC985D /* KANAlbum.m in Sources */,
 				83FB7B8117911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
 			);

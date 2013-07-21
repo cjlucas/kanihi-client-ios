@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class KANTrack;
+
 @interface KANAPI : NSObject
 
 + (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
                                   SQLOffset:(NSUInteger)offset
                               LastUpdatedAt:(NSDate *)lastUpdatedAt;
+
+/*
+ * if height is zero, full image will be requested
+ */
++ (NSURLRequest *)artworkRequestForTrack:(KANTrack *)track
+                              withHeight:(NSUInteger)height;
 
 + (NSDictionary *)serverInfo;
 + (NSDate *)serverTime;

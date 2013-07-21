@@ -69,6 +69,24 @@
     return [req copy];
 }
 
++ (NSURLRequest *)artworkRequestForTrack:(KANTrack *)track
+                              withHeight:(NSUInteger)height
+{
+    NSMutableURLRequest *req = [self authenticatedRequest];
+    
+    NSString *uuid = track.uuid;
+    NSString *artworkPath = [NSString stringWithFormat:@"/tracks/%@/artwork", uuid];
+    
+    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:artworkPath];
+    
+    if (height > 0) {
+        NSString *heightString = [NSString stringWithFormat:@"%d", height];
+        [req addValue:heightString forHTTPHeaderField:@"Image-Resize-Height"];
+    }
+    //NSLog(@"%@", req);
+    return [req copy];
+}
+
 +(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks
 {
     NSError *error;

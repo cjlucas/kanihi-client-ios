@@ -7,8 +7,10 @@
 //
 
 #import "KANBaseTableViewController.h"
+
+#import "KANTableViewCell.h"
 #import "KANConstants.h"
-#import "KANAlbumArtist.h"
+#import "KANNavigationController.h"
 
 @interface KANBaseTableViewController ()
 
@@ -47,10 +49,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // customize table
+    self.tableView.rowHeight = 100;
+    [self.tableView registerNib:[UINib nibWithNibName:@"KANTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"KANTableViewCell"];
     
     NSError *error;
     [self.resultsController performFetch:&error];
     
+    // watch for data store updates
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData) name:KANDataStoreDidFinishUpdatingNotification object:nil];
 }
 
