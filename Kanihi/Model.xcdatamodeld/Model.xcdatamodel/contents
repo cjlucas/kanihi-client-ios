@@ -8,7 +8,7 @@
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumArtist" inverseName="albums" inverseEntity="AlbumArtist" syncable="YES"/>
         <relationship name="discs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disc" inverseName="album" inverseEntity="Disc" syncable="YES"/>
         <fetchedProperty name="tracks" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album.name == $FETCH_SOURCE.name &amp;&amp; $FETCH_SOURCE.artist.name == disc.album.artist.name"/>
         </fetchedProperty>
     </entity>
     <entity name="AlbumArtist" representedClassName="KANAlbumArtist" syncable="YES">
