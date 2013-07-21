@@ -1,3 +1,6 @@
 [submodule "Vendor/AFNetworking"]
 	path = Vendor/AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking
+[submodule "Vendor/Base64"]
+	path = Vendor/Base64
+	url = https://github.com/nicklockwood/Base64
