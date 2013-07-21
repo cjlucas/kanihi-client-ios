@@ -86,12 +86,15 @@
         return _resultsController;
     }
     
-    NSFetchRequest *req = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:[self sortDescriptorKey] ascending:YES];
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    
+    // require first sort to be by sectionTitle so table lists properly
+    NSSortDescriptor *sectionTitleSorter = [NSSortDescriptor sortDescriptorWithKey:@"sectionTitle" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:[self sortDescriptorKey] ascending:YES];
     
     req.predicate = self.fetchRequestPredicate;
-    req.fetchLimit = 20;
-    req.sortDescriptors = @[sortDescriptor];
+    req.fetchBatchSize = 20;
+    req.sortDescriptors = @[sectionTitleSorter, sortDescriptor];
     
     _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:req
                                                              managedObjectContext:[[KANDataStore sharedDataStore] mainManagedObjectContext]
