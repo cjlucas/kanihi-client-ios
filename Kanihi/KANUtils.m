@@ -27,9 +27,17 @@
 
 + (NSString *)sectionTitleForString:(NSString *)string
 {
-    NSString *firstChar = [string substringToIndex:1];
+    // gets the first alphanumeric character for the section title
+    NSRange titleRange = [string rangeOfCharacterFromSet:[NSCharacterSet alphanumericCharacterSet]];
     
-    if (firstChar.number) {
+    // return an empty string if alphanumeric character couldn't be found
+    if (titleRange.location == NSNotFound)
+        return @"";
+    
+    NSString *firstChar = [[string substringWithRange:titleRange] uppercaseString];
+    
+    // if first alphanumeric character is a number, use # for the section title
+    if ([firstChar rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]].location != NSNotFound) {
         return @"#";
     } else {
         return firstChar;
