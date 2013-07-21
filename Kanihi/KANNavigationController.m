@@ -19,9 +19,31 @@
 
 @implementation KANNavigationController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.navigationBar addGestureRecognizer:gestureRecognizer];
+}
+
 - (UIViewController *)rootViewController
 {
     return self.viewControllers[0];
+}
+
+- (UITableViewController *)rootTableViewController
+{
+    UITableViewController *rootTVC = nil;
+    
+    for (UIViewController *vc in self.viewControllers) {
+        if ([vc isKindOfClass:[UITableViewController class]]) {
+            rootTVC = (UITableViewController *)vc;
+            break;
+        }
+    }
+    
+    return rootTVC;
 }
 
 /*
@@ -47,15 +69,6 @@
     if ([self shouldPopToRootViewController:gesture]) {
         [self popToRootViewControllerAnimated:YES];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    
-    [self.navigationBar addGestureRecognizer:gestureRecognizer];
 }
 
 @end

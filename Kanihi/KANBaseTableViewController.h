@@ -10,6 +10,7 @@
 #import "KANDataStore.h"
 
 @interface KANBaseTableViewController : UITableViewController <UITableViewDataSource>
+- (BOOL)isRootTableViewController;
 @property (readonly) NSFetchedResultsController *resultsController;
 @property NSPredicate *fetchRequestPredicate;
 @end

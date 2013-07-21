@@ -50,6 +50,11 @@
     }
 }
 
+- (BOOL)isRootTableViewController
+{
+    return self == [(KANNavigationController *)self.navigationController rootTableViewController];
+}
+
 - (NSFetchedResultsController *)resultsController
 {
     if (_resultsController != nil) {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KANNavigationController : UINavigationController
+@interface KANNavigationController : UINavigationController <UINavigationControllerDelegate, UINavigationBarDelegate>
+
+@property (readonly) UITableViewController *rootTableViewController;
 
 @end
