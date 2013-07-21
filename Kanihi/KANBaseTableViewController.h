@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "KANDataStore.h"
 
-@interface KANBaseTableViewController : UITableViewController <UITableViewDataSource>
+@interface KANBaseTableViewController : UITableViewController
+
+- (id)initWithPredicate:(NSPredicate *)predicate;
 - (BOOL)isRootTableViewController;
+
 @property (readonly) NSFetchedResultsController *resultsController;
 @property NSPredicate *fetchRequestPredicate;
 @end

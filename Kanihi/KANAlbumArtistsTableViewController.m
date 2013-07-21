@@ -50,8 +50,10 @@
     NSLog(@"%@", indexPath);
     
     KANAlbumArtist *mo = [self.resultsController objectAtIndexPath:indexPath];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"artist.name = %@", mo.name];
     
     KANAlbumTableViewController *tvc = [[KANAlbumTableViewController alloc] init];
+    KANAlbumTableViewController *tvc = [[KANAlbumTableViewController alloc] initWithPredicate:predicate];
     
     tvc.fetchRequestPredicate = [NSPredicate predicateWithFormat:@"artist.name = %@", mo.name];
     

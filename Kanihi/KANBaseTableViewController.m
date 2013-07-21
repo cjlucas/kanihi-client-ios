@@ -26,6 +26,24 @@
 
 @synthesize resultsController = _resultsController;
 
+- (id)init
+{
+    if (self = [super init]) {
+        _resultsController = nil;
+    }
+    
+    return self;
+}
+
+- (id)initWithPredicate:(NSPredicate *)predicate
+{
+    if (self = [self init]) {
+        self.fetchRequestPredicate = predicate;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
