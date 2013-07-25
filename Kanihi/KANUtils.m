@@ -10,7 +10,6 @@
 
 #import "CJStringNormalization.h"
 #import "NSDateFormatter+CJExtensions.h"
-#import "NSString+CJExtensions.h"
 #import "KANTrack.h"
 
 @implementation KANUtils

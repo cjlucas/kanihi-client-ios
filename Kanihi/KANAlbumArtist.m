@@ -7,8 +7,6 @@
 //
 
 #import "KANAlbumArtist.h"
-#import "KANConstants.h"
-#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
 

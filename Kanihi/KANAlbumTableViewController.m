@@ -11,8 +11,6 @@
 
 #import "KANAlbumTrackListingTableViewController.h"
 #import "KANAlbum.h"
-#import "KANConstants.h"
-#import "KANUtils.h"
 #import "KANAPI.h"
 #import "UIImageView+AFNetworking.h"
 #import "KANTrack.h"

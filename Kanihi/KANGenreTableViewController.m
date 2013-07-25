@@ -10,9 +10,7 @@
 #import "KANTableViewCell.h"
 
 #import "KANGenre.h"
-#import "KANConstants.h"
 #import "KANAPI.h"
-#import "KANUtils.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface KANGenreTableViewController ()

@@ -13,7 +13,6 @@
 #import "KANDisc.h"
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
-#import "KANUtils.h"
 
 @interface KANAlbumTrackListingTableViewController ()
 

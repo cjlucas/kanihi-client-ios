@@ -7,7 +7,6 @@
 //
 
 #import "KANArtwork.h"
-#import "KANConstants.h"
 
 #import "KANTrack.h"
 #import "NSDictionary+CJExtensions.h"

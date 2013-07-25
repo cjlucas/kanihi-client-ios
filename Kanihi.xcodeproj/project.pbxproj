@@ -48,16 +48,12 @@
 		836782B01799F89300348B6B /* KANMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AE1799F89300348B6B /* KANMainMenuViewController.m */; };
 		836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782B21799FAF100348B6B /* KANMainMenuViewCell.m */; };
 		836782B41799FAF100348B6B /* KANMainMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782B21799FAF100348B6B /* KANMainMenuViewCell.m */; };
-		836782C4179A213900348B6B /* NSString+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C3179A213900348B6B /* NSString+CJExtensions.m */; };
-		836782C5179A213900348B6B /* NSString+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C3179A213900348B6B /* NSString+CJExtensions.m */; };
 		836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */; };
 		836782C9179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */; };
 		836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
 		836782CD179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
 		836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
 		836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
-		83A28124179C6046008D0686 /* UIFont+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28123179C6046008D0686 /* UIFont+CJExtensions.m */; };
-		83A28125179C6046008D0686 /* UIFont+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28123179C6046008D0686 /* UIFont+CJExtensions.m */; };
 		83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
 		83A28212179C9BD9008D0686 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
 		83A28213179C9BD9008D0686 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FE179C9BD9008D0686 /* AFHTTPRequestOperation.m */; };
@@ -166,16 +162,12 @@
 		836782AE1799F89300348B6B /* KANMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANMainMenuViewController.m; sourceTree = "<group>"; };
 		836782B11799FAF100348B6B /* KANMainMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANMainMenuViewCell.h; sourceTree = "<group>"; };
 		836782B21799FAF100348B6B /* KANMainMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANMainMenuViewCell.m; sourceTree = "<group>"; };
-		836782C2179A213900348B6B /* NSString+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSString+CJExtensions.h"; sourceTree = "<group>"; };
-		836782C3179A213900348B6B /* NSString+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/NSString+CJExtensions.m"; sourceTree = "<group>"; };
 		836782C6179A268F00348B6B /* KANAlbumTrackListingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingTableViewController.h; sourceTree = "<group>"; };
 		836782C7179A268F00348B6B /* KANAlbumTrackListingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingTableViewController.m; sourceTree = "<group>"; };
 		836782CA179A477600348B6B /* KANAlbumTrackListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingCell.h; sourceTree = "<group>"; };
 		836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingCell.m; sourceTree = "<group>"; };
 		836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingTableView.h; sourceTree = "<group>"; };
 		836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingTableView.m; sourceTree = "<group>"; };
-		83A28122179C6046008D0686 /* UIFont+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/UIFont+CJExtensions.h"; sourceTree = "<group>"; };
-		83A28123179C6046008D0686 /* UIFont+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/UIFont+CJExtensions.m"; sourceTree = "<group>"; };
 		83A281FB179C9BD9008D0686 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		83A281FC179C9BD9008D0686 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		83A281FD179C9BD9008D0686 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -255,10 +247,6 @@
 		833FF15D178CB6420071195F /* CJUtils */ = {
 			isa = PBXGroup;
 			children = (
-				83A28122179C6046008D0686 /* UIFont+CJExtensions.h */,
-				83A28123179C6046008D0686 /* UIFont+CJExtensions.m */,
-				836782C2179A213900348B6B /* NSString+CJExtensions.h */,
-				836782C3179A213900348B6B /* NSString+CJExtensions.m */,
 				833FF15E178CB6420071195F /* CJLog.h */,
 				833FF15F178CB6420071195F /* CJUtils-Prefix.pch */,
 				833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */,
@@ -588,11 +576,9 @@
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
 				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
 				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
-				83A28124179C6046008D0686 /* UIFont+CJExtensions.m in Sources */,
 				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
 				83A28221179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */,
-				836782C4179A213900348B6B /* NSString+CJExtensions.m in Sources */,
 				83A28217179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
@@ -622,7 +608,6 @@
 				83E31D03179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				83FB7B7B17911081003E56F8 /* CJStringNormalization.m in Sources */,
-				83A28125179C6046008D0686 /* UIFont+CJExtensions.m in Sources */,
 				83A2821E179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				83FB7B7F17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28212179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
@@ -639,7 +624,6 @@
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83BA165E178DE99200BFF856 /* KANAPI.m in Sources */,
 				83A28228179CC15C008D0686 /* KANArtwork.m in Sources */,
-				836782C5179A213900348B6B /* NSString+CJExtensions.m in Sources */,
 				83A28220179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */,
 				83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				836782CD179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,

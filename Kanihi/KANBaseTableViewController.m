@@ -9,7 +9,6 @@
 #import "KANBaseTableViewController.h"
 
 #import "KANTableViewCell.h"
-#import "KANConstants.h"
 #import "KANNavigationController.h"
 
 @interface KANBaseTableViewController ()

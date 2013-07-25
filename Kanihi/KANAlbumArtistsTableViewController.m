@@ -10,10 +10,8 @@
 #import "KANAlbumTableViewController.h"
 #import "KANTableViewCell.h"
 
-#import "KANConstants.h"
 #import "KANAlbumArtist.h"
 #import "KANAPI.h"
-#import "KANUtils.h"
 
 #import "UIImageView+AFNetworking.h"
 

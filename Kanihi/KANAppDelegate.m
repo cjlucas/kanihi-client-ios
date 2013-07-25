@@ -7,7 +7,6 @@
 //
 
 #import "KANAppDelegate.h"
-#import "KANConstants.h"
 #import "KANDataStore.h"
 #import "CJLog.h"
 #import "KANAPI.h"

@@ -9,8 +9,6 @@
 #import "KANDisc.h"
 #import "KANAlbum.h"
 #import "KANTrack.h"
-#import "KANConstants.h"
-#import "KANUtils.h"
 
 #import "NSDictionary+CJExtensions.h"
 

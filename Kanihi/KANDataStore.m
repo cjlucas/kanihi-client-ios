@@ -12,7 +12,6 @@
 
 #import "KANDataStore.h"
 
-#import "KANConstants.h"
 #import "KANAPI.h"
 
 #import "KANTrack.h"
