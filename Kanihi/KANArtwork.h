@@ -14,4 +14,6 @@
 @property (nonatomic, retain) NSNumber *artworkType;
 @property (nonatomic, retain) NSString *artworkDescription;
 
+@property (nonatomic, retain) NSSet *tracks;
+
 @end

@@ -16,8 +16,9 @@
 @dynamic checksum;
 @dynamic artworkType;
 @dynamic artworkDescription;
+@dynamic tracks;
 
-- (NSString *)entityName
++ (NSString *)entityName
 {
     return KANArtworkEntityName;
 }
@@ -28,15 +29,22 @@
     return [NSPredicate predicateWithFormat:@"checksum = %@", [data nonNullObjectForKey:KANTrackUUIDKey]];
 }
 
+- (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
+{
+    self.checksum           = [data nonNullObjectForKey:KANArtworkChecksumKey];
+    self.artworkType        = [data nonNullObjectForKey:KANArtworkTypeKey];
+    self.artworkDescription = [data nonNullObjectForKey:KANArtworkDescriptionKey];
+}
+
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                                      context:(NSManagedObjectContext *)context
 {
-    KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
+    KANArtwork *artwork = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                                     inManagedObjectContext:context];
     
-    [track updateWithData:data context:context];
+    [artwork updateWithData:data context:context];
     
-    return track;
+    return artwork;
 }
 
 @end

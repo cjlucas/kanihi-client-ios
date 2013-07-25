@@ -18,6 +18,7 @@
 #import "KANTrackArtist.h"
 #import "KANDisc.h"
 #import "KANGenre.h"
+#import "KANArtwork.h"
 
 @interface KANDataStore ()
 - (void)handleTrackDatas:(NSArray *)trackDatas;
@@ -84,6 +85,22 @@
         track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
                                           withCache:nil
                                             context:self.backgroundManagedObjectContext];
+        
+        NSMutableSet *artworks = [track mutableSetValueForKey:@"artworks"]; // core data proxy set
+        
+        // ensure artwork isn't already in track.artworks by doing a checksum lookup before adding
+        NSMutableSet *checksums = [[NSMutableSet alloc] initWithCapacity:artworks.count];
+        for (KANArtwork *artwork in artworks)
+            [checksums addObject:[artwork.checksum lowercaseString]];
+        
+        for (NSDictionary *artworkData in trackData[@"track"][KANTrackArtworkKey]) {
+            KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey]
+                                                        withCache:nil
+                                                          context:self.backgroundManagedObjectContext];
+            
+            if (![checksums containsObject:[artwork.checksum lowercaseString]])
+                [artworks addObject:artwork];
+        }
     }
 }
 

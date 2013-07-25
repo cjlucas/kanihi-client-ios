@@ -10,11 +10,15 @@
 #import "KANDataStore.h"
 #import "CJLog.h"
 #import "KANAPI.h"
+#import "KANTrack.h"
+#import "KANArtwork.h"
 
 @implementation KANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
 
     [sud setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
@@ -25,6 +29,15 @@
     KANDataStore *store = [KANDataStore sharedDataStore];
         
     [store updateTracksWithFullUpdate:YES];
+    
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
+    req.fetchLimit = 10;
+    for (KANTrack *track in [store.mainManagedObjectContext executeFetchRequest:req error:nil]) {
+        NSLog(@"%@", track);
+        for (KANArtwork *art in track.artworks) {
+            NSLog(@"%@", art.checksum);
+        }
+    }
     
     // Override point for customization after application launch.
     return YES;

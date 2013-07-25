@@ -21,7 +21,7 @@
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album.artist == $FETCH_SOURCE"/>
         </fetchedProperty>
     </entity>
-    <entity name="Artwork" syncable="YES">
+    <entity name="Artwork" representedClassName="KANArtwork" syncable="YES">
         <attribute name="artworkDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artworkType" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="checksum" attributeType="String" indexed="YES" syncable="YES"/>
@@ -70,10 +70,10 @@
     <elements>
         <element name="Album" positionX="0" positionY="0" width="0" height="0"/>
         <element name="AlbumArtist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Artwork" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Disc" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Track" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TrackArtist" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Artwork" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

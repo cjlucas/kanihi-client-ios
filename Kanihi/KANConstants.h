@@ -50,6 +50,7 @@ NSString * const KANTrackMoodKey;
 NSString * const KANTrackDateKey;
 NSString * const KANTrackOriginalDateKey;
 NSString * const KANTrackSubtitleKey;
+NSString * const KANTrackArtworkKey;
 
 NSString * const KANDiscNameKey;
 NSString * const KANDiscNumKey;
@@ -66,3 +67,7 @@ NSString * const KANTrackArtistNameSortOrderKey;
 
 NSString * const KANGenreNameKey;
 
+NSString * const KANArtworkKey;
+NSString * const KANArtworkChecksumKey;
+NSString * const KANArtworkTypeKey;
+NSString * const KANArtworkDescriptionKey;

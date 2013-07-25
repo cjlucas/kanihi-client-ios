@@ -28,8 +28,11 @@
 @property (nonatomic, retain) NSDate * originalDate;
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSString * uuid;
+
+// relationships
 @property (nonatomic, retain) KANTrackArtist *artist;
 @property (nonatomic, retain) KANDisc *disc;
 @property (nonatomic, retain) KANGenre *genre;
+@property (nonatomic, retain) NSSet *artworks;
 
 @end

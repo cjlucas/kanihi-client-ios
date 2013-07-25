@@ -28,6 +28,7 @@
 @dynamic artist;
 @dynamic disc;
 @dynamic genre;
+@dynamic artworks;
 
 + (NSString *)entityName
 {
