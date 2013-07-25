@@ -13,6 +13,7 @@
 #import "KANDisc.h"
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
+#import "KANUtils.h"
 
 @interface KANAlbumTrackListingTableViewController ()
 
@@ -43,17 +44,27 @@
     
     KANAlbumTrackListingTableView *tableView = (KANAlbumTrackListingTableView *)self.tableView;
     
-    NSString *albumName = self.album.name;
-    NSString *albumArtist = self.album.artist.name;
-    NSString *albumYear = [NSString stringWithFormat:@"(1900)"]; // TODO: write a method for KANAlbum
+    NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] init];
+    NSAttributedString *newLine = [[NSAttributedString alloc] initWithString:@"\n"];
     
-    NSString *albumInfoRaw = [@[albumName, albumArtist, albumYear] componentsJoinedByString:@"\n"];
+    UIFont *headerFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    UIFont *subheaderFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     
-    NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] initWithString:albumInfoRaw];
+    NSAttributedString *albumName = [[NSAttributedString alloc] initWithString:self.album.name attributes:@{NSFontAttributeName : headerFont}];
     
-    [albumInfoString addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14]
-                            range:NSMakeRange(0, self.album.name.length)];
+    NSAttributedString *albumArtist = [[NSAttributedString alloc] initWithString:self.album.artist.name attributes:@{NSFontAttributeName : subheaderFont}];
+    
+    NSAttributedString *albumYear = [[NSAttributedString alloc] initWithString:@"May 03, 2013" attributes:@{NSFontAttributeName : subheaderFont}];
+    
+    NSAttributedString *duration = [[NSAttributedString alloc] initWithString:[KANUtils timecodeForTracks:self.album.tracks withZeroPadding:NO] attributes:@{NSFontAttributeName : subheaderFont}];
+    
+    [albumInfoString appendAttributedString:albumName];
+    [albumInfoString appendAttributedString:newLine];
+    [albumInfoString appendAttributedString:albumArtist];
+    [albumInfoString appendAttributedString:newLine];
+    [albumInfoString appendAttributedString:albumYear];
+    [albumInfoString appendAttributedString:newLine];
+    [albumInfoString appendAttributedString:duration];
     
     tableView.albumInfoLabel.attributedText = [albumInfoString copy];
 }
