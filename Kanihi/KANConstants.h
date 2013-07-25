@@ -37,6 +37,7 @@ NSString * const KANAlbumEntityName;
 NSString * const KANAlbumArtistEntityName;
 NSString * const KANDiscEntityName;
 NSString * const KANGenreEntityName;
+NSString * const KANArtworkEntityName;
 
 // Keys for tracks.json API
 NSString * const KANTrackUUIDKey;

@@ -21,6 +21,12 @@
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Track" predicateString="disc.album.artist == $FETCH_SOURCE"/>
         </fetchedProperty>
     </entity>
+    <entity name="Artwork" syncable="YES">
+        <attribute name="artworkDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artworkType" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="checksum" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="artworks" inverseEntity="Track" syncable="YES"/>
+    </entity>
     <entity name="Disc" representedClassName="KANDisc" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="normalizedName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -50,6 +56,7 @@
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackArtist" inverseName="tracks" inverseEntity="TrackArtist" syncable="YES"/>
+        <relationship name="artworks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artwork" inverseName="tracks" inverseEntity="Artwork" syncable="YES"/>
         <relationship name="disc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disc" inverseName="tracks" inverseEntity="Disc" syncable="YES"/>
         <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Genre" inverseName="tracks" inverseEntity="Genre" syncable="YES"/>
     </entity>
@@ -67,5 +74,6 @@
         <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Track" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TrackArtist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Artwork" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

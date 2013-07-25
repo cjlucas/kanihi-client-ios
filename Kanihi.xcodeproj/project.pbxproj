@@ -78,6 +78,8 @@
 		83A28222179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A2820D179C9BD9008D0686 /* UIImageView+AFNetworking.m */; };
 		83A28223179C9BD9008D0686 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28210179C9BD9008D0686 /* Base64.m */; };
 		83A28224179C9BD9008D0686 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28210179C9BD9008D0686 /* Base64.m */; };
+		83A28227179CC15C008D0686 /* KANArtwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28226179CC15C008D0686 /* KANArtwork.m */; };
+		83A28228179CC15C008D0686 /* KANArtwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28226179CC15C008D0686 /* KANArtwork.m */; };
 		83A4D848179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
 		83A4D849179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
 		83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
@@ -195,6 +197,8 @@
 		83A2820D179C9BD9008D0686 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		83A2820F179C9BD9008D0686 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		83A28210179C9BD9008D0686 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		83A28225179CC15C008D0686 /* KANArtwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANArtwork.h; sourceTree = "<group>"; };
+		83A28226179CC15C008D0686 /* KANArtwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANArtwork.m; sourceTree = "<group>"; };
 		83A4D847179B167E008597E0 /* KANTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KANTableViewCell.xib; sourceTree = "<group>"; };
 		83A4D84A179B17A8008597E0 /* KANTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANTableViewCell.h; sourceTree = "<group>"; };
 		83A4D84B179B17A8008597E0 /* KANTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTableViewCell.m; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
+				83A28225179CC15C008D0686 /* KANArtwork.h */,
+				83A28226179CC15C008D0686 /* KANArtwork.m */,
 				83E44D8A178A15A000CB37C1 /* KANEntity.h */,
 				83E44D8B178A15A000CB37C1 /* KANEntity.m */,
 				83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */,
@@ -570,6 +576,7 @@
 				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83BA165D178DE99200BFF856 /* KANAPI.m in Sources */,
@@ -631,6 +638,7 @@
 				836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83BA165E178DE99200BFF856 /* KANAPI.m in Sources */,
+				83A28228179CC15C008D0686 /* KANArtwork.m in Sources */,
 				836782C5179A213900348B6B /* NSString+CJExtensions.m in Sources */,
 				83A28220179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */,
 				83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,

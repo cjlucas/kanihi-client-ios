@@ -10,22 +10,21 @@
             <objects>
                 <tableViewController storyboardIdentifier="blahid" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o7U-JI-ToJ" customClass="KANAlbumTrackListingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N3e-t1-6Qj" customClass="KANAlbumTrackListingTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="f7W-4k-RAn">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Fw2-kx-XhM">
-                                    <rect key="frame" x="150" y="22" width="150" height="120"/>
+                                    <rect key="frame" x="150" y="14" width="150" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="san-mD-hoG">
-                                    <rect key="frame" x="20" y="22" width="120" height="120"/>
+                                    <rect key="frame" x="20" y="14" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -33,7 +32,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Knu-Pj-xWc" customClass="KANAlbumTrackListingCell">
-                                <rect key="frame" x="0.0" y="185" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="169" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Knu-Pj-xWc" id="92n-fk-eMT">
                                     <rect key="frame" x="0.0" y="0.0" width="322" height="43"/>
@@ -66,6 +65,7 @@
                             <outlet property="delegate" destination="o7U-JI-ToJ" id="FH4-Vm-AB6"/>
                         </connections>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4z-WU-Ize" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
