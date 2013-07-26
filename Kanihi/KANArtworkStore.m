@@ -131,12 +131,20 @@
     
     if (entity == nil)
         return nil;
-    
-    // currently only KANTrack is supported
-    assert(([entity isKindOfClass:[KANTrack class]]));
 
     if ([entity isKindOfClass:[KANTrack class]]) {
         artwork = [[(KANTrack *)entity artworks] anyObject];
+    } else if ([entity respondsToSelector:@selector(tracks)]) {
+        for (KANTrack *track in [entity performSelector:@selector(tracks)]) {
+            for (KANArtwork *art in track.artworks) {
+                if (art.artworkType == 0) {
+                    artwork = art;
+                    break;
+                }
+            }
+            if (artwork)
+                break;
+        }
     }
     
     return artwork;

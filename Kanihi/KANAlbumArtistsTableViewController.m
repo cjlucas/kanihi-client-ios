@@ -13,7 +13,7 @@
 #import "KANAlbumArtist.h"
 #import "KANAPI.h"
 
-#import "UIImageView+AFNetworking.h"
+#import "KANArtworkStore.h"
 
 @class KANAlbum;
 
@@ -63,6 +63,8 @@
     NSAttributedString *trackCount = [KANUtils boldEntityCountStringWithCount:[artist.tracks count]
                                                              withEntityString:@"track"
                                                                      withFont:subtitleFont];
+    
+    [KANArtworkStore attachArtworkFromEntity:artist toImageView:cell.artworkView thumbnail:YES];
     
     cell.detailStrings = @[albumCount, trackCount];
 

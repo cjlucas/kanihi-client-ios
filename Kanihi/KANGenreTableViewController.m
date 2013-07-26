@@ -11,7 +11,7 @@
 
 #import "KANGenre.h"
 #import "KANAPI.h"
-#import "UIImageView+AFNetworking.h"
+#import "KANArtworkStore.h"
 
 @interface KANGenreTableViewController ()
 
@@ -63,8 +63,7 @@
 
 - (void)setArtworkView:(UIImageView *)artworkView withGenre:(KANGenre *)genre
 {
-    KANTrack *track = [genre.tracks anyObject];
-    
+    [KANArtworkStore attachArtworkFromEntity:genre toImageView:artworkView thumbnail:YES];
 }
 
 #pragma mark - UITableViewDataSource methods
