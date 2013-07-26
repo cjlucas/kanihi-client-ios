@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */; };
+		833E568E17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */; };
+		833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E569017A1CAA800E9CE9B /* KANAPI.m */; };
+		833E569217A1CAA800E9CE9B /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E569017A1CAA800E9CE9B /* KANAPI.m */; };
 		833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 833FF161178CB6420071195F /* NSDictionary+CJExtensions.m */; };
 		833FF163178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 833FF161178CB6420071195F /* NSDictionary+CJExtensions.m */; };
 		834302EF1789F13F006EC1A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834302EE1789F13F006EC1A6 /* Foundation.framework */; };
@@ -82,8 +86,6 @@
 		83A4D84D179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
 		83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
 		83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
-		83BA165D178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
-		83BA165E178DE99200BFF856 /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BA165C178DE99200BFF856 /* KANAPI.m */; };
 		83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
 		83E31CFF179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
 		83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */; };
@@ -114,6 +116,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		833E568B17A1AF2400E9CE9B /* KANArtworkStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANArtworkStore.h; sourceTree = "<group>"; };
+		833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANArtworkStore.m; sourceTree = "<group>"; };
+		833E568F17A1CAA800E9CE9B /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
+		833E569017A1CAA800E9CE9B /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
 		833FF15E178CB6420071195F /* CJLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJLog.h; sourceTree = "<group>"; };
 		833FF15F178CB6420071195F /* CJUtils-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJUtils-Prefix.pch"; sourceTree = "<group>"; };
 		833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CJExtensions.h"; sourceTree = "<group>"; };
@@ -196,8 +202,6 @@
 		83A4D84B179B17A8008597E0 /* KANTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTableViewCell.m; sourceTree = "<group>"; };
 		83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANLabelContainerView.h; sourceTree = "<group>"; };
 		83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANLabelContainerView.m; sourceTree = "<group>"; };
-		83BA165B178DE99200BFF856 /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
-		83BA165C178DE99200BFF856 /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
 		83E31CFC179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumArtistsTableViewController.h; sourceTree = "<group>"; };
 		83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumArtistsTableViewController.m; sourceTree = "<group>"; };
 		83E31D00179640E200A6EAF7 /* KANAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTableViewController.h; sourceTree = "<group>"; };
@@ -299,10 +303,12 @@
 		834302F41789F13F006EC1A6 /* Kanihi */ = {
 			isa = PBXGroup;
 			children = (
+				833E568B17A1AF2400E9CE9B /* KANArtworkStore.h */,
+				833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */,
+				833E568F17A1CAA800E9CE9B /* KANAPI.h */,
+				833E569017A1CAA800E9CE9B /* KANAPI.m */,
 				835B00311791C22700E07A71 /* KANUtils.h */,
 				835B00321791C22700E07A71 /* KANUtils.m */,
-				83BA165B178DE99200BFF856 /* KANAPI.h */,
-				83BA165C178DE99200BFF856 /* KANAPI.m */,
 				83433384178BE1D400CC985D /* KANConstants.h */,
 				83433385178BE1D400CC985D /* KANConstants.m */,
 				834302FD1789F13F006EC1A6 /* KANAppDelegate.h */,
@@ -567,12 +573,12 @@
 				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
-				83BA165D178DE99200BFF856 /* KANAPI.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */,
 				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
+				833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
 				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
 				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
@@ -580,6 +586,7 @@
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
 				83A28221179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */,
 				83A28217179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
+				833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
@@ -619,10 +626,10 @@
 				8343031A1789F13F006EC1A6 /* KanihiTests.m in Sources */,
 				83A28224179C9BD9008D0686 /* Base64.m in Sources */,
 				835B00341791C22700E07A71 /* KANUtils.m in Sources */,
+				833E568E17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
 				83A28218179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
 				836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
-				83BA165E178DE99200BFF856 /* KANAPI.m in Sources */,
 				83A28228179CC15C008D0686 /* KANArtwork.m in Sources */,
 				83A28220179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */,
 				83A4D877179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
@@ -632,6 +639,7 @@
 				836782B41799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				836782B01799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				83FB7B7D17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
+				833E569217A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				83A4D84D179B17A8008597E0 /* KANTableViewCell.m in Sources */,
 				83A2821A179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
