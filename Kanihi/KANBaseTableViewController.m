@@ -48,11 +48,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // customize table
+    
+    // prevent toolbar from overlapping the last cell
+//    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.navigationController.toolbar.frame.size.height)];
     self.tableView.rowHeight = 100;
     [self.tableView registerNib:[UINib nibWithNibName:@"KANTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"KANTableViewCell"];
-    
     NSError *error;
     [self.resultsController performFetch:&error];
     
@@ -170,16 +172,28 @@
     return [self.resultsController sectionForSectionIndexTitle:title atIndex:index];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+//#pragma mark - UIScrollViewDelegate methods
+//
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+//{
+//    NSLog(@"will end dragging");
+//    NSLog(@"velocity: (%f,%f)", velocity.x, velocity.y);
+//    NSLog(@"target offset: (%f,%f)", targetContentOffset->x, targetContentOffset->y);
+//    
+//    if (velocity.y  == 0) // when user taps to stop scrolling
+//        [self.navigationController setToolbarHidden:NO animated:YES];
+//    else if (velocity.y > 0) // scrolling downward
+//        [self.navigationController setToolbarHidden:YES animated:NO];
+//    else // scrolling upward
+//        [self.navigationController setToolbarHidden:NO animated:NO];
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//    NSLog(@"did end decelerating");
+//    [self.navigationController setToolbarHidden:NO animated:YES];
+//}
 
- */
 
 @end
