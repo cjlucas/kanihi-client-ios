@@ -65,9 +65,6 @@
                                                                      withFont:subtitleFont];
     
     cell.detailStrings = @[albumCount, trackCount];
-    
-    [cell.artworkView setImageWithURLRequest:[KANAPI artworkRequestForTrack:artist.tracks[0] withHeight:160]
-                            placeholderImage:nil success:nil failure:nil];
 
     return cell;
 }

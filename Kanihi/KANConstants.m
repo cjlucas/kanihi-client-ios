@@ -16,9 +16,10 @@ NSString * const KANUserDefaultsAuthUserKey     = @"authUser";
 NSString * const KANUserDefaultsAuthPassKey     = @"authPass";
 
 // API
-NSString * const KANAPITracksPath   = @"/tracks.json";
-NSString * const KANAPIDeletedTracksPath = @"/tracks/deleted.json";
-NSString * const KANAPIServerInfoPath = @"/info.json";
+NSString * const KANAPITracksPath           = @"tracks.json";
+NSString * const KANAPIDeletedTracksPath    = @"tracks/deleted.json";
+NSString * const KANAPIServerInfoPath       = @"info.json";
+NSString * const KANAPIArtworkPath          = @"images";
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;

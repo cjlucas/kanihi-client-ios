@@ -1,58 +1,90 @@
 //
-//  KANAPI.m
+//  KANAPINew.m
 //  Kanihi
 //
-//  Created by Chris Lucas on 7/10/13.
+//  Created by Chris Lucas on 7/25/13.
 //  Copyright (c) 2013 Chris Lucas. All rights reserved.
 //
 
 #import "KANAPI.h"
-#import "KANTrack.h"
 
-#import "Base64.h"
 #import "NSDateFormatter+CJExtensions.h"
+#import "KANArtwork.h"
+#import "KANTrack.h"
 
 @interface KANAPI ()
 
-+ (NSString *)host;
++ (NSURL *)apiBaseURL;
 
-// think of a better name for this
-+ (NSMutableURLRequest *)authenticatedRequest;
+- (NSString *)artworkPathWithArtwork:(KANArtwork *)artwork;
 
 @end
+
 @implementation KANAPI
 
-+ (NSString *)host
++ (KANAPI *)sharedClient
 {
-    NSString *host = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsHostKey];
-    NSInteger port = [[NSUserDefaults standardUserDefaults] integerForKey:KANUserDefaultsPortKey];
+    static KANAPI *_sharedClient = nil;
+    
+    if (!_sharedClient) {
+        _sharedClient = [[KANAPI alloc] initWithBaseURL:[self apiBaseURL]];
+        
+        NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
+        NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
+        
+        if (authUser && authPass)
+            [_sharedClient setAuthorizationHeaderWithUsername:authUser password:authPass];
+    }
+    
+    return _sharedClient;
+}
+
++ (NSURL *)apiBaseURL
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *host = [ud stringForKey:KANUserDefaultsHostKey];
+    NSInteger port = [ud integerForKey:KANUserDefaultsPortKey];
     
     assert(host != nil);
     assert(port > 0);
     
-    return [NSString stringWithFormat:@"%@:%d", host, port];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d", host, port]];
 }
 
-+ (NSMutableURLRequest *)authenticatedRequest
+- (NSString *)artworkPathWithArtwork:(KANArtwork *)artwork
 {
-    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] init];
-    NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
-    NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
+    return [NSString stringWithFormat:@"%@/%@", KANAPIArtworkPath, artwork.checksum];
+}
+
++ (void)performDownloadForArtwork:(KANArtwork *)artwork
+                       withHeight:(NSUInteger)height
+            withCompletionHandler:(void(^)(NSData *data))handler
+{
+    KANAPI *client = [KANAPI sharedClient];
+    NSString *artworkPath = [client artworkPathWithArtwork:artwork];
     
-    if (authUser != nil && authPass != nil) {
-        NSString *authBase64 = [[NSString stringWithFormat:@"%@:%@", authUser, authPass] base64EncodedString];
-        
-        [req addValue:[NSString stringWithFormat:@"Basic %@", authBase64] forHTTPHeaderField:@"Authorization"];
-    }
+    NSMutableURLRequest *req = [client requestWithMethod:@"GET" path:artworkPath parameters:nil];
+
+    if (height > 0)
+        [req addValue:[NSString stringWithFormat:@"%d", height] forHTTPHeaderField:@"Image-Resize-Height"];
     
-    return req;
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject ) {
+        if (handler)
+            handler(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    
+    [op start];
 }
 
 + (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
                                   SQLOffset:(NSUInteger)offset
                               LastUpdatedAt:(NSDate *)lastUpdatedAt
 {
-    NSMutableURLRequest *req = [self authenticatedRequest];
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPITracksPath parameters:nil];
     
     NSString *limitString = [NSString stringWithFormat:@"%d", limit];
     NSString *offsetString = [NSString stringWithFormat:@"%d", offset];
@@ -63,61 +95,39 @@
     [req addValue:offsetString forHTTPHeaderField:@"SQL-Offset"];
     [req addValue:lastUpdatedAtString forHTTPHeaderField:@"Last-Updated-At"];
     
-    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:KANAPITracksPath];
     NSLog(@"%@", req);
-    return [req copy];
-}
-
-+ (NSURLRequest *)artworkRequestForTrack:(KANTrack *)track
-                              withHeight:(NSUInteger)height
-{
-    NSMutableURLRequest *req = [self authenticatedRequest];
-    
-    NSString *uuid = track.uuid;
-    NSString *artworkPath = [NSString stringWithFormat:@"/tracks/%@/artwork", uuid];
-    
-    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:artworkPath];
-    
-    if (height > 0) {
-        NSString *heightString = [NSString stringWithFormat:@"%d", height];
-        [req addValue:heightString forHTTPHeaderField:@"Image-Resize-Height"];
-    }
-    //NSLog(@"%@", req);
     return [req copy];
 }
 
 +(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks
 {
     NSError *error;
-
+    
     // build array of track uuids for api
     NSMutableArray *trackUUIDs = [[NSMutableArray alloc] initWithCapacity:[currentTracks count]];
     
     for (KANTrack *track in currentTracks) {
         [trackUUIDs addObject:track.uuid];
     }
-
+    
     NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{@"current_tracks" : trackUUIDs} options:0 error:&error];
     
     
-    NSMutableURLRequest *req = [self authenticatedRequest];
-    req.HTTPMethod = @"POST";
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
     req.HTTPBody = trackData;
-    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:KANAPIDeletedTracksPath];
     
     // process returned data
     NSData *returnedData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
     
     NSDictionary *deletedTracks = [NSJSONSerialization JSONObjectWithData:returnedData options:0 error:&error];
-
+    
     return deletedTracks[@"deleted_tracks"];
 }
 
 + (NSDictionary *)serverInfo
 {
     NSError *error;
-    NSMutableURLRequest *req = [self authenticatedRequest];
-    req.URL = [[NSURL alloc] initWithScheme:@"http" host:[self host] path:KANAPIServerInfoPath];
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPIServerInfoPath parameters:nil];
     
     NSData *responseData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
     

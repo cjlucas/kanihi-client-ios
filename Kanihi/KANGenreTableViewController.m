@@ -65,7 +65,6 @@
 {
     KANTrack *track = [genre.tracks anyObject];
     
-    [artworkView setImageWithURLRequest:[KANAPI artworkRequestForTrack:track withHeight:160] placeholderImage:nil success:nil failure:nil];
 }
 
 #pragma mark - UITableViewDataSource methods

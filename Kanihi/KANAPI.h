@@ -1,26 +1,30 @@
 //
-//  KANAPI.h
+//  KANAPINew.h
 //  Kanihi
 //
-//  Created by Chris Lucas on 7/10/13.
+//  Created by Chris Lucas on 7/25/13.
 //  Copyright (c) 2013 Chris Lucas. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
-@class KANTrack;
+@class KANArtwork;
 
-@interface KANAPI : NSObject
+@interface KANAPI : AFHTTPClient
 
-+ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
-                                  SQLOffset:(NSUInteger)offset
-                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
++ (KANAPI *)sharedClient;
 
 /*
  * if height is zero, full image will be requested
  */
-+ (NSURLRequest *)artworkRequestForTrack:(KANTrack *)track
-                              withHeight:(NSUInteger)height;
++ (void)performDownloadForArtwork:(KANArtwork *)artwork
+                       withHeight:(NSUInteger)height
+            withCompletionHandler:(void(^)(NSData *data))handler;
+
+
++ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
+                                  SQLOffset:(NSUInteger)offset
+                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
 
 + (NSDictionary *)serverInfo;
 + (NSDate *)serverTime;

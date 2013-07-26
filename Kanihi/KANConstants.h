@@ -15,10 +15,11 @@ NSString * const KANUserDefaultsPortKey;
 NSString * const KANUserDefaultsAuthUserKey;
 NSString * const KANUserDefaultsAuthPassKey;
 
-// API
+// API (relative paths)
 NSString * const KANAPITracksPath;
 NSString * const KANAPIDeletedTracksPath;
 NSString * const KANAPIServerInfoPath;
+NSString * const KANAPIArtworkPath;
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit;
