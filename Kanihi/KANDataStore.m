@@ -136,15 +136,18 @@
     }
     
     NSLog(@"using lastUpdated: %@", lastUpdated);
-    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
 
     while (YES) {
         @autoreleasepool {
+            NSTimeInterval start = [[NSDate date] timeIntervalSince1970]; // benchmark
+            
             NSLog(@"offset: %d", offset);
             NSArray *trackDatas = [KANAPI trackDataWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset lastUpdatedAt:lastUpdated];
-            
             [self handleTrackDatas:trackDatas];
-            [self.backgroundManagedObjectContext save:nil];
+            
+            NSError *error;
+            [self.backgroundManagedObjectContext save:&error];
+            NSLog(@"%@", error);
             
             if ([trackDatas count] < KANDataStoreFetchLimit) {
                 NSLog(@"fetch limit is %d but trackDatas count is %d", KANDataStoreFetchLimit, [trackDatas count]);
