@@ -30,6 +30,10 @@ NSString * const KANDataStoreDidBeginUpdatingNotification   = @"KANDataStoreDidB
 NSString * const KANDataStoreWillFinishUpdatingNotification = @"KANDataStoreWillFinishUpdatingNotification";
 NSString * const KANDataStoreDidFinishUpdatingNotification  = @"KANDataStoreDidFinishUpdatingNotification";
 
+// KANArtworkStore
+NSString * const KANArtworkStoreThumbnailDirectoryName  = @"thumbs";
+NSString * const KANArtworkStoreFullSizeDirectoryName   = @"fullsize";
+
 // Model Entity Names
 NSString * const KANTrackEntityName         = @"Track";
 NSString * const KANTrackArtistEntityName   = @"TrackArtist";

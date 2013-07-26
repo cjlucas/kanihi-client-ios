@@ -16,6 +16,8 @@
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
 
+#import "KANArtworkStore.h"
+
 @interface KANAlbumTableViewController ()
 
 - (id)mainStringForCell:(KANTableViewCell *)cell
@@ -87,10 +89,7 @@
 - (void)setArtworkView:(UIImageView *)artworkView withAlbum:(KANAlbum *)album
 {
     KANTrack *track = [album.tracks lastObject];
-    if (track) {
-        [artworkView setImageWithURLRequest:[KANAPI artworkRequestForTrack:track withHeight:160]
-                           placeholderImage:nil success:nil failure:nil];
-    }
+    [KANArtworkStore attachArtworkFromEntity:track toImageView:artworkView thumbnail:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
