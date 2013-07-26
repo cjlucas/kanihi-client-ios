@@ -44,6 +44,7 @@
 		835B00341791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
 		835B00391791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
+		8361467017A30FA700984C26 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361466F17A30FA700984C26 /* SystemConfiguration.framework */; };
 		836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
 		836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
 		836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AA1799E0D500348B6B /* KANNavigationController.m */; };
@@ -160,6 +161,7 @@
 		835B00321791C22700E07A71 /* KANUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUtils.m; sourceTree = "<group>"; };
 		835B00361791C7E900E07A71 /* KANBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANBaseTableViewController.h; sourceTree = "<group>"; };
 		835B00371791C7E900E07A71 /* KANBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANBaseTableViewController.m; sourceTree = "<group>"; };
+		8361466F17A30FA700984C26 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		836782A51799DC7E00348B6B /* KANGenreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANGenreTableViewController.h; sourceTree = "<group>"; };
 		836782A61799DC7E00348B6B /* KANGenreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenreTableViewController.m; sourceTree = "<group>"; };
 		836782A91799E0D500348B6B /* KANNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANNavigationController.h; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8361467017A30FA700984C26 /* SystemConfiguration.framework in Frameworks */,
 				83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */,
 				834302F11789F13F006EC1A6 /* CoreGraphics.framework in Frameworks */,
 				834302F31789F13F006EC1A6 /* UIKit.framework in Frameworks */,
@@ -291,6 +294,7 @@
 		834302ED1789F13F006EC1A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8361466F17A30FA700984C26 /* SystemConfiguration.framework */,
 				83E44D88178A0D7A00CB37C1 /* CoreData.framework */,
 				834302EE1789F13F006EC1A6 /* Foundation.framework */,
 				834302F01789F13F006EC1A6 /* CoreGraphics.framework */,
