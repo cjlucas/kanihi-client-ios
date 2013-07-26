@@ -126,7 +126,6 @@
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
     
     NSUInteger offset = 0;
-    NSError *error;
     
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
     NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
@@ -137,24 +136,12 @@
     }
     
     NSLog(@"using lastUpdated: %@", lastUpdated);
-    
+    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
+
     while (YES) {
         @autoreleasepool {
-            NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
             NSLog(@"offset: %d", offset);
-            NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit
-                                                        SQLOffset:offset
-                                                    LastUpdatedAt:lastUpdated];
-            
-            NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-            
-            //        if (error != nil) {
-            //            CJLog(@"NSURLConnection Error: %s", @"");
-            //        }
-            
-            NSArray *trackDatas = [NSJSONSerialization JSONObjectWithData:data
-                                                                  options:0
-                                                                    error:nil];
+            NSArray *trackDatas = [KANAPI trackDataWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset lastUpdatedAt:lastUpdated];
             
             [self handleTrackDatas:trackDatas];
             [self.backgroundManagedObjectContext save:nil];

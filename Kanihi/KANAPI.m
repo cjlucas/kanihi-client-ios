@@ -18,6 +18,9 @@
 
 - (NSString *)artworkPathWithArtwork:(KANArtwork *)artwork;
 
++ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
+                                  SQLOffset:(NSUInteger)offset
+                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
 @end
 
 @implementation KANAPI
@@ -97,6 +100,29 @@
     
     NSLog(@"%@", req);
     return [req copy];
+}
+
++ (NSArray *)trackDataWithSQLLimit:(NSUInteger)limit
+                         SQLOffset:(NSUInteger)offset
+                     lastUpdatedAt:(NSDate *)lastUpdatedAt
+{
+    NSError *error;
+    NSURLRequest *req = [self tracksRequestWithSQLLimit:limit SQLOffset:offset LastUpdatedAt:lastUpdatedAt];
+
+    NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return nil;
+    }
+    error = nil;
+    
+    NSArray *trackData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return nil;
+    }
+    
+    return trackData;
 }
 
 +(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks

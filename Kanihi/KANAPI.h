@@ -22,9 +22,11 @@
             withCompletionHandler:(void(^)(NSData *data))handler;
 
 
-+ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
-                                  SQLOffset:(NSUInteger)offset
-                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
+
+
++ (NSArray *)trackDataWithSQLLimit:(NSUInteger)limit
+                         SQLOffset:(NSUInteger)offset
+                     lastUpdatedAt:(NSDate *)lastUpdatedAt;
 
 + (NSDictionary *)serverInfo;
 + (NSDate *)serverTime;
