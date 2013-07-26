@@ -14,7 +14,6 @@
 #import "KANTrack.h"
 
 @interface KANArtworkStore ()
-
 + (BOOL)thumbnailExistsForArtwork:(KANArtwork *)artwork;
 + (BOOL)fullSizeExistsForArtwork:(KANArtwork *)artwork;
 
@@ -36,6 +35,17 @@
 @end
 
 @implementation KANArtworkStore
+
++ (NSCache *)sharedCache
+{
+    static NSCache *_sharedArtworkCache = nil;
+    if (!_sharedArtworkCache) {
+        _sharedArtworkCache = [[NSCache alloc] init];
+        _sharedArtworkCache.name = @"SharedArtworkCache";
+    }
+    
+    return _sharedArtworkCache;
+}
 
 + (NSUInteger)fullSizeImageHeight
 {
@@ -141,10 +151,15 @@
     if (artwork == nil)
         return;
     
-    UIImage *image = thumbnail ? [self loadThumbnailImageForArtwork:artwork] : [self loadFullSizeImageForArtwork:artwork];
+    UIImage *image = [[self sharedCache] objectForKey:artwork.checksum];
+    
+    // load from disk if image not in cache
+    if (!image)
+        image = thumbnail ? [self loadThumbnailImageForArtwork:artwork] : [self loadFullSizeImageForArtwork:artwork];
     
     if (image) {
         view.image = image;
+        [[self sharedCache] setObject:image forKey:artwork.checksum];
         
     } else {
         // probably not the best idea to blindly multiply the height by two. But it's fine for now as we're only supporting retina iPhones
@@ -157,6 +172,7 @@
                 [self saveFullSizeImage:data forArtwork:artwork];
     
             view.image = [UIImage imageWithData:data];
+            [[self sharedCache] setObject:view.image forKey:artwork.checksum];
         }];
     }
 }
