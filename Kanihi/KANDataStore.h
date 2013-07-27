@@ -13,7 +13,6 @@
 
 + (KANDataStore *)sharedDataStore;
 - (void)updateTracksWithFullUpdate:(BOOL)fullUpdate;
-- (void)deleteOldTracks;
 
 @property (readonly) NSManagedObjectContext *mainManagedObjectContext;
 

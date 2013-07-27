@@ -17,9 +17,14 @@ NSString * const KANUserDefaultsAuthPassKey     = @"authPass";
 
 // API
 NSString * const KANAPITracksPath           = @"tracks.json";
+NSString * const KANAPITrackCountPath       = @"tracks/count.json";
+NSString * const KANAPITrackCountKey        = @"track_count";
 NSString * const KANAPIDeletedTracksPath    = @"tracks/deleted.json";
 NSString * const KANAPIServerInfoPath       = @"info.json";
 NSString * const KANAPIArtworkPath          = @"images";
+
+NSString * const KANAPIServerDidBecomeAvailableNotification     = @"KANAPIServerDidBecomeAvailableNotification";
+NSString * const KANAPIServerDidBecomeUnavailableNotification   = @"KANAPIServerDidBecomeUnavailableNotification";
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;

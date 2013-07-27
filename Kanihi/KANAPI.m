@@ -18,9 +18,6 @@
 
 - (NSString *)artworkPathWithArtwork:(KANArtwork *)artwork;
 
-+ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
-                                  SQLOffset:(NSUInteger)offset
-                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
 - (void)setup;
 + (void)handleServerReachabilityStatusChange:(AFNetworkReachabilityStatus)status;
 @end
@@ -125,34 +122,10 @@
     [req addValue:offsetString forHTTPHeaderField:@"SQL-Offset"];
     [req addValue:lastUpdatedAtString forHTTPHeaderField:@"Last-Updated-At"];
     
-    NSLog(@"%@", req);
     return [req copy];
 }
 
-+ (NSArray *)trackDataWithSQLLimit:(NSUInteger)limit
-                         SQLOffset:(NSUInteger)offset
-                     lastUpdatedAt:(NSDate *)lastUpdatedAt
-{
-    NSError *error;
-    NSURLRequest *req = [self tracksRequestWithSQLLimit:limit SQLOffset:offset LastUpdatedAt:lastUpdatedAt];
-
-    NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-    if (error) {
-        NSLog(@"%@", error);
-        return nil;
-    }
-    error = nil;
-    
-    NSArray *trackData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    if (error) {
-        NSLog(@"%@", error);
-        return nil;
-    }
-    
-    return trackData;
-}
-
-+(NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks
++ (NSURLRequest *)deletedTracksRequestFromCurrentTracks:(NSArray *)currentTracks
 {
     NSError *error;
     
@@ -164,17 +137,16 @@
     }
     
     NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{@"current_tracks" : trackUUIDs} options:0 error:&error];
+    NSMutableURLRequest *req = nil;
     
-    
-    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
-    req.HTTPBody = trackData;
-    
-    // process returned data
-    NSData *returnedData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
-    
-    NSDictionary *deletedTracks = [NSJSONSerialization JSONObjectWithData:returnedData options:0 error:&error];
-    
-    return deletedTracks[@"deleted_tracks"];
+    if (error) {
+        CJLog(@"Error while serializing current tracks", nil);
+    } else {
+        req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
+        req.HTTPBody = trackData;
+    }
+
+    return [req copy];
 }
 
 + (NSDictionary *)serverInfo
@@ -183,6 +155,11 @@
     NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPIServerInfoPath parameters:nil];
     
     NSData *responseData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+    
+    if (error) {
+        CJLog(@"%@", error);
+        return nil;
+    }
     
     NSDictionary *serverInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
     
@@ -199,6 +176,50 @@
     }
     
     return serverTime;
+}
+
++ (NSUInteger)trackCountWithLastUpdatedAt:(NSDate *)lastUpdatedAt
+{
+    NSError *error;
+    NSUInteger trackCount = 0;
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPITrackCountPath parameters:nil];
+    
+    if (lastUpdatedAt)
+        [req addValue:lastUpdatedAt.description forHTTPHeaderField:@"Last-Updated-At"];
+    
+    NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
+    
+    if (error) {
+        CJLog(@"%@", error);
+    } else {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        trackCount = [(NSNumber *)json[KANAPITrackCountKey] integerValue];
+    }
+    
+    return trackCount;
+}
+
++ (void)checkConnectabilityWithCompletionHandler:(void (^)(KANAPIConnectability))handler
+{
+    assert(handler != nil);
+    KANAPI *client = [self sharedClient];
+    
+    NSMutableURLRequest *req = [client requestWithMethod:@"GET" path:nil parameters:nil];
+    req.timeoutInterval = 5;
+    
+    AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"testConnectability successful");
+        handler(KANAPIConnectabilityConnectable);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //NSLog(@"testConnectability failed: %@", error);
+        
+        if (operation.response.statusCode == 401)
+            handler(KANAPIConnectabilityRequiresAuthentication);
+        else
+            handler(KANAPIConnectabilityNotConnectable);
+    }];
+    
+    [op start];
 }
 
 @end

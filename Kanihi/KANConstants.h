@@ -17,9 +17,14 @@ NSString * const KANUserDefaultsAuthPassKey;
 
 // API (relative paths)
 NSString * const KANAPITracksPath;
+NSString * const KANAPITrackCountPath;
+NSString * const KANAPITrackCountKey; // key for the returned json object
 NSString * const KANAPIDeletedTracksPath;
 NSString * const KANAPIServerInfoPath;
 NSString * const KANAPIArtworkPath;
+
+NSString * const KANAPIServerDidBecomeAvailableNotification;
+NSString * const KANAPIServerDidBecomeUnavailableNotification;
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit;

@@ -21,12 +21,16 @@
 #import "KANArtwork.h"
 
 @interface KANDataStore ()
+
+- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
 - (void)handleTrackDatas:(NSArray *)trackDatas;
+- (void)deleteTracksWithUUIDArray:(NSArray *)uuids;
+- (NSArray *)allTracks; // returns a batched core data proxy array
+
 - (void)postNotification:(NSString *)notification;
 - (void)postNotificationHelper:(NSString *)notification;
-- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
-- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
 
+- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
 
 @property (readonly) NSManagedObjectContext *backgroundManagedObjectContext;
 @property (readonly) NSManagedObjectModel *managedObjectModel;
@@ -125,9 +129,12 @@
     [self postNotification:KANDataStoreWillBeginUpdatingNotification];
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
     
-    NSUInteger offset = 0;
-    
+    __block BOOL updateSuccessful = YES;
+    KANAPI *client = [KANAPI sharedClient];
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
+    
+    // Get last updated date, default to 1970 if no date is saved or full update was requested
+    
     NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
     NSDate *newLastUpdated = [KANAPI serverTime];
     
@@ -135,41 +142,89 @@
         lastUpdated = [NSDate dateWithTimeIntervalSince1970:0];
     }
     
-    NSLog(@"using lastUpdated: %@", lastUpdated);
-
-    while (YES) {
-        @autoreleasepool {
-            NSTimeInterval start = [[NSDate date] timeIntervalSince1970]; // benchmark
-            
-            NSLog(@"offset: %d", offset);
-            NSArray *trackDatas = [KANAPI trackDataWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset lastUpdatedAt:lastUpdated];
-            [self handleTrackDatas:trackDatas];
-            
-            NSError *error;
-            [self.backgroundManagedObjectContext save:&error];
-            NSLog(@"%@", error);
-            
-            if ([trackDatas count] < KANDataStoreFetchLimit) {
-                NSLog(@"fetch limit is %d but trackDatas count is %d", KANDataStoreFetchLimit, [trackDatas count]);
-                break;
-            } else {
-                offset += [trackDatas count];
-            }
-            
-            NSLog(@"Loop execution time: %f", [[NSDate date] timeIntervalSince1970] - start);
-        }
+    CJLog(@"using lastUpdated: %@", lastUpdated);
+    
+    
+    // Add/Update tracks
+    
+    NSUInteger offset = 0;
+    NSUInteger trackCount = [KANAPI trackCountWithLastUpdatedAt:lastUpdated];
+    
+    CJLog(@"track count since last update: %d", trackCount);
+    
+    NSMutableArray *operations = [[NSMutableArray alloc] initWithCapacity:((trackCount / KANDataStoreFetchLimit) * 2)];
+    
+    while (offset < trackCount) {
+        NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset LastUpdatedAt:lastUpdated];
+        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *trackData) {
+            CJLog(@"trackData count: %d", [trackData count]);
+            [self handleTrackDatas:trackData];
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            CJLog(@"%@", error);
+            updateSuccessful = NO;
+        }];
+        
+        [operations addObject:op];
+        offset += KANDataStoreFetchLimit;
     }
     
-    [self deleteOldTracks];
+    // Delete old tracks
     
-    [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
-    [sud synchronize];
+    NSURLRequest *req = [KANAPI deletedTracksRequestFromCurrentTracks:[self allTracks]];
     
-    [self postNotification:KANDataStoreWillFinishUpdatingNotification];
-    [self postNotification:KANDataStoreDidFinishUpdatingNotification];
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *uuids) {
+        [self deleteTracksWithUUIDArray:uuids];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        CJLog(@"%@", error);
+        updateSuccessful = NO;
+    }];
+    
+    [operations addObject:op];
+    
+    // Process operations
+    
+    NSDate *startDate = [NSDate date];
+    [client enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        CJLog(@"progress: %d - %d", numberOfFinishedOperations, totalNumberOfOperations);
+        NSError *error;
+        [self.backgroundManagedObjectContext save:&error];
+        if (error)
+            CJLog(@"%@", error);
+    } completionBlock:^(NSArray *operations) {
+        CJLog(@"%@", updateSuccessful ? @"update was successful" : @"update wasn't successful");
+        
+        if (updateSuccessful) {
+            [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
+            [sud synchronize];
+        }
+
+        [self postNotification:KANDataStoreWillFinishUpdatingNotification];
+        [self postNotification:KANDataStoreDidFinishUpdatingNotification];
+        
+        CJLog(@"total update time: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
+    }];
 }
 
-- (void)deleteOldTracks
+- (void)deleteTracksWithUUIDArray:(NSArray *)uuids
+{
+    NSManagedObjectContext *moc = [self managedObjectContextForThread:[NSThread currentThread]];
+    NSError *error;
+
+    // fetch old tracks
+    NSFetchRequest *deletedTracksReq = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid in %@", uuids];
+    deletedTracksReq.predicate = predicate;
+    NSArray *deletedTracks = [moc executeFetchRequest:deletedTracksReq error:&error];
+    
+    CJLog(@"deletedTracks count: %d", [deletedTracks count]);
+    
+    // delete old tracks
+    for (NSManagedObject *deletedTrack in deletedTracks) {
+        [moc deleteObject:deletedTrack];
+    }
+}
+
+- (NSArray *)allTracks
 {
     NSManagedObjectContext *moc = [self managedObjectContextForThread:[NSThread currentThread]];
     
@@ -178,23 +233,15 @@
     allTracksReq.fetchBatchSize = 100;
     
     NSError *error;
-    NSArray *tracks = [moc executeFetchRequest:allTracksReq error:&error];
+    NSArray *tracks = nil;
     
-    // get old tracks
-    NSArray *oldTracks = [KANAPI deletedTracksFromCurrentTracks:tracks];
-    
-    NSFetchRequest *deletedTracksReq = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid in %@", oldTracks];
-    deletedTracksReq.predicate = predicate;
-    
-    NSArray *deletedTracks = [moc executeFetchRequest:deletedTracksReq error:&error];
-    NSLog(@"deletedTracks count: %d", [deletedTracks count]);
-    // delete old tracks
-    for (NSManagedObject *deletedTrack in deletedTracks) {
-        [moc deleteObject:deletedTrack];
+    if (error) {
+        CJLog(@"%@", error);
+    } else {
+        tracks = [moc executeFetchRequest:allTracksReq error:&error];
     }
     
-    [moc save:&error];
+    return tracks;
 }
 
 

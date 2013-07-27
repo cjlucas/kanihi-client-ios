@@ -28,11 +28,11 @@ typedef NS_ENUM(NSUInteger, KANAPIConnectability) {
             withCompletionHandler:(void(^)(NSData *data))handler;
 
 
++ (NSUInteger)trackCountWithLastUpdatedAt:(NSDate *)lastUpdatedAt; // synchronous
 
-
-+ (NSArray *)trackDataWithSQLLimit:(NSUInteger)limit
-                         SQLOffset:(NSUInteger)offset
-                     lastUpdatedAt:(NSDate *)lastUpdatedAt;
++ (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
+                                  SQLOffset:(NSUInteger)offset
+                              LastUpdatedAt:(NSDate *)lastUpdatedAt;
 
 + (NSDictionary *)serverInfo;
 + (NSDate *)serverTime;
@@ -41,7 +41,8 @@ typedef NS_ENUM(NSUInteger, KANAPIConnectability) {
  * input: an array of KANTrack objects
  * returns: an array of track uuids to be deleted
  */
-+ (NSArray *)deletedTracksFromCurrentTracks:(NSArray *)currentTracks;
++ (NSURLRequest *)deletedTracksRequestFromCurrentTracks:(NSArray *)currentTracks;
+
 /*
  * This method assumes the network is reachable, should only be used for checking user's host/port/user/pass settings
  */
