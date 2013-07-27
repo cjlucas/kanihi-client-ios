@@ -21,6 +21,8 @@
 + (NSURLRequest *)tracksRequestWithSQLLimit:(NSUInteger)limit
                                   SQLOffset:(NSUInteger)offset
                               LastUpdatedAt:(NSDate *)lastUpdatedAt;
+- (void)setup;
++ (void)handleServerReachabilityStatusChange:(AFNetworkReachabilityStatus)status;
 @end
 
 @implementation KANAPI
@@ -31,15 +33,39 @@
     
     if (!_sharedClient) {
         _sharedClient = [[KANAPI alloc] initWithBaseURL:[self apiBaseURL]];
-        
-        NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
-        NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
-        
-        if (authUser && authPass)
-            [_sharedClient setAuthorizationHeaderWithUsername:authUser password:authPass];
+        [_sharedClient setup];
     }
     
     return _sharedClient;
+}
+
+- (void)setup
+{
+    NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
+    NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
+    
+    if (authUser && authPass)
+        [self setAuthorizationHeaderWithUsername:authUser password:authPass];
+    
+    [self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        [KANAPI handleServerReachabilityStatusChange:status];
+    }];
+}
+
+
++ (void)handleServerReachabilityStatusChange:(AFNetworkReachabilityStatus)status
+{
+    NSLog(@"handle server reachability status: %d", status);
+    NSString *notificationName = nil;
+    
+    if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)
+        notificationName = KANAPIServerDidBecomeAvailableNotification;
+    else
+        notificationName = KANAPIServerDidBecomeUnavailableNotification;
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:)
+                                                           withObject:[NSNotification notificationWithName:notificationName object:nil]
+                                                        waitUntilDone:NO];
 }
 
 + (NSURL *)apiBaseURL
@@ -65,6 +91,7 @@
 {
     KANAPI *client = [KANAPI sharedClient];
     NSString *artworkPath = [client artworkPathWithArtwork:artwork];
+
     
     NSMutableURLRequest *req = [client requestWithMethod:@"GET" path:artworkPath parameters:nil];
 

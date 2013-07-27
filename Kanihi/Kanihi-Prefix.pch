@@ -10,6 +10,8 @@
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
+#define DEBUG
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
@@ -18,4 +20,6 @@
 
     #import "KANConstants.h"
     #import "KANUtils.h"
+
+    #import "CJLog.h"
 #endif
