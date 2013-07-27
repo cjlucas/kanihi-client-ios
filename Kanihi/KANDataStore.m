@@ -28,7 +28,6 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 
 - (void)setup;
 
-- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
 - (void)handleTrackDatas:(NSArray *)trackDatas;
 - (void)deleteTracksWithUUIDArray:(NSArray *)uuids;
 - (NSArray *)allTracks; // returns a batched core data proxy array
@@ -115,15 +114,8 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     }
 }
 
-- (void)updateTracksWithFullUpdate:(BOOL)fullUpdate
+- (void)updateDataStoreDoFullUpdate:(BOOL)fullUpdate
 {
-    [self performUpdateWithFullUpdate:[NSNumber numberWithBool:fullUpdate]];
-}
-
-- (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate
-{
-    BOOL fullUpdateFlag = [fullUpdate boolValue];
-    
     [self postNotification:KANDataStoreWillBeginUpdatingNotification];
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
     
@@ -136,7 +128,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     NSDate *lastUpdated = [sud objectForKey:KANUserDefaultsLastUpdatedKey];
     NSDate *newLastUpdated = [KANAPI serverTime];
     
-    if (fullUpdateFlag || lastUpdated == nil) {
+    if (fullUpdate || lastUpdated == nil) {
         lastUpdated = [NSDate dateWithTimeIntervalSince1970:0];
     }
     

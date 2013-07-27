@@ -34,7 +34,7 @@
     
     KANDataStore *store = [KANDataStore sharedDataStore];
     
-    [store updateTracksWithFullUpdate:NO];
+    [store updateDataStoreDoFullUpdate:NO];
     
     return YES;
 }
