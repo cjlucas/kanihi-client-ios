@@ -29,6 +29,8 @@ NSString * const KANAPIDeletedTracksResponseJSONKey;
 NSString * const KANAPIServerDidBecomeAvailableNotification;
 NSString * const KANAPIServerDidBecomeUnavailableNotification;
 
+NSUInteger const KANAPIMaxConcurrentConnections; // limit how many requests can hit the server at once
+
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit;
 NSString * const KANBackgroundThreadName;

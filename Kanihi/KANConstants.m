@@ -29,6 +29,8 @@ NSString * const KANAPIDeletedTracksResponseJSONKey = @"deleted_tracks";
 NSString * const KANAPIServerDidBecomeAvailableNotification     = @"KANAPIServerDidBecomeAvailableNotification";
 NSString * const KANAPIServerDidBecomeUnavailableNotification   = @"KANAPIServerDidBecomeUnavailableNotification";
 
+NSUInteger const KANAPIMaxConcurrentConnections = 1;
+
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;
 NSString * const KANBackgroundThreadName = @"KANBackgroundThread";

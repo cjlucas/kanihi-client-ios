@@ -44,6 +44,8 @@
     if (authUser && authPass)
         [self setAuthorizationHeaderWithUsername:authUser password:authPass];
     
+    [self.operationQueue setMaxConcurrentOperationCount:KANAPIMaxConcurrentConnections];
+    
     [self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [KANAPI handleServerReachabilityStatusChange:status];
     }];
