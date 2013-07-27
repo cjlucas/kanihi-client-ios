@@ -20,7 +20,13 @@
 #import "KANGenre.h"
 #import "KANArtwork.h"
 
-@interface KANDataStore ()
+const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
+
+@interface KANDataStore () {
+    dispatch_queue_t _background_queue;
+}
+
+- (void)setup;
 
 - (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate;
 - (void)handleTrackDatas:(NSArray *)trackDatas;
@@ -33,6 +39,7 @@
 - (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
 
 @property (readonly) NSManagedObjectContext *backgroundManagedObjectContext;
+@property (readonly) NSManagedObjectContext *managedObjectContextForCurrentThread;
 @property (readonly) NSManagedObjectModel *managedObjectModel;
 @property (readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property NSThread *backgroundThread;
@@ -61,9 +68,15 @@
     static KANDataStore * _sharedDataStore = nil;
     if (_sharedDataStore == nil) {
         _sharedDataStore = [[KANDataStore alloc] init];
+        [_sharedDataStore setup];
     }
     
     return _sharedDataStore;
+}
+
+- (void)setup
+{
+    _background_queue = dispatch_queue_create(KANDataStoreBackgroundQueueName, DISPATCH_QUEUE_SERIAL);
 }
 
 - (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread
@@ -71,24 +84,21 @@
     return [thread isMainThread] ? self.mainManagedObjectContext : self.backgroundManagedObjectContext;
 }
 
+- (NSManagedObjectContext *)managedObjectContextForCurrentThread
+{
+    return [self managedObjectContextForThread:[NSThread currentThread]];
+}
+
 - (void)handleTrackDatas:(NSArray *)trackDatas
 {
+    NSManagedObjectContext *moc = self.managedObjectContextForCurrentThread;
+    
     for (NSDictionary *trackData in trackDatas) {
-        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"]
-                                              withCache:nil
-                                                context:self.backgroundManagedObjectContext];
+        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
         
-        track.artist = [KANTrackArtist uniqueEntityForData:trackData[@"track"]
-                                                 withCache:nil
-                                                   context:self.backgroundManagedObjectContext];
-        
-        track.disc = [KANDisc uniqueEntityForData:trackData[@"track"]
-                                        withCache:nil
-                                          context:self.backgroundManagedObjectContext];
-        
-        track.genre = [KANGenre uniqueEntityForData:trackData[@"track"]
-                                          withCache:nil
-                                            context:self.backgroundManagedObjectContext];
+        track.artist    = [KANTrackArtist uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
+        track.disc      = [KANDisc uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
+        track.genre     = [KANGenre uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
         
         NSMutableSet *artworks = [track mutableSetValueForKey:@"artworks"]; // core data proxy set
         
@@ -98,9 +108,7 @@
             [checksums addObject:[artwork.checksum lowercaseString]];
         
         for (NSDictionary *artworkData in trackData[@"track"][KANTrackArtworkKey]) {
-            KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey]
-                                                        withCache:nil
-                                                          context:self.backgroundManagedObjectContext];
+            KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil context:moc];
             
             if (![checksums containsObject:[artwork.checksum lowercaseString]])
                 [artworks addObject:artwork];
@@ -144,25 +152,37 @@
     
     CJLog(@"using lastUpdated: %@", lastUpdated);
     
+    void (^operationFailureBlock)(NSURLRequest *, NSHTTPURLResponse *, NSError *, id) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSError *error, id JSON) {
+        CJLog(@"%@", error);
+        updateSuccessful = NO;
+    };
     
     // Add/Update tracks
     
     NSUInteger offset = 0;
     NSUInteger trackCount = [KANAPI trackCountWithLastUpdatedAt:lastUpdated];
     
-    CJLog(@"track count since last update: %d", trackCount);
+    void (^updateTracksSuccessBlock)(NSURLRequest *, NSHTTPURLResponse *, NSArray *) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSArray *trackData) {
+        CJLog(@"trackData count: %d", [trackData count]);
+        //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
+        [self handleTrackDatas:trackData];
+        
+        NSError *error;
+        [self.managedObjectContextForCurrentThread save:&error];
+        if (error)
+            CJLog(@"%@", error);
+    };
     
+    CJLog(@"track count since last update: %d", trackCount);
+
     NSMutableArray *operations = [[NSMutableArray alloc] initWithCapacity:((trackCount / KANDataStoreFetchLimit) * 2)];
     
     while (offset < trackCount) {
         NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset LastUpdatedAt:lastUpdated];
-        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *trackData) {
-            CJLog(@"trackData count: %d", [trackData count]);
-            [self handleTrackDatas:trackData];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            CJLog(@"%@", error);
-            updateSuccessful = NO;
-        }];
+        
+        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
+        op.successCallbackQueue = _background_queue;
+        op.failureCallbackQueue = _background_queue;
         
         [operations addObject:op];
         offset += KANDataStoreFetchLimit;
@@ -172,51 +192,64 @@
     
     NSURLRequest *req = [KANAPI deletedTracksRequestFromCurrentTracks:[self allTracks]];
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json) {
+    void (^deleteTracksSuccessBlock)(NSURLRequest *, NSHTTPURLResponse *, NSDictionary *) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSDictionary *json) {
+        //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
+        
         [self deleteTracksWithUUIDArray:json[KANAPIDeletedTracksResponseJSONKey]];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        CJLog(@"%@", error);
-        updateSuccessful = NO;
-    }];
+        
+        NSError *error;
+        [self.managedObjectContextForCurrentThread save:&error];
+        if (error)
+            CJLog(@"%@", error);
+    };
     
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
+    
+    [op setQueuePriority:NSOperationQueuePriorityVeryLow];
+    op.successCallbackQueue = _background_queue;
+    op.failureCallbackQueue = _background_queue;
     [operations addObject:op];
     
     // Process operations
     
     NSDate *startDate = [NSDate date];
-    [client enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
-        CJLog(@"progress: %d - %d", numberOfFinishedOperations, totalNumberOfOperations);
-        NSError *error;
-        [self.backgroundManagedObjectContext save:&error];
-        if (error)
-            CJLog(@"%@", error);
-    } completionBlock:^(NSArray *operations) {
+    
+    void (^progressBlock)(NSUInteger, NSUInteger) = ^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        CJLog(@"progress: %d/%d", numberOfFinishedOperations, totalNumberOfOperations);
+    };
+    
+    void (^completionBlock)(NSArray *) = ^(NSArray *operations) {
         CJLog(@"%@", updateSuccessful ? @"update was successful" : @"update wasn't successful");
         
         if (updateSuccessful) {
             [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
             [sud synchronize];
         }
-
+        
         [self postNotification:KANDataStoreWillFinishUpdatingNotification];
         [self postNotification:KANDataStoreDidFinishUpdatingNotification];
         
         CJLog(@"total update time: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
-    }];
+    };
+    
+    [client enqueueBatchOfHTTPRequestOperations:operations progressBlock:progressBlock completionBlock:completionBlock];
 }
 
 - (void)deleteTracksWithUUIDArray:(NSArray *)uuids
 {
-    NSManagedObjectContext *moc = [self managedObjectContextForThread:[NSThread currentThread]];
+    NSManagedObjectContext *moc = self.managedObjectContextForCurrentThread;
     NSError *error;
 
     // fetch old tracks
     NSFetchRequest *deletedTracksReq = [NSFetchRequest fetchRequestWithEntityName:KANTrackEntityName];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid in %@", uuids];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid IN %@", uuids];
     deletedTracksReq.predicate = predicate;
     NSArray *deletedTracks = [moc executeFetchRequest:deletedTracksReq error:&error];
     
     CJLog(@"deletedTracks count: %d", [deletedTracks count]);
+    
+    if (error)
+        CJLog(@"%@", error);
     
     // delete old tracks
     for (NSManagedObject *deletedTrack in deletedTracks) {
@@ -261,7 +294,7 @@
 
 - (NSManagedObjectContext *)backgroundManagedObjectContext
 {
-    assert([self.backgroundThread.name isEqualToString:KANBackgroundThreadName]);
+    assert(strcmp(dispatch_queue_get_label(_background_queue), KANDataStoreBackgroundQueueName) == 0);
     
     if (_backgroundManagedObjectContext == nil) {
         _backgroundManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
