@@ -176,6 +176,8 @@
 		836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingCell.m; sourceTree = "<group>"; };
 		836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTrackListingTableView.h; sourceTree = "<group>"; };
 		836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTrackListingTableView.m; sourceTree = "<group>"; };
+		8394388517A4534E007B73B1 /* KANTrackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANTrackTableViewController.h; sourceTree = "<group>"; };
+		8394388617A4534E007B73B1 /* KANTrackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTrackTableViewController.m; sourceTree = "<group>"; };
 		83A281FB179C9BD9008D0686 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		83A281FC179C9BD9008D0686 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		83A281FD179C9BD9008D0686 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -396,6 +398,8 @@
 		835B00351791C78900E07A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8394388517A4534E007B73B1 /* KANTrackTableViewController.h */,
+				8394388617A4534E007B73B1 /* KANTrackTableViewController.m */,
 				83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */,
 				83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */,
 				836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */,
@@ -606,6 +610,7 @@
 				83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
 				83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
 				83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
@@ -619,6 +624,7 @@
 				83E31D03179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				83FB7B7B17911081003E56F8 /* CJStringNormalization.m in Sources */,
+				8394388817A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				83A2821E179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				83FB7B7F17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28212179C9BD9008D0686 /* AFHTTPClient.m in Sources */,

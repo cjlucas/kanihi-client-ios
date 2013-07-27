@@ -12,10 +12,11 @@
 #import "KANAlbumArtistsTableViewController.h"
 #import "KANAlbumTableViewController.h"
 #import "KANGenreTableViewController.h"
+#import "KANTrackTableViewController.h"
 
 @interface KANMainMenuViewController ()
 
-- (UIViewController *)tableViewControllerForIndexPath:(NSIndexPath *)indexPath;
+- (KANBaseTableViewController *)tableViewControllerForIndexPath:(NSIndexPath *)indexPath;
 
 @property NSArray *items;
 
@@ -27,13 +28,13 @@
 {
     [super viewDidLoad];
     
-    self.items = @[@"Artists", @"Albums", @"Genres"];
+    self.items = @[@"Artists", @"Albums", @"Genres", @"Tracks"];
 }
 
 // TODO: refactor the hell out of this
-- (UIViewController *)tableViewControllerForIndexPath:(NSIndexPath *)indexPath
+- (KANBaseTableViewController *)tableViewControllerForIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *vc = nil;
+    KANBaseTableViewController *vc = nil;
     
     switch (indexPath.item) {
         case 0:
@@ -45,6 +46,8 @@
         case 2:
             vc = [[KANGenreTableViewController alloc] init];
             break;
+        case 3:
+            vc = [[KANTrackTableViewController alloc] init];
         default:
             break;
     }
