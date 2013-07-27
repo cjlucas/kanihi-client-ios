@@ -23,6 +23,9 @@ NSString * const KANAPIDeletedTracksPath    = @"tracks/deleted.json";
 NSString * const KANAPIServerInfoPath       = @"info.json";
 NSString * const KANAPIArtworkPath          = @"images";
 
+NSString * const KANAPIDeletedTracksRequestJSONKey  = @"current_tracks";
+NSString * const KANAPIDeletedTracksResponseJSONKey = @"deleted_tracks";
+
 NSString * const KANAPIServerDidBecomeAvailableNotification     = @"KANAPIServerDidBecomeAvailableNotification";
 NSString * const KANAPIServerDidBecomeUnavailableNotification   = @"KANAPIServerDidBecomeUnavailableNotification";
 

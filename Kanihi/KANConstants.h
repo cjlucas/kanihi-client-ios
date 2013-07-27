@@ -23,6 +23,9 @@ NSString * const KANAPIDeletedTracksPath;
 NSString * const KANAPIServerInfoPath;
 NSString * const KANAPIArtworkPath;
 
+NSString * const KANAPIDeletedTracksRequestJSONKey;
+NSString * const KANAPIDeletedTracksResponseJSONKey;
+
 NSString * const KANAPIServerDidBecomeAvailableNotification;
 NSString * const KANAPIServerDidBecomeUnavailableNotification;
 

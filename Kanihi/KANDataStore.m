@@ -172,8 +172,8 @@
     
     NSURLRequest *req = [KANAPI deletedTracksRequestFromCurrentTracks:[self allTracks]];
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *uuids) {
-        [self deleteTracksWithUUIDArray:uuids];
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json) {
+        [self deleteTracksWithUUIDArray:json[KANAPIDeletedTracksResponseJSONKey]];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         CJLog(@"%@", error);
         updateSuccessful = NO;

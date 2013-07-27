@@ -136,7 +136,7 @@
         [trackUUIDs addObject:track.uuid];
     }
     
-    NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{@"current_tracks" : trackUUIDs} options:0 error:&error];
+    NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{KANAPIDeletedTracksRequestJSONKey: trackUUIDs} options:0 error:&error];
     NSMutableURLRequest *req = nil;
     
     if (error) {
