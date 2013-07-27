@@ -9,6 +9,8 @@
 #import "KANGenreTableViewController.h"
 #import "KANTableViewCell.h"
 
+#import "KANTrackTableViewController.h"
+
 #import "KANGenre.h"
 #import "KANAPI.h"
 #import "KANArtworkStore.h"
@@ -86,7 +88,12 @@
 {
     KANGenre *genre = [self.resultsController objectAtIndexPath:indexPath];
     
-    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"genre.name = %@", genre.name];
+
+    KANTrackTableViewController *tvc = [[KANTrackTableViewController alloc] initWithPredicate:predicate];
+    tvc.title = genre.name;
+
+    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 @end
