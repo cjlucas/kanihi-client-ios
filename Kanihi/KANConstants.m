@@ -33,7 +33,6 @@ NSUInteger const KANAPIMaxConcurrentConnections = 1;
 
 // KANDataStore
 NSUInteger const KANDataStoreFetchLimit = 1000;
-NSString * const KANBackgroundThreadName = @"KANBackgroundThread";
 
 NSString * const KANDataStoreWillBeginUpdatingNotification  = @"KANDataStoreWillBeginUpdatingNotification";
 NSString * const KANDataStoreDidBeginUpdatingNotification   = @"KANDataStoreDidBeginUpdatingNotification";

@@ -42,7 +42,6 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 @property (readonly) NSManagedObjectContext *managedObjectContextForCurrentThread;
 @property (readonly) NSManagedObjectModel *managedObjectModel;
 @property (readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property NSThread *backgroundThread;
 
 @end
 
@@ -118,16 +117,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 
 - (void)updateTracksWithFullUpdate:(BOOL)fullUpdate
 {
-    if (![self.backgroundThread isExecuting]) {
-        self.backgroundThread = [[NSThread alloc] initWithTarget:self
-                                                        selector:@selector(performUpdateWithFullUpdate:)
-                                                          object:[NSNumber numberWithBool:fullUpdate]]; // an object is required
-        self.backgroundThread.name = KANBackgroundThreadName;
-        [self.backgroundThread start];
-    } else {
-        // ignore message if background thread is already running
-        NSLog(@"thread is already running");
-    }
+    [self performUpdateWithFullUpdate:[NSNumber numberWithBool:fullUpdate]];
 }
 
 - (void)performUpdateWithFullUpdate:(NSNumber *)fullUpdate
