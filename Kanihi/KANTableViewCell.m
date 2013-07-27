@@ -53,14 +53,13 @@
     // set the frame size here so word wrapping can be calculated
     // frame height will be adjusted when added to container view
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.labelContainerView.frame.size.width, 0)];
-    
+
+    label.textColor = [UIColor colorWithRed:(52/255.0) green:(50/255.0) blue:(47/255.0) alpha:1];
     //label.backgroundColor = [UIColor blueColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:MAIN_LABEL_FONT_SIZE];
     label.numberOfLines = 2;
-    //label.adjustsFontSizeToFitWidth = NO;
     label.lineBreakMode = NSLineBreakByTruncatingTail;
-    //label.minimumScaleFactor = 0.9;
-    
+
     return label;
 }
 
@@ -69,9 +68,10 @@
     // see notes in mainLabel
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.labelContainerView.frame.size.width, 0)];
     
+    label.textColor = [UIColor colorWithRed:(84/255.0) green:(81/255.0) blue:(75/255.0) alpha:1];
     //label.backgroundColor = [UIColor redColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:DETAIL_LABEL_FONT_SIZE];
-    label.minimumScaleFactor = 0.9;
+
     
     return label;
 }
@@ -91,7 +91,7 @@
         
         [self.labelContainerView addSubview:label];
     }
-    
+
     for (id string in self.detailStrings) {
         UILabel *label = [self detailLabel];
         

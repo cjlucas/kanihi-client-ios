@@ -36,6 +36,7 @@
     for (UIView *subview in self.subviews) {
         totalSubviewHeight += subview.frame.size.height;
     }
+
     totalSubviewPadding = containerHeight - totalSubviewHeight;
     totalOutsidePadding = totalSubviewPadding - totalInsidePadding;
     
@@ -45,6 +46,7 @@
         
         frame.origin.x = 0;
         frame.origin.y = nextOriginYPos;
+        frame.size.width = self.frame.size.width;
         
         view.frame = frame; // move view to new origin
 

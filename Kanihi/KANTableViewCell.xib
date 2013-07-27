@@ -13,15 +13,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-mx-E4n">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-mx-E4n">
                         <rect key="frame" x="12" y="10" width="80" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="5zQ-q6-moG"/>
+                        </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6Z-0P-Ckc" customClass="KANLabelContainerView">
-                        <rect key="frame" x="100" y="10" width="202" height="80"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6Z-0P-Ckc" customClass="KANLabelContainerView">
+                        <rect key="frame" x="100" y="8" width="218" height="83"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="L6Z-0P-Ckc" secondAttribute="bottom" constant="8" id="5Et-T2-zNV"/>
+                    <constraint firstItem="L6Z-0P-Ckc" firstAttribute="top" secondItem="0Ue-az-Len" secondAttribute="top" constant="8" id="GCn-uu-kDZ"/>
+                    <constraint firstAttribute="bottom" secondItem="TgN-mx-E4n" secondAttribute="bottom" constant="9" id="MlM-LM-YSA"/>
+                    <constraint firstItem="TgN-mx-E4n" firstAttribute="top" secondItem="0Ue-az-Len" secondAttribute="top" constant="10" id="WO6-gA-iAa"/>
+                    <constraint firstAttribute="trailing" secondItem="L6Z-0P-Ckc" secondAttribute="trailing" constant="4" id="fxP-i9-5SM"/>
+                    <constraint firstItem="TgN-mx-E4n" firstAttribute="leading" secondItem="0Ue-az-Len" secondAttribute="leading" constant="12" id="tkj-Xg-GFZ"/>
+                    <constraint firstItem="L6Z-0P-Ckc" firstAttribute="leading" secondItem="TgN-mx-E4n" secondAttribute="trailing" constant="8" id="wru-Nh-uF6"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="artworkView" destination="TgN-mx-E4n" id="m1H-IT-nPC"/>
