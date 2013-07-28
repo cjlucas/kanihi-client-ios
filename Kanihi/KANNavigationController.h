@@ -12,4 +12,6 @@
 
 @property (readonly) UITableViewController *rootTableViewController;
 
+@property (readonly) BOOL offlineMode;
+
 @end

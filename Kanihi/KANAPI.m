@@ -24,6 +24,8 @@
 
 @implementation KANAPI
 
+@synthesize offlineMode = _offlineMode;
+
 + (KANAPI *)sharedClient
 {
     static KANAPI *_sharedClient = nil;
@@ -55,6 +57,18 @@
 
     // register AFHTTPOperation subclasses
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+
+    // add observers for server availability notifications
+    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        _offlineMode = NO;
+        CJLog(@"disabling offline mode", nil);
+    }];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeUnavailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        _offlineMode = YES;
+        CJLog(@"enabling offline mode", nil);
+    }];
+
 }
 
 
@@ -232,6 +246,19 @@
 
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
+    void (^interveningSuccessBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *operation, id responseObject) {
+        // send notification if we're back online
+        if ([[KANAPI sharedClient] offlineMode]) {
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                [[NSNotificationCenter defaultCenter] postNotificationName:KANAPIServerDidBecomeAvailableNotification object:nil];
+            });
+        }
+
+        // call original block
+        if (success)
+            success(operation, responseObject);
+    };
+
     void (^interveningFailureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         CJLog(@"%@", error);
         BOOL shouldSendOfflineNotification = NO;
@@ -261,7 +288,7 @@
             failure(operation, error);
     };
 
-    return [super HTTPRequestOperationWithRequest:urlRequest success:success failure:interveningFailureBlock];
+    return [super HTTPRequestOperationWithRequest:urlRequest success:interveningSuccessBlock failure:interveningFailureBlock];
 }
 
 @end

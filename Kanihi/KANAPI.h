@@ -48,4 +48,6 @@ typedef NS_ENUM(NSUInteger, KANAPIConnectability) {
  */
 + (void)checkConnectabilityWithCompletionHandler:(void(^)(KANAPIConnectability connectability))handler;
 
+@property (readonly) BOOL offlineMode;
+
 @end

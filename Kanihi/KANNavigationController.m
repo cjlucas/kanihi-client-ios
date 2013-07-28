@@ -12,6 +12,7 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gesture;
 - (BOOL)shouldPopToRootViewController:(UIGestureRecognizer *)gesture;
+- (void)setPromptForNavigationItem:(UINavigationItem *)item;
 
 @property (readonly) UIViewController *rootViewController;
 
@@ -19,12 +20,27 @@
 
 @implementation KANNavigationController
 
+@synthesize offlineMode = _offlineMode;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.navigationBar addGestureRecognizer:gestureRecognizer];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *notif) {
+        CJLog(@"server became available", nil);
+        _offlineMode = NO;
+        [self setPromptForNavigationItem:self.navigationBar.topItem];
+    }];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeUnavailableNotification object:nil queue:nil usingBlock:^(NSNotification *notif) {
+        CJLog(@"server went away", nil);
+        _offlineMode = YES;
+        [self setPromptForNavigationItem:self.navigationBar.topItem];
+    }];
+}
 }
 
 - (UIViewController *)rootViewController
@@ -69,6 +85,21 @@
     if ([self shouldPopToRootViewController:gesture]) {
         [self popToRootViewControllerAnimated:YES];
     }
+}
+
+- (void)setPromptForNavigationItem:(UINavigationItem *)item
+{
+    if (_offlineMode)
+        item.prompt = @"Offline Mode";
+    else
+        item.prompt = nil;
+}
+
+#pragma mark - UINavigationControllerDelegate methods
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [self setPromptForNavigationItem:self.navigationBar.topItem];
 }
 
 @end
