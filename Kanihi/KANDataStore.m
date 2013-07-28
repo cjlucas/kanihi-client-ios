@@ -133,28 +133,27 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     }
     
     CJLog(@"using lastUpdated: %@", lastUpdated);
-    
-    void (^operationFailureBlock)(NSURLRequest *, NSHTTPURLResponse *, NSError *, id) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSError *error, id JSON) {
-        CJLog(@"%@", error);
+
+    void (^operationFailureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *op, NSError *error) {
         updateSuccessful = NO;
     };
-    
+
     // Add/Update tracks
     
     NSUInteger offset = 0;
     NSUInteger trackCount = [KANAPI trackCountWithLastUpdatedAt:lastUpdated];
-    
-    void (^updateTracksSuccessBlock)(NSURLRequest *, NSHTTPURLResponse *, NSArray *) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSArray *trackData) {
+
+    void (^updateTracksSuccessBlock)(AFHTTPRequestOperation *op, id) = ^(AFHTTPRequestOperation *op, NSArray *trackData) {
         CJLog(@"trackData count: %d", [trackData count]);
         //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
         [self handleTrackDatas:trackData];
-        
+
         NSError *error;
         [self.managedObjectContextForCurrentThread save:&error];
         if (error)
             CJLog(@"%@", error);
     };
-    
+
     CJLog(@"track count since last update: %d", trackCount);
 
     NSMutableArray *operations = [[NSMutableArray alloc] initWithCapacity:((trackCount / KANDataStoreFetchLimit) * 2)];
@@ -162,7 +161,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     while (offset < trackCount) {
         NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset LastUpdatedAt:lastUpdated];
         
-        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
+        AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
         op.successCallbackQueue = _background_queue;
         op.failureCallbackQueue = _background_queue;
         
@@ -173,20 +172,20 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     // Delete old tracks
     
     NSURLRequest *req = [KANAPI deletedTracksRequestFromCurrentTracks:[self allTracks]];
-    
-    void (^deleteTracksSuccessBlock)(NSURLRequest *, NSHTTPURLResponse *, NSDictionary *) = ^(NSURLRequest *req, NSHTTPURLResponse *resp, NSDictionary *json) {
+
+    void (^deleteTracksSuccessBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *op, NSDictionary *json) {
         //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
-        
+
         [self deleteTracksWithUUIDArray:json[KANAPIDeletedTracksResponseJSONKey]];
-        
+
         NSError *error;
         [self.managedObjectContextForCurrentThread save:&error];
         if (error)
             CJLog(@"%@", error);
     };
-    
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
-    
+
+    AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
+
     [op setQueuePriority:NSOperationQueuePriorityVeryLow];
     op.successCallbackQueue = _background_queue;
     op.failureCallbackQueue = _background_queue;

@@ -38,33 +38,39 @@
 
 - (void)setup
 {
+    // TODO: move this elsewhere
     NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
     NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
     
     if (authUser && authPass)
         [self setAuthorizationHeaderWithUsername:authUser password:authPass];
-    
+
+    // limit concurrent operations
     [self.operationQueue setMaxConcurrentOperationCount:KANAPIMaxConcurrentConnections];
-    
+
+    // handle reachability status changes
     [self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [KANAPI handleServerReachabilityStatusChange:status];
     }];
+
+    // register AFHTTPOperation subclasses
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 }
 
 
 + (void)handleServerReachabilityStatusChange:(AFNetworkReachabilityStatus)status
 {
-    NSLog(@"handle server reachability status: %d", status);
-    NSString *notificationName = nil;
-    
-    if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)
-        notificationName = KANAPIServerDidBecomeAvailableNotification;
-    else
-        notificationName = KANAPIServerDidBecomeUnavailableNotification;
-    
-    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:)
-                                                           withObject:[NSNotification notificationWithName:notificationName object:nil]
-                                                        waitUntilDone:NO];
+//    NSLog(@"handle server reachability status: %d", status);
+//    NSString *notificationName = nil;
+//    
+//    if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)
+//        notificationName = KANAPIServerDidBecomeAvailableNotification;
+//    else
+//        notificationName = KANAPIServerDidBecomeUnavailableNotification;
+//    
+//    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:)
+//                                                           withObject:[NSNotification notificationWithName:notificationName object:nil]
+//                                                        waitUntilDone:NO];
 }
 
 + (NSURL *)apiBaseURL
@@ -96,16 +102,14 @@
 
     if (height > 0)
         [req addValue:[NSString stringWithFormat:@"%d", height] forHTTPHeaderField:@"Image-Resize-Height"];
-    
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject ) {
+
+    void (^success)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *op, id respnseObject) {
         if (handler)
-            handler(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-    }];
-    
+            handler(respnseObject);
+    };
+
+    AFHTTPRequestOperation *op = [[KANAPI sharedClient] HTTPRequestOperationWithRequest:req success:success failure:nil];
+
     [op start];
 }
 
@@ -222,6 +226,42 @@
     }];
     
     [op start];
+}
+
+#pragma mark - AFHTTPClient overrides
+
+- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    void (^interveningFailureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        CJLog(@"%@", error);
+        BOOL shouldSendOfflineNotification = NO;
+
+        if (error.domain == NSURLErrorDomain) {
+            switch (error.code) {
+                case NSURLErrorCannotConnectToHost:
+                    shouldSendOfflineNotification = YES;
+                    break;
+                case NSURLErrorCannotLoadFromNetwork:
+                    shouldSendOfflineNotification = YES;
+                    break;
+                case NSURLErrorUserAuthenticationRequired:
+                    shouldSendOfflineNotification = YES;
+                    break;
+            }
+        }
+
+        if (shouldSendOfflineNotification) {
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                [[NSNotificationCenter defaultCenter] postNotificationName:KANAPIServerDidBecomeUnavailableNotification object:nil];
+            });
+        }
+
+        // call original block
+        if (failure)
+            failure(operation, error);
+    };
+
+    return [super HTTPRequestOperationWithRequest:urlRequest success:success failure:interveningFailureBlock];
 }
 
 @end
