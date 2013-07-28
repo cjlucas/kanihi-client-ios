@@ -178,9 +178,13 @@
                 [self saveThumbnailImageData:data forArtwork:artwork];
             else
                 [self saveFullSizeImage:data forArtwork:artwork];
-    
-            view.image = [UIImage imageWithData:data];
-            [[self sharedCache] setObject:view.image forKey:artwork.checksum];
+
+            __block UIImage *image = [UIImage imageWithData:data];
+            [[self sharedCache] setObject:image forKey:artwork.checksum];
+
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                view.image = image;
+            });
         }];
     }
 }
