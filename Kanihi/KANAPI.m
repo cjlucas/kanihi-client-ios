@@ -243,6 +243,33 @@
     [op start];
 }
 
++ (NSURL *)streamURLForTrack:(KANTrack *)track
+{
+    if (!track)
+        return nil;
+
+    KANAPI *client = [self sharedClient];
+
+    NSString *streamPathComponent = [NSString stringWithFormat:@"%@/%@/%@", KANAPITracksRootPath, track.uuid, KANAPITrackStreamPathComponent];
+
+    return [client.baseURL URLByAppendingPathComponent:streamPathComponent isDirectory:NO];
+}
+
++ (NSString *)suggestedFilenameForTrack:(KANTrack *)track
+{
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[self streamURLForTrack:track]];
+    req.HTTPMethod = @"HEAD";
+    req.timeoutInterval = 5;
+
+    NSURLResponse *resp;
+    NSError *error;
+    [NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:&error];
+    if (error)
+        CJLog(@"%@", error);
+
+    return resp.suggestedFilename;
+}
+
 #pragma mark - AFHTTPClient overrides
 
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure

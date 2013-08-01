@@ -12,9 +12,11 @@
 #import "KANEntity.h"
 #import "KANUniqueEntity.h"
 
+#import "CJDataSourceQueueManager.h"
+
 @class KANTrackArtist, KANDisc, KANGenre;
 
-@interface KANTrack : KANUniqueEntity <KANUniqueEntityProtocol>
+@interface KANTrack : KANUniqueEntity <KANUniqueEntityProtocol, CJAudioPlayerQueueItem>
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * duration;

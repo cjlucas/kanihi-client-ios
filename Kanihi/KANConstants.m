@@ -16,10 +16,12 @@ NSString * const KANUserDefaultsAuthUserKey     = @"authUser";
 NSString * const KANUserDefaultsAuthPassKey     = @"authPass";
 
 // API
+NSString * const KANAPITracksRootPath       = @"tracks";
 NSString * const KANAPITracksPath           = @"tracks.json";
 NSString * const KANAPITrackCountPath       = @"tracks/count.json";
 NSString * const KANAPITrackCountKey        = @"track_count";
 NSString * const KANAPIDeletedTracksPath    = @"tracks/deleted.json";
+NSString * const KANAPITrackStreamPathComponent = @"stream";
 NSString * const KANAPIServerInfoPath       = @"info.json";
 NSString * const KANAPIArtworkPath          = @"images";
 

@@ -16,10 +16,12 @@ NSString * const KANUserDefaultsAuthUserKey;
 NSString * const KANUserDefaultsAuthPassKey;
 
 // API (relative paths)
+NSString * const KANAPITracksRootPath;
 NSString * const KANAPITracksPath;
 NSString * const KANAPITrackCountPath;
 NSString * const KANAPITrackCountKey; // key for the returned json object
 NSString * const KANAPIDeletedTracksPath;
+NSString * const KANAPITrackStreamPathComponent;
 NSString * const KANAPIServerInfoPath;
 NSString * const KANAPIArtworkPath;
 

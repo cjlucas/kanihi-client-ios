@@ -9,6 +9,7 @@
 #import "AFNetworking.h"
 
 @class KANArtwork;
+@class KANTrack;
 
 typedef NS_ENUM(NSUInteger, KANAPIConnectability) {
     KANAPIConnectabilityNotConnectable,
@@ -47,6 +48,9 @@ typedef NS_ENUM(NSUInteger, KANAPIConnectability) {
  * This method assumes the network is reachable, should only be used for checking user's host/port/user/pass settings
  */
 + (void)checkConnectabilityWithCompletionHandler:(void(^)(KANAPIConnectability connectability))handler;
+
++ (NSURL *)streamURLForTrack:(KANTrack *)track;
++ (NSString *)suggestedFilenameForTrack:(KANTrack *)track;
 
 @property (readonly) BOOL offlineMode;
 

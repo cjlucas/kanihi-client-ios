@@ -4,3 +4,6 @@
 [submodule "Vendor/Base64"]
 	path = Vendor/Base64
 	url = https://github.com/nicklockwood/Base64
+[submodule "Vendor/Audjustable"]
+	path = Vendor/Audjustable
+	url = https://github.com/tumtumtum/audjustable

@@ -11,6 +11,9 @@
 #import "NSDictionary+CJExtensions.h"
 #import "CJStringNormalization.h"
 
+#import "KANAPI.h"
+#import "KANAudioStore.h"
+
 @implementation KANTrack
 
 @dynamic date;
@@ -82,5 +85,29 @@
     
     [self didChangeValueForKey:@"name"];
 }
+
+#pragma mark - CJAudioPlayerQueueItem methods
+
+- (NSURL *)httpURL
+{
+    return [KANAPI streamURLForTrack:self];
+}
+
+- (NSURL *)cacheURL
+{
+    NSURL *url;
+    NSString *filename = [KANAPI suggestedFilenameForTrack:self];
+
+    if (filename)
+        url = [KANAudioStore cacheURLWithFilename:filename];
+
+    return url;
+}
+
+- (id)queueID
+{
+    return self.uuid;
+}
+
 
 @end

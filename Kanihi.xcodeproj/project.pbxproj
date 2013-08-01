@@ -40,11 +40,26 @@
 		83433383178BD27800CC985D /* KANGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433381178BD27800CC985D /* KANGenre.m */; };
 		83433386178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		83433387178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
+		835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */; };
+		835153A817A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */; };
+		835153AB17A87C520088F692 /* KANAudioStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AA17A87C520088F692 /* KANAudioStore.m */; };
+		835153AC17A87C520088F692 /* KANAudioStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AA17A87C520088F692 /* KANAudioStore.m */; };
+		835153BC17A886180088F692 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AF17A886180088F692 /* AudioPlayer.m */; };
+		835153BD17A886180088F692 /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */; };
+		835153BE17A886180088F692 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B317A886180088F692 /* CoreFoundationDataSource.m */; };
+		835153BF17A886180088F692 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B517A886180088F692 /* DataSource.m */; };
+		835153C017A886180088F692 /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B717A886180088F692 /* DataSourceWrapper.m */; };
+		835153C117A886180088F692 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B917A886180088F692 /* HttpDataSource.m */; };
+		835153C217A886180088F692 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153BB17A886180088F692 /* LocalFileDataSource.m */; };
 		835B00331791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00341791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
 		835B00391791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
+		8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361466C17A2F91500984C26 /* KANWelcomeViewController.m */; };
+		8361466E17A2F91500984C26 /* KANWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361466C17A2F91500984C26 /* KANWelcomeViewController.m */; };
 		8361467017A30FA700984C26 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361466F17A30FA700984C26 /* SystemConfiguration.framework */; };
+		83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */; };
+		83617EC017A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */; };
 		836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
 		836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
 		836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AA1799E0D500348B6B /* KANNavigationController.m */; };
@@ -59,6 +74,8 @@
 		836782CD179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
 		836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
 		836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
+		8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394388617A4534E007B73B1 /* KANTrackTableViewController.m */; };
+		8394388817A4534E007B73B1 /* KANTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394388617A4534E007B73B1 /* KANTrackTableViewController.m */; };
 		83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
 		83A28212179C9BD9008D0686 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
 		83A28213179C9BD9008D0686 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FE179C9BD9008D0686 /* AFHTTPRequestOperation.m */; };
@@ -96,6 +113,10 @@
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
 		83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
 		83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
+		83EC10CE17A9DD7700FB4763 /* CJDataSourceQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CB17A9DD7700FB4763 /* CJDataSourceQueueManager.m */; };
+		83EC10CF17A9DD7700FB4763 /* CJDataSourceQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CB17A9DD7700FB4763 /* CJDataSourceQueueManager.m */; };
+		83EC10D017A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */; };
+		83EC10D117A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */; };
 		83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7317911081003E56F8 /* CJStringNormalization.m */; };
 		83FB7B7B17911081003E56F8 /* CJStringNormalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7317911081003E56F8 /* CJStringNormalization.m */; };
 		83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7517911081003E56F8 /* NSArray+CJExtensions.m */; };
@@ -157,11 +178,33 @@
 		83433381178BD27800CC985D /* KANGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenre.m; sourceTree = "<group>"; };
 		83433384178BE1D400CC985D /* KANConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANConstants.h; sourceTree = "<group>"; };
 		83433385178BE1D400CC985D /* KANConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANConstants.m; sourceTree = "<group>"; };
+		835153A517A879AA0088F692 /* KANAudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioPlayerViewController.h; sourceTree = "<group>"; };
+		835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayerViewController.m; sourceTree = "<group>"; };
+		835153A917A87C520088F692 /* KANAudioStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioStore.h; sourceTree = "<group>"; };
+		835153AA17A87C520088F692 /* KANAudioStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioStore.m; sourceTree = "<group>"; };
+		835153AE17A886180088F692 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		835153AF17A886180088F692 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		835153B017A886180088F692 /* AutoRecoveringHttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRecoveringHttpDataSource.h; sourceTree = "<group>"; };
+		835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRecoveringHttpDataSource.m; sourceTree = "<group>"; };
+		835153B217A886180088F692 /* CoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundationDataSource.h; sourceTree = "<group>"; };
+		835153B317A886180088F692 /* CoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFoundationDataSource.m; sourceTree = "<group>"; };
+		835153B417A886180088F692 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		835153B517A886180088F692 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		835153B617A886180088F692 /* DataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceWrapper.h; sourceTree = "<group>"; };
+		835153B717A886180088F692 /* DataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceWrapper.m; sourceTree = "<group>"; };
+		835153B817A886180088F692 /* HttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpDataSource.h; sourceTree = "<group>"; };
+		835153B917A886180088F692 /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDataSource.m; sourceTree = "<group>"; };
+		835153BA17A886180088F692 /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileDataSource.h; sourceTree = "<group>"; };
+		835153BB17A886180088F692 /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileDataSource.m; sourceTree = "<group>"; };
 		835B00311791C22700E07A71 /* KANUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANUtils.h; sourceTree = "<group>"; };
 		835B00321791C22700E07A71 /* KANUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUtils.m; sourceTree = "<group>"; };
 		835B00361791C7E900E07A71 /* KANBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANBaseTableViewController.h; sourceTree = "<group>"; };
 		835B00371791C7E900E07A71 /* KANBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANBaseTableViewController.m; sourceTree = "<group>"; };
+		8361466B17A2F91500984C26 /* KANWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANWelcomeViewController.h; sourceTree = "<group>"; };
+		8361466C17A2F91500984C26 /* KANWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANWelcomeViewController.m; sourceTree = "<group>"; };
 		8361466F17A30FA700984C26 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		83617EBD17A2F70100BCC3C2 /* UIColor+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/UIColor+CJExtensions.h"; sourceTree = "<group>"; };
+		83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/UIColor+CJExtensions.m"; sourceTree = "<group>"; };
 		836782A51799DC7E00348B6B /* KANGenreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANGenreTableViewController.h; sourceTree = "<group>"; };
 		836782A61799DC7E00348B6B /* KANGenreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenreTableViewController.m; sourceTree = "<group>"; };
 		836782A91799E0D500348B6B /* KANNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANNavigationController.h; sourceTree = "<group>"; };
@@ -217,6 +260,10 @@
 		83E44D8D178A177700CB37C1 /* KANTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrack.m; sourceTree = "<group>"; };
 		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
 		83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUniqueEntity.m; sourceTree = "<group>"; };
+		83EC10CA17A9DD7700FB4763 /* CJDataSourceQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJDataSourceQueueManager.h; path = ../CJAudjustableAdditions/CJDataSourceQueueManager.h; sourceTree = "<group>"; };
+		83EC10CB17A9DD7700FB4763 /* CJDataSourceQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJDataSourceQueueManager.m; path = ../CJAudjustableAdditions/CJDataSourceQueueManager.m; sourceTree = "<group>"; };
+		83EC10CC17A9DD7700FB4763 /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJHTTPCachedDataSource.h; path = ../CJAudjustableAdditions/CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
+		83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJHTTPCachedDataSource.m; path = ../CJAudjustableAdditions/CJHTTPCachedDataSource.m; sourceTree = "<group>"; };
 		83FB7B7217911081003E56F8 /* CJStringNormalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStringNormalization.h; path = "../../cjutils-objc/CJUtils/CJStringNormalization.h"; sourceTree = "<group>"; };
 		83FB7B7317911081003E56F8 /* CJStringNormalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStringNormalization.m; path = "../../cjutils-objc/CJUtils/CJStringNormalization.m"; sourceTree = "<group>"; };
 		83FB7B7417911081003E56F8 /* NSArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSArray+CJExtensions.h"; sourceTree = "<group>"; };
@@ -256,6 +303,8 @@
 		833FF15D178CB6420071195F /* CJUtils */ = {
 			isa = PBXGroup;
 			children = (
+				83617EBD17A2F70100BCC3C2 /* UIColor+CJExtensions.h */,
+				83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */,
 				833FF15E178CB6420071195F /* CJLog.h */,
 				833FF15F178CB6420071195F /* CJUtils-Prefix.pch */,
 				833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */,
@@ -360,6 +409,8 @@
 		834303261789F900006EC1A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				835153A917A87C520088F692 /* KANAudioStore.h */,
+				835153AA17A87C520088F692 /* KANAudioStore.m */,
 				834303231789F183006EC1A6 /* Model.xcdatamodeld */,
 				83A28225179CC15C008D0686 /* KANArtwork.h */,
 				83A28226179CC15C008D0686 /* KANArtwork.m */,
@@ -388,6 +439,8 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83EC10C917A9DD5D00FB4763 /* CJAudjustableAdditions */,
+				835153AD17A886180088F692 /* AudioPlayer */,
 				83A281FA179C9BD9008D0686 /* AFNetworking */,
 				83A2820E179C9BD9008D0686 /* Base64 */,
 				833FF15D178CB6420071195F /* CJUtils */,
@@ -395,11 +448,37 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		835153AD17A886180088F692 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				835153AE17A886180088F692 /* AudioPlayer.h */,
+				835153AF17A886180088F692 /* AudioPlayer.m */,
+				835153B017A886180088F692 /* AutoRecoveringHttpDataSource.h */,
+				835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */,
+				835153B217A886180088F692 /* CoreFoundationDataSource.h */,
+				835153B317A886180088F692 /* CoreFoundationDataSource.m */,
+				835153B417A886180088F692 /* DataSource.h */,
+				835153B517A886180088F692 /* DataSource.m */,
+				835153B617A886180088F692 /* DataSourceWrapper.h */,
+				835153B717A886180088F692 /* DataSourceWrapper.m */,
+				835153B817A886180088F692 /* HttpDataSource.h */,
+				835153B917A886180088F692 /* HttpDataSource.m */,
+				835153BA17A886180088F692 /* LocalFileDataSource.h */,
+				835153BB17A886180088F692 /* LocalFileDataSource.m */,
+			);
+			name = AudioPlayer;
+			path = Vendor/Audjustable/Audjustable/Classes/AudioPlayer;
+			sourceTree = SOURCE_ROOT;
+		};
 		835B00351791C78900E07A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				835153A517A879AA0088F692 /* KANAudioPlayerViewController.h */,
+				835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */,
 				8394388517A4534E007B73B1 /* KANTrackTableViewController.h */,
 				8394388617A4534E007B73B1 /* KANTrackTableViewController.m */,
+				8361466B17A2F91500984C26 /* KANWelcomeViewController.h */,
+				8361466C17A2F91500984C26 /* KANWelcomeViewController.m */,
 				83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */,
 				83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */,
 				836782D2179A4F5000348B6B /* KANAlbumTrackListingTableView.h */,
@@ -464,6 +543,17 @@
 			);
 			name = Base64;
 			path = Vendor/Base64/Base64;
+			sourceTree = "<group>";
+		};
+		83EC10C917A9DD5D00FB4763 /* CJAudjustableAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				83EC10CA17A9DD7700FB4763 /* CJDataSourceQueueManager.h */,
+				83EC10CB17A9DD7700FB4763 /* CJDataSourceQueueManager.m */,
+				83EC10CC17A9DD7700FB4763 /* CJHTTPCachedDataSource.h */,
+				83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */,
+			);
+			name = CJAudjustableAdditions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,14 +660,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				83A28213179C9BD9008D0686 /* AFHTTPRequestOperation.m in Sources */,
+				835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */,
 				83433386178BE1D400CC985D /* KANConstants.m in Sources */,
 				83A28215179C9BD9008D0686 /* AFImageRequestOperation.m in Sources */,
 				833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
+				835153AB17A87C520088F692 /* KANAudioStore.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				83EC10D017A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */,
 				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
@@ -588,14 +681,20 @@
 				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
+				83EC10CE17A9DD7700FB4763 /* CJDataSourceQueueManager.m in Sources */,
 				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
 				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
 				83A28221179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */,
+				835153C017A886180088F692 /* DataSourceWrapper.m in Sources */,
 				83A28217179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
+				835153C117A886180088F692 /* HttpDataSource.m in Sources */,
+				835153BC17A886180088F692 /* AudioPlayer.m in Sources */,
+				835153C217A886180088F692 /* LocalFileDataSource.m in Sources */,
 				833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
+				835153BF17A886180088F692 /* DataSource.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
@@ -603,16 +702,20 @@
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				83A28223179C9BD9008D0686 /* Base64.m in Sources */,
 				83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
+				835153BD17A886180088F692 /* AutoRecoveringHttpDataSource.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
 				836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
 				83A2821F179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */,
 				834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */,
 				83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
 				83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
+				835153BE17A886180088F692 /* CoreFoundationDataSource.m in Sources */,
+				83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */,
 				83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */,
+				8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,12 +725,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E31D03179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
+				8361466E17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E44D9D178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				83FB7B7B17911081003E56F8 /* CJStringNormalization.m in Sources */,
 				8394388817A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
+				83EC10D117A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */,
 				83A2821E179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				83FB7B7F17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28212179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
+				835153A817A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */,
 				833FF163178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
 				835B00391791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
 				83A28222179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */,
@@ -638,6 +744,7 @@
 				835B00341791C22700E07A71 /* KANUtils.m in Sources */,
 				833E568E17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
 				83A28218179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
+				835153AC17A87C520088F692 /* KANAudioStore.m in Sources */,
 				836782A81799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83433322178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83A28228179CC15C008D0686 /* KANArtwork.m in Sources */,
@@ -652,7 +759,9 @@
 				833E569217A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				83A4D84D179B17A8008597E0 /* KANTableViewCell.m in Sources */,
 				83A2821A179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				83617EC017A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */,
 				836782D5179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
+				83EC10CF17A9DD7700FB4763 /* CJDataSourceQueueManager.m in Sources */,
 				83A28216179C9BD9008D0686 /* AFImageRequestOperation.m in Sources */,
 				83433383178BD27800CC985D /* KANGenre.m in Sources */,
 				83E31CFF179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
@@ -736,6 +845,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "C8453E84-9588-4CC2-A42C-E55839948816";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -767,6 +877,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "C8453E84-9588-4CC2-A42C-E55839948816";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -778,11 +889,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kanihi/Kanihi-Prefix.pch";
 				INFOPLIST_FILE = "Kanihi/Kanihi-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -793,11 +906,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kanihi/Kanihi-Prefix.pch";
 				INFOPLIST_FILE = "Kanihi/Kanihi-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
