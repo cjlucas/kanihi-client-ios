@@ -170,8 +170,6 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     }
     
     // Delete old tracks
-    
-    NSURLRequest *req = [KANAPI deletedTracksRequestFromCurrentTracks:[self allTracks]];
 
     void (^deleteTracksSuccessBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *op, NSDictionary *json) {
         //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
@@ -184,12 +182,15 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
             CJLog(@"%@", error);
     };
 
-    AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
+    for (NSURLRequest *req in [KANAPI deletedTracksRequestsWithCurrentTracks:[self allTracks]]) {
+        AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
 
-    [op setQueuePriority:NSOperationQueuePriorityVeryLow];
-    op.successCallbackQueue = _background_queue;
-    op.failureCallbackQueue = _background_queue;
-    [operations addObject:op];
+        [op setQueuePriority:NSOperationQueuePriorityVeryLow];
+        op.successCallbackQueue = _background_queue;
+        op.failureCallbackQueue = _background_queue;
+        [operations addObject:op];
+    }
+
     
     // Process operations
     

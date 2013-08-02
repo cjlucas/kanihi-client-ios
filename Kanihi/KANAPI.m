@@ -146,28 +146,28 @@
     return [req copy];
 }
 
-+ (NSURLRequest *)deletedTracksRequestFromCurrentTracks:(NSArray *)currentTracks
++ (NSArray *)deletedTracksRequestsWithCurrentTracks:(NSArray *)currentTracks
 {
-    NSError *error;
-    
-    // build array of track uuids for api
-    NSMutableArray *trackUUIDs = [[NSMutableArray alloc] initWithCapacity:[currentTracks count]];
-    
-    for (KANTrack *track in currentTracks) {
-        [trackUUIDs addObject:track.uuid];
-    }
-    
-    NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{KANAPIDeletedTracksRequestJSONKey: trackUUIDs} options:0 error:&error];
-    NSMutableURLRequest *req = nil;
-    
-    if (error) {
-        CJLog(@"Error while serializing current tracks", nil);
-    } else {
-        req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
-        req.HTTPBody = trackData;
-    }
+    NSUInteger maxNumTracks = 1000;
+    __block NSMutableArray *requests = [[NSMutableArray alloc] initWithCapacity:50];
 
-    return [req copy];
+    __block NSMutableURLRequest *req = nil;
+    __block NSMutableArray *trackUUIDs = nil;
+    [currentTracks enumerateObjectsUsingBlock:^(KANTrack *track , NSUInteger idx, BOOL *stop) {
+        if (idx % maxNumTracks == 0) {
+            if (req) {
+                NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{KANAPIDeletedTracksRequestJSONKey: trackUUIDs} options:0 error:nil];
+                req.HTTPBody = trackData;
+                [requests addObject:[req copy]];
+            }
+            req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
+            trackUUIDs = [[NSMutableArray alloc] initWithCapacity:(maxNumTracks * 2)];
+        }
+
+        [trackUUIDs addObject:track.uuid];
+    }];
+
+    return [requests copy];
 }
 
 + (NSDictionary *)serverInfo
