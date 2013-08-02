@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "KANDataStore.h"
 
+#import "KANAudioPlayer.h"
+
+@class KANAudioPlayerViewController;
+
 @interface KANBaseTableViewController : UITableViewController
 
 - (id)initWithPredicate:(NSPredicate *)predicate;
 - (BOOL)isRootTableViewController;
+- (KANAudioPlayerViewController *)instantiateAudioPlayerViewController;
 
 @property (readonly) NSFetchedResultsController *resultsController;
 @property NSPredicate *fetchRequestPredicate;

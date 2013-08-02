@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E6BE8FEB-8D12-42CD-AA6D-E068DD39215B</string>
 	<key>IDESourceControlProjectName</key>
@@ -42,9 +44,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>987FDC27-25C4-454E-BD87-81B4FF592AD5</string>
+			<string>61F6A5C2-9377-41B7-9F81-7F45C16E8605</string>
 			<key>IDESourceControlWCCName</key>
-			<string>kanihi-client-ios</string>
+			<string>AFNetworking</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22E1C132-C34B-4F9D-AFC7-A13B0729C150</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Base64</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
@@ -58,17 +68,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>61F6A5C2-9377-41B7-9F81-7F45C16E8605</string>
+			<string>987FDC27-25C4-454E-BD87-81B4FF592AD5</string>
 			<key>IDESourceControlWCCName</key>
-			<string>AFNetworking</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>22E1C132-C34B-4F9D-AFC7-A13B0729C150</string>
-			<key>IDESourceControlWCCName</key>
-			<string>Base64</string>
+			<string>kanihi-client-ios</string>
 		</dict>
 	</array>
 </dict>

@@ -8,63 +8,48 @@
 
 #import "KANAudioPlayerViewController.h"
 
-#import "CJDataSourceQueueManager.h"
-#import "AudioPlayer.h"
+#import "KANAudioPlayer.h"
+
+#import "KANAlbumTrackListingTableViewController.h"
+#import "KANTrack.h"
+#import "KANDisc.h"
 
 @interface KANAudioPlayerViewController ()
-
-+ (CJDataSourceQueueManager *)sharedQueueManager;
-
-- (CJDataSourceQueueManager *)sharedQueueManager;
 
 @end
 
 @implementation KANAudioPlayerViewController
 
-+ (CJDataSourceQueueManager *)sharedQueueManager
+- (void)viewDidLoad
 {
-    static CJDataSourceQueueManager *_queueManager = nil;
-    if (!_queueManager) {
-        _queueManager = [[CJDataSourceQueueManager alloc] initWithAudioPlayer:[[AudioPlayer alloc] init]];
-        _queueManager.albumTitleKeyPath = @"disc.album.name";
-        _queueManager.artistKeyPath     = @"artist.name";
-        _queueManager.durationKeyPath   = @"duration";
-        _queueManager.trackTitleKeyPath = @"name";
-    }
-
-    return _queueManager;
-}
-
-- (CJDataSourceQueueManager *)sharedQueueManager
-{
-    return [[self class] sharedQueueManager];
-}
-
-- (void)setQueue:(NSArray *)items
-{
-    CJLog(@"%@", items);
-    CJDataSourceQueueManager *manager = [[self class] sharedQueueManager];
-
-    [manager resetQueue];
-
-    for (id <CJAudioPlayerQueueItem> item in items)
-        [manager addItem:item];
-}
-
-- (void)setSelectedItem:(id<CJAudioPlayerQueueItem>)item
-{
-    [[self sharedQueueManager] playItem:item];
+    //[[KANAudioPlayer sharedPlayer] setDelegate:self];
 }
 
 - (IBAction)playPauseButtonPressed:(id)sender {
-    [[[self class] sharedQueueManager] togglePlayPause];
+    [[KANAudioPlayer sharedPlayer] togglePlayPause];
 }
 
 - (IBAction)playPreviousButtonPressed:(id)sender {
-    [[self sharedQueueManager] playPrevious];
+    [[KANAudioPlayer sharedPlayer] playPrevious];
 }
 
 - (IBAction)playNextButtonPressed:(id)sender {
-    [[self sharedQueueManager] playNext];
+    [[KANAudioPlayer sharedPlayer] playNext];
 }
+
+- (IBAction)showPlaylistButtonPressed:(id)sender {
+    CJLog(@"here", nil);
+    NSDate *start = [NSDate date];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+
+    KANAlbumTrackListingTableViewController *vc = [sb instantiateViewControllerWithIdentifier:@"blahid"];
+    KANTrack *current = (KANTrack *)[[KANAudioPlayer sharedPlayer] currentItem];
+    vc.album = current.disc.album;
+    CJLog(@"%f", [[NSDate date] timeIntervalSinceDate:start]);
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - CJAudioPlayerDelegate methods
+
+
 @end

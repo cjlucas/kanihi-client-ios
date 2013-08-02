@@ -12,7 +12,7 @@
 #import "KANEntity.h"
 #import "KANUniqueEntity.h"
 
-#import "CJDataSourceQueueManager.h"
+#import "CJAudioPlayer.h"
 
 @class KANTrackArtist, KANDisc, KANGenre;
 

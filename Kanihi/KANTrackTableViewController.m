@@ -15,6 +15,8 @@
 #import "KANAlbum.h"
 #import "KANTrackArtist.h"
 
+#import "KANAudioPlayerViewController.h"
+
 @interface KANTrackTableViewController ()
 
 - (id)mainStringForCell:(KANTableViewCell *)cell withTrack:(KANTrack *)track;
@@ -91,7 +93,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // I suppose we'd want to play the track here
+    KANAudioPlayerViewController *vc = [self instantiateAudioPlayerViewController];
+
+    KANTrack *track = [self.resultsController objectAtIndexPath:indexPath];
+    
+    [KANAudioPlayer setQueue:@[track]];
+    [[KANAudioPlayer sharedPlayer] playItem:track];
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

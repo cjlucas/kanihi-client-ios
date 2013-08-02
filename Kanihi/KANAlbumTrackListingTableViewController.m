@@ -14,6 +14,8 @@
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
 
+#import "KANAudioPlayer.h"
+
 @interface KANAlbumTrackListingTableViewController ()
 
 - (KANTrack *)trackForIndexPath:(NSIndexPath *)indexPath;
@@ -40,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     KANAlbumTrackListingTableView *tableView = (KANAlbumTrackListingTableView *)self.tableView;
     
     NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] init];
@@ -160,9 +162,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KANTrack *track = [self trackForIndexPath:indexPath];
-    
-    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+
+    [KANAudioPlayer setQueue:self.tracks[0]];
+    [[KANAudioPlayer sharedPlayer] playItem:[self trackForIndexPath:indexPath]];
+
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 @end

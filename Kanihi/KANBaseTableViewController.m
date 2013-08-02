@@ -133,6 +133,15 @@
     return self.fetchRequestPredicate == nil;
 }
 
+- (KANAudioPlayerViewController *)instantiateAudioPlayerViewController
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    NSLog(@"%@", sb);
+
+    return [sb instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

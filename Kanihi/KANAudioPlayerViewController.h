@@ -8,17 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CJAudioPlayerQueueItem;
+#import "CJAudioPlayer.h"
 
-@interface KANAudioPlayerViewController : UIViewController
+@class KANTrack;
 
-- (void)setQueue:(NSArray *)items; // objects must conform to CJAudioPlayerQueueItem
-- (void)setSelectedItem:(id <CJAudioPlayerQueueItem>)item;
-
+@interface KANAudioPlayerViewController : UIViewController <CJAudioPlayerDelegate>
 // Actions
 - (IBAction)playPauseButtonPressed:(id)sender;
 - (IBAction)playPreviousButtonPressed:(id)sender;
 - (IBAction)playNextButtonPressed:(id)sender;
+- (IBAction)showPlaylistButtonPressed:(id)sender;
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *trackLabel;
@@ -26,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *playNextButton;
 @property (weak, nonatomic) IBOutlet UIButton *playPrevButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UIButton *showPlaylistButton;
 
 @end
