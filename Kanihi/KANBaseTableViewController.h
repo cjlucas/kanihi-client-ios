@@ -13,7 +13,15 @@
 
 @class KANAudioPlayerViewController;
 
-@interface KANBaseTableViewController : UITableViewController
+@interface KANBaseTableViewController : UITableViewController {
+    BOOL _useFetchedResultsController; // disable if handling table data manually (default: YES)
+}
+
+// methods used by resultsController property
+- (NSString *)entityName;
+- (NSString *)sortDescriptorKey;
+- (NSString *)sectionNameKeyPath;
+- (NSString *)cacheName;
 
 - (id)initWithPredicate:(NSPredicate *)predicate;
 - (BOOL)isRootTableViewController;

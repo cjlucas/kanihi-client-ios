@@ -13,11 +13,6 @@
 
 @interface KANBaseTableViewController ()
 
-- (NSString *)entityName;
-- (NSString *)sortDescriptorKey;
-- (NSString *)sectionNameKeyPath;
-- (NSString *)cacheName;
-
 - (void)refreshTableData;
 
 - (BOOL)shouldShowSections;
@@ -31,6 +26,7 @@
 {
     if (self = [super init]) {
         _resultsController = nil;
+        _useFetchedResultsController = YES;
     }
     
     return self;
@@ -83,6 +79,11 @@
 
 - (NSFetchedResultsController *)resultsController
 {
+    if (!_useFetchedResultsController)
+        return nil;
+
+    assert([self entityName] != nil);
+
     if (_resultsController != nil) {
         return _resultsController;
     }
@@ -108,7 +109,6 @@
 
 - (NSString *)entityName
 {
-    [NSException raise:@"entityName method not implemented" format:nil];
     return nil;
 }
 
