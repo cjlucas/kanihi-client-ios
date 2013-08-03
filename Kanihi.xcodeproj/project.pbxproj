@@ -73,13 +73,15 @@
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
 		83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */; };
-		83EC10CE17A9DD7700FB4763 /* CJAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CB17A9DD7700FB4763 /* CJAudioPlayer.m */; };
-		83EC10D017A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */; };
 		83ED871B17AB43EB001BBA4E /* KANDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303281789F953006EC1A6 /* KANDataStore.m */; };
 		83ED871C17AB4408001BBA4E /* KanihiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 834303191789F13F006EC1A6 /* KanihiTests.m */; };
 		83ED871E17AB4545001BBA4E /* tracks1.json in Resources */ = {isa = PBXBuildFile; fileRef = 83ED871D17AB4545001BBA4E /* tracks1.json */; };
 		83ED871F17AB4968001BBA4E /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		83ED872317AC4606001BBA4E /* KANAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872217AC4606001BBA4E /* KANAudioPlayer.m */; };
+		83ED872A17AC607C001BBA4E /* CJAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872717AC607C001BBA4E /* CJAudioPlayer.m */; };
+		83ED872B17AC607C001BBA4E /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872917AC607C001BBA4E /* CJHTTPCachedDataSource.m */; };
+		83ED872E17AC689B001BBA4E /* KANPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */; };
+		83ED873117AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */; };
 		83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7317911081003E56F8 /* CJStringNormalization.m */; };
 		83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7517911081003E56F8 /* NSArray+CJExtensions.m */; };
 		83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7717911081003E56F8 /* NSDateFormatter+CJExtensions.m */; };
@@ -219,13 +221,17 @@
 		83E44D8D178A177700CB37C1 /* KANTrack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANTrack.m; sourceTree = "<group>"; };
 		83E44D8E178A1CD100CB37C1 /* KANUniqueEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANUniqueEntity.h; sourceTree = "<group>"; };
 		83E44D9B178A7D8900CB37C1 /* KANUniqueEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUniqueEntity.m; sourceTree = "<group>"; };
-		83EC10CA17A9DD7700FB4763 /* CJAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJAudioPlayer.h; path = ../CJAudjustableAdditions/CJAudioPlayer.h; sourceTree = "<group>"; };
-		83EC10CB17A9DD7700FB4763 /* CJAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJAudioPlayer.m; path = ../CJAudjustableAdditions/CJAudioPlayer.m; sourceTree = "<group>"; };
-		83EC10CC17A9DD7700FB4763 /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJHTTPCachedDataSource.h; path = ../CJAudjustableAdditions/CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
-		83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJHTTPCachedDataSource.m; path = ../CJAudjustableAdditions/CJHTTPCachedDataSource.m; sourceTree = "<group>"; };
 		83ED871D17AB4545001BBA4E /* tracks1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracks1.json; sourceTree = "<group>"; };
 		83ED872117AC4606001BBA4E /* KANAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioPlayer.h; sourceTree = "<group>"; };
 		83ED872217AC4606001BBA4E /* KANAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayer.m; sourceTree = "<group>"; };
+		83ED872617AC607C001BBA4E /* CJAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAudioPlayer.h; sourceTree = "<group>"; };
+		83ED872717AC607C001BBA4E /* CJAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJAudioPlayer.m; sourceTree = "<group>"; };
+		83ED872817AC607C001BBA4E /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
+		83ED872917AC607C001BBA4E /* CJHTTPCachedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJHTTPCachedDataSource.m; sourceTree = "<group>"; };
+		83ED872C17AC689B001BBA4E /* KANPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistTableViewController.h; sourceTree = "<group>"; };
+		83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistTableViewController.m; sourceTree = "<group>"; };
+		83ED872F17AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioPlayerPlaylistTableViewController.h; sourceTree = "<group>"; };
+		83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayerPlaylistTableViewController.m; sourceTree = "<group>"; };
 		83FB7B7217911081003E56F8 /* CJStringNormalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStringNormalization.h; path = "../../cjutils-objc/CJUtils/CJStringNormalization.h"; sourceTree = "<group>"; };
 		83FB7B7317911081003E56F8 /* CJStringNormalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStringNormalization.m; path = "../../cjutils-objc/CJUtils/CJStringNormalization.m"; sourceTree = "<group>"; };
 		83FB7B7417911081003E56F8 /* NSArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSArray+CJExtensions.h"; sourceTree = "<group>"; };
@@ -405,7 +411,7 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				83EC10C917A9DD5D00FB4763 /* CJAudjustableAdditions */,
+				83ED872517AC607C001BBA4E /* CJAudioPlayer */,
 				835153AD17A886180088F692 /* AudioPlayer */,
 				83A281FA179C9BD9008D0686 /* AFNetworking */,
 				83A2820E179C9BD9008D0686 /* Base64 */,
@@ -491,20 +497,13 @@
 			path = Vendor/Base64/Base64;
 			sourceTree = "<group>";
 		};
-		83EC10C917A9DD5D00FB4763 /* CJAudjustableAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				83EC10CA17A9DD7700FB4763 /* CJAudioPlayer.h */,
-				83EC10CB17A9DD7700FB4763 /* CJAudioPlayer.m */,
-				83EC10CC17A9DD7700FB4763 /* CJHTTPCachedDataSource.h */,
-				83EC10CD17A9DD7700FB4763 /* CJHTTPCachedDataSource.m */,
-			);
-			name = CJAudjustableAdditions;
-			sourceTree = "<group>";
-		};
 		83ED872017AC3FFA001BBA4E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				83ED872C17AC689B001BBA4E /* KANPlaylistTableViewController.h */,
+				83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */,
+				83ED872F17AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.h */,
+				83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */,
 				835153A517A879AA0088F692 /* KANAudioPlayerViewController.h */,
 				835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */,
 				8394388517A4534E007B73B1 /* KANTrackTableViewController.h */,
@@ -527,6 +526,18 @@
 				83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		83ED872517AC607C001BBA4E /* CJAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				83ED872617AC607C001BBA4E /* CJAudioPlayer.h */,
+				83ED872717AC607C001BBA4E /* CJAudioPlayer.m */,
+				83ED872817AC607C001BBA4E /* CJHTTPCachedDataSource.h */,
+				83ED872917AC607C001BBA4E /* CJHTTPCachedDataSource.m */,
+			);
+			name = CJAudioPlayer;
+			path = ../CJAudioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,9 +656,9 @@
 				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
 				83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
-				83EC10D017A9DD7700FB4763 /* CJHTTPCachedDataSource.m in Sources */,
 				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
+				83ED873117AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
@@ -656,7 +667,6 @@
 				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
-				83EC10CE17A9DD7700FB4763 /* CJAudioPlayer.m in Sources */,
 				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
 				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
@@ -671,12 +681,14 @@
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835153BF17A886180088F692 /* DataSource.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
+				83ED872E17AC689B001BBA4E /* KANPlaylistTableViewController.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
 				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				83A28223179C9BD9008D0686 /* Base64.m in Sources */,
 				83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
+				83ED872A17AC607C001BBA4E /* CJAudioPlayer.m in Sources */,
 				835153BD17A886180088F692 /* AutoRecoveringHttpDataSource.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
 				836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
@@ -687,6 +699,7 @@
 				835153BE17A886180088F692 /* CoreFoundationDataSource.m in Sources */,
 				83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */,
 				83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				83ED872B17AC607C001BBA4E /* CJHTTPCachedDataSource.m in Sources */,
 				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingTableViewController.m in Sources */,

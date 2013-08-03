@@ -10,11 +10,13 @@
 
 #import "KANAudioPlayer.h"
 
-#import "KANAlbumTrackListingTableViewController.h"
+#import "KANAudioPlayerPlaylistTableViewController.h"
 #import "KANTrack.h"
 #import "KANDisc.h"
 
 @interface KANAudioPlayerViewController ()
+
+- (void)updateOutlets;
 
 @end
 
@@ -22,10 +24,29 @@
 
 - (void)viewDidLoad
 {
-    //[[KANAudioPlayer sharedPlayer] setDelegate:self];
+    [[KANAudioPlayer sharedPlayer] setDelegate:self];
+    [self updateOutlets];
 }
 
-- (IBAction)playPauseButtonPressed:(id)sender {
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[KANAudioPlayer sharedPlayer] setDelegate:nil];
+}
+
+- (void)updateOutlets
+{
+    KANAudioPlayer *player = [KANAudioPlayer sharedPlayer];
+    KANTrack *currentTrack = (KANTrack *)player.currentItem;
+
+    //CJLog(@"%@", currentTrack);
+    if (currentTrack) {
+        self.trackLabel.text = currentTrack.name;
+    }
+}
+
+# pragma mark - UI Actions
+
+- (IBAction)playPauseButtonPressed:(UIButton *)sender {
     [[KANAudioPlayer sharedPlayer] togglePlayPause];
 }
 
@@ -38,18 +59,17 @@
 }
 
 - (IBAction)showPlaylistButtonPressed:(id)sender {
-    CJLog(@"here", nil);
-    NSDate *start = [NSDate date];
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    KANAudioPlayerPlaylistTableViewController *vc = [[KANAudioPlayerPlaylistTableViewController alloc] initWithTracks:[[KANAudioPlayer sharedPlayer] queue]];
 
-    KANAlbumTrackListingTableViewController *vc = [sb instantiateViewControllerWithIdentifier:@"blahid"];
-    KANTrack *current = (KANTrack *)[[KANAudioPlayer sharedPlayer] currentItem];
-    vc.album = current.disc.album;
-    CJLog(@"%f", [[NSDate date] timeIntervalSinceDate:start]);
     [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - CJAudioPlayerDelegate methods
+
+- (void)audioPlayer:(CJAudioPlayer *)audioPlayer didStartPlayingItem:(KANTrack *)item
+{
+    [self updateOutlets];
+}
 
 
 @end
