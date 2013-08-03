@@ -11,6 +11,9 @@
 #import "KANEntity.h"
 
 @interface KANArtworkStore : NSObject
+
 + (NSCache *)sharedCache;
 + (void)attachArtworkFromEntity:(KANEntity *)entity toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail;
++ (void)loadArtworkFromEntity:(KANEntity *)entity thumbnail:(BOOL)thumbnail withCompletionHandler:(void(^)(UIImage *image))handler;
+
 @end

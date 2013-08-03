@@ -31,6 +31,7 @@
 + (KANArtwork *)artworkForEntity:(KANEntity *)entity;
 
 + (NSUInteger)fullSizeImageHeight;
++ (NSUInteger)thumbnailImageHeight;
 
 @end
 
@@ -59,6 +60,11 @@
     return _fullSizeImageHeight;
 }
 
++ (NSUInteger)thumbnailImageHeight
+{
+    return 200 * 2; // TODO: needs a better solution
+}
+
 + (NSURL *)thumbnailDirectory
 {
     NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
@@ -72,7 +78,7 @@
 + (NSURL *)fullSizeDirectory
 {
     NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *fullSizeDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreThumbnailDirectoryName];
+    NSURL *fullSizeDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreFullSizeDirectoryName];
     
     [[NSFileManager defaultManager] createDirectoryAtURL:fullSizeDir withIntermediateDirectories:YES attributes:nil error:nil];
     
@@ -153,26 +159,40 @@
 + (void)attachArtworkFromEntity:(KANEntity *)entity toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail
 {
     view.image = nil;
+
+    [self loadArtworkFromEntity:entity thumbnail:thumbnail withCompletionHandler:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            view.image = image;
+        });
+    }];
+}
+
++ (void)loadArtworkFromEntity:(KANEntity *)entity thumbnail:(BOOL)thumbnail withCompletionHandler:(void (^)(UIImage *))handler
+{
     KANArtwork *artwork = [self artworkForEntity:entity];
-    
+
     // stop crashing, proper fix later
     if (artwork == nil)
         return;
-    
-    UIImage *image = [[self sharedCache] objectForKey:artwork.checksum];
-    
+
+    UIImage *image;
+
+    if (thumbnail)
+        image = [[self sharedCache] objectForKey:artwork.checksum];
+
     // load from disk if image not in cache
     if (!image)
         image = thumbnail ? [self loadThumbnailImageForArtwork:artwork] : [self loadFullSizeImageForArtwork:artwork];
-    
+
     if (image) {
-        view.image = image;
-        [[self sharedCache] setObject:image forKey:artwork.checksum];
-        
+        handler(image);
+        if (thumbnail)
+            [[self sharedCache] setObject:image forKey:artwork.checksum];
+
     } else {
-        // probably not the best idea to blindly multiply the height by two. But it's fine for now as we're only supporting retina iPhones
-        NSUInteger height = thumbnail ? (view.frame.size.height * 2) : [self fullSizeImageHeight];
-        
+        NSUInteger height = thumbnail ? [self thumbnailImageHeight] : [self fullSizeImageHeight];
+        CJLog(@"%d", height);
+
         [KANAPI performDownloadForArtwork:artwork withHeight:height withCompletionHandler:^(NSData *data) {
             if (thumbnail)
                 [self saveThumbnailImageData:data forArtwork:artwork];
@@ -180,11 +200,11 @@
                 [self saveFullSizeImage:data forArtwork:artwork];
 
             __block UIImage *image = [UIImage imageWithData:data];
-            [[self sharedCache] setObject:image forKey:artwork.checksum];
 
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                view.image = image;
-            });
+            if (thumbnail)
+                [[self sharedCache] setObject:image forKey:artwork.checksum];
+
+            handler(image);
         }];
     }
 }
