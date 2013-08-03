@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KANAlbumTrackListingTableView : UITableView
+@property (weak, nonatomic) IBOutlet UIImageView *insetArtworkView;
 @property (weak, nonatomic) IBOutlet UILabel *albumInfoLabel;
 
 @end

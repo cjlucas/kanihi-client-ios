@@ -14,6 +14,7 @@
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
 
+#import "KANArtworkStore.h"
 #import "KANAudioPlayer.h"
 
 @interface KANAlbumTrackListingTableViewController ()
@@ -43,8 +44,39 @@
 {
     [super viewDidLoad];
 
-    KANAlbumTrackListingTableView *tableView = (KANAlbumTrackListingTableView *)self.tableView;
-    
+    [KANArtworkStore loadArtworkFromEntity:self.album thumbnail:NO withCompletionHandler:^(UIImage *image) {
+        CJLog(@"image: (%f, %f)", image.size.width, image.size.height);
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            // create filtered background image
+            CIContext *context = [CIContext contextWithOptions:nil];
+            CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
+            CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+            [filter setValue:ciImage forKey:kCIInputImageKey];
+            [filter setValue:@3.8f forKey:@"inputRadius"];
+            CIImage *result = [filter valueForKey:kCIOutputImageKey]; // 4
+            CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
+
+            __block UIImage *backgroundImage = [UIImage imageWithCGImage:filteredImage];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ((KANAlbumTrackListingTableView *)self.tableView).insetArtworkView.image = image;
+
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
+                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                imageView.image = backgroundImage;
+                imageView.layer.masksToBounds = YES; // prevent subview overflow
+                [self.tableView.tableHeaderView insertSubview:imageView atIndex:0];
+
+                UIView *glassView = [[UIView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
+                glassView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5];
+                [self.tableView.tableHeaderView insertSubview:glassView aboveSubview:imageView];
+
+                CJLog(@"%@", self.tableView.tableHeaderView.subviews);
+            });
+        });
+    }];
+
     NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] init];
     NSAttributedString *newLine = [[NSAttributedString alloc] initWithString:@"\n"];
     
@@ -67,7 +99,7 @@
     [albumInfoString appendAttributedString:newLine];
     [albumInfoString appendAttributedString:duration];
     
-    tableView.albumInfoLabel.attributedText = [albumInfoString copy];
+    ((KANAlbumTrackListingTableView *)self.tableView).albumInfoLabel.attributedText = [albumInfoString copy];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
