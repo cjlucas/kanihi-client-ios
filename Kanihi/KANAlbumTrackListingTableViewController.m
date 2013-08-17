@@ -7,8 +7,8 @@
 //
 
 #import "KANAlbumTrackListingTableViewController.h"
-#import "KANAlbumTrackListingTableView.h"
 #import "KANAlbumTrackListingCell.h"
+#import "KANLabelContainerView.h"
 
 #import "KANDisc.h"
 #import "KANTrack.h"
@@ -44,6 +44,8 @@
 {
     [super viewDidLoad];
 
+    // TODO: all of this should be moved to KANAlbumTrackListingTableView
+
     [KANArtworkStore loadArtworkFromEntity:self.album thumbnail:NO withCompletionHandler:^(UIImage *image) {
         CJLog(@"image: (%f, %f)", image.size.width, image.size.height);
 
@@ -76,30 +78,32 @@
             });
         });
     }];
+    
+    UIFont *headerFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    UIFont *subheaderFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
 
-    NSMutableAttributedString *albumInfoString = [[NSMutableAttributedString alloc] init];
-    NSAttributedString *newLine = [[NSAttributedString alloc] initWithString:@"\n"];
-    
-    UIFont *headerFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    UIFont *subheaderFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    
-    NSAttributedString *albumName = [[NSAttributedString alloc] initWithString:self.album.name attributes:@{NSFontAttributeName : headerFont}];
-    
-    NSAttributedString *albumArtist = [[NSAttributedString alloc] initWithString:self.album.artist.name attributes:@{NSFontAttributeName : subheaderFont}];
-    
-    NSAttributedString *albumYear = [[NSAttributedString alloc] initWithString:@"May 03, 2013" attributes:@{NSFontAttributeName : subheaderFont}];
-    
-    NSAttributedString *duration = [[NSAttributedString alloc] initWithString:[KANUtils timecodeForTracks:self.album.tracks withZeroPadding:NO] attributes:@{NSFontAttributeName : subheaderFont}];
-    
-    [albumInfoString appendAttributedString:albumName];
-    [albumInfoString appendAttributedString:newLine];
-    [albumInfoString appendAttributedString:albumArtist];
-    [albumInfoString appendAttributedString:newLine];
-    [albumInfoString appendAttributedString:albumYear];
-    [albumInfoString appendAttributedString:newLine];
-    [albumInfoString appendAttributedString:duration];
-    
-    ((KANAlbumTrackListingTableView *)self.tableView).albumInfoLabel.attributedText = [albumInfoString copy];
+    float labelWidth = CGRectGetWidth(self.tableView.albumInfoLabelContainerView.frame);
+
+    UILabel *albumNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, 0)];
+    albumNameLabel.numberOfLines = 3;
+    albumNameLabel.font = headerFont;
+    albumNameLabel.text = self.album.name;
+    [self.tableView.albumInfoLabelContainerView addSubview:albumNameLabel];
+
+    UILabel *albumArtistLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, 0)];
+    albumArtistLabel.font = subheaderFont;
+    albumArtistLabel.text = self.album.artist.name;
+    [self.tableView.albumInfoLabelContainerView addSubview:albumArtistLabel];
+
+    UILabel *albumYearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, 0)];
+    albumYearLabel.font = subheaderFont;
+    albumYearLabel.text = @"May 03, 2013";
+    [self.tableView.albumInfoLabelContainerView addSubview:albumYearLabel];
+
+    UILabel *durationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, 0)];
+    durationLabel.font = subheaderFont;
+    durationLabel.text = [KANUtils timecodeForTracks:self.album.tracks withZeroPadding:NO];
+    [self.tableView.albumInfoLabelContainerView addSubview:durationLabel];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -198,7 +202,7 @@
 
     UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"AudioPlayer"];
 
-    [KANAudioPlayer setQueue:self.tracks[0]];
+    [KANAudioPlayer setItems:self.tracks[0]];
     [[KANAudioPlayer sharedPlayer] playItem:[self trackForIndexPath:indexPath]];
 
     [self.navigationController pushViewController:vc animated:YES];

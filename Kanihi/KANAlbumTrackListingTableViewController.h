@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "KANAlbum.h"
+#import "KANAlbumTrackListingTableView.h"
 
 @interface KANAlbumTrackListingTableViewController : UITableViewController
 
@@ -17,5 +18,7 @@
 
 // 2d array (1st level: discs; 2nd level: tracks for disc)
 @property (readonly) NSArray *tracks; // lazy
+
+@property (nonatomic, retain) KANAlbumTrackListingTableView *tableView;
 
 @end
