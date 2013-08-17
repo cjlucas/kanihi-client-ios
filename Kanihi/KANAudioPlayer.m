@@ -16,22 +16,19 @@
 + (KANAudioPlayer *)sharedPlayer
 {
     static KANAudioPlayer *_audioPlayer = nil;
-    if (!_audioPlayer) {
-        _audioPlayer = [[KANAudioPlayer alloc] initWithAudioPlayer:[[AudioPlayer alloc] init]];
-
-        _audioPlayer.albumTitleKeyPath = @"disc.album.name";
-        _audioPlayer.artistKeyPath     = @"artist.name";
-        _audioPlayer.durationKeyPath   = @"duration";
-        _audioPlayer.trackTitleKeyPath = @"name";
-    }
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _audioPlayer = [[KANAudioPlayer alloc] init];
+    });
 
     return _audioPlayer;
 }
 
-+ (void)setQueue:(NSArray *)items
++ (void)setItems:(NSArray *)items
 {
     KANAudioPlayer *player = [self sharedPlayer];
-    [player resetQueue];
+    [player resetItems];
 
     for (KANTrack *track in items) {
         [player addItem:track];

@@ -59,7 +59,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [KANAudioPlayer setQueue:_tracks];
+    [KANAudioPlayer setItems:_tracks];
 
     KANTrack *track = [self trackAtIndexPath:indexPath];
     [[KANAudioPlayer sharedPlayer] playItem:track];

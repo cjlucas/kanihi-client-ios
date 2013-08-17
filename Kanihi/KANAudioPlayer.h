@@ -10,5 +10,5 @@
 
 @interface KANAudioPlayer : CJAudioPlayer
 + (KANAudioPlayer *)sharedPlayer;
-+ (void)setQueue:(NSArray *)items;
++ (void)setItems:(NSArray *)items;
 @end

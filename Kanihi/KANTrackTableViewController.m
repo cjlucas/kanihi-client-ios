@@ -97,7 +97,7 @@
 
     KANTrack *track = [self.resultsController objectAtIndexPath:indexPath];
     
-    [KANAudioPlayer setQueue:@[track]];
+    [KANAudioPlayer setItems:@[track]];
     [[KANAudioPlayer sharedPlayer] playItem:track];
 
     [self.navigationController pushViewController:vc animated:YES];
