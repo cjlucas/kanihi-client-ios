@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KANLabelContainerView;
+
 @interface KANAlbumTrackListingTableView : UITableView
 @property (weak, nonatomic) IBOutlet UIImageView *insetArtworkView;
-@property (weak, nonatomic) IBOutlet UILabel *albumInfoLabel;
+@property (weak, nonatomic) IBOutlet KANLabelContainerView *albumInfoLabelContainerView;
 
 @end

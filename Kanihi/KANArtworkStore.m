@@ -13,6 +13,8 @@
 
 #import "KANTrack.h"
 
+#import "UIImage+CJExtensions.h"
+
 @interface KANArtworkStore ()
 + (BOOL)thumbnailExistsForArtwork:(KANArtwork *)artwork;
 + (BOOL)fullSizeExistsForArtwork:(KANArtwork *)artwork;
@@ -54,7 +56,7 @@
     
     if (_fullSizeImageHeight == 0) {
         UIWindow *mainWindow = [[UIApplication sharedApplication].windows lastObject];
-        _fullSizeImageHeight = (mainWindow.frame.size.width * mainWindow.contentScaleFactor);
+        _fullSizeImageHeight = mainWindow.frame.size.width * 2;
     }
     
     return _fullSizeImageHeight;
@@ -129,6 +131,20 @@
 + (void)saveFullSizeImage:(NSData *)data forArtwork:(KANArtwork *)artwork
 {
     [self saveImageData:data toURL:[self fullSizeURLForArtwork:artwork]];
+}
+
++ (void)emptyStore
+{
+    NSArray *directories = @[[self thumbnailDirectory], [self fullSizeDirectory]];
+    NSFileManager *fm = [NSFileManager defaultManager];
+
+    for (NSURL *directory in directories) {
+        NSDirectoryEnumerator *enumerator = [fm enumeratorAtURL:directory includingPropertiesForKeys:nil options:0 errorHandler:nil];
+
+        for (NSURL *fileURL in enumerator) {
+            [fm removeItemAtURL:fileURL error:nil];
+        }
+    }
 }
 
 + (KANArtwork *)artworkForEntity:(KANEntity *)entity
@@ -207,6 +223,31 @@
             handler(image);
         }];
     }
+}
+
++ (void)blurImage:(UIImage *)image withCompletionHandler:(void (^)(UIImage *))completionHandler
+{
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setValue:ciImage forKey:kCIInputImageKey];
+    [filter setValue:@10.0f forKey:@"inputRadius"];
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
+
+    completionHandler([UIImage imageWithCGImage:filteredImage]);
+}
+
++ (void)resizeImage:(UIImage *)image toSize:(CGSize)size withCompletionHandler:(void (^)(UIImage *))completionHandler
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        CGSize scaledSize;
+        scaledSize.width    = size.width * [UIScreen mainScreen].scale;
+        scaledSize.height   = size.height * [UIScreen mainScreen].scale;
+
+        UIImage *resizedImage = [image resizedImage:scaledSize interpolationQuality:kCGInterpolationHigh];
+        completionHandler(resizedImage);
+    });
 }
 
 @end

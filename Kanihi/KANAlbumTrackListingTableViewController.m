@@ -49,33 +49,31 @@
     [KANArtworkStore loadArtworkFromEntity:self.album thumbnail:NO withCompletionHandler:^(UIImage *image) {
         CJLog(@"image: (%f, %f)", image.size.width, image.size.height);
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            // create filtered background image
-            CIContext *context = [CIContext contextWithOptions:nil];
-            CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
-            CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-            [filter setValue:ciImage forKey:kCIInputImageKey];
-            [filter setValue:@3.8f forKey:@"inputRadius"];
-            CIImage *result = [filter valueForKey:kCIOutputImageKey]; // 4
-            CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
-
-            __block UIImage *backgroundImage = [UIImage imageWithCGImage:filteredImage];
-
+        [KANArtworkStore resizeImage:image toSize:self.tableView.insetArtworkView.frame.size withCompletionHandler:^(UIImage *image) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                ((KANAlbumTrackListingTableView *)self.tableView).insetArtworkView.image = image;
+                self.tableView.insetArtworkView.image = image;
+            });
+        }];
 
+        [KANArtworkStore blurImage:image withCompletionHandler:^(UIImage *blurredImage) {
+            dispatch_async(dispatch_get_main_queue(), ^{
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
                 imageView.contentMode = UIViewContentModeScaleAspectFill;
-                imageView.image = backgroundImage;
+                imageView.image = blurredImage;
                 imageView.layer.masksToBounds = YES; // prevent subview overflow
                 [self.tableView.tableHeaderView insertSubview:imageView atIndex:0];
-
-                UIView *glassView = [[UIView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
-                glassView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5];
-                [self.tableView.tableHeaderView insertSubview:glassView aboveSubview:imageView];
-
-                CJLog(@"%@", self.tableView.tableHeaderView.subviews);
             });
+        }];
+
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIView *glassView = [[UIView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
+            glassView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
+            [self.tableView.tableHeaderView insertSubview:glassView atIndex:1]; // above blurred image
+
+            UIView *bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, 0.5)];
+            bottomBorderView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3];
+            [self.tableView.tableHeaderView insertSubview:bottomBorderView aboveSubview:glassView];
         });
     }];
     
