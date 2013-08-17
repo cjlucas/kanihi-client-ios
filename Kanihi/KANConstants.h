@@ -42,8 +42,9 @@ NSString * const KANDataStoreWillFinishUpdatingNotification;
 NSString * const KANDataStoreDidFinishUpdatingNotification;
 
 // KANArtworkStore
-NSString * const KANArtworkStoreThumbnailDirectoryName;
-NSString * const KANArtworkStoreFullSizeDirectoryName;
+NSString * const KANArtworkStoreThumbnailDirectoryPath;
+NSString * const KANArtworkStoreFullSizeDirectoryPath;
+NSString * const KANArtworkStoreBlurredDirectoryPath;
 
 // Model Entity Names
 NSString * const KANTrackEntityName;

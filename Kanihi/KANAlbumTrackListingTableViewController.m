@@ -46,7 +46,9 @@
 
     // TODO: all of this should be moved to KANAlbumTrackListingTableView
 
-    [KANArtworkStore loadArtworkFromEntity:self.album thumbnail:NO withCompletionHandler:^(UIImage *image) {
+    KANArtwork *artwork = [KANArtworkStore artworkForEntity:_album];
+
+    [KANArtworkStore loadArtwork:artwork thumbnail:NO withCompletionHandler:^(UIImage *image) {
         CJLog(@"image: (%f, %f)", image.size.width, image.size.height);
 
         [KANArtworkStore resizeImage:image toSize:self.tableView.insetArtworkView.frame.size withCompletionHandler:^(UIImage *image) {
@@ -55,7 +57,7 @@
             });
         }];
 
-        [KANArtworkStore blurImage:image withCompletionHandler:^(UIImage *blurredImage) {
+        [KANArtworkStore blurArtwork:artwork withCompletionHandler:^(UIImage *blurredImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
                 imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -69,7 +71,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIView *glassView = [[UIView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
             glassView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7];
-            [self.tableView.tableHeaderView insertSubview:glassView atIndex:1]; // above blurred image
+            [self.tableView.tableHeaderView insertSubview:glassView belowSubview:self.tableView.insetArtworkView];
 
             UIView *bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, 0.5)];
             bottomBorderView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3];

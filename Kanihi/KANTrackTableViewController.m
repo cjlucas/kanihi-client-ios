@@ -72,7 +72,9 @@
 
 - (void)setArtworkView:(UIImageView *)artworkView withTrack:(KANTrack *)track
 {
-    [KANArtworkStore attachArtworkFromEntity:track toImageView:artworkView thumbnail:YES];
+    KANArtwork *artwork = [KANArtworkStore artworkForEntity:track];
+
+    [KANArtworkStore attachArtwork:artwork toImageView:artworkView thumbnail:YES];
 }
 
 #pragma mark - UITableViewDataSource methods

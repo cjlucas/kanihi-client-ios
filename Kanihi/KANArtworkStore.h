@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "KANEntity.h"
+#import "KANArtwork.h"
 
 @interface KANArtworkStore : NSObject
 
@@ -16,10 +16,13 @@
 
 + (void)emptyStore;
 
-+ (void)attachArtworkFromEntity:(KANEntity *)entity toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail;
-+ (void)loadArtworkFromEntity:(KANEntity *)entity thumbnail:(BOOL)thumbnail withCompletionHandler:(void(^)(UIImage *image))handler;
++ (KANArtwork *)artworkForEntity:(KANEntity *)entity;
 
-+ (void)blurImage:(UIImage *)image withCompletionHandler:(void(^)(UIImage *blurredImage))completionHandler;
-+ (void)resizeImage:(UIImage *)image toSize:(CGSize)size withCompletionHandler:(void(^)(UIImage *resizedImage))completionHandler;
++ (void)attachArtwork:(KANArtwork *)artwork toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail;
++ (void)loadArtwork:(KANArtwork *)artwork thumbnail:(BOOL)thumbnail withCompletionHandler:(void(^)(UIImage *image))handler;
++ (void)blurArtwork:(KANArtwork *)artwork withCompletionHandler:(void(^)(UIImage *blurredImage))completionHandler;
+
+// helper methods
++ (void)resizeImage:(UIImage *)image toSize:(CGSize)size withCompletionHandler:(void (^)(UIImage *))completionHandler;
 
 @end

@@ -89,7 +89,9 @@
 - (void)setArtworkView:(UIImageView *)artworkView withAlbum:(KANAlbum *)album
 {
     KANTrack *track = [album.tracks lastObject];
-    [KANArtworkStore attachArtworkFromEntity:track toImageView:artworkView thumbnail:YES];
+    KANArtwork *artwork = [KANArtworkStore artworkForEntity:track];
+
+    [KANArtworkStore attachArtwork:artwork toImageView:artworkView thumbnail:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

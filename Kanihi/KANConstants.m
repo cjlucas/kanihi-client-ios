@@ -42,8 +42,9 @@ NSString * const KANDataStoreWillFinishUpdatingNotification = @"KANDataStoreWill
 NSString * const KANDataStoreDidFinishUpdatingNotification  = @"KANDataStoreDidFinishUpdatingNotification";
 
 // KANArtworkStore
-NSString * const KANArtworkStoreThumbnailDirectoryName  = @"thumbs";
-NSString * const KANArtworkStoreFullSizeDirectoryName   = @"artwork";
+NSString * const KANArtworkStoreThumbnailDirectoryPath  = @"images/thumbs";
+NSString * const KANArtworkStoreFullSizeDirectoryPath   = @"images/fullsize";
+NSString * const KANArtworkStoreBlurredDirectoryPath    = @"images/blurred";
 
 // Model Entity Names
 NSString * const KANTrackEntityName         = @"Track";

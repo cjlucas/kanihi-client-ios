@@ -8,7 +8,6 @@
 
 #import "KANArtworkStore.h"
 
-#import "KANArtwork.h"
 #import "KANAPI.h"
 
 #import "KANTrack.h"
@@ -16,21 +15,28 @@
 #import "UIImage+CJExtensions.h"
 
 @interface KANArtworkStore ()
-+ (BOOL)thumbnailExistsForArtwork:(KANArtwork *)artwork;
-+ (BOOL)fullSizeExistsForArtwork:(KANArtwork *)artwork;
 
-+ (NSURL *)thumbnailURLForArtwork:(KANArtwork *)artwork;
-+ (NSURL *)fullSizeURLForArtwork:(KANArtwork *)artwork;
++ (NSURL *)thumbnailImageDirectory;
++ (NSURL *)fullSizeImageDirectory;
++ (NSURL *)blurredImageDirectory;
+
++ (BOOL)thumbnailImageExistsForArtwork:(KANArtwork *)artwork;
++ (BOOL)fullSizeImageExistsForArtwork:(KANArtwork *)artwork;
++ (BOOL)blurredImageExistsForArtwork:(KANArtwork *)artwork;
+
++ (NSURL *)thumbnailImageURLForArtwork:(KANArtwork *)artwork;
++ (NSURL *)fullSizeImageURLForArtwork:(KANArtwork *)artwork;
++ (NSURL *)blurredImageURLForArtwork:(KANArtwork *)artwork;
 
 // returns nil if cached image not available
 + (UIImage *)loadThumbnailImageForArtwork:(KANArtwork *)artwork;
 + (UIImage *)loadFullSizeImageForArtwork:(KANArtwork *)artwork;
++ (UIImage *)loadBlurredImageForArtwork:(KANArtwork *)artwork;
 
 + (void)saveImageData:(NSData *)data toURL:(NSURL *)url; // helper
 + (void)saveThumbnailImageData:(NSData *)data forArtwork:(KANArtwork *)artwork;
 + (void)saveFullSizeImage:(NSData *)data forArtwork:(KANArtwork *)artwork;
-
-+ (KANArtwork *)artworkForEntity:(KANEntity *)entity;
++ (void)saveBlurredImage:(NSData *)data forArtwork:(KANArtwork *)artwork;
 
 + (NSUInteger)fullSizeImageHeight;
 + (NSUInteger)thumbnailImageHeight;
@@ -64,78 +70,12 @@
 
 + (NSUInteger)thumbnailImageHeight
 {
-    return 200 * [UIScreen mainScreen].scale;
-}
-
-+ (NSURL *)thumbnailDirectory
-{
-    NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *thumbnailDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreThumbnailDirectoryName];
-    
-    [[NSFileManager defaultManager] createDirectoryAtURL:thumbnailDir withIntermediateDirectories:YES attributes:nil error:nil];
-    
-    return thumbnailDir;
-}
-
-+ (NSURL *)fullSizeDirectory
-{
-    NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    NSURL *fullSizeDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreFullSizeDirectoryName];
-    
-    [[NSFileManager defaultManager] createDirectoryAtURL:fullSizeDir withIntermediateDirectories:YES attributes:nil error:nil];
-    
-    return fullSizeDir;
-}
-
-+ (BOOL)thumbnailExistsForArtwork:(KANArtwork *)artwork
-{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[[self thumbnailURLForArtwork:artwork] absoluteString]];
-}
-
-+ (BOOL)fullSizeExistsForArtwork:(KANArtwork *)artwork
-{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[[self fullSizeURLForArtwork:artwork] absoluteString]];
-}
-
-+ (NSURL *)thumbnailURLForArtwork:(KANArtwork *)artwork
-{
-    return [[self thumbnailDirectory] URLByAppendingPathComponent:artwork.checksum isDirectory:NO];
-}
-
-+ (NSURL *)fullSizeURLForArtwork:(KANArtwork *)artwork
-{
-    return [[self fullSizeDirectory] URLByAppendingPathComponent:artwork.checksum isDirectory:NO];
-}
-
-+ (UIImage *)loadThumbnailImageForArtwork:(KANArtwork *)artwork
-{
-    return [UIImage imageWithContentsOfFile:[[self thumbnailURLForArtwork:artwork] path]];
-}
-
-+ (UIImage *)loadFullSizeImageForArtwork:(KANArtwork *)artwork
-{
-    return [UIImage imageWithContentsOfFile:[[self fullSizeURLForArtwork:artwork] path]];
-
-}
-
-+ (void)saveImageData:(NSData *)data toURL:(NSURL *)url
-{
-    [data writeToURL:url atomically:NO];
-}
-
-+ (void)saveThumbnailImageData:(NSData *)data forArtwork:(KANArtwork *)artwork
-{
-    [self saveImageData:data toURL:[self thumbnailURLForArtwork:artwork]];
-}
-
-+ (void)saveFullSizeImage:(NSData *)data forArtwork:(KANArtwork *)artwork
-{
-    [self saveImageData:data toURL:[self fullSizeURLForArtwork:artwork]];
+    return 80 * [UIScreen mainScreen].scale;
 }
 
 + (void)emptyStore
 {
-    NSArray *directories = @[[self thumbnailDirectory], [self fullSizeDirectory]];
+    NSArray *directories = @[[self thumbnailImageDirectory], [self fullSizeImageDirectory], [self blurredImageDirectory]];
     NSFileManager *fm = [NSFileManager defaultManager];
 
     for (NSURL *directory in directories) {
@@ -149,8 +89,9 @@
 
 + (KANArtwork *)artworkForEntity:(KANEntity *)entity
 {
+    // TODO: try to return artwork that is already cached on disk
     KANArtwork *artwork = nil;
-    
+
     if (entity == nil)
         return nil;
 
@@ -168,25 +109,130 @@
                 break;
         }
     }
-    
+
     return artwork;
 }
 
-+ (void)attachArtworkFromEntity:(KANEntity *)entity toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail
-{
-    view.image = nil;
+#pragma mark -
 
-    [self loadArtworkFromEntity:entity thumbnail:thumbnail withCompletionHandler:^(UIImage *image) {
++ (NSURL *)thumbnailImageDirectory
+{
+    NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *thumbnailDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreThumbnailDirectoryPath];
+    
+    [[NSFileManager defaultManager] createDirectoryAtURL:thumbnailDir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return thumbnailDir;
+}
+
++ (NSURL *)fullSizeImageDirectory
+{
+    NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fullSizeDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreFullSizeDirectoryPath];
+    
+    [[NSFileManager defaultManager] createDirectoryAtURL:fullSizeDir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return fullSizeDir;
+}
+
++ (NSURL *)blurredImageDirectory
+{
+    NSURL *cacheDir = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *blurredDir = [cacheDir URLByAppendingPathComponent:KANArtworkStoreBlurredDirectoryPath];
+
+    [[NSFileManager defaultManager] createDirectoryAtURL:blurredDir withIntermediateDirectories:YES attributes:nil error:nil];
+
+    return blurredDir;
+}
+
+#pragma mark -
+
++ (BOOL)thumbnailImageExistsForArtwork:(KANArtwork *)artwork
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self thumbnailImageURLForArtwork:artwork].path];
+}
+
++ (BOOL)fullSizeImageExistsForArtwork:(KANArtwork *)artwork
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self fullSizeImageURLForArtwork:artwork].path];
+}
+
++ (BOOL)blurredImageExistsForArtwork:(KANArtwork *)artwork
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[self blurredImageURLForArtwork:artwork].path];
+}
+
+#pragma mark -
+
++ (NSURL *)thumbnailImageURLForArtwork:(KANArtwork *)artwork
+{
+    return [[self thumbnailImageDirectory] URLByAppendingPathComponent:artwork.checksum isDirectory:NO];
+}
+
++ (NSURL *)fullSizeImageURLForArtwork:(KANArtwork *)artwork
+{
+    return [[self fullSizeImageDirectory] URLByAppendingPathComponent:artwork.checksum isDirectory:NO];
+}
+
++ (NSURL *)blurredImageURLForArtwork:(KANArtwork *)artwork
+{
+    return [[self blurredImageDirectory] URLByAppendingPathComponent:artwork.checksum isDirectory:NO];
+}
+
+#pragma mark -
+
++ (UIImage *)loadThumbnailImageForArtwork:(KANArtwork *)artwork
+{
+    return [UIImage imageWithContentsOfFile:[[self thumbnailImageURLForArtwork:artwork] path]];
+}
+
++ (UIImage *)loadFullSizeImageForArtwork:(KANArtwork *)artwork
+{
+    return [UIImage imageWithContentsOfFile:[[self fullSizeImageURLForArtwork:artwork] path]];
+
+}
+
++ (UIImage *)loadBlurredImageForArtwork:(KANArtwork *)artwork
+{
+    return [UIImage imageWithContentsOfFile:[[self blurredImageURLForArtwork:artwork] path]];
+
+}
+
+#pragma mark -
+
++ (void)saveImageData:(NSData *)data toURL:(NSURL *)url
+{
+    [data writeToURL:url atomically:NO];
+}
+
++ (void)saveThumbnailImageData:(NSData *)data forArtwork:(KANArtwork *)artwork
+{
+    [self saveImageData:data toURL:[self thumbnailImageURLForArtwork:artwork]];
+}
+
++ (void)saveFullSizeImage:(NSData *)data forArtwork:(KANArtwork *)artwork
+{
+    [self saveImageData:data toURL:[self fullSizeImageURLForArtwork:artwork]];
+}
+
++ (void)saveBlurredImage:(NSData *)data forArtwork:(KANArtwork *)artwork
+{
+    [self saveImageData:data toURL:[self blurredImageURLForArtwork:artwork]];
+}
+
+#pragma mark -
+
++ (void)attachArtwork:(KANArtwork *)artwork toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail
+{
+    [self loadArtwork:artwork thumbnail:thumbnail withCompletionHandler:^(UIImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             view.image = image;
         });
     }];
 }
 
-+ (void)loadArtworkFromEntity:(KANEntity *)entity thumbnail:(BOOL)thumbnail withCompletionHandler:(void (^)(UIImage *))handler
++ (void)loadArtwork:(KANArtwork *)artwork thumbnail:(BOOL)thumbnail withCompletionHandler:(void (^)(UIImage *))handler
 {
-    KANArtwork *artwork = [self artworkForEntity:entity];
-
     // stop crashing, proper fix later
     if (artwork == nil)
         return;
@@ -219,23 +265,38 @@
 
             if (thumbnail)
                 [[self sharedCache] setObject:image forKey:artwork.checksum];
-
+            
             handler(image);
         }];
     }
 }
 
-+ (void)blurImage:(UIImage *)image withCompletionHandler:(void (^)(UIImage *))completionHandler
++ (void)blurArtwork:(KANArtwork *)artwork withCompletionHandler:(void (^)(UIImage *))completionHandler
 {
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setValue:ciImage forKey:kCIInputImageKey];
-    [filter setValue:@10.0f forKey:@"inputRadius"];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        UIImage *blurredImage = [self loadBlurredImageForArtwork:artwork];
 
-    completionHandler([UIImage imageWithCGImage:filteredImage]);
+        if (blurredImage) {
+            completionHandler(blurredImage);
+        } else {
+            // assumes full size image already exists
+            UIImage *image = [self loadFullSizeImageForArtwork:artwork];
+
+            CIContext *context = [CIContext contextWithOptions:nil];
+            CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
+            CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+            [filter setValue:ciImage forKey:kCIInputImageKey];
+            [filter setValue:@10.0f forKey:@"inputRadius"];
+            CIImage *result = [filter valueForKey:kCIOutputImageKey];
+            CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
+
+            blurredImage = [UIImage imageWithCGImage:filteredImage];
+
+            [self saveBlurredImage:UIImagePNGRepresentation(blurredImage) forArtwork:artwork];
+            
+            completionHandler(blurredImage);
+        }
+    });
 }
 
 + (void)resizeImage:(UIImage *)image toSize:(CGSize)size withCompletionHandler:(void (^)(UIImage *))completionHandler

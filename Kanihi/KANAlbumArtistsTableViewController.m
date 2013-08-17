@@ -11,8 +11,8 @@
 #import "KANTableViewCell.h"
 
 #import "KANAlbumArtist.h"
-#import "KANAPI.h"
 
+#import "KANAPI.h"
 #import "KANArtworkStore.h"
 
 @class KANAlbum;
@@ -50,9 +50,10 @@
 {
 
     KANTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"KANTableViewCell" forIndexPath:indexPath];
-    
+
     KANAlbumArtist *artist = [self.resultsController objectAtIndexPath:indexPath];
-    
+    KANArtwork *artwork = [KANArtworkStore artworkForEntity:artist];
+
     UIFont *subtitleFont = cell.detailLabel.font;
     
     cell.mainString = artist.name;
@@ -64,7 +65,7 @@
                                                              withEntityString:@"track"
                                                                      withFont:subtitleFont];
     
-    [KANArtworkStore attachArtworkFromEntity:artist toImageView:cell.artworkView thumbnail:YES];
+    [KANArtworkStore attachArtwork:artwork toImageView:cell.artworkView thumbnail:YES];
     
     cell.detailStrings = @[albumCount, trackCount];
 

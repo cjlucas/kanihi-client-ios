@@ -65,7 +65,9 @@
 
 - (void)setArtworkView:(UIImageView *)artworkView withGenre:(KANGenre *)genre
 {
-    [KANArtworkStore attachArtworkFromEntity:genre toImageView:artworkView thumbnail:YES];
+    KANArtwork *artwork = [KANArtworkStore artworkForEntity:genre];
+
+    [KANArtworkStore attachArtwork:artwork toImageView:artworkView thumbnail:YES];
 }
 
 #pragma mark - UITableViewDataSource methods
