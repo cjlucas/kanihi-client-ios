@@ -17,6 +17,8 @@ NSString * const KANAudioStoreSubdirectoryName = @"audio";
 + (NSURL *)cacheDirectory;
 + (NSURL *)persistentDirectory;
 
++ (void)emptyDirectory:(NSURL *)directory;
+
 @end
 
 @implementation KANAudioStore
@@ -51,6 +53,26 @@ NSString * const KANAudioStoreSubdirectoryName = @"audio";
     NSURL *dir = [self persistentDirectory];
 
     return [dir URLByAppendingPathComponent:filename];
+}
+
++ (void)emptyCacheStore
+{
+    [self emptyDirectory:[self cacheDirectory]];
+}
+
++ (void)emptyPersistentStore
+{
+    [self emptyDirectory:[self persistentDirectory]];
+}
+
++ (void)emptyDirectory:(NSURL *)directory
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *enumerator = [fm enumeratorAtURL:directory includingPropertiesForKeys:nil options:0 errorHandler:nil];
+
+    for (NSURL *fileURL in enumerator) {
+        [fm removeItemAtURL:fileURL error:nil];
+    }
 }
 
 @end

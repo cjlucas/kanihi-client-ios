@@ -14,4 +14,8 @@
 
 + (NSURL *)cacheURLWithFilename:(NSString *)filename;
 + (NSURL *)persistentURLWithFilename:(NSString *)filename;
+
++ (void)emptyCacheStore;
++ (void)emptyPersistentStore;
+
 @end
