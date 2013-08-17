@@ -56,7 +56,7 @@
     
     if (_fullSizeImageHeight == 0) {
         UIWindow *mainWindow = [[UIApplication sharedApplication].windows lastObject];
-        _fullSizeImageHeight = mainWindow.frame.size.width * 2;
+        _fullSizeImageHeight = mainWindow.frame.size.width * [UIScreen mainScreen].scale;
     }
     
     return _fullSizeImageHeight;
@@ -64,7 +64,7 @@
 
 + (NSUInteger)thumbnailImageHeight
 {
-    return 200 * 2; // TODO: needs a better solution
+    return 200 * [UIScreen mainScreen].scale;
 }
 
 + (NSURL *)thumbnailDirectory
