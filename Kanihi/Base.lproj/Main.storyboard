@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKf-8h-PZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="-735"/>
+            <point key="canvasLocation" x="1425" y="-505"/>
         </scene>
         <!--Audio Player View Controller-->
         <scene sceneID="hek-hE-H30">
@@ -82,19 +82,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-Ki-NLo">
-                                <rect key="frame" x="20" y="400" width="280" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-Ki-NLo" userLabel="Download Progress View">
+                                <rect key="frame" x="50" y="450" width="220" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YEf-et-ILy" userLabel="Playback Progress View">
+                                <rect key="frame" x="50" y="450" width="220" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuI-Z0-Hpi">
-                                <rect key="frame" x="20" y="98" width="280" height="21"/>
+                                <rect key="frame" x="137" y="351" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irr-bt-MYv">
-                                <rect key="frame" x="137" y="454" width="30" height="30"/>
+                                <rect key="frame" x="137" y="489" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Play">
@@ -105,7 +111,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdr-eN-aYj">
-                                <rect key="frame" x="254" y="454" width="32" height="30"/>
+                                <rect key="frame" x="254" y="489" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Next">
@@ -116,7 +122,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoW-A9-OGG">
-                                <rect key="frame" x="20" y="454" width="31" height="30"/>
+                                <rect key="frame" x="20" y="489" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Prev">
@@ -128,7 +134,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01x-DP-6WT">
-                                <rect key="frame" x="194" y="344" width="92" height="30"/>
+                                <rect key="frame" x="194" y="387" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Show Playlist">
@@ -138,22 +144,45 @@
                                     <action selector="showPlaylistButtonPressed:" destination="mgi-Dd-iN8" eventType="touchUpInside" id="l23-lm-HPa"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNv-HV-rFy">
+                                <rect key="frame" x="0.0" y="65" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2E-wS-c1P">
+                                <rect key="frame" x="278" y="440" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX0-YG-ZrG">
+                                <rect key="frame" x="0.0" y="440" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="downloadProgressView" destination="KSp-Ki-NLo" id="ZNI-gz-CBu"/>
+                        <outlet property="imageView" destination="rNv-HV-rFy" id="2nN-Oa-lVz"/>
                         <outlet property="playNextButton" destination="fdr-eN-aYj" id="cWh-47-bIp"/>
                         <outlet property="playPauseButton" destination="irr-bt-MYv" id="InI-8J-jcX"/>
                         <outlet property="playPrevButton" destination="RoW-A9-OGG" id="bkG-wm-deJ"/>
-                        <outlet property="progressBar" destination="KSp-Ki-NLo" id="IQC-nC-pRI"/>
+                        <outlet property="playbackProgressView" destination="YEf-et-ILy" id="ebU-97-vJj"/>
                         <outlet property="showPlaylistButton" destination="01x-DP-6WT" id="OfP-4L-irT"/>
+                        <outlet property="timeElapsedLabel" destination="nX0-YG-ZrG" id="PSR-TY-IGJ"/>
+                        <outlet property="timeRemainingLabel" destination="h2E-wS-c1P" id="pbk-sN-MMc"/>
                         <outlet property="trackLabel" destination="xuI-Z0-Hpi" id="fJ7-oW-Q6h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UsE-j1-K7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721" y="-755"/>
+            <point key="canvasLocation" x="971" y="1035"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="87D-QS-T5W">
@@ -187,7 +216,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="9R1-73-qpr" customClass="KANMainMenuViewCell">
-                                <rect key="frame" x="20" y="20" width="130" height="130"/>
+                                <rect key="frame" x="20" y="84" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -218,7 +247,55 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgE-hM-iYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="-4"/>
+            <point key="canvasLocation" x="1425" y="262"/>
+        </scene>
+        <!--Playlist Modal View Controller - Current Playlist-->
+        <scene sceneID="btX-vf-6jN">
+            <objects>
+                <viewController storyboardIdentifier="KANPlaylistModalViewController" id="OiS-Sq-l03" customClass="KANPlaylistModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zTE-TO-LCN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fzn-zR-qJ0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VPe-Vm-wqD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-EX-HVi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="lYB-Mi-FKy" customClass="KANPlaylistTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="lYB-Mi-FKy" id="c86-JH-c4a">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="OiS-Sq-l03" id="eEH-Kv-eAu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Current Playlist" id="K0d-TJ-FFR">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="A0Q-wH-gNX">
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="OiS-Sq-l03" id="UPs-iP-lFM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="KTi-EX-HVi" id="MbX-pf-ynX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jUZ-v9-Kk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856" y="1035"/>
         </scene>
         <!--Album Track Listing View Controller-->
         <scene sceneID="CNL-Pk-NDe">
@@ -271,7 +348,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15G-wt-rGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="-703"/>
+            <point key="canvasLocation" x="2153" y="-565"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ajP-ke-eeZ">
+            <objects>
+                <navigationController storyboardIdentifier="KANPlaylistModalNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="W76-81-fIo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AWo-4W-x7v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OiS-Sq-l03" kind="relationship" relationship="rootViewController" id="sWn-T0-rxB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7DM-67-3sn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="1035"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

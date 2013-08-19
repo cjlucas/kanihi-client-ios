@@ -75,6 +75,7 @@
 		83C7F23E17C134E60095F1BB /* KANPlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C7F23D17C134E60095F1BB /* KANPlaylistTableViewCell.xib */; };
 		83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
 		83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */; };
+		83E3DD2617C2BAB5008884D9 /* KANPlaylistDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD2517C2BAB5008884D9 /* KANPlaylistDataSource.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
@@ -84,8 +85,7 @@
 		83ED871E17AB4545001BBA4E /* tracks1.json in Resources */ = {isa = PBXBuildFile; fileRef = 83ED871D17AB4545001BBA4E /* tracks1.json */; };
 		83ED871F17AB4968001BBA4E /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		83ED872317AC4606001BBA4E /* KANAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872217AC4606001BBA4E /* KANAudioPlayer.m */; };
-		83ED872E17AC689B001BBA4E /* KANPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */; };
-		83ED873117AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */; };
+		83ED873117AC68C1001BBA4E /* KANPlaylistModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */; };
 		83ED873317ACDE9E001BBA4E /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED873217ACDE86001BBA4E /* Reveal.framework */; };
 		83ED873517ACDEAB001BBA4E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED873417ACDEAB001BBA4E /* CFNetwork.framework */; };
 		83ED873717ACDEB0001BBA4E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED873617ACDEB0001BBA4E /* QuartzCore.framework */; };
@@ -232,6 +232,8 @@
 		83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumArtistsTableViewController.m; sourceTree = "<group>"; };
 		83E31D00179640E200A6EAF7 /* KANAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAlbumTableViewController.h; sourceTree = "<group>"; };
 		83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTableViewController.m; sourceTree = "<group>"; };
+		83E3DD2417C2BAB5008884D9 /* KANPlaylistDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistDataSource.h; sourceTree = "<group>"; };
+		83E3DD2517C2BAB5008884D9 /* KANPlaylistDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistDataSource.m; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
 		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
@@ -242,10 +244,8 @@
 		83ED871D17AB4545001BBA4E /* tracks1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tracks1.json; sourceTree = "<group>"; };
 		83ED872117AC4606001BBA4E /* KANAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioPlayer.h; sourceTree = "<group>"; };
 		83ED872217AC4606001BBA4E /* KANAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayer.m; sourceTree = "<group>"; };
-		83ED872C17AC689B001BBA4E /* KANPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistTableViewController.h; sourceTree = "<group>"; };
-		83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistTableViewController.m; sourceTree = "<group>"; };
-		83ED872F17AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioPlayerPlaylistTableViewController.h; sourceTree = "<group>"; };
-		83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayerPlaylistTableViewController.m; sourceTree = "<group>"; };
+		83ED872F17AC68C1001BBA4E /* KANPlaylistModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistModalViewController.h; sourceTree = "<group>"; };
+		83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistModalViewController.m; sourceTree = "<group>"; };
 		83ED873217ACDE86001BBA4E /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		83ED873417ACDEAB001BBA4E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		83ED873617ACDEB0001BBA4E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -429,6 +429,8 @@
 				83E44D8D178A177700CB37C1 /* KANTrack.m */,
 				834303271789F953006EC1A6 /* KANDataStore.h */,
 				834303281789F953006EC1A6 /* KANDataStore.m */,
+				83E3DD2417C2BAB5008884D9 /* KANPlaylistDataSource.h */,
+				83E3DD2517C2BAB5008884D9 /* KANPlaylistDataSource.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -530,10 +532,8 @@
 		83ED872017AC3FFA001BBA4E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				83ED872C17AC689B001BBA4E /* KANPlaylistTableViewController.h */,
-				83ED872D17AC689B001BBA4E /* KANPlaylistTableViewController.m */,
-				83ED872F17AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.h */,
-				83ED873017AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m */,
+				83ED872F17AC68C1001BBA4E /* KANPlaylistModalViewController.h */,
+				83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */,
 				835153A517A879AA0088F692 /* KANAudioPlayerViewController.h */,
 				835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */,
 				8394388517A4534E007B73B1 /* KANTrackTableViewController.h */,
@@ -691,7 +691,7 @@
 				83C1D86B17C00F110078F75A /* UIImage+CJExtensions.m in Sources */,
 				83C1D86817C002180078F75A /* AMBlurView.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
-				83ED873117AC68C1001BBA4E /* KANAudioPlayerPlaylistTableViewController.m in Sources */,
+				83ED873117AC68C1001BBA4E /* KANPlaylistModalViewController.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
@@ -715,7 +715,6 @@
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835153BF17A886180088F692 /* DataSource.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
-				83ED872E17AC689B001BBA4E /* KANPlaylistTableViewController.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
 				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
@@ -736,6 +735,7 @@
 				83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
+				83E3DD2617C2BAB5008884D9 /* KANPlaylistDataSource.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingViewController.m in Sources */,
 				8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,

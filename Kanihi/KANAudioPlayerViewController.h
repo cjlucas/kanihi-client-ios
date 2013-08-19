@@ -20,11 +20,15 @@
 - (IBAction)showPlaylistButtonPressed:(id)sender;
 
 // Outlets
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *trackLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *playNextButton;
 @property (weak, nonatomic) IBOutlet UIButton *playPrevButton;
-@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *showPlaylistButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *playbackProgressView;
+@property (weak, nonatomic) IBOutlet UILabel *timeElapsedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeRemainingLabel;
 
 @end
