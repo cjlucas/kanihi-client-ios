@@ -50,6 +50,7 @@
     static NSCache *_sharedArtworkCache = nil;
     if (!_sharedArtworkCache) {
         _sharedArtworkCache = [[NSCache alloc] init];
+        _sharedArtworkCache.countLimit = 20;
         _sharedArtworkCache.name = @"SharedArtworkCache";
     }
     
@@ -224,9 +225,19 @@
 
 + (void)attachArtwork:(KANArtwork *)artwork toImageView:(UIImageView *)view thumbnail:(BOOL)thumbnail
 {
+    // use the tag property of UIView to determine if the image view has been reused before the artwork has finished loading. only set the image if the identifiers match
+    __block NSInteger identifier = arc4random();
+    view.tag = identifier;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        view.image = nil;
+    });
+
     [self loadArtwork:artwork thumbnail:thumbnail withCompletionHandler:^(UIImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            view.image = image;
+            if (view.tag == identifier) {
+                view.image = image;
+            }
         });
     }];
 }
@@ -291,6 +302,8 @@
             CGImageRef filteredImage = [context createCGImage:result fromRect:[ciImage extent]]; // IMPORTANT: get rect from the original CIImage
 
             blurredImage = [UIImage imageWithCGImage:filteredImage];
+
+            CGImageRelease(filteredImage);
 
             [self saveBlurredImage:UIImagePNGRepresentation(blurredImage) forArtwork:artwork];
             
