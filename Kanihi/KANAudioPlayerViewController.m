@@ -66,7 +66,7 @@
 
 #pragma mark - CJAudioPlayerDelegate methods
 
-- (void)audioPlayer:(CJAudioPlayer *)audioPlayer didStartPlayingItem:(KANTrack *)item
+- (void)audioPlayer:(CJAudioPlayer *)audioPlayer didStartPlayingItem:(KANTrack *)item isFullyCached:(BOOL)fullyCached
 {
     [self updateOutlets];
 }
