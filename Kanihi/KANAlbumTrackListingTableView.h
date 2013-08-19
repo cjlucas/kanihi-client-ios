@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class KANLabelContainerView;
+@class KANAlbum;
+@class KANTrack;
 
-@interface KANAlbumTrackListingTableView : UITableView
-@property (weak, nonatomic) IBOutlet UIImageView *insetArtworkView;
-@property (weak, nonatomic) IBOutlet KANLabelContainerView *albumInfoLabelContainerView;
+@interface KANAlbumTrackListingTableView : UITableView <UITableViewDataSource>
+- (KANTrack *)trackForIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)shouldShowTrackArtist;
 
+@property KANAlbum *album;
+@property (readonly) NSArray *tracks;
+@property (readonly) NSArray *discs;
 @end

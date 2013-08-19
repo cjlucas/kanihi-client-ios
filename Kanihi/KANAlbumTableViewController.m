@@ -9,7 +9,7 @@
 #import "KANAlbumTableViewController.h"
 #import "KANTableViewCell.h"
 
-#import "KANAlbumTrackListingTableViewController.h"
+#import "KANAlbumTrackListingViewController.h"
 #import "KANAlbum.h"
 #import "KANAPI.h"
 #import "UIImageView+AFNetworking.h"
@@ -111,7 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    KANAlbumTrackListingTableViewController *tvc = [sb instantiateViewControllerWithIdentifier:@"blahid"];
+    KANAlbumTrackListingViewController *tvc = [sb instantiateViewControllerWithIdentifier:@"KANAlbumTrackListingTableViewController"];
     
     tvc.album = [self.resultsController objectAtIndexPath:indexPath];
     
