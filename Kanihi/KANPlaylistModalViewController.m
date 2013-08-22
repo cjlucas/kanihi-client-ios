@@ -19,28 +19,9 @@
 
 @implementation KANPlaylistModalViewController
 
-//@synthesize dataSource = _dataSource;
-//
-//- (KANPlaylistDataSource *)dataSource
-//{
-//    return _dataSource;
-//}
-//
-//- (void)setDataSource:(KANPlaylistDataSource *)dataSource
-//{
-//    CJLog(@"settinggggg", nil);
-//    _dataSource = dataSource;
-//
-//    self.tableView.dataSource = _dataSource;
-//    [self.tableView reloadData];
-//    CJLog(@"%@", self.tableView);
-//    CJLog(@"%@", self.tableView.dataSource);
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CJLog(@"viewDidLoad", nil);
 
     self.tableView.rowHeight = 44;
     self.tableView.dataSource = self.dataSource;

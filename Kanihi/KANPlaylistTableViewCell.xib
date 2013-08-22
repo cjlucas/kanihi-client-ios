@@ -36,12 +36,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xmn-9f-zt4" firstAttribute="leading" secondItem="DVp-fD-s9d" secondAttribute="leading" priority="881" constant="4" id="D6e-ns-l7F"/>
-                    <constraint firstItem="3bc-h4-5vS" firstAttribute="leading" secondItem="FYd-XY-N6N" secondAttribute="trailing" constant="8" id="FAK-2w-GHR"/>
+                    <constraint firstItem="3bc-h4-5vS" firstAttribute="leading" secondItem="FYd-XY-N6N" secondAttribute="trailing" constant="12" id="FAK-2w-GHR"/>
                     <constraint firstAttribute="centerY" secondItem="FYd-XY-N6N" secondAttribute="centerY" id="LJ0-bX-MjI"/>
                     <constraint firstAttribute="centerY" secondItem="Xmn-9f-zt4" secondAttribute="centerY" id="WEs-uL-dIP"/>
                     <constraint firstAttribute="centerY" secondItem="3bc-h4-5vS" secondAttribute="centerY" id="Xqd-yJ-ABm"/>
                     <constraint firstItem="FYd-XY-N6N" firstAttribute="leading" secondItem="Xmn-9f-zt4" secondAttribute="trailing" constant="8" id="peq-SA-yPO"/>
-                    <constraint firstAttribute="trailing" secondItem="3bc-h4-5vS" secondAttribute="trailing" constant="4" id="z9W-hG-VaJ"/>
+                    <constraint firstAttribute="trailing" secondItem="3bc-h4-5vS" secondAttribute="trailing" constant="8" id="z9W-hG-VaJ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

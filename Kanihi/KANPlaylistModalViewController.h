@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Chris Lucas. All rights reserved.
 //
 
-#import "KANPlaylistTableView.h"
-
 #import "KANPlaylistDataSource.h"
 
 @interface KANPlaylistModalViewController : UIViewController <UITableViewDelegate>
