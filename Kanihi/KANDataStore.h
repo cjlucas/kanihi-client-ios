@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@interface KANDataStoreUpdateProgressInfo : NSObject
+
+@property (readonly) NSUInteger totalTracks;
+@property (readonly) NSUInteger currentTrack;
+
+@end
 
 @interface KANDataStore : NSObject
 
@@ -15,5 +21,6 @@
 - (void)updateDataStoreDoFullUpdate:(BOOL)fullUpdate;
 
 @property (readonly) NSManagedObjectContext *mainManagedObjectContext;
+@property (readonly) KANDataStoreUpdateProgressInfo *progressInfo;
 
 @end

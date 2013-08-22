@@ -22,6 +22,37 @@
 
 const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 
+@interface KANDataStoreUpdateProgressInfo () {
+    @public
+    NSUInteger _totalTracks;
+    NSUInteger _currentTrack;
+}
+@end
+
+@implementation KANDataStoreUpdateProgressInfo
+
+- (id)init
+{
+    if (self = [super init]) {
+        _totalTracks = 0;
+        _currentTrack = 0;
+    }
+
+    return self;
+}
+
+- (NSUInteger)totalTracks
+{
+    return _totalTracks;
+}
+
+- (NSUInteger)currentTrack
+{
+    return _currentTrack;
+}
+
+@end
+
 @interface KANDataStore () {
     dispatch_queue_t _background_queue;
 }
@@ -50,6 +81,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 @synthesize backgroundManagedObjectContext = _backgroundManagedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize progressInfo = _progressInfo;
 
 - (void)postNotification:(NSString *)notification
 {
@@ -90,6 +122,8 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 - (void)handleTrackDatas:(NSArray *)trackDatas usingManagedObjectContext:(NSManagedObjectContext *)moc
 {
     for (NSDictionary *trackData in trackDatas) {
+        self.progressInfo->_currentTrack++;
+
         KANTrack *track = (KANTrack *)[KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
         
         track.artist    = [KANTrackArtist uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
@@ -117,6 +151,8 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     [self postNotification:KANDataStoreWillBeginUpdatingNotification];
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
 
+    _progressInfo = [[KANDataStoreUpdateProgressInfo alloc] init];
+
     __block BOOL updateSuccessful = YES;
     KANAPI *client = [KANAPI sharedClient];
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
@@ -141,9 +177,11 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     
     NSUInteger offset = 0;
     NSUInteger trackCount = [KANAPI trackCountWithLastUpdatedAt:lastUpdated];
+    self.progressInfo->_totalTracks = trackCount;
 
     void (^updateTracksSuccessBlock)(AFHTTPRequestOperation *op, id) = ^(AFHTTPRequestOperation *op, NSArray *trackData) {
         CJLog(@"trackData count: %d", [trackData count]);
+        CJLog(@"current track: %d", self.progressInfo.currentTrack);
         NSDate *start = [NSDate date];
 
         @autoreleasepool {
@@ -160,6 +198,12 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
         }
 
         CJLog(@"block execution time: %f", [[NSDate date] timeIntervalSinceDate:start]);
+
+        if (trackData.count < KANDataStoreFetchLimit) {
+            [self postNotification:KANDataStoreWillFinishUpdatingNotification];
+            [self postNotification:KANDataStoreDidFinishUpdatingNotification];
+
+        }
     };
 
     CJLog(@"track count since last update: %d", trackCount);
@@ -172,7 +216,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
         AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
         op.responseSerializer = [AFJSONSerializer serializer];
         op.completionQueue = _background_queue;
-        
+
         [operations addObject:op];
         offset += KANDataStoreFetchLimit;
     }
@@ -191,9 +235,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     };
 
     for (NSURLRequest *req in [KANAPI deletedTracksRequestsWithCurrentTracks:[self allTracks]]) {
-        //AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
         AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
-        [op setQueuePriority:NSOperationQueuePriorityVeryLow];
         op.responseSerializer = [AFJSONSerializer serializer];
         op.completionQueue = _background_queue;
         [operations addObject:op];
@@ -214,9 +256,6 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
             [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
             [sud synchronize];
         }
-
-        [self postNotification:KANDataStoreWillFinishUpdatingNotification];
-        [self postNotification:KANDataStoreDidFinishUpdatingNotification];
 
         CJLog(@"total update time: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
     };
