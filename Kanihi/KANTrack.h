@@ -37,4 +37,6 @@
 @property (nonatomic, retain) KANGenre *genre;
 @property (nonatomic, retain) NSSet *artworks;
 
+@property (readonly) NSMutableDictionary *nowPlayingInfo;
+
 @end

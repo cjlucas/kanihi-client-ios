@@ -6,10 +6,16 @@
 //  Copyright (c) 2013 Chris Lucas. All rights reserved.
 //
 
+#import <MediaPlayer/MediaPlayer.h>
+
 #import "KANTrack.h"
 
 #import "NSDictionary+CJExtensions.h"
 #import "CJStringNormalization.h"
+
+#import "KANDisc.h"
+#import "KANAlbum.h"
+#import "KANTrackArtist.h"
 
 #import "KANAPI.h"
 #import "KANAudioStore.h"
@@ -44,7 +50,7 @@
     return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:KANTrackUUIDKey]];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
++ (KANTrack *)initWithData:(NSDictionary *)data
                        context:(NSManagedObjectContext *)context
 {
     KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
@@ -84,6 +90,18 @@
     self.sectionTitle = [KANUtils sectionTitleForString:name];
     
     [self didChangeValueForKey:@"name"];
+}
+
+- (NSMutableDictionary *)nowPlayingInfo
+{
+    NSMutableDictionary *npi = [[NSMutableDictionary alloc] init];
+
+    npi[MPMediaItemPropertyTitle]                   = self.name;
+    npi[MPMediaItemPropertyArtist]                  = self.artist.name;
+    npi[MPMediaItemPropertyAlbumTrackCount]         = [NSNumber numberWithInteger:self.disc.album.tracks.count],
+    npi[MPMediaItemPropertyAlbumTrackNumber]        = self.num;
+
+    return npi;
 }
 
 #pragma mark - CJAudioPlayerQueueItem methods
