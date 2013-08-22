@@ -28,7 +28,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 
 - (void)setup;
 
-- (void)handleTrackDatas:(NSArray *)trackDatas;
+- (void)handleTrackDatas:(NSArray *)trackDatas usingManagedObjectContext:(NSManagedObjectContext *)moc;
 - (void)deleteTracksWithUUIDArray:(NSArray *)uuids;
 - (NSArray *)allTracks; // returns a batched core data proxy array
 
@@ -87,12 +87,10 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     return [self managedObjectContextForThread:[NSThread currentThread]];
 }
 
-- (void)handleTrackDatas:(NSArray *)trackDatas
+- (void)handleTrackDatas:(NSArray *)trackDatas usingManagedObjectContext:(NSManagedObjectContext *)moc
 {
-    NSManagedObjectContext *moc = self.managedObjectContextForCurrentThread;
-    
     for (NSDictionary *trackData in trackDatas) {
-        KANTrack *track = [KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
+        KANTrack *track = (KANTrack *)[KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
         
         track.artist    = [KANTrackArtist uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
         track.disc      = [KANDisc uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
@@ -145,13 +143,23 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 
     void (^updateTracksSuccessBlock)(AFHTTPRequestOperation *op, id) = ^(AFHTTPRequestOperation *op, NSArray *trackData) {
         CJLog(@"trackData count: %d", [trackData count]);
-        //CJLog(@"%f", [[NSDate date] timeIntervalSince1970]);
-        [self handleTrackDatas:trackData];
+        NSDate *start = [NSDate date];
 
-        NSError *error;
-        [self.managedObjectContextForCurrentThread save:&error];
-        if (error)
-            CJLog(@"%@", error);
+        @autoreleasepool {
+            NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+            moc.persistentStoreCoordinator = self.persistentStoreCoordinator;
+            moc.undoManager = nil;
+
+            [self handleTrackDatas:trackData usingManagedObjectContext:moc];
+
+            NSError *error;
+            [moc save:&error];
+
+            if (error)
+                CJLog(@"%@", error);
+        }
+
+        CJLog(@"block execution time: %f", [[NSDate date] timeIntervalSinceDate:start]);
     };
 
     CJLog(@"track count since last update: %d", trackCount);
@@ -281,6 +289,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     if (_backgroundManagedObjectContext == nil) {
         _backgroundManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         _backgroundManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+        _backgroundManagedObjectContext.undoManager = nil;
     }
     
     return _backgroundManagedObjectContext;
