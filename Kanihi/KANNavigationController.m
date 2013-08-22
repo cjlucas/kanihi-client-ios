@@ -12,6 +12,8 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gesture;
 - (BOOL)shouldPopToRootViewController:(UIGestureRecognizer *)gesture;
+- (BOOL)shouldShowWelcomeViewController;
+
 - (void)setPromptForNavigationItem:(UINavigationItem *)item;
 
 @property (readonly) UIViewController *rootViewController;
@@ -41,6 +43,18 @@
         [self setPromptForNavigationItem:self.navigationBar.topItem];
     }];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([self shouldShowWelcomeViewController])
+        [self performSegueWithIdentifier:@"Welcome" sender:self];
+}
+
+- (BOOL)shouldShowWelcomeViewController
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsHostKey] == nil;
 }
 
 - (UIViewController *)rootViewController

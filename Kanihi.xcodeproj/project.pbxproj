@@ -33,12 +33,7 @@
 		835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */; };
 		835153AB17A87C520088F692 /* KANAudioStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AA17A87C520088F692 /* KANAudioStore.m */; };
 		835153BC17A886180088F692 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AF17A886180088F692 /* AudioPlayer.m */; };
-		835153BD17A886180088F692 /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */; };
-		835153BE17A886180088F692 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B317A886180088F692 /* CoreFoundationDataSource.m */; };
 		835153BF17A886180088F692 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B517A886180088F692 /* DataSource.m */; };
-		835153C017A886180088F692 /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B717A886180088F692 /* DataSourceWrapper.m */; };
-		835153C117A886180088F692 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B917A886180088F692 /* HttpDataSource.m */; };
-		835153C217A886180088F692 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153BB17A886180088F692 /* LocalFileDataSource.m */; };
 		835B00331791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
 		8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361466C17A2F91500984C26 /* KANWelcomeViewController.m */; };
@@ -52,15 +47,8 @@
 		836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
 		836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
 		8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394388617A4534E007B73B1 /* KANTrackTableViewController.m */; };
-		83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
-		83A28213179C9BD9008D0686 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FE179C9BD9008D0686 /* AFHTTPRequestOperation.m */; };
-		83A28215179C9BD9008D0686 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28200179C9BD9008D0686 /* AFImageRequestOperation.m */; };
-		83A28217179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28202179C9BD9008D0686 /* AFJSONRequestOperation.m */; };
-		83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28204179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m */; };
 		83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28207179C9BD9008D0686 /* AFPropertyListRequestOperation.m */; };
 		83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28209179C9BD9008D0686 /* AFURLConnectionOperation.m */; };
-		83A2821F179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A2820B179C9BD9008D0686 /* AFXMLRequestOperation.m */; };
-		83A28221179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A2820D179C9BD9008D0686 /* UIImageView+AFNetworking.m */; };
 		83A28223179C9BD9008D0686 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28210179C9BD9008D0686 /* Base64.m */; };
 		83A28227179CC15C008D0686 /* KANArtwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28226179CC15C008D0686 /* KANArtwork.m */; };
 		83A4D848179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
@@ -76,6 +64,20 @@
 		83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
 		83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */; };
 		83E3DD2617C2BAB5008884D9 /* KANPlaylistDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD2517C2BAB5008884D9 /* KANPlaylistDataSource.m */; };
+		83E3DD2717C6911A008884D9 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FC179C9BD9008D0686 /* AFHTTPClient.m */; };
+		83E3DD2817C6911D008884D9 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A281FE179C9BD9008D0686 /* AFHTTPRequestOperation.m */; };
+		83E3DD2917C69121008884D9 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28200179C9BD9008D0686 /* AFImageRequestOperation.m */; };
+		83E3DD2A17C69124008884D9 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28202179C9BD9008D0686 /* AFJSONRequestOperation.m */; };
+		83E3DD2B17C69130008884D9 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A2820B179C9BD9008D0686 /* AFXMLRequestOperation.m */; };
+		83E3DD3617C6916F008884D9 /* AFEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD2D17C6916F008884D9 /* AFEventSource.m */; };
+		83E3DD3717C6916F008884D9 /* AFHTTPClient+Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD2F17C6916F008884D9 /* AFHTTPClient+Rocket.m */; };
+		83E3DD3817C6916F008884D9 /* AFJSONPatchSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3117C6916F008884D9 /* AFJSONPatchSerializer.m */; };
+		83E3DD3917C6916F008884D9 /* AFSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3317C6916F008884D9 /* AFSerialization.m */; };
+		83E3DD3A17C6916F008884D9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3517C6916F008884D9 /* AFURLSessionManager.m */; };
+		83E3DD3B17C691A8008884D9 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B917A886180088F692 /* HttpDataSource.m */; };
+		83E3DD3C17C691AD008884D9 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153BB17A886180088F692 /* LocalFileDataSource.m */; };
+		83E3DD3D17C691BC008884D9 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B317A886180088F692 /* CoreFoundationDataSource.m */; };
+		83E3DD4017C6B4CD008884D9 /* KANInitialImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3F17C6B4CD008884D9 /* KANInitialImportViewController.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
 		83E44D90178A206400CB37C1 /* KANEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8B178A15A000CB37C1 /* KANEntity.m */; };
@@ -197,8 +199,6 @@
 		83A28200179C9BD9008D0686 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
 		83A28201179C9BD9008D0686 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
 		83A28202179C9BD9008D0686 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		83A28203179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		83A28204179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		83A28205179C9BD9008D0686 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
 		83A28206179C9BD9008D0686 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
 		83A28207179C9BD9008D0686 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
@@ -206,8 +206,6 @@
 		83A28209179C9BD9008D0686 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
 		83A2820A179C9BD9008D0686 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
 		83A2820B179C9BD9008D0686 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		83A2820C179C9BD9008D0686 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		83A2820D179C9BD9008D0686 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		83A2820F179C9BD9008D0686 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		83A28210179C9BD9008D0686 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		83A28225179CC15C008D0686 /* KANArtwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANArtwork.h; sourceTree = "<group>"; };
@@ -234,6 +232,18 @@
 		83E31D01179640E200A6EAF7 /* KANAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAlbumTableViewController.m; sourceTree = "<group>"; };
 		83E3DD2417C2BAB5008884D9 /* KANPlaylistDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistDataSource.h; sourceTree = "<group>"; };
 		83E3DD2517C2BAB5008884D9 /* KANPlaylistDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistDataSource.m; sourceTree = "<group>"; };
+		83E3DD2C17C6916F008884D9 /* AFEventSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEventSource.h; sourceTree = "<group>"; };
+		83E3DD2D17C6916F008884D9 /* AFEventSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEventSource.m; sourceTree = "<group>"; };
+		83E3DD2E17C6916F008884D9 /* AFHTTPClient+Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPClient+Rocket.h"; sourceTree = "<group>"; };
+		83E3DD2F17C6916F008884D9 /* AFHTTPClient+Rocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPClient+Rocket.m"; sourceTree = "<group>"; };
+		83E3DD3017C6916F008884D9 /* AFJSONPatchSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONPatchSerializer.h; sourceTree = "<group>"; };
+		83E3DD3117C6916F008884D9 /* AFJSONPatchSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONPatchSerializer.m; sourceTree = "<group>"; };
+		83E3DD3217C6916F008884D9 /* AFSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSerialization.h; sourceTree = "<group>"; };
+		83E3DD3317C6916F008884D9 /* AFSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSerialization.m; sourceTree = "<group>"; };
+		83E3DD3417C6916F008884D9 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		83E3DD3517C6916F008884D9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		83E3DD3E17C6B4CD008884D9 /* KANInitialImportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANInitialImportViewController.h; sourceTree = "<group>"; };
+		83E3DD3F17C6B4CD008884D9 /* KANInitialImportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANInitialImportViewController.m; sourceTree = "<group>"; };
 		83E44D88178A0D7A00CB37C1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		83E44D8A178A15A000CB37C1 /* KANEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KANEntity.h; sourceTree = "<group>"; };
 		83E44D8B178A15A000CB37C1 /* KANEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KANEntity.m; sourceTree = "<group>"; };
@@ -495,6 +505,16 @@
 		83A281FA179C9BD9008D0686 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				83E3DD2C17C6916F008884D9 /* AFEventSource.h */,
+				83E3DD2D17C6916F008884D9 /* AFEventSource.m */,
+				83E3DD2E17C6916F008884D9 /* AFHTTPClient+Rocket.h */,
+				83E3DD2F17C6916F008884D9 /* AFHTTPClient+Rocket.m */,
+				83E3DD3017C6916F008884D9 /* AFJSONPatchSerializer.h */,
+				83E3DD3117C6916F008884D9 /* AFJSONPatchSerializer.m */,
+				83E3DD3217C6916F008884D9 /* AFSerialization.h */,
+				83E3DD3317C6916F008884D9 /* AFSerialization.m */,
+				83E3DD3417C6916F008884D9 /* AFURLSessionManager.h */,
+				83E3DD3517C6916F008884D9 /* AFURLSessionManager.m */,
 				83A281FB179C9BD9008D0686 /* AFHTTPClient.h */,
 				83A281FC179C9BD9008D0686 /* AFHTTPClient.m */,
 				83A281FD179C9BD9008D0686 /* AFHTTPRequestOperation.h */,
@@ -503,8 +523,6 @@
 				83A28200179C9BD9008D0686 /* AFImageRequestOperation.m */,
 				83A28201179C9BD9008D0686 /* AFJSONRequestOperation.h */,
 				83A28202179C9BD9008D0686 /* AFJSONRequestOperation.m */,
-				83A28203179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.h */,
-				83A28204179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m */,
 				83A28205179C9BD9008D0686 /* AFNetworking.h */,
 				83A28206179C9BD9008D0686 /* AFPropertyListRequestOperation.h */,
 				83A28207179C9BD9008D0686 /* AFPropertyListRequestOperation.m */,
@@ -512,8 +530,6 @@
 				83A28209179C9BD9008D0686 /* AFURLConnectionOperation.m */,
 				83A2820A179C9BD9008D0686 /* AFXMLRequestOperation.h */,
 				83A2820B179C9BD9008D0686 /* AFXMLRequestOperation.m */,
-				83A2820C179C9BD9008D0686 /* UIImageView+AFNetworking.h */,
-				83A2820D179C9BD9008D0686 /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
 			path = Vendor/AFNetworking/AFNetworking;
@@ -532,6 +548,8 @@
 		83ED872017AC3FFA001BBA4E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				83E3DD3E17C6B4CD008884D9 /* KANInitialImportViewController.h */,
+				83E3DD3F17C6B4CD008884D9 /* KANInitialImportViewController.m */,
 				83ED872F17AC68C1001BBA4E /* KANPlaylistModalViewController.h */,
 				83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */,
 				835153A517A879AA0088F692 /* KANAudioPlayerViewController.h */,
@@ -675,70 +693,72 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A28213179C9BD9008D0686 /* AFHTTPRequestOperation.m in Sources */,
 				835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */,
 				83433386178BE1D400CC985D /* KANConstants.m in Sources */,
-				83A28215179C9BD9008D0686 /* AFImageRequestOperation.m in Sources */,
 				833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				835153AB17A87C520088F692 /* KANAudioStore.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				83ED872317AC4606001BBA4E /* KANAudioPlayer.m in Sources */,
 				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
-				83A28211179C9BD9008D0686 /* AFHTTPClient.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
 				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
 				83C1D86B17C00F110078F75A /* UIImage+CJExtensions.m in Sources */,
 				83C1D86817C002180078F75A /* AMBlurView.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
+				83E3DD3A17C6916F008884D9 /* AFURLSessionManager.m in Sources */,
 				83ED873117AC68C1001BBA4E /* KANPlaylistModalViewController.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */,
+				83E3DD3617C6916F008884D9 /* AFEventSource.m in Sources */,
+				83E3DD3917C6916F008884D9 /* AFSerialization.m in Sources */,
 				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
-				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
-				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
-				83A28221179C9BD9008D0686 /* UIImageView+AFNetworking.m in Sources */,
-				835153C017A886180088F692 /* DataSourceWrapper.m in Sources */,
-				83A28217179C9BD9008D0686 /* AFJSONRequestOperation.m in Sources */,
-				835153C117A886180088F692 /* HttpDataSource.m in Sources */,
-				835153BC17A886180088F692 /* AudioPlayer.m in Sources */,
-				835153C217A886180088F692 /* LocalFileDataSource.m in Sources */,
 				833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
 				83C7F23C17C1312F0095F1BB /* KANPlaylistTableViewCell.m in Sources */,
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
-				835153BF17A886180088F692 /* DataSource.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
 				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
 				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
+				83E3DD3817C6916F008884D9 /* AFJSONPatchSerializer.m in Sources */,
 				83A28223179C9BD9008D0686 /* Base64.m in Sources */,
 				83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
 				83A810F117BC1BF900BC0C65 /* CJHTTPCachedDataSource.m in Sources */,
-				835153BD17A886180088F692 /* AutoRecoveringHttpDataSource.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
 				83A810F017BC1BF900BC0C65 /* CJAudioPlayer.m in Sources */,
 				836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
-				83A2821F179C9BD9008D0686 /* AFXMLRequestOperation.m in Sources */,
 				834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */,
 				83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
 				83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
-				835153BE17A886180088F692 /* CoreFoundationDataSource.m in Sources */,
 				83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */,
-				83A28219179C9BD9008D0686 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
+				83E3DD4017C6B4CD008884D9 /* KANInitialImportViewController.m in Sources */,
 				83E3DD2617C2BAB5008884D9 /* KANPlaylistDataSource.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingViewController.m in Sources */,
 				8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
+				83E3DD3717C6916F008884D9 /* AFHTTPClient+Rocket.m in Sources */,
+				835153BC17A886180088F692 /* AudioPlayer.m in Sources */,
+				835153BF17A886180088F692 /* DataSource.m in Sources */,
+				83E3DD3B17C691A8008884D9 /* HttpDataSource.m in Sources */,
+				83E3DD3C17C691AD008884D9 /* LocalFileDataSource.m in Sources */,
+				83E3DD3D17C691BC008884D9 /* CoreFoundationDataSource.m in Sources */,
+				83E3DD2717C6911A008884D9 /* AFHTTPClient.m in Sources */,
+				83E3DD2817C6911D008884D9 /* AFHTTPRequestOperation.m in Sources */,
+				83E3DD2917C69121008884D9 /* AFImageRequestOperation.m in Sources */,
+				83E3DD2A17C69124008884D9 /* AFJSONRequestOperation.m in Sources */,
+				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
+				83E3DD2B17C69130008884D9 /* AFXMLRequestOperation.m in Sources */,
+				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,27 +14,19 @@
 #import "KANArtwork.h"
 
 #import "KANArtworkStore.h"
+#import "KANAudioStore.h"
+
+#import "UIColor+CJExtensions.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation KANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@"192.168.1.19" forKey:KANUserDefaultsHostKey];
-    [[NSUserDefaults standardUserDefaults] setInteger:8080 forKey:KANUserDefaultsPortKey];
-    [[NSUserDefaults standardUserDefaults] setObject:@"chris" forKey:KANUserDefaultsAuthUserKey];
-    [[NSUserDefaults standardUserDefaults] setObject:@"test" forKey:KANUserDefaultsAuthPassKey];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *notif) {
-        CJLog(@"server became available", nil);
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeUnavailableNotification object:nil queue:nil usingBlock:^(NSNotification *notif) {
-        CJLog(@"server went away", nil);
-    }];
-    
-    KANDataStore *store = [KANDataStore sharedDataStore];
-    
-    [store updateDataStoreDoFullUpdate:NO];
+    //[[KANDataStore sharedDataStore] updateDataStoreDoFullUpdate:NO];
+    [KANArtworkStore emptyStore];
+    [KANAudioStore emptyCacheStore];
+    [KANAudioStore emptyPersistentStore];
     
     return YES;
 }

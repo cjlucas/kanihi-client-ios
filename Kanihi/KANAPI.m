@@ -20,6 +20,7 @@
 
 - (void)setup;
 + (void)handleServerReachabilityStatusChange:(AFNetworkReachabilityStatus)status;
+
 @end
 
 @implementation KANAPI
@@ -222,21 +223,36 @@
     assert(handler != nil);
     KANAPI *client = [self sharedClient];
     
-    NSMutableURLRequest *req = [client requestWithMethod:@"GET" URLString:nil parameters:nil];
+    // TODO: call generic method
+}
+
++ (void)checkConnectabilityWithHost:(NSString *)host port:(NSUInteger)port authUser:(NSString *)authUser authPass:(NSString *)authPass completionHandler:(void (^)(KANAPIConnectability))handler
+{
+    NSURL *baseURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d", host, port]];
+    KANAPI *tempClient = [[KANAPI alloc] initWithBaseURL:baseURL];
+
+    if (authUser && authPass) {
+        AFJSONSerializer *authRequestSerializer = [AFJSONSerializer serializer];
+        [authRequestSerializer setAuthorizationHeaderFieldWithUsername:authUser password:authPass];
+        tempClient.requestSerializer = authRequestSerializer;
+    }
+
+    NSMutableURLRequest *req = [tempClient requestWithMethod:@"GET" URLString:KANAPIServerInfoPath parameters:nil];
     req.timeoutInterval = 5;
-    
-    AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"testConnectability successful");
+
+    AFHTTPRequestOperation *op = [tempClient HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //CJLog(@"testConnectability successful");
         handler(KANAPIConnectabilityConnectable);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"testConnectability failed: %@", error);
-        
-        if (operation.response.statusCode == 401)
+        CJLog(@"testConnectability failed: %@", error);
+
+        if (operation.response.statusCode == 401) {
             handler(KANAPIConnectabilityRequiresAuthentication);
-        else
+        } else {
             handler(KANAPIConnectabilityNotConnectable);
+        }
     }];
-    
+
     [op start];
 }
 
@@ -269,12 +285,6 @@
 }
 
 #pragma mark - AFHTTPClient overrides
-
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method URLString:(NSString *)URLString parameters:(NSDictionary *)parameters
-{
-    // TODO: inject authentication into request
-    return [super requestWithMethod:method URLString:URLString parameters:parameters];
-}
 
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
