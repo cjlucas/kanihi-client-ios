@@ -14,6 +14,8 @@
 #import "KANArtworkStore.h"
 #import "KANAudioPlayer.h"
 
+#import "KANAppDelegate.h"
+
 @interface KANAudioPlayerViewController ()
 
 - (void)updateOutlets;
@@ -45,6 +47,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     CJLog(@"viewDidDisappear", nil);
+    self.audioPlayer.delegate = (KANAppDelegate *)[UIApplication sharedApplication].delegate;
     //self.audioPlayer.delegate = nil;
     //[self.periodicUpdateTimer invalidate];
 
@@ -110,7 +113,20 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateOutlets];
+
+        if (fullyCached) {
+            [self.downloadProgressView setProgress:1.0 animated:NO];
+        }
     });
+
+    [((KANAppDelegate *)[UIApplication sharedApplication].delegate) audioPlayer:audioPlayer didStartPlayingItem:item isFullyCached:fullyCached];
+}
+
+- (void)audioPlayerDidFinishPlayingQueue:(CJAudioPlayer *)audioPlayer
+{
+    [((KANAppDelegate *)[UIApplication sharedApplication].delegate) audioPlayerDidFinishPlayingQueue:audioPlayer];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)audioPlayer:(CJAudioPlayer *)audioPlayer currentItemDidUpdateDownloadProgressWithBytesDownloaded:(NSUInteger)bytesDownloaded bytesExpected:(NSUInteger)bytesExpected

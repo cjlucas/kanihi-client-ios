@@ -10,8 +10,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface KANAppDelegate : UIResponder <UIApplicationDelegate>
+#import "KANAudioPlayer.h"
+
+@interface KANAppDelegate : UIResponder <UIApplicationDelegate, CJAudioPlayerDelegate>
+
+- (void)updateNowPlayingInfo:(NSTimer *)timer;
 
 @property (strong, nonatomic) UIWindow *window;
+@property NSTimer *updateNowPlayingInfoTimer;
 
 @end
