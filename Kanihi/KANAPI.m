@@ -41,11 +41,8 @@
 - (void)setup
 {
     // TODO: move this elsewhere
-    NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
-    NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
-    
-    if (authUser && authPass)
-        [self setAuthorizationHeaderWithUsername:authUser password:authPass];
+//    NSString *authUser = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthUserKey];
+//    NSString *authPass = [[NSUserDefaults standardUserDefaults] stringForKey:KANUserDefaultsAuthPassKey];
 
     // limit concurrent operations
     [self.operationQueue setMaxConcurrentOperationCount:KANAPIMaxConcurrentConnections];
@@ -54,9 +51,6 @@
     [self setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [KANAPI handleServerReachabilityStatusChange:status];
     }];
-
-    // register AFHTTPOperation subclasses
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 
     // add observers for server availability notifications
     [[NSNotificationCenter defaultCenter] addObserverForName:KANAPIServerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -112,18 +106,20 @@
     NSString *artworkPath = [client artworkPathWithArtwork:artwork];
 
     
-    NSMutableURLRequest *req = [client requestWithMethod:@"GET" path:artworkPath parameters:nil];
+    NSMutableURLRequest *req = [client requestWithMethod:@"GET" URLString:artworkPath parameters:nil];
 
-    if (height > 0)
+    if (height > 0) {
         [req addValue:[NSString stringWithFormat:@"%d", height] forHTTPHeaderField:@"Image-Resize-Height"];
+    }
 
     void (^success)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *op, id respnseObject) {
-        if (handler)
+        if (handler) {
             handler(respnseObject);
+        }
     };
 
     AFHTTPRequestOperation *op = [[KANAPI sharedClient] HTTPRequestOperationWithRequest:req success:success failure:nil];
-    op.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    op.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
     [op start];
 }
@@ -132,7 +128,7 @@
                                   SQLOffset:(NSUInteger)offset
                               LastUpdatedAt:(NSDate *)lastUpdatedAt
 {
-    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPITracksPath parameters:nil];
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" URLString:KANAPITracksPath parameters:nil];
     
     NSString *limitString = [NSString stringWithFormat:@"%d", limit];
     NSString *offsetString = [NSString stringWithFormat:@"%d", offset];
@@ -155,26 +151,27 @@
     __block NSMutableArray *trackUUIDs = nil;
     [currentTracks enumerateObjectsUsingBlock:^(KANTrack *track , NSUInteger idx, BOOL *stop) {
         if (idx % maxNumTracks == 0) {
-            if (req) {
-                NSData *trackData = [NSJSONSerialization dataWithJSONObject:@{KANAPIDeletedTracksRequestJSONKey: trackUUIDs} options:0 error:nil];
-                req.HTTPBody = trackData;
+            if (trackUUIDs.count > 0) {
+                req = [[self sharedClient] requestWithMethod:@"POST" URLString:KANAPIDeletedTracksPath parameters:@{KANAPIDeletedTracksRequestJSONKey : trackUUIDs}];
                 [requests addObject:[req copy]];
             }
-            req = [[self sharedClient] requestWithMethod:@"POST" path:KANAPIDeletedTracksPath parameters:nil];
+
             trackUUIDs = [[NSMutableArray alloc] initWithCapacity:(maxNumTracks * 2)];
+
         }
 
         [trackUUIDs addObject:track.uuid];
     }];
 
+    CJLog(@"requests count: %d", requests.count);
     return [requests copy];
 }
 
 + (NSDictionary *)serverInfo
 {
     NSError *error;
-    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPIServerInfoPath parameters:nil];
-    
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" URLString:KANAPIServerInfoPath parameters:nil];
+
     NSData *responseData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&error];
     
     if (error) {
@@ -203,8 +200,8 @@
 {
     NSError *error;
     NSUInteger trackCount = 0;
-    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" path:KANAPITrackCountPath parameters:nil];
-    
+    NSMutableURLRequest *req = [[self sharedClient] requestWithMethod:@"GET" URLString:KANAPITrackCountPath parameters:nil];
+
     if (lastUpdatedAt)
         [req addValue:lastUpdatedAt.description forHTTPHeaderField:@"Last-Updated-At"];
     
@@ -225,7 +222,7 @@
     assert(handler != nil);
     KANAPI *client = [self sharedClient];
     
-    NSMutableURLRequest *req = [client requestWithMethod:@"GET" path:nil parameters:nil];
+    NSMutableURLRequest *req = [client requestWithMethod:@"GET" URLString:nil parameters:nil];
     req.timeoutInterval = 5;
     
     AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -257,6 +254,7 @@
 
 + (NSString *)suggestedFilenameForTrack:(KANTrack *)track
 {
+    // TODO: use requestWithMethod:...
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[self streamURLForTrack:track]];
     req.HTTPMethod = @"HEAD";
     req.timeoutInterval = 5;
@@ -271,6 +269,12 @@
 }
 
 #pragma mark - AFHTTPClient overrides
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method URLString:(NSString *)URLString parameters:(NSDictionary *)parameters
+{
+    // TODO: inject authentication into request
+    return [super requestWithMethod:method URLString:URLString parameters:parameters];
+}
 
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {

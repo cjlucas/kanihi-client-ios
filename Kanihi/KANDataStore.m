@@ -116,7 +116,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 {
     [self postNotification:KANDataStoreWillBeginUpdatingNotification];
     [self postNotification:KANDataStoreDidBeginUpdatingNotification];
-    
+
     __block BOOL updateSuccessful = YES;
     KANAPI *client = [KANAPI sharedClient];
     NSUserDefaults *sud = [NSUserDefaults standardUserDefaults];
@@ -133,6 +133,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     CJLog(@"using lastUpdated: %@", lastUpdated);
 
     void (^operationFailureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *op, NSError *error) {
+        CJLog(@"operationFailureBlock: %@", error);
         updateSuccessful = NO;
     };
 
@@ -153,10 +154,9 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
             [self handleTrackDatas:trackData usingManagedObjectContext:moc];
 
             NSError *error;
-            [moc save:&error];
-
-            if (error)
+            if (![moc save:&error]) {
                 CJLog(@"%@", error);
+            }
         }
 
         CJLog(@"block execution time: %f", [[NSDate date] timeIntervalSinceDate:start]);
@@ -169,14 +169,14 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     while (offset < trackCount) {
         NSURLRequest *req = [KANAPI tracksRequestWithSQLLimit:KANDataStoreFetchLimit SQLOffset:offset LastUpdatedAt:lastUpdated];
         
-        AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
-        op.successCallbackQueue = _background_queue;
-        op.failureCallbackQueue = _background_queue;
+        AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:updateTracksSuccessBlock failure:operationFailureBlock];
+        op.responseSerializer = [AFJSONSerializer serializer];
+        op.completionQueue = _background_queue;
         
         [operations addObject:op];
         offset += KANDataStoreFetchLimit;
     }
-    
+
     // Delete old tracks
 
     void (^deleteTracksSuccessBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *op, NSDictionary *json) {
@@ -191,37 +191,36 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     };
 
     for (NSURLRequest *req in [KANAPI deletedTracksRequestsWithCurrentTracks:[self allTracks]]) {
-        AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
-
+        //AFJSONRequestOperation *op = (AFJSONRequestOperation *)[client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
+        AFHTTPRequestOperation *op = [client HTTPRequestOperationWithRequest:req success:deleteTracksSuccessBlock failure:operationFailureBlock];
         [op setQueuePriority:NSOperationQueuePriorityVeryLow];
-        op.successCallbackQueue = _background_queue;
-        op.failureCallbackQueue = _background_queue;
+        op.responseSerializer = [AFJSONSerializer serializer];
+        op.completionQueue = _background_queue;
         [operations addObject:op];
     }
 
-    
     // Process operations
-    
+
     NSDate *startDate = [NSDate date];
-    
+
     void (^progressBlock)(NSUInteger, NSUInteger) = ^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
         CJLog(@"progress: %d/%d", numberOfFinishedOperations, totalNumberOfOperations);
     };
-    
+
     void (^completionBlock)(NSArray *) = ^(NSArray *operations) {
         CJLog(@"%@", updateSuccessful ? @"update was successful" : @"update wasn't successful");
-        
+
         if (updateSuccessful) {
             [sud setObject:newLastUpdated forKey:KANUserDefaultsLastUpdatedKey];
             [sud synchronize];
         }
-        
+
         [self postNotification:KANDataStoreWillFinishUpdatingNotification];
         [self postNotification:KANDataStoreDidFinishUpdatingNotification];
-        
+
         CJLog(@"total update time: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
     };
-    
+
     [client enqueueBatchOfHTTPRequestOperations:operations progressBlock:progressBlock completionBlock:completionBlock];
 }
 
