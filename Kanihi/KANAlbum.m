@@ -41,17 +41,6 @@
     self.artist = [KANAlbumArtist uniqueEntityForData:data[KANAlbumAlbumArtistKey] withCache:nil context:context];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                     context:(NSManagedObjectContext *)context
-{
-    KANAlbum *album = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                           inManagedObjectContext:context];
-    
-    [album updateWithData:data context:context];
-    
-    return album;
-}
-
 - (void)setName:(NSString *)name
 {
     [self willChangeValueForKey:@"name"];

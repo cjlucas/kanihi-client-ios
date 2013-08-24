@@ -20,12 +20,19 @@
 {
 }
 
-+(id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                        context:(NSManagedObjectContext *)context
++ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
+                                     context:(NSManagedObjectContext *)context
 {
-    return nil;
-}
+    if (!data) {
+        return nil;
+    }
 
+    id <KANUniqueEntityProtocol> record = [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:context];
+
+    [record updateWithData:data context:context];
+
+    return record;
+}
 
 + (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data
                                       withCache:(NSSet *)cache

@@ -51,17 +51,6 @@
     return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANTrackUUIDKey]];
 }
 
-+ (KANTrack *)initWithData:(NSDictionary *)data
-                       context:(NSManagedObjectContext *)context
-{
-    KANTrack *track = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                    inManagedObjectContext:context];
-    
-    [track updateWithData:data context:context];
-    
-    return track;
-}
-
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
     self.uuid = [data nonNullObjectForKey:KANTrackUUIDKey];

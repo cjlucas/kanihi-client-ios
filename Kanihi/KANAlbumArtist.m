@@ -30,17 +30,6 @@
     return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANAlbumArtistUUIDKey]];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                     context:(NSManagedObjectContext *)context
-{
-    KANAlbumArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                    inManagedObjectContext:context];
-    
-    [artist updateWithData:data context:context];
-    
-    return artist;
-}
-
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
     self.uuid = [data nonNullObjectForKey:KANAlbumArtistUUIDKey];

@@ -34,21 +34,6 @@
     self.name = [data nonNullObjectForKey:KANGenreNameKey];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                     context:(NSManagedObjectContext *)context
-{
-    if (!data) {
-        return nil;
-    }
-    
-    KANGenre *genre = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                           inManagedObjectContext:context];
-    
-    [genre updateWithData:data context:context];
-    
-    return genre;
-}
-
 - (void)setName:(NSString *)name
 {
     [self willChangeValueForKey:@"name"];

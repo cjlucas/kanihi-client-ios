@@ -38,17 +38,6 @@
     self.nameSortOrder = [data nonNullObjectForKey:KANTrackArtistNameSortOrderKey];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                     context:(NSManagedObjectContext *)context
-{
-    KANTrackArtist *artist = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                           inManagedObjectContext:context];
-    
-    [artist updateWithData:data context:context];
-    
-    return artist;
-}
-
 - (void)setName:(NSString *)name
 {
     [self willChangeValueForKey:@"name"];

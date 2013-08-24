@@ -41,17 +41,6 @@
     self.album = [KANAlbum uniqueEntityForData:data[KANDiscAlbumKey] withCache:nil context:context];
 }
 
-+ (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
-                                     context:(NSManagedObjectContext *)context
-{
-    KANDisc *disc = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                                  inManagedObjectContext:context];
-    
-    [disc updateWithData:data context:context];
-    
-    return disc;
-}
-
 - (void)setName:(NSString *)name
 {
     [self willChangeValueForKey:@"name"];
