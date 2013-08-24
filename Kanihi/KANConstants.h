@@ -67,20 +67,30 @@ NSString * const KANTrackDateKey;
 NSString * const KANTrackOriginalDateKey;
 NSString * const KANTrackSubtitleKey;
 NSString * const KANTrackArtworkKey;
+NSString * const KANTrackDiscKey;
+NSString * const KANTrackTrackArtistKey;
+NSString * const KANTrackGenreKey;
 
+NSString * const KANDiscUUIDKey;
 NSString * const KANDiscNameKey;
 NSString * const KANDiscNumKey;
 NSString * const KANDiscTrackTotalKey;
+NSString * const KANDiscAlbumKey;
 
+NSString * const KANAlbumUUIDKey;
 NSString * const KANAlbumNameKey;
 NSString * const KANAlbumDiscTotalKey;
+NSString * const KANAlbumAlbumArtistKey;
 
+NSString * const KANAlbumArtistUUIDKey;
 NSString * const KANAlbumArtistNameKey;
 NSString * const KANAlbumArtistNameSortOrderKey;
 
+NSString * const KANTrackArtistUUIDKey;
 NSString * const KANTrackArtistNameKey;
 NSString * const KANTrackArtistNameSortOrderKey;
 
+NSString * const KANGenreUUIDKey;
 NSString * const KANGenreNameKey;
 
 NSString * const KANArtworkKey;

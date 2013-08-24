@@ -13,6 +13,7 @@
 
 @implementation KANGenre
 
+@dynamic uuid;
 @dynamic name;
 @dynamic normalizedName;
 @dynamic tracks;
@@ -24,18 +25,22 @@
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
-    // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANGenreNameKey]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANGenreUUIDKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
+    self.uuid = [data nonNullObjectForKey:KANGenreUUIDKey];
     self.name = [data nonNullObjectForKey:KANGenreNameKey];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
                                      context:(NSManagedObjectContext *)context
 {
+    if (!data) {
+        return nil;
+    }
+    
     KANGenre *genre = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                                            inManagedObjectContext:context];
     

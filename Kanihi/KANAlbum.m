@@ -14,6 +14,7 @@
 
 @implementation KANAlbum
 
+@dynamic uuid;
 @dynamic name;
 @dynamic normalizedName;
 @dynamic discTotal;
@@ -29,17 +30,15 @@
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
-    // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@ && artist.name = %@",
-            [data nonNullObjectForKey:KANAlbumNameKey],
-            [data nonNullObjectForKey:KANAlbumArtistNameKey]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANAlbumUUIDKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
+    self.uuid = [data nonNullObjectForKey:KANAlbumUUIDKey];
     self.name = [data nonNullObjectForKey:KANAlbumNameKey];
     self.discTotal = [data nonNullObjectForKey:KANAlbumDiscTotalKey];
-    self.artist = [KANAlbumArtist uniqueEntityForData:data withCache:nil context:context];
+    self.artist = [KANAlbumArtist uniqueEntityForData:data[KANAlbumAlbumArtistKey] withCache:nil context:context];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data

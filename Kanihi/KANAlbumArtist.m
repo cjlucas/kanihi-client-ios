@@ -12,6 +12,7 @@
 
 @implementation KANAlbumArtist
 
+@dynamic uuid;
 @dynamic name;
 @dynamic normalizedName;
 @dynamic nameSortOrder;
@@ -26,8 +27,7 @@
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
-    // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANAlbumArtistNameKey]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANAlbumArtistUUIDKey]];
 }
 
 + (id <KANUniqueEntityProtocol>)initWithData:(NSDictionary *)data
@@ -43,6 +43,7 @@
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
+    self.uuid = [data nonNullObjectForKey:KANAlbumArtistUUIDKey];
     self.name = [data nonNullObjectForKey:KANAlbumArtistNameKey];
     self.nameSortOrder = [data nonNullObjectForKey:KANAlbumArtistNameSortOrderKey];
 }

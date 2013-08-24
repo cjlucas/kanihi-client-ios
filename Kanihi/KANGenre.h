@@ -15,6 +15,7 @@
 
 @interface KANGenre : KANUniqueEntity
 
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * normalizedName;
 @property (nonatomic, retain) NSSet *tracks;

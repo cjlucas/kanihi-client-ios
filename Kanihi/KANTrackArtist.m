@@ -14,6 +14,7 @@
 
 @implementation KANTrackArtist
 
+@dynamic uuid;
 @dynamic name;
 @dynamic normalizedName;
 @dynamic nameSortOrder;
@@ -27,12 +28,12 @@
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
-    // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"name = %@", [data nonNullObjectForKey:KANTrackArtistNameKey]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANTrackArtistUUIDKey]];
 }
 
 - (void)updateWithData:(NSDictionary *)data context:(NSManagedObjectContext *)context
 {
+    self.uuid = [data nonNullObjectForKey:KANTrackArtistUUIDKey];
     self.name = [data nonNullObjectForKey:KANTrackArtistNameKey];
     self.nameSortOrder = [data nonNullObjectForKey:KANTrackArtistNameSortOrderKey];
 }

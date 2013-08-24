@@ -15,6 +15,7 @@
 
 @interface KANDisc : KANUniqueEntity
 
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * normalizedName;
 @property (nonatomic) NSNumber *num;
