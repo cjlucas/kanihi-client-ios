@@ -14,8 +14,10 @@
 #import "CJStringNormalization.h"
 
 #import "KANDisc.h"
-#import "KANAlbum.h"
+#import "KANGenre.h"
 #import "KANTrackArtist.h"
+#import "KANAlbum.h"
+#import "KANArtwork.h"
 
 #import "KANAPI.h"
 #import "KANAudioStore.h"
@@ -46,8 +48,7 @@
 
 + (NSPredicate *)uniquePredicateForData:(NSDictionary *)data
 {
-    // TODO: check if key exists
-    return [NSPredicate predicateWithFormat:@"uuid = %@", [data nonNullObjectForKey:KANTrackUUIDKey]];
+    return [NSPredicate predicateWithFormat:@"uuid = %@", data[KANTrackUUIDKey]];
 }
 
 + (KANTrack *)initWithData:(NSDictionary *)data
@@ -78,6 +79,24 @@
     }
     if ([data nonNullObjectForKey:KANTrackOriginalDateKey] != nil) {
         self.originalDate = [KANUtils dateFromRailsDateString:[data nonNullObjectForKey:KANTrackOriginalDateKey]];
+    }
+
+    self.artist    = [KANTrackArtist uniqueEntityForData:data[KANTrackTrackArtistKey] withCache:nil context:context];
+    self.disc      = [KANDisc uniqueEntityForData:data[KANTrackDiscKey] withCache:nil context:context];
+    self.genre     = [KANGenre uniqueEntityForData:data[KANTrackGenreKey] withCache:nil context:context];
+
+    NSMutableSet *artworks = [self mutableSetValueForKey:@"artworks"]; // core data proxy set
+
+    // ensure artwork isn't already in track.artworks by doing a checksum lookup before adding
+    NSMutableSet *checksums = [[NSMutableSet alloc] initWithCapacity:artworks.count];
+    for (KANArtwork *artwork in artworks)
+        [checksums addObject:[artwork.checksum lowercaseString]];
+
+    for (NSDictionary *artworkData in data[KANTrackArtworkKey]) {
+        KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil context:context];
+
+        if (![checksums containsObject:[artwork.checksum lowercaseString]])
+            [artworks addObject:artwork];
     }
 }
 

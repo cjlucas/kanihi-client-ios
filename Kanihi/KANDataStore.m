@@ -123,26 +123,7 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 {
     for (NSDictionary *trackData in trackDatas) {
         self.progressInfo->_currentTrack++;
-
-        KANTrack *track = (KANTrack *)[KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
-
-        track.artist    = [KANTrackArtist uniqueEntityForData:trackData[@"track"][KANTrackTrackArtistKey] withCache:nil context:moc];
-        track.disc      = [KANDisc uniqueEntityForData:trackData[@"track"][KANTrackDiscKey] withCache:nil context:moc];
-        track.genre     = [KANGenre uniqueEntityForData:trackData[@"track"][KANTrackGenreKey] withCache:nil context:moc];
-
-        NSMutableSet *artworks = [track mutableSetValueForKey:@"artworks"]; // core data proxy set
-        
-        // ensure artwork isn't already in track.artworks by doing a checksum lookup before adding
-        NSMutableSet *checksums = [[NSMutableSet alloc] initWithCapacity:artworks.count];
-        for (KANArtwork *artwork in artworks)
-            [checksums addObject:[artwork.checksum lowercaseString]];
-        
-        for (NSDictionary *artworkData in trackData[@"track"][KANTrackArtworkKey]) {
-            KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil context:moc];
-            
-            if (![checksums containsObject:[artwork.checksum lowercaseString]])
-                [artworks addObject:artwork];
-        }
+        [KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
     }
 }
 
