@@ -28,38 +28,46 @@
     }
 
     id <KANUniqueEntityProtocol> record = [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:context];
-
     [record updateWithData:data context:context];
 
     return record;
 }
 
-+ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data
-                                      withCache:(NSSet *)cache
-                                        context:(NSManagedObjectContext *)context
++ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data withCache:(NSCache *)cache cacheKey:(NSString *)cacheKey lookupEntity:(BOOL)lookupEntity context:(NSManagedObjectContext *)context
 {
     assert([self entityName] != nil);
     assert(context != nil);
-    
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-    req.predicate = [self uniquePredicateForData:data];
-    //NSLog(@"%@", req.predicate);
-    req.fetchLimit = 1;
-    
-    NSError *error;
-    NSArray *results = [context executeFetchRequest:req error:&error];
-    
+
     id <KANUniqueEntityProtocol> entity = nil;
-    
-    if ([results count] == 1) {
-        //NSLog(@"found existing entity");
-        entity = [results objectAtIndex:0];
-        [entity updateWithData:data context:context];
-    } else {
-        //NSLog(@"new entity");
+
+    if (lookupEntity) {
+        if (cache && cacheKey) {
+            entity = [cache objectForKey:cacheKey];
+        }
+
+        if (!entity) {
+            NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+            req.predicate = [self uniquePredicateForData:data];
+            req.fetchLimit = 1;
+
+            NSError *error;
+            NSArray *results = [context executeFetchRequest:req error:&error];
+
+            if (results.count == 1) {
+                entity = results[0];
+                [entity updateWithData:data context:context];
+            }
+        }
+    }
+
+    if (!entity) {
         entity = [self initWithData:data context:context];
     }
-    
+
+    if (cache && cacheKey) {
+        [cache setObject:entity forKey:cacheKey];
+    }
+
     return entity;
 }
 

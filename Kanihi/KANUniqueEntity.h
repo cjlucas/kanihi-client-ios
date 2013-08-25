@@ -17,9 +17,7 @@
 @protocol KANUniqueEntityProtocol <NSObject>
 
 @required
-+ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data
-                                              withCache:(NSSet *)cache
-                                                context:(NSManagedObjectContext *)context;
++ (id <KANUniqueEntityProtocol>)uniqueEntityForData:(NSDictionary *)data withCache:(NSCache *)cache cacheKey:(NSString *)cacheKey lookupEntity:(BOOL)lookupEntity context:(NSManagedObjectContext *)context;
 
 
 - (void)updateWithData:(NSDictionary *)data

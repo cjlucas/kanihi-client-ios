@@ -22,5 +22,10 @@
 
 @property (readonly) NSManagedObjectContext *mainManagedObjectContext;
 @property (readonly) KANDataStoreUpdateProgressInfo *progressInfo;
+@property (readonly) NSCache *albumArtistCache;
+@property (readonly) NSCache *trackArtistCache;
+@property (readonly) NSCache *genreCache;
+@property (readonly) NSCache *discCache;
+@property (readonly) NSCache *albumCache;
 
 @end

@@ -20,6 +20,7 @@
 #import "KANArtwork.h"
 
 #import "KANAPI.h"
+#import "KANDataStore.h"
 #import "KANAudioStore.h"
 
 @implementation KANTrack
@@ -70,9 +71,10 @@
         self.originalDate = [KANUtils dateFromRailsDateString:[data nonNullObjectForKey:KANTrackOriginalDateKey]];
     }
 
-    self.artist    = [KANTrackArtist uniqueEntityForData:data[KANTrackTrackArtistKey] withCache:nil context:context];
-    self.disc      = [KANDisc uniqueEntityForData:data[KANTrackDiscKey] withCache:nil context:context];
-    self.genre     = [KANGenre uniqueEntityForData:data[KANTrackGenreKey] withCache:nil context:context];
+    KANDataStore *dataStore = [KANDataStore sharedDataStore];
+    self.artist    = [KANTrackArtist uniqueEntityForData:data[KANTrackTrackArtistKey] withCache:dataStore.trackArtistCache cacheKey:KANTrackArtistUUIDKey lookupEntity:YES context:context];
+    self.disc      = [KANDisc uniqueEntityForData:data[KANTrackDiscKey] withCache:dataStore.discCache cacheKey:KANDiscUUIDKey lookupEntity:YES context:context];
+    self.genre     = [KANGenre uniqueEntityForData:data[KANTrackGenreKey] withCache:dataStore.genreCache cacheKey:KANGenreUUIDKey lookupEntity:YES context:context];
 
     NSMutableSet *artworks = [self mutableSetValueForKey:@"artworks"]; // core data proxy set
 
@@ -82,7 +84,7 @@
         [checksums addObject:[artwork.checksum lowercaseString]];
 
     for (NSDictionary *artworkData in data[KANTrackArtworkKey]) {
-        KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil context:context];
+        KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil cacheKey:nil lookupEntity:YES context:context];
 
         if (![checksums containsObject:[artwork.checksum lowercaseString]])
             [artworks addObject:artwork];

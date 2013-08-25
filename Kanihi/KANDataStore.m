@@ -82,6 +82,11 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize progressInfo = _progressInfo;
+@synthesize albumArtistCache = _albumArtistCache;
+@synthesize trackArtistCache = _trackArtistCache;
+@synthesize genreCache = _genreCache;
+@synthesize discCache = _discCache;
+@synthesize albumCache = _albumCache;
 
 - (void)postNotification:(NSString *)notification
 {
@@ -107,6 +112,12 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 - (void)setup
 {
     _background_queue = dispatch_queue_create(KANDataStoreBackgroundQueueName, DISPATCH_QUEUE_SERIAL);
+
+    _albumArtistCache = [[NSCache alloc] init];
+    _trackArtistCache = [[NSCache alloc] init];
+    _genreCache = [[NSCache alloc] init];
+    _discCache = [[NSCache alloc] init];
+    _albumCache = [[NSCache alloc] init];
 }
 
 - (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread
@@ -123,7 +134,8 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
 {
     for (NSDictionary *trackData in trackDatas) {
         self.progressInfo->_currentTrack++;
-        [KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil context:moc];
+        // TODO: determine if this is the initial import and set lookupEntity accordingly
+        [KANTrack uniqueEntityForData:trackData[@"track"] withCache:nil cacheKey:nil lookupEntity:YES context:moc];
     }
 }
 
@@ -165,17 +177,13 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
         CJLog(@"current track: %d", self.progressInfo.currentTrack);
         NSDate *start = [NSDate date];
 
-        @autoreleasepool {
-            NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-            moc.persistentStoreCoordinator = self.persistentStoreCoordinator;
-            moc.undoManager = nil;
+        NSManagedObjectContext *moc = self.backgroundManagedObjectContext;
 
-            [self handleTrackDatas:trackData usingManagedObjectContext:moc];
+        [self handleTrackDatas:trackData usingManagedObjectContext:moc];
 
-            NSError *error;
-            if (![moc save:&error]) {
-                CJLog(@"%@", error);
-            }
+        NSError *error;
+        if (![moc save:&error]) {
+            CJLog(@"%@", error);
         }
 
         CJLog(@"block execution time: %f", [[NSDate date] timeIntervalSinceDate:start]);
@@ -184,6 +192,11 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
             [self postNotification:KANDataStoreWillFinishUpdatingNotification];
             [self postNotification:KANDataStoreDidFinishUpdatingNotification];
 
+            [_albumArtistCache removeAllObjects];
+            [_trackArtistCache removeAllObjects];
+            [_genreCache removeAllObjects];
+            [_discCache removeAllObjects];
+            [_albumCache removeAllObjects];
         }
     };
 
@@ -284,6 +297,31 @@ const char * KANDataStoreBackgroundQueueName = "KANDataStoreBackgroundQueue";
     }
     
     return tracks;
+}
+
+- (NSCache *)albumArtistCache
+{
+    return _albumArtistCache;
+}
+
+- (NSCache *)trackArtistCache
+{
+    return _trackArtistCache;
+}
+
+- (NSCache *)genreCache
+{
+    return _genreCache;
+}
+
+- (NSCache *)discCache
+{
+    return _discCache;
+}
+
+- (NSCache *)albumCache
+{
+    return _albumCache;
 }
 
 
