@@ -39,7 +39,7 @@
     self.name = [data nonNullObjectForKey:KANDiscNameKey];
     self.num = [data nonNullObjectForKey:KANDiscNumKey];
     self.trackTotal = [data nonNullObjectForKey:KANDiscTrackTotalKey];
-    self.album = [KANAlbum uniqueEntityForData:data[KANDiscAlbumKey] withCache:[KANDataStore sharedDataStore].albumCache cacheKey:KANAlbumUUIDKey lookupEntity:YES context:context];
+    self.album = [KANAlbum uniqueEntityForData:data[KANDiscAlbumKey] withCache:[KANDataStore sharedDataStore].albumCache cacheKey:data[KANDiscAlbumKey][KANAlbumUUIDKey] lookupEntity:YES context:context];
 }
 
 - (void)setName:(NSString *)name

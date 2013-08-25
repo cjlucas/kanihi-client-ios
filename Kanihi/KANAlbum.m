@@ -39,7 +39,7 @@
     self.uuid = [data nonNullObjectForKey:KANAlbumUUIDKey];
     self.name = [data nonNullObjectForKey:KANAlbumNameKey];
     self.discTotal = [data nonNullObjectForKey:KANAlbumDiscTotalKey];
-    self.artist = [KANAlbumArtist uniqueEntityForData:data[KANAlbumAlbumArtistKey] withCache:[KANDataStore sharedDataStore].albumArtistCache cacheKey:KANAlbumArtistUUIDKey lookupEntity:YES context:context];
+    self.artist = [KANAlbumArtist uniqueEntityForData:data[KANAlbumAlbumArtistKey] withCache:[KANDataStore sharedDataStore].albumArtistCache cacheKey:data[KANAlbumAlbumArtistKey][KANAlbumArtistUUIDKey] lookupEntity:YES context:context];
 }
 
 - (void)setName:(NSString *)name

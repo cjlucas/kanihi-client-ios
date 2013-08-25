@@ -72,9 +72,9 @@
     }
 
     KANDataStore *dataStore = [KANDataStore sharedDataStore];
-    self.artist    = [KANTrackArtist uniqueEntityForData:data[KANTrackTrackArtistKey] withCache:dataStore.trackArtistCache cacheKey:KANTrackArtistUUIDKey lookupEntity:YES context:context];
-    self.disc      = [KANDisc uniqueEntityForData:data[KANTrackDiscKey] withCache:dataStore.discCache cacheKey:KANDiscUUIDKey lookupEntity:YES context:context];
-    self.genre     = [KANGenre uniqueEntityForData:data[KANTrackGenreKey] withCache:dataStore.genreCache cacheKey:KANGenreUUIDKey lookupEntity:YES context:context];
+    self.artist    = [KANTrackArtist uniqueEntityForData:data[KANTrackTrackArtistKey] withCache:dataStore.trackArtistCache cacheKey:data[KANTrackTrackArtistKey][KANTrackArtistUUIDKey] lookupEntity:YES context:context];
+    self.disc      = [KANDisc uniqueEntityForData:data[KANTrackDiscKey] withCache:dataStore.discCache cacheKey:data[KANTrackDiscKey][KANDiscUUIDKey] lookupEntity:YES context:context];
+    self.genre     = [KANGenre uniqueEntityForData:data[KANTrackGenreKey] withCache:dataStore.genreCache cacheKey:data[KANTrackGenreKey][KANGenreUUIDKey] lookupEntity:YES context:context];
 
     NSMutableSet *artworks = [self mutableSetValueForKey:@"artworks"]; // core data proxy set
 
