@@ -35,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.bottomBlurView.blurFraction = 1;
+    self.bottomBlurView.backgroundTintColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:.5];
 
     self.audioPlayer.delegate = self;
     self.periodicUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updatePlaybackProgressView:) userInfo:Nil repeats:YES];
@@ -64,7 +66,12 @@
     KANTrack *currentTrack  = (KANTrack *)self.audioPlayer.currentItem;
     KANArtwork *artwork     = [KANArtworkStore artworkForEntity:currentTrack];
 
-    [KANArtworkStore attachArtwork:artwork toImageView:self.imageView thumbnail:NO];
+    [KANArtworkStore loadArtwork:artwork thumbnail:NO withCompletionHandler:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageView.image = image;
+            self.bottomBackgroundImageView.image = image;
+        });
+    }];
 
     //CJLog(@"%@", currentTrack);
     if (currentTrack) {

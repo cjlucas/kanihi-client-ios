@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "CJAudioPlayer.h"
+#import "MDBlurView.h"
 
 @class KANTrack;
 
@@ -21,6 +22,8 @@
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomBackgroundImageView;
+@property (weak, nonatomic) IBOutlet MDBlurView *bottomBlurView;
 @property (weak, nonatomic) IBOutlet UILabel *trackLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *playNextButton;

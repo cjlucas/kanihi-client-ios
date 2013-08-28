@@ -55,6 +55,7 @@
 		83A4D849179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
 		83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
 		83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
+		83A5EC4217C9D86500C1CEAA /* MDBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A5EC4117C9D86500C1CEAA /* MDBlurView.m */; };
 		83A810F017BC1BF900BC0C65 /* CJAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A810EB17BC1BF900BC0C65 /* CJAudioPlayer.m */; };
 		83A810F117BC1BF900BC0C65 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A810ED17BC1BF900BC0C65 /* CJHTTPCachedDataSource.m */; };
 		83C1D86817C002180078F75A /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C1D86717C002180078F75A /* AMBlurView.m */; };
@@ -215,6 +216,8 @@
 		83A4D84B179B17A8008597E0 /* KANTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTableViewCell.m; sourceTree = "<group>"; };
 		83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANLabelContainerView.h; sourceTree = "<group>"; };
 		83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANLabelContainerView.m; sourceTree = "<group>"; };
+		83A5EC4017C9D86500C1CEAA /* MDBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBlurView.h; sourceTree = "<group>"; };
+		83A5EC4117C9D86500C1CEAA /* MDBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBlurView.m; sourceTree = "<group>"; };
 		83A810EA17BC1BF900BC0C65 /* CJAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJAudioPlayer.h; path = Classes/CJAudioPlayer.h; sourceTree = "<group>"; };
 		83A810EB17BC1BF900BC0C65 /* CJAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJAudioPlayer.m; path = Classes/CJAudioPlayer.m; sourceTree = "<group>"; };
 		83A810EC17BC1BF900BC0C65 /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJHTTPCachedDataSource.h; path = Classes/CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
@@ -448,6 +451,7 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83A5EC3F17C9D86500C1CEAA /* MDBlurView */,
 				83C1D86617C002180078F75A /* AMBlurView.h */,
 				83C1D86717C002180078F75A /* AMBlurView.m */,
 				83ED872517AC607C001BBA4E /* CJAudioPlayer */,
@@ -543,6 +547,16 @@
 			);
 			name = Base64;
 			path = Vendor/Base64/Base64;
+			sourceTree = "<group>";
+		};
+		83A5EC3F17C9D86500C1CEAA /* MDBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				83A5EC4017C9D86500C1CEAA /* MDBlurView.h */,
+				83A5EC4117C9D86500C1CEAA /* MDBlurView.m */,
+			);
+			name = MDBlurView;
+			path = ../../MDBlurViewDemo/MDBlurViewDemo/MDBlurView;
 			sourceTree = "<group>";
 		};
 		83ED872017AC3FFA001BBA4E /* Controllers */ = {
@@ -744,6 +758,7 @@
 				83E3DD4017C6B4CD008884D9 /* KANInitialImportViewController.m in Sources */,
 				83E3DD2617C2BAB5008884D9 /* KANPlaylistDataSource.m in Sources */,
 				836782C8179A268F00348B6B /* KANAlbumTrackListingViewController.m in Sources */,
+				83A5EC4217C9D86500C1CEAA /* MDBlurView.m in Sources */,
 				8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
 				83E3DD3717C6916F008884D9 /* AFHTTPClient+Rocket.m in Sources */,
