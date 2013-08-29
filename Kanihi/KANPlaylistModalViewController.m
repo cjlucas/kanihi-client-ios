@@ -11,8 +11,6 @@
 #import "KANTrack.h"
 #import "KANAudioPlayer.h"
 
-#import "AMBlurView.h"
-
 @interface KANPlaylistModalViewController ()
 
 @end

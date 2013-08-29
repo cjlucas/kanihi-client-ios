@@ -7,3 +7,6 @@
 [submodule "Vendor/Audjustable"]
 	path = Vendor/Audjustable
 	url = https://github.com/tumtumtum/audjustable
+[submodule "Vendor/MDBlurView"]
+	path = Vendor/MDBlurView
+	url = https://github.com/mochidev/MDBlurView.git
