@@ -12,7 +12,6 @@
 #import "KANAlbumTrackListingViewController.h"
 #import "KANAlbum.h"
 #import "KANAPI.h"
-#import "UIImageView+AFNetworking.h"
 #import "KANTrack.h"
 #import "KANAlbumArtist.h"
 
