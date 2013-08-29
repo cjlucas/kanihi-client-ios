@@ -10,6 +10,7 @@
 
 #import "CJAudioPlayer.h"
 #import "MDBlurView.h"
+#import "KANLabelContainerView.h"
 
 @class KANTrack;
 
@@ -21,10 +22,10 @@
 - (IBAction)showPlaylistButtonPressed:(id)sender;
 
 // Outlets
+@property (weak, nonatomic) IBOutlet KANLabelContainerView *nowPlayingInfoLabelContainerView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *bottomBackgroundImageView;
 @property (weak, nonatomic) IBOutlet MDBlurView *bottomBlurView;
-@property (weak, nonatomic) IBOutlet UILabel *trackLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *playNextButton;
 @property (weak, nonatomic) IBOutlet UIButton *playPrevButton;

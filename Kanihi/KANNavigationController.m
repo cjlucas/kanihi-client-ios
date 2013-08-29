@@ -47,9 +47,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([self shouldShowWelcomeViewController])
+    if ([self shouldShowWelcomeViewController]) {
         [self performSegueWithIdentifier:@"Welcome" sender:self];
+    }
 }
 
 - (BOOL)shouldShowWelcomeViewController

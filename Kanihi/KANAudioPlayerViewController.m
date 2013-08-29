@@ -11,6 +11,9 @@
 #import "KANPlaylistModalViewController.h"
 
 #import "KANTrack.h"
+#import "KANTrackArtist.h"
+#import "KANDisc.h"
+#import "KANAlbum.h"
 #import "KANArtworkStore.h"
 #import "KANAudioPlayer.h"
 
@@ -19,6 +22,7 @@
 @interface KANAudioPlayerViewController ()
 
 - (void)updateOutlets;
+- (void)updateNowPlayingLabelContainerViewWithTrack:(KANTrack *)track;
 - (void)updatePlaybackProgressView:(NSTimer *)timer;
 
 @property NSTimer *periodicUpdateTimer;
@@ -43,7 +47,7 @@
     [self updateOutlets];
 
     //self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    //self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -73,10 +77,40 @@
         });
     }];
 
-    //CJLog(@"%@", currentTrack);
-    if (currentTrack) {
-        self.trackLabel.text = currentTrack.name;
+    [self updateNowPlayingLabelContainerViewWithTrack:currentTrack];
+}
+
+- (void)updateNowPlayingLabelContainerViewWithTrack:(KANTrack *)track
+{
+    if (!track) {
+        return;
     }
+
+    UILabel *artistLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.nowPlayingInfoLabelContainerView.frame), 0)];
+    UILabel *albumLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.nowPlayingInfoLabelContainerView.frame), 0)];
+    UILabel *trackLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.nowPlayingInfoLabelContainerView.frame), 0)];
+
+    for (UILabel *label in @[artistLabel, albumLabel, trackLabel]) {
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.numberOfLines = 1;
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.adjustsFontSizeToFitWidth = YES;
+        label.minimumScaleFactor = .5;
+        //label.lineBreakMode = NSLineBreakByTruncatingTail;
+    }
+
+    artistLabel.text = track.artist.name;
+    albumLabel.text = track.disc.album.name;
+    trackLabel.text = track.name;
+
+    for (UIView *view in self.nowPlayingInfoLabelContainerView.subviews) {
+        [view removeFromSuperview];
+    }
+
+    [self.nowPlayingInfoLabelContainerView addSubview:artistLabel];
+    [self.nowPlayingInfoLabelContainerView addSubview:albumLabel];
+    [self.nowPlayingInfoLabelContainerView addSubview:trackLabel];
 }
 
 - (void)updatePlaybackProgressView:(NSTimer *)timer
