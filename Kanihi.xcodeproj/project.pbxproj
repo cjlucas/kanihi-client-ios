@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */; };
 		833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 833E569017A1CAA800E9CE9B /* KANAPI.m */; };
-		833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 833FF161178CB6420071195F /* NSDictionary+CJExtensions.m */; };
 		834302EF1789F13F006EC1A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834302EE1789F13F006EC1A6 /* Foundation.framework */; };
 		834302F11789F13F006EC1A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834302F01789F13F006EC1A6 /* CoreGraphics.framework */; };
 		834302F31789F13F006EC1A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834302F21789F13F006EC1A6 /* UIKit.framework */; };
@@ -32,13 +31,10 @@
 		83433386178BE1D400CC985D /* KANConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83433385178BE1D400CC985D /* KANConstants.m */; };
 		835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */; };
 		835153AB17A87C520088F692 /* KANAudioStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AA17A87C520088F692 /* KANAudioStore.m */; };
-		835153BC17A886180088F692 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153AF17A886180088F692 /* AudioPlayer.m */; };
-		835153BF17A886180088F692 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B517A886180088F692 /* DataSource.m */; };
 		835B00331791C22700E07A71 /* KANUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00321791C22700E07A71 /* KANUtils.m */; };
 		835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835B00371791C7E900E07A71 /* KANBaseTableViewController.m */; };
 		8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361466C17A2F91500984C26 /* KANWelcomeViewController.m */; };
 		8361467017A30FA700984C26 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361466F17A30FA700984C26 /* SystemConfiguration.framework */; };
-		83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */; };
 		836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782A61799DC7E00348B6B /* KANGenreTableViewController.m */; };
 		836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AA1799E0D500348B6B /* KANNavigationController.m */; };
 		836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782AE1799F89300348B6B /* KANMainMenuViewController.m */; };
@@ -46,9 +42,24 @@
 		836782C8179A268F00348B6B /* KANAlbumTrackListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782C7179A268F00348B6B /* KANAlbumTrackListingViewController.m */; };
 		836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782CB179A477600348B6B /* KANAlbumTrackListingCell.m */; };
 		836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836782D3179A4F5000348B6B /* KANAlbumTrackListingTableView.m */; };
-		8389202217CEC2E4007D1E6B /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8389202117CEC2E4007D1E6B /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8389202A17CECA4C007D1E6B /* MDBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8389202917CECA4C007D1E6B /* MDBlurView.m */; };
 		8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394388617A4534E007B73B1 /* KANTrackTableViewController.m */; };
+		839B8C191A82667C0015ECB4 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BB21A82667B0015ECB4 /* AudioPlayer.m */; };
+		839B8C1A1A82667C0015ECB4 /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BB41A82667B0015ECB4 /* AutoRecoveringHttpDataSource.m */; };
+		839B8C1B1A82667C0015ECB4 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BB61A82667B0015ECB4 /* CoreFoundationDataSource.m */; };
+		839B8C1C1A82667C0015ECB4 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BB81A82667B0015ECB4 /* DataSource.m */; };
+		839B8C1D1A82667C0015ECB4 /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BBA1A82667B0015ECB4 /* DataSourceWrapper.m */; };
+		839B8C1E1A82667C0015ECB4 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BBC1A82667B0015ECB4 /* HttpDataSource.m */; };
+		839B8C1F1A82667C0015ECB4 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BBE1A82667B0015ECB4 /* LocalFileDataSource.m */; };
+		839B8C341A82667C0015ECB4 /* CJAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BE91A82667C0015ECB4 /* CJAudioPlayer.m */; };
+		839B8C351A82667C0015ECB4 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BEB1A82667C0015ECB4 /* CJHTTPCachedDataSource.m */; };
+		839B8C3A1A82667C0015ECB4 /* CJStringNormalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BF41A82667C0015ECB4 /* CJStringNormalization.m */; };
+		839B8C3B1A82667C0015ECB4 /* NSArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BF71A82667C0015ECB4 /* NSArray+CJExtensions.m */; };
+		839B8C3C1A82667C0015ECB4 /* NSDateFormatter+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BF91A82667C0015ECB4 /* NSDateFormatter+CJExtensions.m */; };
+		839B8C3D1A82667C0015ECB4 /* NSDictionary+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BFB1A82667C0015ECB4 /* NSDictionary+CJExtensions.m */; };
+		839B8C3E1A82667C0015ECB4 /* NSMutableArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BFD1A82667C0015ECB4 /* NSMutableArray+CJExtensions.m */; };
+		839B8C3F1A82667C0015ECB4 /* UIColor+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8BFF1A82667C0015ECB4 /* UIColor+CJExtensions.m */; };
+		839B8C401A82667C0015ECB4 /* UIImage+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B8C011A82667C0015ECB4 /* UIImage+CJExtensions.m */; };
 		83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28207179C9BD9008D0686 /* AFPropertyListRequestOperation.m */; };
 		83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28209179C9BD9008D0686 /* AFURLConnectionOperation.m */; };
 		83A28223179C9BD9008D0686 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A28210179C9BD9008D0686 /* Base64.m */; };
@@ -57,9 +68,6 @@
 		83A4D849179B167E008597E0 /* KANTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A4D847179B167E008597E0 /* KANTableViewCell.xib */; };
 		83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D84B179B17A8008597E0 /* KANTableViewCell.m */; };
 		83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */; };
-		83A810F017BC1BF900BC0C65 /* CJAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A810EB17BC1BF900BC0C65 /* CJAudioPlayer.m */; };
-		83A810F117BC1BF900BC0C65 /* CJHTTPCachedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A810ED17BC1BF900BC0C65 /* CJHTTPCachedDataSource.m */; };
-		83C1D86B17C00F110078F75A /* UIImage+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C1D86A17C00F110078F75A /* UIImage+CJExtensions.m */; };
 		83C7F23C17C1312F0095F1BB /* KANPlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C7F23B17C1312F0095F1BB /* KANPlaylistTableViewCell.m */; };
 		83C7F23E17C134E60095F1BB /* KANPlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C7F23D17C134E60095F1BB /* KANPlaylistTableViewCell.xib */; };
 		83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */; };
@@ -75,9 +83,6 @@
 		83E3DD3817C6916F008884D9 /* AFJSONPatchSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3117C6916F008884D9 /* AFJSONPatchSerializer.m */; };
 		83E3DD3917C6916F008884D9 /* AFSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3317C6916F008884D9 /* AFSerialization.m */; };
 		83E3DD3A17C6916F008884D9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3517C6916F008884D9 /* AFURLSessionManager.m */; };
-		83E3DD3B17C691A8008884D9 /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B917A886180088F692 /* HttpDataSource.m */; };
-		83E3DD3C17C691AD008884D9 /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153BB17A886180088F692 /* LocalFileDataSource.m */; };
-		83E3DD3D17C691BC008884D9 /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 835153B317A886180088F692 /* CoreFoundationDataSource.m */; };
 		83E3DD4017C6B4CD008884D9 /* KANInitialImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E3DD3F17C6B4CD008884D9 /* KANInitialImportViewController.m */; };
 		83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E44D88178A0D7A00CB37C1 /* CoreData.framework */; };
 		83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E44D8D178A177700CB37C1 /* KANTrack.m */; };
@@ -91,10 +96,6 @@
 		83ED873117AC68C1001BBA4E /* KANPlaylistModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */; };
 		83ED873517ACDEAB001BBA4E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED873417ACDEAB001BBA4E /* CFNetwork.framework */; };
 		83ED873717ACDEB0001BBA4E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED873617ACDEB0001BBA4E /* QuartzCore.framework */; };
-		83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7317911081003E56F8 /* CJStringNormalization.m */; };
-		83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7517911081003E56F8 /* NSArray+CJExtensions.m */; };
-		83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7717911081003E56F8 /* NSDateFormatter+CJExtensions.m */; };
-		83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FB7B7917911081003E56F8 /* NSMutableArray+CJExtensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,10 +113,6 @@
 		833E568C17A1AF2400E9CE9B /* KANArtworkStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANArtworkStore.m; sourceTree = "<group>"; };
 		833E568F17A1CAA800E9CE9B /* KANAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAPI.h; sourceTree = "<group>"; };
 		833E569017A1CAA800E9CE9B /* KANAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAPI.m; sourceTree = "<group>"; };
-		833FF15E178CB6420071195F /* CJLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJLog.h; sourceTree = "<group>"; };
-		833FF15F178CB6420071195F /* CJUtils-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJUtils-Prefix.pch"; sourceTree = "<group>"; };
-		833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CJExtensions.h"; sourceTree = "<group>"; };
-		833FF161178CB6420071195F /* NSDictionary+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CJExtensions.m"; sourceTree = "<group>"; };
 		834302EB1789F13F006EC1A6 /* Kanihi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kanihi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		834302EE1789F13F006EC1A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		834302F01789F13F006EC1A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -152,20 +149,6 @@
 		835153A617A879AA0088F692 /* KANAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioPlayerViewController.m; sourceTree = "<group>"; };
 		835153A917A87C520088F692 /* KANAudioStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANAudioStore.h; sourceTree = "<group>"; };
 		835153AA17A87C520088F692 /* KANAudioStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANAudioStore.m; sourceTree = "<group>"; };
-		835153AE17A886180088F692 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
-		835153AF17A886180088F692 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
-		835153B017A886180088F692 /* AutoRecoveringHttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRecoveringHttpDataSource.h; sourceTree = "<group>"; };
-		835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRecoveringHttpDataSource.m; sourceTree = "<group>"; };
-		835153B217A886180088F692 /* CoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundationDataSource.h; sourceTree = "<group>"; };
-		835153B317A886180088F692 /* CoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFoundationDataSource.m; sourceTree = "<group>"; };
-		835153B417A886180088F692 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
-		835153B517A886180088F692 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
-		835153B617A886180088F692 /* DataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceWrapper.h; sourceTree = "<group>"; };
-		835153B717A886180088F692 /* DataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceWrapper.m; sourceTree = "<group>"; };
-		835153B817A886180088F692 /* HttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpDataSource.h; sourceTree = "<group>"; };
-		835153B917A886180088F692 /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDataSource.m; sourceTree = "<group>"; };
-		835153BA17A886180088F692 /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileDataSource.h; sourceTree = "<group>"; };
-		835153BB17A886180088F692 /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileDataSource.m; sourceTree = "<group>"; };
 		835B00311791C22700E07A71 /* KANUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANUtils.h; sourceTree = "<group>"; };
 		835B00321791C22700E07A71 /* KANUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANUtils.m; sourceTree = "<group>"; };
 		835B00361791C7E900E07A71 /* KANBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANBaseTableViewController.h; sourceTree = "<group>"; };
@@ -173,8 +156,6 @@
 		8361466B17A2F91500984C26 /* KANWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANWelcomeViewController.h; sourceTree = "<group>"; };
 		8361466C17A2F91500984C26 /* KANWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANWelcomeViewController.m; sourceTree = "<group>"; };
 		8361466F17A30FA700984C26 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		83617EBD17A2F70100BCC3C2 /* UIColor+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/UIColor+CJExtensions.h"; sourceTree = "<group>"; };
-		83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/UIColor+CJExtensions.m"; sourceTree = "<group>"; };
 		836782A51799DC7E00348B6B /* KANGenreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANGenreTableViewController.h; sourceTree = "<group>"; };
 		836782A61799DC7E00348B6B /* KANGenreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANGenreTableViewController.m; sourceTree = "<group>"; };
 		836782A91799E0D500348B6B /* KANNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANNavigationController.h; sourceTree = "<group>"; };
@@ -194,6 +175,40 @@
 		8389202917CECA4C007D1E6B /* MDBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBlurView.m; sourceTree = "<group>"; };
 		8394388517A4534E007B73B1 /* KANTrackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANTrackTableViewController.h; sourceTree = "<group>"; };
 		8394388617A4534E007B73B1 /* KANTrackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTrackTableViewController.m; sourceTree = "<group>"; };
+		839B8BB11A82667B0015ECB4 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPlayer.h; path = Classes/AudioPlayer/AudioPlayer.h; sourceTree = "<group>"; };
+		839B8BB21A82667B0015ECB4 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPlayer.m; path = Classes/AudioPlayer/AudioPlayer.m; sourceTree = "<group>"; };
+		839B8BB31A82667B0015ECB4 /* AutoRecoveringHttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoRecoveringHttpDataSource.h; path = Classes/AudioPlayer/AutoRecoveringHttpDataSource.h; sourceTree = "<group>"; };
+		839B8BB41A82667B0015ECB4 /* AutoRecoveringHttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoRecoveringHttpDataSource.m; path = Classes/AudioPlayer/AutoRecoveringHttpDataSource.m; sourceTree = "<group>"; };
+		839B8BB51A82667B0015ECB4 /* CoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreFoundationDataSource.h; path = Classes/AudioPlayer/CoreFoundationDataSource.h; sourceTree = "<group>"; };
+		839B8BB61A82667B0015ECB4 /* CoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreFoundationDataSource.m; path = Classes/AudioPlayer/CoreFoundationDataSource.m; sourceTree = "<group>"; };
+		839B8BB71A82667B0015ECB4 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSource.h; path = Classes/AudioPlayer/DataSource.h; sourceTree = "<group>"; };
+		839B8BB81A82667B0015ECB4 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSource.m; path = Classes/AudioPlayer/DataSource.m; sourceTree = "<group>"; };
+		839B8BB91A82667B0015ECB4 /* DataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSourceWrapper.h; path = Classes/AudioPlayer/DataSourceWrapper.h; sourceTree = "<group>"; };
+		839B8BBA1A82667B0015ECB4 /* DataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSourceWrapper.m; path = Classes/AudioPlayer/DataSourceWrapper.m; sourceTree = "<group>"; };
+		839B8BBB1A82667B0015ECB4 /* HttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpDataSource.h; path = Classes/AudioPlayer/HttpDataSource.h; sourceTree = "<group>"; };
+		839B8BBC1A82667B0015ECB4 /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpDataSource.m; path = Classes/AudioPlayer/HttpDataSource.m; sourceTree = "<group>"; };
+		839B8BBD1A82667B0015ECB4 /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalFileDataSource.h; path = Classes/AudioPlayer/LocalFileDataSource.h; sourceTree = "<group>"; };
+		839B8BBE1A82667B0015ECB4 /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalFileDataSource.m; path = Classes/AudioPlayer/LocalFileDataSource.m; sourceTree = "<group>"; };
+		839B8BE81A82667C0015ECB4 /* CJAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAudioPlayer.h; sourceTree = "<group>"; };
+		839B8BE91A82667C0015ECB4 /* CJAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJAudioPlayer.m; sourceTree = "<group>"; };
+		839B8BEA1A82667C0015ECB4 /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
+		839B8BEB1A82667C0015ECB4 /* CJHTTPCachedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJHTTPCachedDataSource.m; sourceTree = "<group>"; };
+		839B8BF21A82667C0015ECB4 /* CJLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJLog.h; path = CJUtils/CJLog.h; sourceTree = "<group>"; };
+		839B8BF31A82667C0015ECB4 /* CJStringNormalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStringNormalization.h; path = CJUtils/CJStringNormalization.h; sourceTree = "<group>"; };
+		839B8BF41A82667C0015ECB4 /* CJStringNormalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStringNormalization.m; path = CJUtils/CJStringNormalization.m; sourceTree = "<group>"; };
+		839B8BF51A82667C0015ECB4 /* CJUtils-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CJUtils-Prefix.pch"; path = "CJUtils/CJUtils-Prefix.pch"; sourceTree = "<group>"; };
+		839B8BF61A82667C0015ECB4 /* NSArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+CJExtensions.h"; path = "CJUtils/NSArray+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8BF71A82667C0015ECB4 /* NSArray+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+CJExtensions.m"; path = "CJUtils/NSArray+CJExtensions.m"; sourceTree = "<group>"; };
+		839B8BF81A82667C0015ECB4 /* NSDateFormatter+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CJExtensions.h"; path = "CJUtils/NSDateFormatter+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8BF91A82667C0015ECB4 /* NSDateFormatter+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CJExtensions.m"; path = "CJUtils/NSDateFormatter+CJExtensions.m"; sourceTree = "<group>"; };
+		839B8BFA1A82667C0015ECB4 /* NSDictionary+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+CJExtensions.h"; path = "CJUtils/NSDictionary+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8BFB1A82667C0015ECB4 /* NSDictionary+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+CJExtensions.m"; path = "CJUtils/NSDictionary+CJExtensions.m"; sourceTree = "<group>"; };
+		839B8BFC1A82667C0015ECB4 /* NSMutableArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+CJExtensions.h"; path = "CJUtils/NSMutableArray+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8BFD1A82667C0015ECB4 /* NSMutableArray+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+CJExtensions.m"; path = "CJUtils/NSMutableArray+CJExtensions.m"; sourceTree = "<group>"; };
+		839B8BFE1A82667C0015ECB4 /* UIColor+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CJExtensions.h"; path = "CJUtils/UIColor+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8BFF1A82667C0015ECB4 /* UIColor+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CJExtensions.m"; path = "CJUtils/UIColor+CJExtensions.m"; sourceTree = "<group>"; };
+		839B8C001A82667C0015ECB4 /* UIImage+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CJExtensions.h"; path = "CJUtils/UIImage+CJExtensions.h"; sourceTree = "<group>"; };
+		839B8C011A82667C0015ECB4 /* UIImage+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CJExtensions.m"; path = "CJUtils/UIImage+CJExtensions.m"; sourceTree = "<group>"; };
 		83A281FB179C9BD9008D0686 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		83A281FC179C9BD9008D0686 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		83A281FD179C9BD9008D0686 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -218,12 +233,6 @@
 		83A4D84B179B17A8008597E0 /* KANTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANTableViewCell.m; sourceTree = "<group>"; };
 		83A4D874179BB8AD008597E0 /* KANLabelContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANLabelContainerView.h; sourceTree = "<group>"; };
 		83A4D875179BB8AD008597E0 /* KANLabelContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANLabelContainerView.m; sourceTree = "<group>"; };
-		83A810EA17BC1BF900BC0C65 /* CJAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJAudioPlayer.h; path = Classes/CJAudioPlayer.h; sourceTree = "<group>"; };
-		83A810EB17BC1BF900BC0C65 /* CJAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJAudioPlayer.m; path = Classes/CJAudioPlayer.m; sourceTree = "<group>"; };
-		83A810EC17BC1BF900BC0C65 /* CJHTTPCachedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJHTTPCachedDataSource.h; path = Classes/CJHTTPCachedDataSource.h; sourceTree = "<group>"; };
-		83A810ED17BC1BF900BC0C65 /* CJHTTPCachedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJHTTPCachedDataSource.m; path = Classes/CJHTTPCachedDataSource.m; sourceTree = "<group>"; };
-		83C1D86917C00F110078F75A /* UIImage+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/UIImage+CJExtensions.h"; sourceTree = "<group>"; };
-		83C1D86A17C00F110078F75A /* UIImage+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/UIImage+CJExtensions.m"; sourceTree = "<group>"; };
 		83C7F23A17C1312F0095F1BB /* KANPlaylistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANPlaylistTableViewCell.h; sourceTree = "<group>"; };
 		83C7F23B17C1312F0095F1BB /* KANPlaylistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistTableViewCell.m; sourceTree = "<group>"; };
 		83C7F23D17C134E60095F1BB /* KANPlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KANPlaylistTableViewCell.xib; sourceTree = "<group>"; };
@@ -259,14 +268,6 @@
 		83ED873017AC68C1001BBA4E /* KANPlaylistModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KANPlaylistModalViewController.m; sourceTree = "<group>"; };
 		83ED873417ACDEAB001BBA4E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		83ED873617ACDEB0001BBA4E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		83FB7B7217911081003E56F8 /* CJStringNormalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStringNormalization.h; path = "../../cjutils-objc/CJUtils/CJStringNormalization.h"; sourceTree = "<group>"; };
-		83FB7B7317911081003E56F8 /* CJStringNormalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStringNormalization.m; path = "../../cjutils-objc/CJUtils/CJStringNormalization.m"; sourceTree = "<group>"; };
-		83FB7B7417911081003E56F8 /* NSArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSArray+CJExtensions.h"; sourceTree = "<group>"; };
-		83FB7B7517911081003E56F8 /* NSArray+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/NSArray+CJExtensions.m"; sourceTree = "<group>"; };
-		83FB7B7617911081003E56F8 /* NSDateFormatter+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSDateFormatter+CJExtensions.h"; sourceTree = "<group>"; };
-		83FB7B7717911081003E56F8 /* NSDateFormatter+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/NSDateFormatter+CJExtensions.m"; sourceTree = "<group>"; };
-		83FB7B7817911081003E56F8 /* NSMutableArray+CJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+CJExtensions.h"; path = "../../cjutils-objc/CJUtils/NSMutableArray+CJExtensions.h"; sourceTree = "<group>"; };
-		83FB7B7917911081003E56F8 /* NSMutableArray+CJExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+CJExtensions.m"; path = "../../cjutils-objc/CJUtils/NSMutableArray+CJExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,7 +278,6 @@
 				83ED873717ACDEB0001BBA4E /* QuartzCore.framework in Frameworks */,
 				83ED873517ACDEAB001BBA4E /* CFNetwork.framework in Frameworks */,
 				8361467017A30FA700984C26 /* SystemConfiguration.framework in Frameworks */,
-				8389202217CEC2E4007D1E6B /* Reveal.framework in Frameworks */,
 				83E44D89178A0D7A00CB37C1 /* CoreData.framework in Frameworks */,
 				834302F11789F13F006EC1A6 /* CoreGraphics.framework in Frameworks */,
 				834302F31789F13F006EC1A6 /* UIKit.framework in Frameworks */,
@@ -298,30 +298,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		833FF15D178CB6420071195F /* CJUtils */ = {
-			isa = PBXGroup;
-			children = (
-				83C1D86917C00F110078F75A /* UIImage+CJExtensions.h */,
-				83C1D86A17C00F110078F75A /* UIImage+CJExtensions.m */,
-				83617EBD17A2F70100BCC3C2 /* UIColor+CJExtensions.h */,
-				83617EBE17A2F70100BCC3C2 /* UIColor+CJExtensions.m */,
-				833FF15E178CB6420071195F /* CJLog.h */,
-				833FF15F178CB6420071195F /* CJUtils-Prefix.pch */,
-				833FF160178CB6420071195F /* NSDictionary+CJExtensions.h */,
-				83FB7B7217911081003E56F8 /* CJStringNormalization.h */,
-				83FB7B7317911081003E56F8 /* CJStringNormalization.m */,
-				83FB7B7417911081003E56F8 /* NSArray+CJExtensions.h */,
-				83FB7B7517911081003E56F8 /* NSArray+CJExtensions.m */,
-				83FB7B7617911081003E56F8 /* NSDateFormatter+CJExtensions.h */,
-				83FB7B7717911081003E56F8 /* NSDateFormatter+CJExtensions.m */,
-				83FB7B7817911081003E56F8 /* NSMutableArray+CJExtensions.h */,
-				83FB7B7917911081003E56F8 /* NSMutableArray+CJExtensions.m */,
-				833FF161178CB6420071195F /* NSDictionary+CJExtensions.m */,
-			);
-			name = CJUtils;
-			path = "../CJUtils-ObjC/CJUtils";
-			sourceTree = "<group>";
-		};
 		834302E21789F13F006EC1A6 = {
 			isa = PBXGroup;
 			children = (
@@ -448,37 +424,15 @@
 		83433362178BC04700CC985D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				839B8BA81A82667B0015ECB4 /* Audjustable */,
+				839B8BCC1A82667C0015ECB4 /* CJAudioPlayer */,
+				839B8BEE1A82667C0015ECB4 /* CJUtils */,
 				8389202717CECA4C007D1E6B /* MDBlurView */,
-				83ED872517AC607C001BBA4E /* CJAudioPlayer */,
-				835153AD17A886180088F692 /* AudioPlayer */,
 				83A281FA179C9BD9008D0686 /* AFNetworking */,
 				83A2820E179C9BD9008D0686 /* Base64 */,
-				833FF15D178CB6420071195F /* CJUtils */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
-		};
-		835153AD17A886180088F692 /* AudioPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				835153AE17A886180088F692 /* AudioPlayer.h */,
-				835153AF17A886180088F692 /* AudioPlayer.m */,
-				835153B017A886180088F692 /* AutoRecoveringHttpDataSource.h */,
-				835153B117A886180088F692 /* AutoRecoveringHttpDataSource.m */,
-				835153B217A886180088F692 /* CoreFoundationDataSource.h */,
-				835153B317A886180088F692 /* CoreFoundationDataSource.m */,
-				835153B417A886180088F692 /* DataSource.h */,
-				835153B517A886180088F692 /* DataSource.m */,
-				835153B617A886180088F692 /* DataSourceWrapper.h */,
-				835153B717A886180088F692 /* DataSourceWrapper.m */,
-				835153B817A886180088F692 /* HttpDataSource.h */,
-				835153B917A886180088F692 /* HttpDataSource.m */,
-				835153BA17A886180088F692 /* LocalFileDataSource.h */,
-				835153BB17A886180088F692 /* LocalFileDataSource.m */,
-			);
-			name = AudioPlayer;
-			path = Vendor/Audjustable/Audjustable/Classes/AudioPlayer;
-			sourceTree = SOURCE_ROOT;
 		};
 		835B00351791C78900E07A71 /* Views */ = {
 			isa = PBXGroup;
@@ -509,6 +463,80 @@
 			);
 			name = MDBlurView;
 			path = Vendor/MDBlurView;
+			sourceTree = "<group>";
+		};
+		839B8BA81A82667B0015ECB4 /* Audjustable */ = {
+			isa = PBXGroup;
+			children = (
+				839B8BAA1A82667B0015ECB4 /* Audjustable */,
+			);
+			name = Audjustable;
+			path = Vendor/Audjustable;
+			sourceTree = "<group>";
+		};
+		839B8BAA1A82667B0015ECB4 /* Audjustable */ = {
+			isa = PBXGroup;
+			children = (
+				839B8BB11A82667B0015ECB4 /* AudioPlayer.h */,
+				839B8BB21A82667B0015ECB4 /* AudioPlayer.m */,
+				839B8BB31A82667B0015ECB4 /* AutoRecoveringHttpDataSource.h */,
+				839B8BB41A82667B0015ECB4 /* AutoRecoveringHttpDataSource.m */,
+				839B8BB51A82667B0015ECB4 /* CoreFoundationDataSource.h */,
+				839B8BB61A82667B0015ECB4 /* CoreFoundationDataSource.m */,
+				839B8BB71A82667B0015ECB4 /* DataSource.h */,
+				839B8BB81A82667B0015ECB4 /* DataSource.m */,
+				839B8BB91A82667B0015ECB4 /* DataSourceWrapper.h */,
+				839B8BBA1A82667B0015ECB4 /* DataSourceWrapper.m */,
+				839B8BBB1A82667B0015ECB4 /* HttpDataSource.h */,
+				839B8BBC1A82667B0015ECB4 /* HttpDataSource.m */,
+				839B8BBD1A82667B0015ECB4 /* LocalFileDataSource.h */,
+				839B8BBE1A82667B0015ECB4 /* LocalFileDataSource.m */,
+			);
+			path = Audjustable;
+			sourceTree = "<group>";
+		};
+		839B8BCC1A82667C0015ECB4 /* CJAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				839B8BE71A82667C0015ECB4 /* Classes */,
+			);
+			name = CJAudioPlayer;
+			path = Vendor/CJAudioPlayer;
+			sourceTree = "<group>";
+		};
+		839B8BE71A82667C0015ECB4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				839B8BE81A82667C0015ECB4 /* CJAudioPlayer.h */,
+				839B8BE91A82667C0015ECB4 /* CJAudioPlayer.m */,
+				839B8BEA1A82667C0015ECB4 /* CJHTTPCachedDataSource.h */,
+				839B8BEB1A82667C0015ECB4 /* CJHTTPCachedDataSource.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		839B8BEE1A82667C0015ECB4 /* CJUtils */ = {
+			isa = PBXGroup;
+			children = (
+				839B8BF21A82667C0015ECB4 /* CJLog.h */,
+				839B8BF31A82667C0015ECB4 /* CJStringNormalization.h */,
+				839B8BF41A82667C0015ECB4 /* CJStringNormalization.m */,
+				839B8BF51A82667C0015ECB4 /* CJUtils-Prefix.pch */,
+				839B8BF61A82667C0015ECB4 /* NSArray+CJExtensions.h */,
+				839B8BF71A82667C0015ECB4 /* NSArray+CJExtensions.m */,
+				839B8BF81A82667C0015ECB4 /* NSDateFormatter+CJExtensions.h */,
+				839B8BF91A82667C0015ECB4 /* NSDateFormatter+CJExtensions.m */,
+				839B8BFA1A82667C0015ECB4 /* NSDictionary+CJExtensions.h */,
+				839B8BFB1A82667C0015ECB4 /* NSDictionary+CJExtensions.m */,
+				839B8BFC1A82667C0015ECB4 /* NSMutableArray+CJExtensions.h */,
+				839B8BFD1A82667C0015ECB4 /* NSMutableArray+CJExtensions.m */,
+				839B8BFE1A82667C0015ECB4 /* UIColor+CJExtensions.h */,
+				839B8BFF1A82667C0015ECB4 /* UIColor+CJExtensions.m */,
+				839B8C001A82667C0015ECB4 /* UIImage+CJExtensions.h */,
+				839B8C011A82667C0015ECB4 /* UIImage+CJExtensions.m */,
+			);
+			name = CJUtils;
+			path = Vendor/CJUtils;
 			sourceTree = "<group>";
 		};
 		83A281FA179C9BD9008D0686 /* AFNetworking */ = {
@@ -583,18 +611,6 @@
 				83E31CFD179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		83ED872517AC607C001BBA4E /* CJAudioPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				83A810EA17BC1BF900BC0C65 /* CJAudioPlayer.h */,
-				83A810EB17BC1BF900BC0C65 /* CJAudioPlayer.m */,
-				83A810EC17BC1BF900BC0C65 /* CJHTTPCachedDataSource.h */,
-				83A810ED17BC1BF900BC0C65 /* CJHTTPCachedDataSource.m */,
-			);
-			name = CJAudioPlayer;
-			path = ../CJAudioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -703,29 +719,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				835153A717A879AA0088F692 /* KANAudioPlayerViewController.m in Sources */,
+				839B8C3D1A82667C0015ECB4 /* NSDictionary+CJExtensions.m in Sources */,
+				839B8C191A82667C0015ECB4 /* AudioPlayer.m in Sources */,
 				83433386178BE1D400CC985D /* KANConstants.m in Sources */,
-				833FF162178CB6420071195F /* NSDictionary+CJExtensions.m in Sources */,
+				839B8C401A82667C0015ECB4 /* UIImage+CJExtensions.m in Sources */,
 				83E44D90178A206400CB37C1 /* KANEntity.m in Sources */,
 				835153AB17A87C520088F692 /* KANAudioStore.m in Sources */,
 				83E44D8F178A204800CB37C1 /* KANTrack.m in Sources */,
 				83ED872317AC4606001BBA4E /* KANAudioPlayer.m in Sources */,
-				83FB7B7E17911081003E56F8 /* NSDateFormatter+CJExtensions.m in Sources */,
+				839B8C351A82667C0015ECB4 /* CJHTTPCachedDataSource.m in Sources */,
 				83E44D9C178A7D8900CB37C1 /* KANUniqueEntity.m in Sources */,
+				839B8C3E1A82667C0015ECB4 /* NSMutableArray+CJExtensions.m in Sources */,
 				83A28227179CC15C008D0686 /* KANArtwork.m in Sources */,
-				83C1D86B17C00F110078F75A /* UIImage+CJExtensions.m in Sources */,
+				839B8C3F1A82667C0015ECB4 /* UIColor+CJExtensions.m in Sources */,
 				8343337E178BCD0600CC985D /* KANDisc.m in Sources */,
 				83E3DD3A17C6916F008884D9 /* AFURLSessionManager.m in Sources */,
+				839B8C3A1A82667C0015ECB4 /* CJStringNormalization.m in Sources */,
 				83ED873117AC68C1001BBA4E /* KANPlaylistModalViewController.m in Sources */,
+				839B8C3B1A82667C0015ECB4 /* NSArray+CJExtensions.m in Sources */,
 				83A4D876179BB8AD008597E0 /* KANLabelContainerView.m in Sources */,
 				83433382178BD27800CC985D /* KANGenre.m in Sources */,
 				836782A71799DC7E00348B6B /* KANGenreTableViewController.m in Sources */,
 				83A4D84C179B17A8008597E0 /* KANTableViewCell.m in Sources */,
 				83E3DD3617C6916F008884D9 /* AFEventSource.m in Sources */,
 				83E3DD3917C6916F008884D9 /* AFSerialization.m in Sources */,
+				839B8C1F1A82667C0015ECB4 /* LocalFileDataSource.m in Sources */,
 				83433376178BC91400CC985D /* KANAlbumArtist.m in Sources */,
 				836782AF1799F89300348B6B /* KANMainMenuViewController.m in Sources */,
 				833E569117A1CAA800E9CE9B /* KANAPI.m in Sources */,
 				834302FB1789F13F006EC1A6 /* main.m in Sources */,
+				839B8C1D1A82667C0015ECB4 /* DataSourceWrapper.m in Sources */,
 				836782CC179A477600348B6B /* KANAlbumTrackListingCell.m in Sources */,
 				835B00381791C7E900E07A71 /* KANBaseTableViewController.m in Sources */,
 				833E568D17A1AF2400E9CE9B /* KANArtworkStore.m in Sources */,
@@ -733,20 +756,17 @@
 				836782B31799FAF100348B6B /* KANMainMenuViewCell.m in Sources */,
 				835B00331791C22700E07A71 /* KANUtils.m in Sources */,
 				83433321178BAF8900CC985D /* KANTrackArtist.m in Sources */,
-				83FB7B7A17911081003E56F8 /* CJStringNormalization.m in Sources */,
 				8343337A178BCAB400CC985D /* KANAlbum.m in Sources */,
+				839B8C1E1A82667C0015ECB4 /* HttpDataSource.m in Sources */,
 				834303291789F953006EC1A6 /* KANDataStore.m in Sources */,
 				83E3DD3817C6916F008884D9 /* AFJSONPatchSerializer.m in Sources */,
+				839B8C1B1A82667C0015ECB4 /* CoreFoundationDataSource.m in Sources */,
+				839B8C341A82667C0015ECB4 /* CJAudioPlayer.m in Sources */,
 				83A28223179C9BD9008D0686 /* Base64.m in Sources */,
 				83E31D02179640E200A6EAF7 /* KANAlbumTableViewController.m in Sources */,
-				83A810F117BC1BF900BC0C65 /* CJHTTPCachedDataSource.m in Sources */,
 				834302FF1789F13F006EC1A6 /* KANAppDelegate.m in Sources */,
-				83A810F017BC1BF900BC0C65 /* CJAudioPlayer.m in Sources */,
 				836782D4179A4F5000348B6B /* KANAlbumTrackListingTableView.m in Sources */,
 				834303251789F183006EC1A6 /* Model.xcdatamodeld in Sources */,
-				83FB7B7C17911081003E56F8 /* NSArray+CJExtensions.m in Sources */,
-				83FB7B8017911081003E56F8 /* NSMutableArray+CJExtensions.m in Sources */,
-				83617EBF17A2F70100BCC3C2 /* UIColor+CJExtensions.m in Sources */,
 				8394388717A4534E007B73B1 /* KANTrackTableViewController.m in Sources */,
 				836782AB1799E0D500348B6B /* KANNavigationController.m in Sources */,
 				83E3DD4017C6B4CD008884D9 /* KANInitialImportViewController.m in Sources */,
@@ -755,19 +775,17 @@
 				8361466D17A2F91500984C26 /* KANWelcomeViewController.m in Sources */,
 				83E31CFE179632AF00A6EAF7 /* KANAlbumArtistsTableViewController.m in Sources */,
 				83E3DD3717C6916F008884D9 /* AFHTTPClient+Rocket.m in Sources */,
-				835153BC17A886180088F692 /* AudioPlayer.m in Sources */,
-				835153BF17A886180088F692 /* DataSource.m in Sources */,
-				83E3DD3B17C691A8008884D9 /* HttpDataSource.m in Sources */,
-				83E3DD3C17C691AD008884D9 /* LocalFileDataSource.m in Sources */,
-				83E3DD3D17C691BC008884D9 /* CoreFoundationDataSource.m in Sources */,
 				83E3DD2717C6911A008884D9 /* AFHTTPClient.m in Sources */,
 				83E3DD2817C6911D008884D9 /* AFHTTPRequestOperation.m in Sources */,
 				83E3DD2917C69121008884D9 /* AFImageRequestOperation.m in Sources */,
+				839B8C1C1A82667C0015ECB4 /* DataSource.m in Sources */,
 				83E3DD2A17C69124008884D9 /* AFJSONRequestOperation.m in Sources */,
+				839B8C3C1A82667C0015ECB4 /* NSDateFormatter+CJExtensions.m in Sources */,
 				8389202A17CECA4C007D1E6B /* MDBlurView.m in Sources */,
 				83A2821B179C9BD9008D0686 /* AFPropertyListRequestOperation.m in Sources */,
 				83E3DD2B17C69130008884D9 /* AFXMLRequestOperation.m in Sources */,
 				83A2821D179C9BD9008D0686 /* AFURLConnectionOperation.m in Sources */,
+				839B8C1A1A82667C0015ECB4 /* AutoRecoveringHttpDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

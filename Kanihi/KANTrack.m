@@ -84,7 +84,7 @@
         [checksums addObject:[artwork.checksum lowercaseString]];
 
     for (NSDictionary *artworkData in data[KANTrackArtworkKey]) {
-        KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData[KANArtworkKey] withCache:nil cacheKey:nil lookupEntity:YES context:context];
+        KANArtwork *artwork = [KANArtwork uniqueEntityForData:artworkData withCache:nil cacheKey:nil lookupEntity:YES context:context];
 
         if (![checksums containsObject:[artwork.checksum lowercaseString]])
             [artworks addObject:artwork];
@@ -94,7 +94,6 @@
 - (void)setName:(NSString *)name
 {
     [self willChangeValueForKey:@"name"];
-    
     [self setPrimitiveValue:name forKey:@"name"];
     self.normalizedName = [KANUtils normalizedStringForString:name];
     self.sectionTitle = [KANUtils sectionTitleForString:name];

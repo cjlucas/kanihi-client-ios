@@ -10,3 +10,9 @@
 [submodule "Vendor/MDBlurView"]
 	path = Vendor/MDBlurView
 	url = https://github.com/mochidev/MDBlurView.git
+[submodule "Vendor/CJUtils"]
+	path = Vendor/CJUtils
+	url = git@github.com:cjlucas/cjutils-objc.git
+[submodule "Vendor/CJAudioPlayer"]
+	path = Vendor/CJAudioPlayer
+	url = git@github.com:cjlucas/CJAudioPlayer.git
